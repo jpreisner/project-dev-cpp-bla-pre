@@ -6,13 +6,3 @@
  */
 
 #include "Neutre.h"
-
-Neutre::Neutre() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Neutre::~Neutre() {
-	// TODO Auto-generated destructor stub
-}
-

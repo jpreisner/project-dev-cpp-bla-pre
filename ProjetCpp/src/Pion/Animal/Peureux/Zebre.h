@@ -8,12 +8,17 @@
 #ifndef ZEBRE_H_
 #define ZEBRE_H_
 
+#include "../Effrayant/Lion.h"
 #include "../Peureux.h"
 
 class Zebre: public Peureux {
 public:
-	Zebre();
-	virtual ~Zebre();
+	Zebre() :
+			Peureux(6) {
+
+	}
+	~Zebre(){
+	}
 };
 
 #endif /* ZEBRE_H_ */

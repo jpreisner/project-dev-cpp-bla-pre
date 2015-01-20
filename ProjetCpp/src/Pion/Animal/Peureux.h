@@ -8,12 +8,34 @@
 #ifndef PEUREUX_H_
 #define PEUREUX_H_
 
+#include <vector>
+
 #include "../Animal.h"
 
+using namespace std;
+
 class Peureux: public Animal {
+private:
+	vector<Animal> listAnimauxImpressionnant;
 public:
-	Peureux();
+	Peureux(int v = 0) :
+			Animal(v) {
+	}
 	virtual ~Peureux();
+
+	/**
+	 * retirer l'animal a la liste des animaux impressionnants
+	 */
+	void ajouterAnimalImpressionnant(const Animal& a){
+		listAnimauxImpressionnant.push_back(a);
+	}
+
+	/**
+	 * retirer l'animal a la liste des animaux impressionnants
+	 * TODO
+	 */
+	void retirerAnimalImpressionnant(const Animal& a){
+	}
 };
 
 #endif /* PEUREUX_H_ */

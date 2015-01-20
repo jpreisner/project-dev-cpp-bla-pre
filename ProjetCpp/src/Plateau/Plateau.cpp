@@ -6,8 +6,3 @@
  */
 
 #include "Plateau.h"
-
-Plateau::~Plateau() {
-	// TODO Auto-generated destructor stub
-}
-

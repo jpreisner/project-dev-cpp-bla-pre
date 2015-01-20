@@ -7,12 +7,3 @@
 
 #include "Effrayant.h"
 
-Effrayant::Effrayant() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Effrayant::~Effrayant() {
-	// TODO Auto-generated destructor stub
-}
-

@@ -6,13 +6,3 @@
  */
 
 #include "Peureux.h"
-
-Peureux::Peureux() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Peureux::~Peureux() {
-	// TODO Auto-generated destructor stub
-}
-

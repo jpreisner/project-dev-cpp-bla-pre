@@ -12,7 +12,9 @@
 
 class Neutre: public Animal {
 public:
-	Neutre();
+	Neutre(int v = 0) :
+			Animal(v) {
+	}
 	virtual ~Neutre();
 };
 
