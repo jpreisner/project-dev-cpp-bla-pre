@@ -7,12 +7,3 @@
 
 #include "Animal.h"
 
-Animal::Animal() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Animal::~Animal() {
-	// TODO Auto-generated destructor stub
-}
-
