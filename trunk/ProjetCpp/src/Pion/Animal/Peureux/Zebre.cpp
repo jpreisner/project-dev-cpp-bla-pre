@@ -6,13 +6,3 @@
  */
 
 #include "Zebre.h"
-
-Zebre::Zebre() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Zebre::~Zebre() {
-	// TODO Auto-generated destructor stub
-}
-

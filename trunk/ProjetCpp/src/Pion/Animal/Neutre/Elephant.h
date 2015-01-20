@@ -12,8 +12,13 @@
 
 class Elephant: public Neutre {
 public:
-	Elephant();
-	virtual ~Elephant();
+	Elephant() :
+			Neutre(1) {
+
+	}
+	~Elephant() {
+
+	}
 };
 
 #endif /* ELEPHANT_H_ */

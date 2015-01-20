@@ -11,21 +11,27 @@
 #include "../Pion.h"
 
 class Animal: public Pion {
-
 // attributs
 private:
 	int valeur;
 
 // méthodes
 public:
-	Animal(int v=0) : valeur(v){};
-	virtual ~Animal(){};
+	Animal(int v = 0) :
+			valeur(v) {
+	};
+	virtual ~Animal() {
+	};
 
 	// getters
-	int getValeur(){ return valeur;}
+	int getValeur() {
+		return valeur;
+	}
 
 	// setters
-	void setValeur(int v){ valeur = v; }
+	void setValeur(int v) {
+		valeur = v;
+	}
 };
 
 #endif /* ANIMAL_H_ */

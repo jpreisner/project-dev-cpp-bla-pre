@@ -9,11 +9,19 @@
 #define LION_H_
 
 #include "../Effrayant.h"
+#include "../Peureux/Gazelle.h"
+#include "../Peureux/Zebre.h"
+
+using namespace std;
 
 class Lion: public Effrayant {
 public:
-	Lion();
-	virtual ~Lion();
+	Lion() :
+			Effrayant(1) {
+
+	}
+	~Lion() {
+	}
 };
 
 #endif /* LION_H_ */

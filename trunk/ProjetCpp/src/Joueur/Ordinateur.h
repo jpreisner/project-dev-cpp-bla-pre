@@ -8,13 +8,18 @@
 #ifndef ORDINATEUR_H_
 #define ORDINATEUR_H_
 
-#include "Joueur.h"
+#include <string>
+
+#include "../Joueur.h"
 
 class Ordinateur: public Joueur {
 public:
-	Ordinateur() {
+	Ordinateur(string nom) :
+			Joueur(0, nom) {
 	}
-	virtual ~Ordinateur();
+	virtual ~Ordinateur() {
+
+	}
 };
 
 #endif /* ORDINATEUR_H_ */

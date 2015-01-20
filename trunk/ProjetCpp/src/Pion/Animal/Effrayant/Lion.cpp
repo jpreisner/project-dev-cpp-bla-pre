@@ -6,13 +6,3 @@
  */
 
 #include "Lion.h"
-
-Lion::Lion() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Lion::~Lion() {
-	// TODO Auto-generated destructor stub
-}
-

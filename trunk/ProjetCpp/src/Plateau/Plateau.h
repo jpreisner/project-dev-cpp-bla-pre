@@ -9,8 +9,10 @@
 #define PLATEAU_H_
 
 #include <vector>
-#include "Joueur.h"
-#include "Pion.h"
+
+#include "../Joueur.h"
+#include "../Pion.h"
+#include "Case.h"
 
 using namespace std;
 
@@ -18,12 +20,12 @@ class Plateau {
 public:
 	Plateau() {
 	}
-	virtual ~Plateau();
-private:
-	Joueur joueur1;
-	Joueur joueur2;
-	vector<Pion> listPionPlateau;
+	virtual ~Plateau(){
 
+	}
+private:
+	vector<Pion> listPionPlateau;
+	Case cases[6][5];
 };
 
 #endif /* PLATEAU_H_ */

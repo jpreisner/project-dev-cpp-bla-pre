@@ -7,7 +7,3 @@
 
 #include "JoueurReel.h"
 
-JoueurReel::~JoueurReel() {
-	// TODO Auto-generated destructor stub
-}
-
