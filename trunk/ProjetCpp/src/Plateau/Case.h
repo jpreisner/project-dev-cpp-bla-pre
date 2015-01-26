@@ -9,10 +9,10 @@
 #define CASE_H_
 
 class Case {
+private:
+
 public:
 	Case() {
-		// TODO Auto-generated constructor stub
-
 	}
 	virtual ~Case();
 };

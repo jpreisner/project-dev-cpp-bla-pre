@@ -28,10 +28,6 @@ public:
 		return valeur;
 	}
 
-	// setters
-	void setValeur(int v) {
-		valeur = v;
-	}
 };
 
 #endif /* ANIMAL_H_ */

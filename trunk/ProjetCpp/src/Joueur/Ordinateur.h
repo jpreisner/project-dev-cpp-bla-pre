@@ -14,8 +14,8 @@
 
 class Ordinateur: public Joueur {
 public:
-	Ordinateur(string nom) :
-			Joueur(0, nom) {
+	Ordinateur() :
+			Joueur(0, "I-A") {
 	}
 	virtual ~Ordinateur() {
 

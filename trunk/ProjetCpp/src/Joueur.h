@@ -26,7 +26,11 @@ private:
 
 	/**
 	 * Permet d'initialiser tous les pions d'un joueur
-	 * TODO
+	 * 6 gazelles
+	 * 5 zebres
+	 * 1 elephan
+	 * 1 lion
+	 * 2 crocos
 	 */
 	void initListPions() {
 
