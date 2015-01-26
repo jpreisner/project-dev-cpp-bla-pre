@@ -8,6 +8,7 @@
 #ifndef JOUEUR_H_
 #define JOUEUR_H_
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -61,6 +62,13 @@ public:
 	void setNbPoints(int nbPoints) {
 		this->nbPoints = nbPoints;
 	}
+
+	friend ostream& operator<<(ostream &strm, const Joueur &a) {
+		strm << "Joueur" << endl;
+		return strm;
+	}
 };
+
+
 
 #endif /* JOUEUR_H_ */

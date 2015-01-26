@@ -20,6 +20,13 @@ public:
 	virtual ~Ordinateur() {
 
 	}
+
+	friend ostream& operator<<(ostream &strm, const Ordinateur &a) {
+		strm << "Ordinateur : " << endl;
+		return strm;
+	}
 };
+
+
 
 #endif /* ORDINATEUR_H_ */

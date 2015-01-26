@@ -18,6 +18,12 @@ public:
 			Joueur(0, nom) {
 	}
 	virtual ~JoueurReel();
+
+	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {
+		strm << "Joueur Reel : " << a.getNom() << endl;
+		return strm;
+	}
 };
+
 
 #endif /* JOUEURREEL_H_ */
