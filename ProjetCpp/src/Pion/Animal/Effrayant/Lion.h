@@ -18,7 +18,8 @@ class Lion: public Effrayant {
 public:
 	Lion() :
 			Effrayant(1) {
-
+		Gazelle g;
+		ajouterAnimalEffraye(g);
 	}
 	~Lion() {
 	}
