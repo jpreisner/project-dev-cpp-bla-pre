@@ -10,7 +10,6 @@
 
 #include <vector>
 
-#include "../Joueur.h"
 #include "../Pion.h"
 #include "Case.h"
 
