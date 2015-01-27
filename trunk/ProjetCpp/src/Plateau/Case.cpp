@@ -7,6 +7,8 @@
 
 #include "Case.h"
 
+#include "../Pion.h"
+
 Case::~Case() {
 }
 

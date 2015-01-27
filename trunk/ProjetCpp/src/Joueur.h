@@ -38,8 +38,7 @@ private:
 	 */
 	void initListPions(int nbGazelles = 0, int nbZebres = 0,
 			int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) {
-		int nbAnimauxTotal = nbGazelles+nbZebres+nbElephants+nbLions+nbCrocos;
-		listAnimaux();
+		//listAnimaux(0);
 
 		/**
 		 * Utiliser les pointeurs

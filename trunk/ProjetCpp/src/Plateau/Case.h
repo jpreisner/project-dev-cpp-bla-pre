@@ -8,9 +8,11 @@
 #ifndef CASE_H_
 #define CASE_H_
 
+#include <stddef.h>
 #include <iostream>
 
-#include "../Pion/Animal.h"
+class Animal;
+class Pion;
 
 using namespace std;
 
