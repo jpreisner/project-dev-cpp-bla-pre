@@ -15,16 +15,20 @@
 
 using namespace std;
 
+class Pion;
+
 class Plateau {
+private:
+	vector<Pion> listPionPlateau;
+	Case cases[8][7];
+
 public:
 	Plateau() {
 	}
-	virtual ~Plateau(){
+	virtual ~Plateau() {
 	}
 	int deplacerPion();
-private:
-	vector<Pion> listPionPlateau;
-	Case cases[6][5];
+
 };
 
 #endif /* PLATEAU_H_ */

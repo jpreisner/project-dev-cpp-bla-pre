@@ -10,15 +10,20 @@
 
 #include <iostream>
 
+#include "../Pion/Animal.h"
+
 using namespace std;
 
 class Case {
 private:
 	int secteur;
-	Animal a;
+	Animal* a;
 public:
+	Case() :
+			secteur(1), a(NULL) {
+	}
 	Case(int secteur) :
-			a(NULL),secteur(secteur) {
+			secteur(secteur), a(NULL) {
 	}
 	virtual ~Case();
 
