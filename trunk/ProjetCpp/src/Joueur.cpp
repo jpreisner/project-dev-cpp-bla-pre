@@ -14,7 +14,7 @@ int jouer() {
 	return 0;
 }
 
-int placementPion(Pion, int x, int y) {
+int placementAnimal(Animal a, int x, int y){
 
 	return 0;
 }

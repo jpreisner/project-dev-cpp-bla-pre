@@ -10,15 +10,19 @@
 
 #include "../Pion.h"
 
+class Joueur;
+
+
 class Animal: public Pion {
 // attributs
 private:
 	int valeur;
 	bool cache;
-	Joueur joueur;
+
+	Joueur* joueur;
 // méthodes
 public:
-	Animal(int v = 0, Joueur joueur) :
+	Animal(int v = 0, Joueur* joueur = NULL) :
 			valeur(v), cache(false), joueur(joueur) {
 	}
 	virtual ~Animal() {
@@ -27,10 +31,6 @@ public:
 	// getters
 	int getValeur() {
 		return valeur;
-	}
-
-	const Joueur& getJoueur() const {
-		return joueur;
 	}
 
 	/**
@@ -47,6 +47,7 @@ public:
 	 * cacher ou montrer
 	 */
 	int retourner();
+
 };
 
 #endif /* ANIMAL_H_ */
