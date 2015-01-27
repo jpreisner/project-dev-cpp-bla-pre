@@ -22,6 +22,10 @@ public:
 	~Gazelle() {
 
 	}
+
+	friend ostream& operator<<(ostream &strm, const Gazelle &a) {
+		return strm << "Gazelle" << endl;
+	}
 };
 
 #endif /* GAZELLE_H_ */

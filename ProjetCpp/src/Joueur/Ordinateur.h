@@ -22,7 +22,7 @@ public:
 	}
 
 	friend ostream& operator<<(ostream &strm, const Ordinateur &a) {
-		strm << "Ordinateur : " << endl;
+		strm << "Ordinateur : " << a.getNom() << endl;
 		return strm;
 	}
 };
