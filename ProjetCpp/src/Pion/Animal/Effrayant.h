@@ -17,10 +17,8 @@ class Effrayant: public Animal {
 private:
 	vector<Animal> listAnimauxEffrayes;
 public:
-	Effrayant(int v = 0) :
-			Animal(v) {
-	}
-	virtual ~Effrayant();
+	Effrayant(int v = 0) : Animal(v) {};
+	virtual ~Effrayant(){};
 
 	/**
 	 * Ajouter l'animal a la liste des animaux effrayes
