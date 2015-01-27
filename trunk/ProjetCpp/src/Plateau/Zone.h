@@ -11,8 +11,6 @@
 class Zone {
 public:
 	Zone() {
-		// TODO Auto-generated constructor stub
-
 	}
 	virtual ~Zone();
 };

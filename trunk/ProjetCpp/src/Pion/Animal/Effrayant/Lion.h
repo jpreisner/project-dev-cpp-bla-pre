@@ -22,6 +22,10 @@ public:
 	}
 	~Lion() {
 	}
+
+	friend ostream& operator<<(ostream &strm, const Lion &a) {
+		return strm << "Lion" << endl;
+	}
 };
 
 #endif /* LION_H_ */

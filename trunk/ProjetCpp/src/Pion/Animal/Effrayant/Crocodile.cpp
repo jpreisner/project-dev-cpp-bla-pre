@@ -7,7 +7,4 @@
 
 #include "Crocodile.h"
 
-Crocodile::~Crocodile() {
-	// TODO Auto-generated destructor stub
-}
 

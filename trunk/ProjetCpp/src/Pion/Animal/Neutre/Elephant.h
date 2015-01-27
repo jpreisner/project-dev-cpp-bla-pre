@@ -19,6 +19,10 @@ public:
 	~Elephant() {
 
 	}
+
+	friend ostream& operator<<(ostream &strm, const Elephant &a) {
+		return strm << "Elephant" << endl;
+	}
 };
 
 #endif /* ELEPHANT_H_ */
