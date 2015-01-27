@@ -14,13 +14,8 @@ class Lion;
 
 class Gazelle: public Peureux {
 public:
-	Gazelle() :
-			Peureux(2) {
-
-	}
-	~Gazelle() {
-
-	}
+	Gazelle() : Peureux(2) {};
+	virtual ~Gazelle() {};
 
 	friend ostream& operator<<(ostream &strm, const Gazelle &a) {
 		return strm << "Gazelle" << endl;

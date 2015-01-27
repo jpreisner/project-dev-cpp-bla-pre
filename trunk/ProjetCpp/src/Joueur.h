@@ -12,6 +12,11 @@
 #include <string>
 #include <vector>
 
+#include "Pion/Animal/Effrayant/Crocodile.h"
+#include "Pion/Animal/Effrayant/Lion.h"
+#include "Pion/Animal/Neutre/Elephant.h"
+#include "Pion/Animal/Peureux/Gazelle.h"
+#include "Pion/Animal/Peureux/Zebre.h"
 #include "Pion/Animal.h"
 
 using namespace std;
@@ -21,6 +26,7 @@ using namespace std;
  */
 
 class Animal;
+class Gazelle;
 
 class Joueur {
 private:
@@ -36,58 +42,49 @@ private:
 	 * 1 lion
 	 * 2 crocos
 	 */
-	void initListPions(int nbGazelles = 0, int nbZebres = 0,
-			int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) {
-		//listAnimaux(0);
+	void initListPions(int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) {
 
 		/**
-		 * Utiliser les pointeurs
+		 * Utiliser les pointeurs ???
 		 */
 
-		/**
-		 * Ne marche pas pour le moment --> pb = ajouter des animaux dans la liste (vector)
-		 */
-
-		/*
 		int i;
+
 		// 6 gazelles
 		for(i=0; i< nbGazelles; i++){
-			Gazelle* g2;
-			Gazelle g = &g2;
-			listAnimaux.push_back(g);
+			listAnimaux.push_back(*(new Gazelle()));
 		}
 		// 5 zebres
 		for(i=0; i< nbZebres; i++){
-			Zebre z;
-			listAnimaux.push_back(z);
+			listAnimaux.push_back(*(new Zebre()));
 		}
 		// 1 elephant
 		for(i=0; i< nbElephants; i++){
-			Elephant e;
-			listAnimaux.push_back(e);
+			listAnimaux.push_back(*(new Elephant()));
 		}
 		// 1 lion
 		for(i=0; i< nbLions; i++){
-			Lion l;
-			listAnimaux.push_back(l);
+			listAnimaux.push_back(*(new Lion()));
 		}
 		// 2 crocodiles
 		for(i=0; i< nbCrocos; i++){
-			Crocodile c;
-			listAnimaux.push_back(c);
+			listAnimaux.push_back(*(new Crocodile()));
 		}
-		*/
 	}
 
 public:
-	Joueur(int nbPoints = 0, string nom = "") :
-			nbPoints(nbPoints), nom(nom) {
-		//listAnimaux();	// initialisation de la liste
+	Joueur(int nbPoints = 0, string nom = "") : nbPoints(nbPoints), nom(nom), listAnimaux(0) {
 		initListPions();
 	}
 
 	virtual ~Joueur() {
-
+		//delete[] listAnimaux;
+		/*
+		int size = listAnimaux.size();
+		for(int i=size-1; i>0; i--){
+			delete[] listAnimaux[i];
+		}
+		*/
 	}
 
 	const vector<Animal>& getListAnimaux() const {
