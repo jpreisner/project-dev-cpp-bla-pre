@@ -28,6 +28,11 @@ int main() {
 
 	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 
+	int i;
+	for(i=0; i<j.getListAnimaux().size(); i++){
+		cout << "listAnimaux[" << i << "]=" << j.getListAnimaux()[i] << endl;
+	}
+
 
     return 0;
 }
