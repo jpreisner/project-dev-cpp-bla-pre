@@ -5,14 +5,18 @@
  *      Author: Julien
  */
 
-#include "Personnage.h"
+#include "ImpalaJones.h"
 
-Personnage::Personnage() {
+ImpalaJones::ImpalaJones() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Personnage::~Personnage() {
+ImpalaJones::~ImpalaJones() {
 	// TODO Auto-generated destructor stub
 }
 
+int deplacer(int x){
+
+	return 0;
+}

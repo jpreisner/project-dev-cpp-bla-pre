@@ -6,3 +6,11 @@
  */
 
 #include "Plateau.h"
+
+/**
+ * Deplacement du pion sur le plateau
+ */
+int Plateau::deplacerPion() {
+
+	return 0;
+}

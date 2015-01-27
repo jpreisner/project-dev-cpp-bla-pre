@@ -12,11 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "Pion/Animal/Effrayant/Crocodile.h"
-#include "Pion/Animal/Effrayant/Lion.h"
-#include "Pion/Animal/Neutre/Elephant.h"
-#include "Pion/Animal/Peureux/Gazelle.h"
-#include "Pion/Animal/Peureux/Zebre.h"
+#include "Pion.h"
 
 using namespace std;
 
@@ -105,6 +101,16 @@ public:
 		this->nbPoints = nbPoints;
 	}
 
+	friend ostream& operator<<(ostream &strm, const Joueur &a) {
+		strm << "Joueur" << endl;
+		return strm;
+	}
+
+	int jouer();
+
+	int placementPion(Pion,int x,int y);
 };
+
+
 
 #endif /* JOUEUR_H_ */

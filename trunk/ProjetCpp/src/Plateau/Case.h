@@ -14,17 +14,21 @@ using namespace std;
 
 class Case {
 private:
-
+	int secteur;
+	Animal a;
 public:
-	Case() {
+	Case(int secteur) :
+			a(NULL),secteur(secteur) {
 	}
 	virtual ~Case();
 
 	friend ostream& operator<<(ostream &strm, const Case &a) {
 		return strm << "Case" << endl;
 	}
+
+	int ajouterPion(Pion p);
+
+	int supprimerPion(Pion p);
 };
-
-
 
 #endif /* CASE_H_ */

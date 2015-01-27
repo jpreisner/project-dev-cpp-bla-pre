@@ -24,6 +24,11 @@ public:
 	friend ostream& operator<<(ostream &strm, const Pion &a) {
 		return strm << "Pion" << endl;
 	}
+
+	int setPosition(int x, int y){
+
+		return 0;
+	}
 };
 
 

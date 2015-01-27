@@ -10,10 +10,12 @@
 
 #include "../Pion.h"
 
-class Personnage: public Pion {
+class ImpalaJones: public Pion {
 public:
-	Personnage();
-	virtual ~Personnage();
+	ImpalaJones();
+	virtual ~ImpalaJones();
+
+	int deplacer(int x);
 };
 
 #endif /* PERSONNAGE_H_ */
