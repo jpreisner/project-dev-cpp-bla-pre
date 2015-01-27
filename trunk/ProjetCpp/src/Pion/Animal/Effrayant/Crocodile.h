@@ -12,10 +12,9 @@
 
 class Crocodile: public Effrayant {
 public:
-	Crocodile(){
-		Effrayant(0);
-	};
-	virtual ~Crocodile(){};
+	Crocodile() : Effrayant(0) {};
+
+	~Crocodile(){};
 
 	friend ostream& operator<<(ostream &strm, const Crocodile &a) {
 		return strm << "Crocodile" << endl;

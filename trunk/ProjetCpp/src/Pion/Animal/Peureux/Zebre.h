@@ -13,12 +13,8 @@
 
 class Zebre: public Peureux {
 public:
-	Zebre() :
-			Peureux(6) {
-
-	}
-	~Zebre(){
-	}
+	Zebre() : Peureux(6) {};
+	~Zebre(){};
 
 	friend ostream& operator<<(ostream &strm, const Zebre &a) {
 		return strm << "Zebre" << endl;

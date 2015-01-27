@@ -16,12 +16,9 @@ using namespace std;
 
 class Lion: public Effrayant {
 public:
-	Lion() :
-			Effrayant(1) {
+	Lion() : Effrayant(1) {};
 
-	}
-	~Lion() {
-	}
+	~Lion() {};
 
 	friend ostream& operator<<(ostream &strm, const Lion &a) {
 		return strm << "Lion" << endl;

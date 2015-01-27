@@ -12,13 +12,8 @@
 
 class Elephant: public Neutre {
 public:
-	Elephant() :
-			Neutre(1) {
-
-	}
-	~Elephant() {
-
-	}
+	Elephant() : Neutre(1) {};
+	~Elephant() {};
 
 	friend ostream& operator<<(ostream &strm, const Elephant &a) {
 		return strm << "Elephant" << endl;

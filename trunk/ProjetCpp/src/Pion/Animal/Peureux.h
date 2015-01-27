@@ -18,10 +18,9 @@ class Peureux: public Animal {
 private:
 	vector<Animal> listAnimauxImpressionnant;
 public:
-	Peureux(int v = 0) :
-			Animal(v) {
-	}
-	virtual ~Peureux();
+	Peureux(int v = 0) : Animal(v) {};
+
+	virtual ~Peureux(){};
 
 	/**
 	 * retirer l'animal a la liste des animaux impressionnants

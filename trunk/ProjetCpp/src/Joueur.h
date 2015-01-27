@@ -73,8 +73,9 @@ private:
 	}
 
 public:
-	Joueur(int nbPoints = 0, string nom = "") : nbPoints(nbPoints), nom(nom), listAnimaux(0) {
-		initListPions();
+	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
+			nbPoints(nbPoints), nom(nom), listAnimaux(0) {
+		initListPions(nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	}
 
 	virtual ~Joueur() {
