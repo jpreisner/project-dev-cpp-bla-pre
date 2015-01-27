@@ -39,11 +39,14 @@ public:
 	}
 
 	/**
-	 * Demander les noms, attribuer les cartes, et lancer le premier tour
+	 * Lancer le premier tour
 	 */
-	void initPartie() {
+	int lancerPartie();
 
-	}
+	/**
+	 * Demander les noms, attribuer les cartes
+	 */
+	int initJoueurs();
 
 	friend ostream& operator<<(ostream &strm, const Partie &a) {
 		strm << "Partie" << endl;

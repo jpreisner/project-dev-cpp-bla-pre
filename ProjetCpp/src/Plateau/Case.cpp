@@ -10,3 +10,12 @@
 Case::~Case() {
 }
 
+int ajouterPion(Pion p){
+
+	return 0;
+}
+
+int supprimerPion(Pion p){
+
+	return 0;
+}

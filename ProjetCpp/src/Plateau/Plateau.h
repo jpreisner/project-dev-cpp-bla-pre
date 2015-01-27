@@ -20,8 +20,8 @@ public:
 	Plateau() {
 	}
 	virtual ~Plateau(){
-
 	}
+	int deplacerPion();
 private:
 	vector<Pion> listPionPlateau;
 	Case cases[6][5];
