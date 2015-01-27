@@ -38,6 +38,8 @@ private:
 	 */
 	void initListPions(int nbGazelles = 0, int nbZebres = 0,
 			int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) {
+		int nbAnimauxTotal = nbGazelles+nbZebres+nbElephants+nbLions+nbCrocos;
+		listAnimaux();
 
 		/**
 		 * Utiliser les pointeurs
@@ -48,34 +50,34 @@ private:
 		 */
 
 		/*
-		 int i;
-		 // 6 gazelles
-		 for(i=0; i< nbGazelles; i++){
-		 Gazelle* g2;
-		 Gazelle g = &g2;
-		 listAnimaux.push_back(g);
-		 }
-		 // 5 zebres
-		 for(i=0; i< nbZebres; i++){
-		 Zebre z;
-		 listAnimaux.push_back(z);
-		 }
-		 // 1 elephant
-		 for(i=0; i< nbElephants; i++){
-		 Elephant e;
-		 listAnimaux.push_back(e);
-		 }
-		 // 1 lion
-		 for(i=0; i< nbLions; i++){
-		 Lion l;
-		 listAnimaux.push_back(l);
-		 }
-		 // 2 crocodiles
-		 for(i=0; i< nbCrocos; i++){
-		 Crocodile c;
-		 listAnimaux.push_back(c);
-		 }
-		 */
+		int i;
+		// 6 gazelles
+		for(i=0; i< nbGazelles; i++){
+			Gazelle* g2;
+			Gazelle g = &g2;
+			listAnimaux.push_back(g);
+		}
+		// 5 zebres
+		for(i=0; i< nbZebres; i++){
+			Zebre z;
+			listAnimaux.push_back(z);
+		}
+		// 1 elephant
+		for(i=0; i< nbElephants; i++){
+			Elephant e;
+			listAnimaux.push_back(e);
+		}
+		// 1 lion
+		for(i=0; i< nbLions; i++){
+			Lion l;
+			listAnimaux.push_back(l);
+		}
+		// 2 crocodiles
+		for(i=0; i< nbCrocos; i++){
+			Crocodile c;
+			listAnimaux.push_back(c);
+		}
+		*/
 	}
 
 public:
