@@ -25,5 +25,4 @@ public:
 	}
 };
 
-
 #endif /* JOUEURREEL_H_ */

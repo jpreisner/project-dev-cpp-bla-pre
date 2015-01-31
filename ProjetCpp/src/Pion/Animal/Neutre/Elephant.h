@@ -8,6 +8,8 @@
 #ifndef ELEPHANT_H_
 #define ELEPHANT_H_
 
+#include <string>
+
 #include "../Neutre.h"
 
 class Elephant: public Neutre {
@@ -15,8 +17,8 @@ public:
 	Elephant() : Neutre(1) {};
 	~Elephant() {};
 
-	friend ostream& operator<<(ostream &strm, const Elephant &a) {
-		return strm << "Elephant" << endl;
+	virtual string print() const {
+		return "Elephant";
 	}
 };
 

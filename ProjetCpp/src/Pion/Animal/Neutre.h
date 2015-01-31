@@ -8,12 +8,18 @@
 #ifndef NEUTRE_H_
 #define NEUTRE_H_
 
+#include <string>
+
 #include "../Animal.h"
 
 class Neutre: public Animal {
 public:
 	Neutre(int v = 0) : Animal(v) {};
 	virtual ~Neutre(){};
+
+	virtual string print() const{
+		return "Neutre";
+	}
 };
 
 #endif /* NEUTRE_H_ */

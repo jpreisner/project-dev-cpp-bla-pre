@@ -7,7 +7,8 @@
 #ifndef GAZELLE_H_
 #define GAZELLE_H_
 
-#include "../Effrayant/Lion.h"
+#include <string>
+
 #include "../Peureux.h"
 
 class Lion;
@@ -17,8 +18,8 @@ public:
 	Gazelle() : Peureux(2) {};
 	~Gazelle() {};
 
-	friend ostream& operator<<(ostream &strm, const Gazelle &a) {
-		return strm << "Gazelle" << endl;
+	virtual string print() const {
+		return "Gazelle";
 	}
 };
 

@@ -8,6 +8,7 @@
 #ifndef PEUREUX_H_
 #define PEUREUX_H_
 
+#include <string>
 #include <vector>
 
 #include "../Animal.h"
@@ -34,6 +35,10 @@ public:
 	 * TODO
 	 */
 	void retirerAnimalImpressionnant(const Animal& a){
+	}
+
+	virtual string print() const{
+		return "Peureux";
 	}
 };
 
