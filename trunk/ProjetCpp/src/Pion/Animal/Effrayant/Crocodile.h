@@ -8,17 +8,19 @@
 #ifndef PION_ANIMAL_EFFRAYANT_CROCODILE_H_
 #define PION_ANIMAL_EFFRAYANT_CROCODILE_H_
 
+#include <string>
+
 #include "../Effrayant.h"
 
 class Crocodile: public Effrayant {
 public:
 	Crocodile() : Effrayant(0) {};
-
 	~Crocodile(){};
 
-	friend ostream& operator<<(ostream &strm, const Crocodile &a) {
-		return strm << "Crocodile" << endl;
+	virtual string print() const {
+		return "Crocodile";
 	}
+
 };
 
 #endif /* PION_ANIMAL_EFFRAYANT_CROCODILE_H_ */

@@ -8,7 +8,9 @@
 #ifndef EFFRAYANT_H_
 #define EFFRAYANT_H_
 
+#include <string>
 #include <vector>
+
 #include "../Animal.h"
 
 using namespace std;
@@ -32,6 +34,10 @@ public:
 	 * TODO
 	 */
 	void retirerAnimalEffraye(const Animal& a){
+	}
+
+	virtual string print() const{
+		return "Effrayant";
 	}
 };
 

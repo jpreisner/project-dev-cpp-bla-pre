@@ -48,7 +48,7 @@ public:
 	 */
 	int initJoueurs();
 
-	friend ostream& operator<<(ostream &strm, const Partie &a) {
+	/*friend ostream& operator<<(ostream &strm, const Partie &a) {
 		strm << "Partie" << endl;
 		strm << "\t Pions Joueur 1 : " << endl;
 		for (int i = 0; i < a.getJoueur1().getNbPoints(); i++) {
@@ -63,9 +63,7 @@ public:
 		//TODO AFFICHER PLATEAU
 
 		return strm;
-	}
+	}*/
 };
-
-
 
 #endif /* PARTIE_H_ */

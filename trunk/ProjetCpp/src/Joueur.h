@@ -79,17 +79,17 @@ public:
 	}
 
 	virtual ~Joueur() {
-		//delete[] listAnimaux;
-		/*
-		int size = listAnimaux.size();
-		for(int i=size-1; i>0; i--){
-			delete[] listAnimaux[i];
-		}
-		*/
+
 	}
 
 	const vector<Animal>& getListAnimaux() const {
 		return listAnimaux;
+	}
+
+	Animal* getAnimal(const int i){
+		Animal a = listAnimaux[i];
+		Animal * result = &a;
+		return result;
 	}
 
 	int getNbPoints() const {
@@ -105,7 +105,7 @@ public:
 	}
 
 	friend ostream& operator<<(ostream &strm, const Joueur &a) {
-		strm << "Joueur" << endl;
+		strm << "Joueur(" << a.nom << ") : "<< a.nbPoints << "."<< endl;
 		return strm;
 	}
 

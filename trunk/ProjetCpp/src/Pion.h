@@ -21,10 +21,9 @@ public:
 
 	}
 
-	friend ostream& operator<<(ostream &strm, const Pion &a) {
-		return strm << "Pion" << endl;
+	virtual string print() const{
+		return "Pion";
 	}
-
 	int setPosition(int x, int y){
 
 		return 0;

@@ -8,20 +8,19 @@
 #ifndef LION_H_
 #define LION_H_
 
+#include <string>
+
 #include "../Effrayant.h"
-#include "../Peureux/Gazelle.h"
-#include "../Peureux/Zebre.h"
 
 using namespace std;
 
 class Lion: public Effrayant {
 public:
 	Lion() : Effrayant(1) {};
-
 	~Lion() {};
 
-	friend ostream& operator<<(ostream &strm, const Lion &a) {
-		return strm << "Lion" << endl;
+	virtual string print() const {
+		return "Lion";
 	}
 };
 

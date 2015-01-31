@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "Joueur.h"
+#include "Pion/Animal.h"
 
 
 using namespace std;
@@ -27,10 +28,10 @@ int main() {
 	int nbCrocos = 2;
 
 	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
-
+	cout << j << endl;
 	int i;
 	for(i=0; i<j.getListAnimaux().size(); i++){
-		cout << "listAnimaux[" << i << "]=" << j.getListAnimaux()[i] << endl;
+		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
 	}
 
 

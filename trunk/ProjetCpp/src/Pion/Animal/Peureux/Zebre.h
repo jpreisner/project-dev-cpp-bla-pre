@@ -8,7 +8,8 @@
 #ifndef ZEBRE_H_
 #define ZEBRE_H_
 
-#include "../Effrayant/Lion.h"
+#include <string>
+
 #include "../Peureux.h"
 
 class Zebre: public Peureux {
@@ -16,8 +17,8 @@ public:
 	Zebre() : Peureux(6) {};
 	~Zebre(){};
 
-	friend ostream& operator<<(ostream &strm, const Zebre &a) {
-		return strm << "Zebre" << endl;
+	virtual string print() const {
+		return "Zebre";
 	}
 };
 

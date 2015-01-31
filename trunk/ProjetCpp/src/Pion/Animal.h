@@ -8,10 +8,14 @@
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 
+#include <iostream>
+#include <string>
+
 #include "../Pion.h"
 
-class Joueur;
+using namespace std;
 
+class Joueur;
 
 class Animal: public Pion {
 // attributs
@@ -47,6 +51,10 @@ public:
 	 * cacher ou montrer
 	 */
 	int retourner();
+
+	virtual string print() const{
+		return "Animal";
+	}
 
 };
 
