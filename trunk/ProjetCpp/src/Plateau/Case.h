@@ -11,7 +11,8 @@
 #include <stddef.h>
 #include <iostream>
 
-class Animal;
+#include "../Pion.h"
+
 class Pion;
 
 using namespace std;
@@ -19,13 +20,10 @@ using namespace std;
 class Case {
 private:
 	int secteur;
-	Animal* a;
+	Pion* pion;
 public:
-	Case() :
-			secteur(1), a(NULL) {
-	}
-	Case(int secteur) :
-			secteur(secteur), a(NULL) {
+	Case(int secteur=0) :
+			secteur(secteur), pion(NULL) {
 	}
 	virtual ~Case();
 
