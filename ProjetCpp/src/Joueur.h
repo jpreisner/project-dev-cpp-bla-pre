@@ -22,7 +22,7 @@
 using namespace std;
 
 /**
- * Classe abstraite, car contient une méthode virtuelle pure (=0;) pour ne pas l'instancier.
+ * Classe abstraite, car contient une méthode virtuelle pure (=0) pour ne pas l'instancier.
  */
 
 class Animal;
@@ -42,35 +42,7 @@ private:
 	 * 1 lion
 	 * 2 crocos
 	 */
-	void initListPions(int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) {
-
-		/**
-		 * Utiliser les pointeurs ???
-		 */
-
-		int i;
-
-		// 6 gazelles
-		for(i=0; i< nbGazelles; i++){
-			listAnimaux.push_back(*(new Gazelle()));
-		}
-		// 5 zebres
-		for(i=0; i< nbZebres; i++){
-			listAnimaux.push_back(*(new Zebre()));
-		}
-		// 1 elephant
-		for(i=0; i< nbElephants; i++){
-			listAnimaux.push_back(*(new Elephant()));
-		}
-		// 1 lion
-		for(i=0; i< nbLions; i++){
-			listAnimaux.push_back(*(new Lion()));
-		}
-		// 2 crocodiles
-		for(i=0; i< nbCrocos; i++){
-			listAnimaux.push_back(*(new Crocodile()));
-		}
-	}
+	void initListPions(int nbGazelles = 6, int nbZebres = 5, int nbElephants = 1, int nbLions = 1, int nbCrocos = 2);
 
 public:
 	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :

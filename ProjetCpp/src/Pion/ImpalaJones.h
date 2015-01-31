@@ -10,12 +10,15 @@
 
 #include "../Pion.h"
 
+class Plateau;
+
 class ImpalaJones: public Pion {
 public:
 	ImpalaJones();
 	virtual ~ImpalaJones();
 
-	int deplacer(int x);
+	// nbCases doit etre compris entre 1 et 3
+	int deplacer(int nbCases, Plateau plateau);
 };
 
 #endif /* PERSONNAGE_H_ */
