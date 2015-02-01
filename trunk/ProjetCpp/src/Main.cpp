@@ -7,10 +7,12 @@
 //============================================================================
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "Joueur.h"
 #include "Pion/Animal.h"
+#include "Plateau/Plateau.h"
 
 
 using namespace std;
@@ -34,6 +36,8 @@ int main() {
 		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
 	}
 
+	Plateau p;
+	p.print();
 
     return 0;
 }
