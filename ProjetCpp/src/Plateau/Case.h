@@ -22,18 +22,38 @@ private:
 	int secteur;
 	Pion* pion;
 public:
-	Case(int secteur=0) :
+	Case(int secteur = 0) :
 			secteur(secteur), pion(NULL) {
 	}
-	virtual ~Case();
+	virtual ~Case() {
+		delete pion;
+	}
 
 	friend ostream& operator<<(ostream &strm, const Case &a) {
 		return strm << "Case" << endl;
 	}
 
-	int ajouterPion(Pion p);
+	int ajouterPion(Pion p) {
+		if (getPion() == NULL) {
+			return -1;
+		} else {
+			pion = &p;
+			return 0;
+		}
+	}
 
-	int supprimerPion(Pion p);
+	int supprimerPion() {
+		if (getPion() == NULL) {
+			return -1;
+		} else {
+			pion = NULL;
+			return 0;
+		}
+	}
+
+	Pion* getPion(){
+		return pion;
+	}
 };
 
 #endif /* CASE_H_ */

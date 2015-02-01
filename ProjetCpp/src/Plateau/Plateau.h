@@ -8,9 +8,8 @@
 #ifndef PLATEAU_H_
 #define PLATEAU_H_
 
-#include <vector>
+#include <string>
 
-#include "../Pion.h"
 #include "Case.h"
 
 #define TAILLE_PLATEAU_X 8
@@ -22,7 +21,6 @@ class Pion;
 
 class Plateau {
 private:
-	vector<Pion> listPionPlateau;
 	Case cases[TAILLE_PLATEAU_X][TAILLE_PLATEAU_Y];
 
 public:
@@ -30,16 +28,14 @@ public:
 	}
 	virtual ~Plateau() {
 	}
-	
-	int deplacerPion();
 
-	const vector<Pion>& getListPionPlateau() const {
-		return listPionPlateau;
-	}
+	int deplacerPion();
 
 	Case getCase(int x, int y) {
 		return cases[x][y];
 	}
+
+	string print();
 };
 
 #endif /* PLATEAU_H_ */

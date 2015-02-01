@@ -24,6 +24,7 @@ public:
 	virtual string print() const{
 		return "Pion";
 	}
+
 	int setPosition(int x, int y){
 
 		return 0;

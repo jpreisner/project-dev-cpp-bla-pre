@@ -52,16 +52,16 @@ public:
 		strm << "Partie" << endl;
 		strm << "\t Pions Joueur 1 : " << endl;
 		for (int i = 0; i < a.getJoueur1().getNbPoints(); i++) {
-			strm << "\t Pion " << i << " : " << a.getJoueur1().getListAnimaux()[i] << endl;
+			strm << "\t Pion " << i << " : " << a.getJoueur1().getAnimal(i)->print() << endl;
 		}
 
 		strm << "\t Pions Joueur 2 : " << endl;
 		for (int i = 0; i < a.getJoueur2().getNbPoints(); i++) {
-			strm << "\t Pion " << i << " : " << a.getJoueur2().getListAnimaux()[i] << endl;
+			strm << "\t Pion " << i << " : " << a.getJoueur2().getAnimal(i)->print() << endl;
 		}
 
 		//TODO AFFICHER PLATEAU
-
+		strm << a.plateau.print() << endl;
 		return strm;
 	}*/
 };
