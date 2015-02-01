@@ -22,6 +22,7 @@ int Case::ajouterPion(Pion &p){
 
 int Case::supprimerPion(){
 	if(getPion()!=NULL){
+		delete pion;
 		pion = NULL;	// appeler delete car pointeur?
 		return 0;
 	}
