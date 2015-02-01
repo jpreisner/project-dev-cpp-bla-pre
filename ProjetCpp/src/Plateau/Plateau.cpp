@@ -23,37 +23,31 @@ string Plateau::print() {
 			/* Affichage des cases d'IMPALA JONES*/
 			if (i == 0 || i == 6 || j == 0 || j == 7) {
 				//CASES NON ACCESSIBLES
-				if (i == 0 && j == 0) {
-					//en haut à gauche
+				if ((i == 0 && j == 0) || (i == 6 && j == 0)) {
+					//en haut à gauche ou en bas a gauche
 					cout << "  X  |";
-				} else if (i == 0 && j == 7) {
-					//en haut à droite
-					cout << "  X  ";
-				} else if (i == 6 && j == 0) {
-					//en bas à gauche
-					cout << "  X  |";
-				} else if (i == 6 && j == 7) {
-					//en bas à droite
+				} else if ((i == 0 && j == 7) || (i == 6 && j == 7)) {
+					//en haut à droite ou en bas à droite
 					cout << "  X  ";
 				} else {
 					// CASES ACCESSIBLES
 					if (cases[j][i].getPion() != NULL) {
-						if(j==7){
+						if (j == 7) {
 							cout << "  I ";
-						}else{
+						} else {
 							cout << "  I  |";
 						}
 					} else {
-						if(j==7){
+						if (j == 7) {
 							cout << "     ";
-						}else{
+						} else {
 							cout << "     |";
 						}
 					}
 				}
 			} else {
 				/* Affichage des zones du jeu*/
-				cout << "  "<<cases[j][i].getSecteur()<<"  |";
+				cout << "  " << cases[j][i].getSecteur() << "  |";
 			}
 		}
 		cout << "\n";
