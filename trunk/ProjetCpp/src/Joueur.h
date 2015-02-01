@@ -32,7 +32,7 @@ class Joueur {
 private:
 	int nbPoints;
 	string nom;
-	vector<Animal> listAnimaux;
+	vector<Animal*> listAnimaux;
 
 	/**
 	 * Permet d'initialiser tous les pions d'un joueur
@@ -50,19 +50,7 @@ public:
 		initListPions(nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	}
 
-	virtual ~Joueur() {
-
-	}
-
-	const vector<Animal>& getListAnimaux() const {
-		return listAnimaux;
-	}
-
-	Animal* getAnimal(const int i){
-		Animal a = listAnimaux[i];
-		Animal * result = &a;
-		return result;
-	}
+	virtual ~Joueur() {};
 
 	int getNbPoints() const {
 		return nbPoints;
@@ -84,6 +72,18 @@ public:
 	int jouer();
 
 	int placementAnimal(Animal a, int x, int y);
+
+	const vector<Animal*>& getListAnimaux() const {
+		return listAnimaux;
+	}
+
+	void setListAnimaux(const vector<Animal*>& listAnimaux) {
+		this->listAnimaux = listAnimaux;
+	}
+
+	Animal* getAnimal(const int i){
+		return listAnimaux[i];
+	}
 };
 
 #endif /* JOUEUR_H_ */
