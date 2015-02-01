@@ -29,17 +29,21 @@ public:
 	}
 
 	friend ostream& operator<<(ostream &strm, const Case &a) {
-		return strm << "Case" << endl;
+		strm << "Case" << endl;
+		strm << "Secteur : " << a.secteur << endl;
+		if (a.pion != NULL) {
+			strm << "Pion sur la case : " << a.pion << endl;
+		}
+		return strm;
 	}
 
 	int ajouterPion(Pion &p);
 
 	int supprimerPion();
 
-	Pion* getPion(){
+	Pion* getPion() {
 		return pion;
 	}
-
 
 	int getSecteur() const {
 		return secteur;

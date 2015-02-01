@@ -10,7 +10,9 @@
 
 #include <string>
 
+#include "../Pion/Animal.h"
 #include "../Pion/ImpalaJones.h"
+#include "../Pion.h"
 #include "Case.h"
 
 #define TAILLE_PLATEAU_X 8
@@ -58,15 +60,19 @@ public:
 		cases[5][5] = Case(3);
 		cases[6][5] = Case(3);
 		cases[0][1] = Case();
-		/* AJOUT D'IMPALA JONES*/
-		ImpalaJones i;
-		Pion * ptI = &i;
-		cases[1][0].ajouterPion(*ptI);
 	}
 	virtual ~Plateau() {
 	}
 
 	int deplacerPion();
+
+	int ajouterAnimal(int x, int y,Animal &a);
+
+	void initImpalaJones(ImpalaJones ij){
+		/* AJOUT D'IMPALA JONES*/
+		Pion * ptI = &ij;
+		cases[1][0].ajouterPion(*ptI);
+	}
 
 	Case getCase(int x, int y) {
 		return cases[x][y];

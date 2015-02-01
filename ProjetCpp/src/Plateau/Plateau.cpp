@@ -48,8 +48,13 @@ string Plateau::print() {
 					}
 				}
 			} else {
-				/* Affichage des zones du jeu*/
-				cout << "  " << cases[j][i].getSecteur();
+				/* Affichage des zones du jeu et des PIONS */
+				if (cases[j][i].getPion() != NULL) {
+					cout << " " << cases[j][i].getPion() << " ";
+				} else {
+					cout << "   ";
+				}
+
 				if (cases[j][i].getSecteur() != cases[j + 1][i].getSecteur()) {
 					cout << "  |";
 				} else {
@@ -60,7 +65,7 @@ string Plateau::print() {
 		cout << "\n";
 		if (i < TAILLE_PLATEAU_Y - 1) {
 			for (int k = 0; k < TAILLE_PLATEAU_X; k++) {
-				if (k == 0 || k == TAILLE_PLATEAU_X-1
+				if (k == 0 || k == TAILLE_PLATEAU_X - 1
 						|| cases[k][i].getSecteur()
 								!= cases[k][i + 1].getSecteur()) {
 					cout << " ___  ";
@@ -75,3 +80,8 @@ string Plateau::print() {
 
 	return s;
 }
+
+int Plateau::ajouterAnimal(int x, int y, Animal &a) {
+	return getCase(x, y).ajouterPion(a);
+}
+
