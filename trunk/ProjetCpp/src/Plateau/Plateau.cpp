@@ -47,7 +47,7 @@ string Plateau::print() {
 				}
 			} else {
 				/* Affichage des zones du jeu*/
-				cout << "  A  |";
+				cout << "  "<<cases[j][i].getSecteur()<<"  |";
 			}
 		}
 		cout << "\n";
