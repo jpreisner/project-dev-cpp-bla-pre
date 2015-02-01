@@ -73,14 +73,12 @@ int ImpalaJones::deplacer(int nbCases, Plateau plateau){
 		return -1;
 	}
 
-	/*
-	if(plateau.getCase(x, y).ajouterPion(this)!=-1){
-		plateau.getCase(ancien_x, ancien_y).supprimerPion(this);
+	if(plateau.getCase(getX(), getY()).ajouterPion(*this)!=-1){
+		plateau.getCase(ancien_x, ancien_y).supprimerPion();
 	}
 	else{
 		cout << "Probleme quand on souhaite positionner le pion" << endl;
 	}
-	*/
 
 
 	return 0;
