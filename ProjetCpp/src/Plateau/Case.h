@@ -20,7 +20,7 @@ using namespace std;
 class Case {
 private:
 	int secteur;
-	Pion* pion;
+	Pion* pion;		// a discuter
 public:
 	Case(int secteur = 0) :
 			secteur(secteur), pion(NULL) {
@@ -33,26 +33,21 @@ public:
 		return strm << "Case" << endl;
 	}
 
-	int ajouterPion(Pion p) {
-		if (getPion() == NULL) {
-			return -1;
-		} else {
-			pion = &p;
-			return 0;
-		}
-	}
+	int ajouterPion(Pion p);
 
-	int supprimerPion() {
-		if (getPion() == NULL) {
-			return -1;
-		} else {
-			pion = NULL;
-			return 0;
-		}
-	}
+	int supprimerPion();
 
 	Pion* getPion(){
 		return pion;
+	}
+
+
+	int getSecteur() const {
+		return secteur;
+	}
+
+	void setSecteur(int secteur) {
+		this->secteur = secteur;
 	}
 };
 
