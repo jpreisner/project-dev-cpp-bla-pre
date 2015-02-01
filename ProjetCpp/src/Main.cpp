@@ -12,7 +12,9 @@
 
 #include "Joueur.h"
 #include "Pion/Animal.h"
+#include "Pion/ImpalaJones.h"
 #include "Plateau/Plateau.h"
+
 
 using namespace std;
 
@@ -37,6 +39,28 @@ int main() {
 
 	Plateau p;
 	p.print();
+
+	cout << "Test ImpalaJones" << endl;
+	ImpalaJones ij(1, 0);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
+	ij.deplacer(3, p);
+	cout << ij << endl;
 
 	return 0;
 }
