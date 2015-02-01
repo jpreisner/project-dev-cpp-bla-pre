@@ -19,8 +19,10 @@ string Plateau::print() {
 	string s = "";
 	for (int i = 0; i < TAILLE_PLATEAU_Y; i++) {
 		for (int j = 0; j < TAILLE_PLATEAU_X; j++) {
+
+			/* Affichage des cases d'IMPALA JONES*/
 			if (i == 0 || i == 6 || j == 0 || j == 7) {
-				/* Affichage des cases d'IMPALA JONES*/
+				//CASES NON ACCESSIBLES
 				if (i == 0 && j == 0) {
 					//en haut à gauche
 					cout << "  X  |";
@@ -34,7 +36,7 @@ string Plateau::print() {
 					//en bas à droite
 					cout << "  X  ";
 				} else {
-					// autres cases
+					// CASES ACCESSIBLES
 					if (cases[j][i].getPion() != NULL) {
 						cout << "  I  |";
 					} else {
