@@ -10,6 +10,7 @@
 
 #include <string>
 
+#include "../Pion/ImpalaJones.h"
 #include "Case.h"
 
 #define TAILLE_PLATEAU_X 8
@@ -56,6 +57,11 @@ public:
 		cases[4][5] = Case(3);
 		cases[5][5] = Case(3);
 		cases[6][5] = Case(3);
+		cases[0][1] = Case();
+		/* AJOUT D'IMPALA JONES*/
+		ImpalaJones i;
+		Pion * ptI = &i;
+		cases[1][0].ajouterPion(*ptI);
 	}
 	virtual ~Plateau() {
 	}

@@ -38,7 +38,11 @@ string Plateau::print() {
 				} else {
 					// CASES ACCESSIBLES
 					if (cases[j][i].getPion() != NULL) {
-						cout << "  I  |";
+						if(j==7){
+							cout << "  I ";
+						}else{
+							cout << "  I  |";
+						}
 					} else {
 						if(j==7){
 							cout << "     ";

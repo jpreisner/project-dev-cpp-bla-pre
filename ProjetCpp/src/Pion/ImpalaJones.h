@@ -14,8 +14,8 @@ class Plateau;
 
 class ImpalaJones: public Pion {
 public:
-	ImpalaJones();
-	virtual ~ImpalaJones();
+	ImpalaJones(){};
+	virtual ~ImpalaJones(){};
 
 	// nbCases doit etre compris entre 1 et 3
 	int deplacer(int nbCases, Plateau plateau);
