@@ -14,7 +14,6 @@
 #include "Pion/Animal.h"
 #include "Plateau/Plateau.h"
 
-
 using namespace std;
 
 int main() {
@@ -31,13 +30,13 @@ int main() {
 
 	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	cout << j << endl;
-	int i;
-	for(i=0; i<j.getListAnimaux().size(); i++){
+	unsigned int i;
+	for (i = 0; i < j.getListAnimaux().size(); i++) {
 		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
 	}
 
 	Plateau p;
 	p.print();
 
-    return 0;
+	return 0;
 }
