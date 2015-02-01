@@ -34,23 +34,23 @@ void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nb
 
 	// 6 gazelles
 	for (i = 0; i < nbGazelles; i++) {
-		listAnimaux.push_back(*(new Gazelle()));
+		listAnimaux.push_back((new Gazelle()));
 	}
 	// 5 zebres
 	for (i = 0; i < nbZebres; i++) {
-		listAnimaux.push_back(*(new Zebre()));
+		listAnimaux.push_back((new Zebre()));
 	}
 	// 1 elephant
 	for (i = 0; i < nbElephants; i++) {
-		listAnimaux.push_back(*(new Elephant()));
+		listAnimaux.push_back((new Elephant()));
 	}
 	// 1 lion
 	for (i = 0; i < nbLions; i++) {
-		listAnimaux.push_back(*(new Lion()));
+		listAnimaux.push_back((new Lion()));
 	}
 	// 2 crocodiles
 	for (i = 0; i < nbCrocos; i++) {
-		listAnimaux.push_back(*(new Crocodile()));
+		listAnimaux.push_back((new Crocodile()));
 	}
 }
 
