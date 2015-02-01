@@ -7,6 +7,8 @@
 
 #include "Plateau.h"
 
+#include <iostream>
+
 /**
  * Deplacement du pion sur le plateau
  */
@@ -47,16 +49,27 @@ string Plateau::print() {
 				}
 			} else {
 				/* Affichage des zones du jeu*/
-				cout << "  " << cases[j][i].getSecteur() << "  |";
+				cout << "  " << cases[j][i].getSecteur();
+				if (cases[j][i].getSecteur() != cases[j + 1][i].getSecteur()) {
+					cout << "  |";
+				} else {
+					cout << "   ";
+				}
 			}
 		}
 		cout << "\n";
 		if (i < TAILLE_PLATEAU_Y - 1) {
 			for (int k = 0; k < TAILLE_PLATEAU_X; k++) {
-				cout << " ___  ";
+				if (k == 0 || k == TAILLE_PLATEAU_X-1
+						|| cases[k][i].getSecteur()
+								!= cases[k][i + 1].getSecteur()) {
+					cout << " ___  ";
+				} else {
+					cout << "      ";
+				}
 			}
 		}
-		cout << "" << endl;
+		cout << "\n";
 
 	}
 
