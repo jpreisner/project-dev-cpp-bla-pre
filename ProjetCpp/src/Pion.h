@@ -18,16 +18,17 @@ private:
 	int y;	// position verticale
 
 public:
-	Pion(int pos_x=0, int pos_y=0) : x(pos_x), y(pos_y) {};
+	// si (-1, -1) ==> le pion n'est pas dans le jeu
+	Pion(int pos_x=-1, int pos_y=-1) : x(pos_x), y(pos_y) {};
 	virtual ~Pion() {};
 
 	virtual string print() const{
 		return "Pion";
 	}
 
-	int setPosition(int x, int y){
-
-		return 0;
+	void setPosition(int x, int y){
+		this->x=x;
+		this->y=y;
 	}
 
 	int getX() const {
