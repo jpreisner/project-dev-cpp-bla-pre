@@ -84,6 +84,10 @@ public:
 	Animal* getAnimal(const int i){
 		return listAnimaux[i];
 	}
+
+	void setNom(const string& nom) {
+		this->nom = nom;
+	}
 };
 
 #endif /* JOUEUR_H_ */
