@@ -17,6 +17,7 @@ int Plateau::deplacerPion() {
 	return 0;
 }
 
+/** A enlever car présent dans la classe Affichage **/
 string Plateau::print() {
 	string s = "";
 	for (int i = 0; i < TAILLE_PLATEAU_Y; i++) {
