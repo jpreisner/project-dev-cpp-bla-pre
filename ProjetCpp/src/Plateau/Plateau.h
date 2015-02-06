@@ -78,6 +78,13 @@ public:
 		return cases[x][y];
 	}
 
+	int getTaillePlateauX(){
+		return TAILLE_PLATEAU_X;
+	}
+	int getTaillePlateauY(){
+		return TAILLE_PLATEAU_Y;
+	}
+
 	string print();
 };
 
