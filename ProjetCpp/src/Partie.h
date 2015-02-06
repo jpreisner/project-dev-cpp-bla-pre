@@ -64,6 +64,9 @@ public:
 		strm << a.plateau.print() << endl;
 		return strm;
 	}*/
+
+	void sauvegarde();
+	void chargement();
 };
 
 #endif /* PARTIE_H_ */
