@@ -126,3 +126,64 @@ void AffichageConsole::affichePlateau(Plateau p) {
 	}
 	/*cout << s << endl;*/
 }
+
+int AffichageConsole::demandeDeplacerImpalaJones(){
+	cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3" << endl;
+	int res;
+	cin >> res;
+	while(!(res>=1 && res<=3)){
+		cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
+		cin >> res;
+	}
+	return res;
+}
+
+void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
+	int nbPion = listAnimaux.size();
+	int i;
+	cout << "(";
+	for(i=0; i<nbPion; i++){
+		cout << listAnimaux[i]->print() << "[n°" << i << "]";
+		if(i == nbPion-1){
+			cout << ")" << endl;
+		}
+		else{
+			cout << " - ";
+		}
+	}
+}
+
+
+int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
+	int nbPion = listAnimaux.size();
+	cout << "Voici votre liste de pion : " << endl;
+	cout << "---> ";
+	afficheListAnimal(listAnimaux);
+	cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau selon sa position dans votre liste de pion" << endl;
+	int positionAnimal;
+	cin >> positionAnimal;
+	while(!(positionAnimal>=0 && positionAnimal<=(nbPion-1))){
+		cout << "Erreur ! Veuillez entrer un nombre compris entre 0 et " << (nbPion-1) << endl;
+		cout << "Voici votre liste de pion : " << endl;
+		cout << "---> ";
+		afficheListAnimal(listAnimaux);
+		cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau selon sa position dans votre liste de pion" << endl;
+		cin >> positionAnimal;
+	}
+
+	return positionAnimal;
+}
+
+void AffichageConsole::selectionnerPosition(int *x, int *y){
+
+	/** A COMPLETER **/
+
+	/*
+	cout << "Selectionnez une case" << endl;
+	int i, j;
+	cin >> i;
+	cin >> j;
+	*/
+}
+
+
