@@ -8,7 +8,12 @@
 #ifndef AFFICHAGECONSOLE_H_
 #define AFFICHAGECONSOLE_H_
 
+#include <vector>
+
 #include "Affichage.h"
+#include "Pion/Animal.h"
+
+class Animal;
 
 class AffichageConsole: public Affichage {
 public:
@@ -18,6 +23,10 @@ public:
 	int afficheRegle();
 	void demandeNomJoueur(Joueur *j, int numJoueur);
 	void affichePlateau(Plateau p);
+	int demandeDeplacerImpalaJones();
+	void afficheListAnimal(vector<Animal*> listAnimaux);
+	int selectionnerAnimal(vector<Animal*> listAnimaux);
+	void selectionnerPosition(int *x, int *y);
 	/* A COMPLETER */
 };
 

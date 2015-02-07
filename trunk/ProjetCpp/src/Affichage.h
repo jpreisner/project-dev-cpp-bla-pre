@@ -7,6 +7,12 @@
 
 #ifndef AFFICHAGE_H_
 #define AFFICHAGE_H_
+
+#include <vector>
+
+#include "Pion/Animal.h"
+
+
 class Joueur;
 class Plateau;
 
@@ -21,6 +27,10 @@ public:
 	virtual int afficheRegle() = 0;
 	virtual void demandeNomJoueur(Joueur *j, int numJoueur) = 0;
 	virtual void affichePlateau(Plateau p) = 0;
+	virtual int demandeDeplacerImpalaJones() = 0;
+	virtual void afficheListAnimal(vector<Animal*> listAnimaux) = 0;
+	virtual int selectionnerAnimal(vector<Animal*> listAnimaux) = 0;
+	virtual void selectionnerPosition(int *x, int *y) = 0;
 	/* A COMPLETER */
 };
 
