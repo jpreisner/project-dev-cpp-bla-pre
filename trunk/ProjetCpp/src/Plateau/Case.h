@@ -20,7 +20,7 @@ using namespace std;
 class Case {
 private:
 	int secteur;
-	Pion* pion;		// a discuter
+	Pion* pion;
 public:
 	Case(int secteur = 0) :
 			secteur(secteur), pion(NULL) {

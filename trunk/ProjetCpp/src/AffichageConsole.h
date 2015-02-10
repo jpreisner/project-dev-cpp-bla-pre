@@ -26,7 +26,7 @@ public:
 	int demandeDeplacerImpalaJones();
 	void afficheListAnimal(vector<Animal*> listAnimaux);
 	int selectionnerAnimal(vector<Animal*> listAnimaux);
-	void selectionnerPosition(int *x, int *y);
+	int selectionnerPosition(int *x, int *y, Plateau p);
 	/* A COMPLETER */
 };
 

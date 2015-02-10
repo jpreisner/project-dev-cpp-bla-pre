@@ -30,7 +30,7 @@ public:
 	virtual int demandeDeplacerImpalaJones() = 0;
 	virtual void afficheListAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual int selectionnerAnimal(vector<Animal*> listAnimaux) = 0;
-	virtual void selectionnerPosition(int *x, int *y) = 0;
+	virtual int selectionnerPosition(int *x, int *y, Plateau p) = 0;
 	/* A COMPLETER */
 };
 
