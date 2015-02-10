@@ -174,16 +174,26 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 	return positionAnimal;
 }
 
-void AffichageConsole::selectionnerPosition(int *x, int *y){
+int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 
 	/** A COMPLETER **/
 
-	/*
-	cout << "Selectionnez une case" << endl;
+	cout << "Selectionnez une case (entrez x et y) " << endl;
 	int i, j;
-	cin >> i;
-	cin >> j;
-	*/
+	cin >> i >> j;
+	if(!(i>=0 && i<=p.getTaillePlateauX() && j>=0 && j<=p.getTaillePlateauY())){
+		cout << "Erreur ! x doit etre compris entre 0 et " << p.getTaillePlateauX() << " et y doit etre compris entre 0 et " << p.getTaillePlateauY() << endl;
+		return -1;
+	}
+	if(p.getCase(i, j).getPion()==NULL){
+		cout << "Erreur ! la case (" << i << ", " << j << ") a deja un pion" << endl;
+		return -1;
+	}
+
+	/* TODO : a vérifier */
+	*x=i;
+	*y=j;
+	return 0;
 }
 
 
