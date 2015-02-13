@@ -17,21 +17,24 @@
 int AffichageConsole::menuDemarrage() {
 	cout << "======================================" << endl;
 	cout << "Bienvenue dans le jeu Drole de Zebres!" << endl;
-	cout << "   1 - Jouer" << endl;
-	cout << "   2 - Regles" << endl;
-	cout << "   3 - Quitter" << endl;
+	cout << "   1 - Jouer (Joueur vs Ordi)" << endl;
+	cout << "   2 - Jouer (Joueur vs Joueur)" << endl;
+	cout << "   3 - Regles" << endl;
+	cout << "   4 - Charger une partie" << endl;
+	cout << "   5 - Quitter" << endl;
 	cout << "======================================" << endl;
 	int res;
 	cin >> res;
-	while (!(res >= 1 && res <= 4)) {
-		cout << "Erreur ! Veuillez entrer un chiffre compris entre 1 et 3"
+	while (!(res >= 1 && res <= 5)) {
+		cout << "Erreur ! Veuillez entrer un chiffre compris entre 1 et 5"
 				<< endl;
 		cout << "======================================" << endl;
 		cout << "Bienvenue dans le jeu Drole de Zebres!" << endl;
 		cout << "   1 - Jouer (Joueur vs Ordi)" << endl;
 		cout << "   2 - Jouer (Joueur vs Joueur)" << endl;
 		cout << "   3 - Regles" << endl;
-		cout << "   4 - Quitter" << endl;
+		cout << "   4 - Charger une partie" << endl;
+		cout << "   5 - Quitter" << endl;
 		cout << "======================================" << endl;
 		cin >> res;
 	}
@@ -175,9 +178,6 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 }
 
 int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
-
-	/** A COMPLETER **/
-
 	cout << "Selectionnez une case (entrez x et y) " << endl;
 	int i, j;
 	cin >> i >> j;
@@ -196,4 +196,17 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 	return 0;
 }
 
+void AffichageConsole::affichePion(Pion *p, Joueur *j){
+	/* appel de print p et de l'id du joueur */
+}
 
+int AffichageConsole::menuJoueur(Joueur *j){
+	/* Afficher le nom du joueur qui doit jouer + lui proposer des poser un pion, de regarder sa liste de pioh, de sauvegarder
+	 * 	ou de déclarer forfait
+	 */
+	return 0;
+}
+
+string AffichageConsole::demandePath(){
+	return "";
+}

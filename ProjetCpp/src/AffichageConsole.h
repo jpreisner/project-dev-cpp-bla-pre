@@ -27,6 +27,9 @@ public:
 	void afficheListAnimal(vector<Animal*> listAnimaux);
 	int selectionnerAnimal(vector<Animal*> listAnimaux);
 	int selectionnerPosition(int *x, int *y, Plateau p);
+	void affichePion(Pion *p, Joueur *j);
+	int menuJoueur(Joueur *j);
+	string demandePath();
 	/* A COMPLETER */
 };
 

@@ -10,7 +10,7 @@
 /**
  * Lancer le premier tour
  */
-int lancerPartie(){
+int Partie::lancerPartie(){
 
 	return 0;
 }
@@ -18,7 +18,15 @@ int lancerPartie(){
 /**
  * Demander les noms, attribuer les cartes
  */
-int initJoueurs(){
+int Partie::initJoueurs(){
 
 	return 0;
+}
+
+void Partie::sauvegarde(string path){
+
+}
+
+void Partie::chargement(string path){
+
 }
