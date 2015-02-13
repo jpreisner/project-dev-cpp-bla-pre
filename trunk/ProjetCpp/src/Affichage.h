@@ -33,7 +33,9 @@ public:
 	virtual int selectionnerPosition(int *x, int *y, Plateau p) = 0;
 	virtual void affichePion(Pion *p, Joueur *j) = 0;
 	virtual int menuJoueur(Joueur *j) = 0;
-	virtual string demandePath() = 0;
+	virtual int demandeLigne(Plateau p, int colonne) = 0;
+	virtual int demandeColonne(Plateau p, int ligne) = 0;
+	virtual void afficheImpalaJones() = 0;
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */
 };

@@ -29,7 +29,9 @@ public:
 	int selectionnerPosition(int *x, int *y, Plateau p);
 	void affichePion(Pion *p, Joueur *j);
 	int menuJoueur(Joueur *j);
-	string demandePath();
+	int demandeLigne(Plateau p, int colonne);
+	int demandeColonne(Plateau p, int ligne);
+	void afficheImpalaJones();
 	/* A COMPLETER */
 };
 

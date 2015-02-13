@@ -33,6 +33,7 @@ private:
 	int nbPoints;
 	string nom;
 	vector<Animal*> listAnimaux;
+	int id;
 
 	/**
 	 * Permet d'initialiser tous les pions d'un joueur
@@ -45,8 +46,8 @@ private:
 	void initListPions(int nbGazelles = 6, int nbZebres = 5, int nbElephants = 1, int nbLions = 1, int nbCrocos = 2);
 
 public:
-	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
-			nbPoints(nbPoints), nom(nom), listAnimaux(0) {
+	Joueur(int nbPoints = 0, string nom = "", int id_j=1, int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
+			nbPoints(nbPoints), nom(nom), listAnimaux(0),  id(id_j) {
 		initListPions(nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	}
 
@@ -87,6 +88,14 @@ public:
 
 	void setNom(const string& nom) {
 		this->nom = nom;
+	}
+
+	int getId() const {
+		return id;
+	}
+
+	void setId(int id) {
+		this->id = id;
 	}
 };
 
