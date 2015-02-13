@@ -8,14 +8,15 @@
 #ifndef JOUEURREEL_H_
 #define JOUEURREEL_H_
 
+#include <iostream>
 #include <string>
 
 #include "../Joueur.h"
 
 class JoueurReel: public Joueur {
 public:
-	JoueurReel(string nom) :
-			Joueur(0, nom) {
+	JoueurReel(string nom, int id) :
+			Joueur(0, nom, id) {
 	}
 	virtual ~JoueurReel();
 

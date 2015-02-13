@@ -198,15 +198,73 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 
 void AffichageConsole::affichePion(Pion *p, Joueur *j){
 	/* appel de print p et de l'id du joueur */
+	cout << "(" << p->print() << ", " << j->getId() << ")" << endl;
+}
+
+void AffichageConsole::afficheImpalaJones(){
+	cout << "(IJ)" << endl;
 }
 
 int AffichageConsole::menuJoueur(Joueur *j){
-	/* Afficher le nom du joueur qui doit jouer + lui proposer des poser un pion, de regarder sa liste de pioh, de sauvegarder
+	/* Afficher le nom du joueur qui doit jouer + lui proposer de poser un pion, de regarder sa liste de pion, de sauvegarder
 	 * 	ou de déclarer forfait
 	 */
-	return 0;
+	cout << "======================================" << endl;
+	cout << "Joueur : " << j->getNom() << "(J" << j->getId() << ") :" << endl;
+	cout << "Que voulez-vous faire?" << endl;
+	cout << "   1 - Déplacer Impala Jones" << endl;
+	cout << "   2 - Afficher votre liste de pions" << endl;
+	cout << "   3 - Sauvegarder la partie" << endl;
+	cout << "   4 - Quitter la partie" << endl;
+	int res;
+	cin >> res;
+	while(!(res>=1 && res<=4)){
+		cout << "Erreur ! Veuillez entrer un nombre entre 1 et 4" << endl;
+		cout << "Que voulez-vous faire?" << endl;
+		cout << "   1 - Déplacer Impala Jones" << endl;
+		cout << "   2 - Afficher votre liste de pions" << endl;
+		cout << "   3 - Sauvegarder la partie" << endl;
+		cout << "   4 - Quitter la partie" << endl;
+		cin >> res;
+	}
+	cout << "======================================" << endl;
+	return res;
 }
 
-string AffichageConsole::demandePath(){
-	return "";
+int AffichageConsole::demandeLigne(Plateau p, int colonne){
+	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion" << endl;
+	int res;
+	cin >> res;
+	while(!(res>=0 && res<p.getTaillePlateauY())){
+		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY() << endl;
+		cin >> res;
+	}
+	while(p.getCase(colonne, res).getPion() != NULL){
+		cout << "Erreur ! La case est occupée" << endl;
+		cin >> res;
+		while(!(res>=0 && res<p.getTaillePlateauY())){
+			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY() << endl;
+			cin >> res;
+		}
+	}
+	return res;
+}
+
+int AffichageConsole::demandeColonne(Plateau p, int ligne){
+	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion" << endl;
+	int res;
+	cin >> res;
+	while(!(res>=0 && res<p.getTaillePlateauX())){
+		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX() << endl;
+		cin >> res;
+	}
+	while(p.getCase(res, ligne).getPion() != NULL){
+		cout << "Erreur ! La case est occupée" << endl;
+		cin >> res;
+		while(!(res>=0 && res<p.getTaillePlateauX())){
+			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX() << endl;
+			cin >> res;
+		}
+	}
+	return res;
 }

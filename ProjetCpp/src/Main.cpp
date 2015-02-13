@@ -30,7 +30,7 @@ int main() {
 	int nbLions = 1;
 	int nbCrocos = 2;
 
-	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
+	Joueur j(0, "Zizou", 1, nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	cout << j << endl;
 	unsigned int i;
 	for (i = 0; i < j.getListAnimaux().size(); i++) {
