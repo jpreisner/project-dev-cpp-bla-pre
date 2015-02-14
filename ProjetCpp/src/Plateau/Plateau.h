@@ -106,6 +106,9 @@ public:
 
 	/* return true si le bonus Inauguration a ete donne */
 	bool bonusInauguration();
+
+	/* supprime le pion sur la case i/j*/
+	bool supprimerPion(int x, int y);
 };
 
 #endif /* PLATEAU_H_ */

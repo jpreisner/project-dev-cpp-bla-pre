@@ -67,3 +67,13 @@ bool Plateau::bonusInauguration(){
 	}
 	return false;
 }
+
+bool Plateau::supprimerPion(int x, int y){
+	if (getCase(x, y) != NULL) {
+		getCase(x, y)->supprimerPion();
+		return true;
+	} else {
+		return false;
+	}
+
+}

@@ -71,6 +71,11 @@ int main() {
 	cout<<"APRES BONUS INNAUGURATION"<<endl;
 	cout << j << endl;
 
+	if(p.supprimerPion(5,2)){
+		cout<<"Pion Bien supprimé"<<endl;
+	}
+	affichage.affichePlateau(p);
+
 	/* cases a remplir*/
 
 	/*
