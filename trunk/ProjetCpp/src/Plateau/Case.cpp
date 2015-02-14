@@ -7,10 +7,10 @@
 
 #include "Case.h"
 
-int Case::ajouterPion(Pion &p){
+int Case::ajouterPion(Pion* p){
 	// ajout possible
 	if(getPion()==NULL){
-		pion = &p;	// voir si c'est ok, car pointeur sur pion
+		pion = p;	// voir si c'est ok, car pointeur sur pion
 		return 0;
 	}
 	// un pion est present sur la case : probleme !

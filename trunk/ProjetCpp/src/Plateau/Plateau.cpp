@@ -9,80 +9,61 @@
 
 #include <iostream>
 
+#include "../Joueur.h"
+
 /**
  * Deplacement du pion sur le plateau
  */
-int Plateau::deplacerPion() {
-
+int Plateau::deplacerPion(){
 	return 0;
 }
 
-/** A enlever car présent dans la classe Affichage **/
-string Plateau::print() {
-	string s = "";
-	for (int i = 0; i < TAILLE_PLATEAU_Y; i++) {
-		for (int j = 0; j < TAILLE_PLATEAU_X; j++) {
+int Plateau::ajouterAnimal(int x, int y, Animal* a){
+	return getCase(x, y)->ajouterPion(a);
+}
 
-			/* Affichage des cases d'IMPALA JONES*/
-			if (i == 0 || i == 6 || j == 0 || j == 7) {
-				//CASES NON ACCESSIBLES
-				if ((i == 0 && j == 0) || (i == 6 && j == 0)) {
-					//en haut à gauche ou en bas a gauche
-					cout << "  X  |";
-				} else if ((i == 0 && j == 7) || (i == 6 && j == 7)) {
-					//en haut à droite ou en bas à droite
-					cout << "  X  ";
+bool Plateau::secteurRempli(int secteur){
+	Joueur* joueur;
+	for (int i = 1; i < TAILLE_PLATEAU_X - 1; ++i) {
+		for (int j = 1; j < TAILLE_PLATEAU_Y - 1; ++j) {
+			if (getCase(i, j)->getSecteur() == secteur) {
+				if (getCase(i, j)->getPion() == NULL) {
+					/* pas de pion sur la case*/
+					return false;
 				} else {
-					// CASES ACCESSIBLES
-					if (cases[j][i].getPion() != NULL) {
-						if (j == 7) {
-							cout << "  I ";
-						} else {
-							cout << "  I  |";
-						}
+					/* il y a un pion sur la case*/
+
+					if (joueur == NULL) {
+						Animal* a = (Animal*) getCase(i, j)->getPion();
+						joueur = a->getJoueur();
 					} else {
-						if (j == 7) {
-							cout << "     ";
-						} else {
-							cout << "     |";
+						Animal* a = (Animal*) getCase(i, j)->getPion();
+						if (joueur != a->getJoueur()) {
+							return false;
+
 						}
 					}
 				}
-			} else {
-				/* Affichage des zones du jeu et des PIONS */
-				if (cases[j][i].getPion() != NULL) {
-					cout << " " << cases[j][i].getPion() << " ";
-				} else {
-					cout << "   ";
-				}
-
-				if (cases[j][i].getSecteur() != cases[j + 1][i].getSecteur()) {
-					cout << "  |";
-				} else {
-					cout << "   ";
-				}
 			}
 		}
-		cout << "\n";
-		if (i < TAILLE_PLATEAU_Y - 1) {
-			for (int k = 0; k < TAILLE_PLATEAU_X; k++) {
-				if (k == 0 || k == TAILLE_PLATEAU_X - 1
-						|| cases[k][i].getSecteur()
-								!= cases[k][i + 1].getSecteur()) {
-					cout << " ___  ";
-				} else {
-					cout << "      ";
-				}
-			}
-		}
-		cout << "\n";
-
 	}
-
-	return s;
+	return true;
 }
 
-int Plateau::ajouterAnimal(int x, int y, Animal &a) {
-	return getCase(x, y).ajouterPion(a);
+bool Plateau::bonusInauguration(){
+	for (int i = SECT1; i <= SECT6; i++) {
+		if (secteurRempli(i)) {
+			for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
+				for (int k = 1; k < TAILLE_PLATEAU_Y - 1; k++) {
+					if (getCase(j, k)->getSecteur() == i) {
+						Animal* a = (Animal*) getCase(j, k)->getPion();
+						a->getJoueur()->ajouterPoints(5);
+						return true;
+						/* Ajout OK */
+					}
+				}
+			}
+		}
+	}
+	return false;
 }
-

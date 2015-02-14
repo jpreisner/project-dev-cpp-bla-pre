@@ -15,7 +15,7 @@ class Lion;
 
 class Gazelle: public Peureux {
 public:
-	Gazelle() : Peureux(2) {};
+	Gazelle(Joueur* j) : Peureux(2,j) {};
 	~Gazelle() {};
 
 	virtual string print() const {

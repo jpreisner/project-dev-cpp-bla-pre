@@ -85,7 +85,7 @@ void AffichageConsole::affichePlateau(Plateau p) {
 					cout << "  X  ";
 				} else {
 					// CASES ACCESSIBLES
-					if (p.getCase(j, i).getPion() != NULL) {
+					if (p.getCase(j, i)->getPion() != NULL) {
 						afficheImpalaJones();
 						if (j != 7) {
 							cout << " | ";
@@ -100,13 +100,13 @@ void AffichageConsole::affichePlateau(Plateau p) {
 				}
 			} else {
 				/* Affichage des zones du jeu et des PIONS */
-				if (p.getCase(j, i).getPion() != NULL) {
-					cout << " " <<p.getCase(j, i).getPion() << " ";
+				if (p.getCase(j, i)->getPion() != NULL) {
+					cout << " " <<p.getCase(j, i)->getPion() << " ";
 				} else {
 					cout << "   ";
 				}
 
-				if (p.getCase(j, i).getSecteur() != p.getCase(j+1, i).getSecteur()) {
+				if (p.getCase(j, i)->getSecteur() != p.getCase(j+1, i)->getSecteur()) {
 					cout << "  |";
 				} else {
 					cout << "   ";
@@ -117,8 +117,8 @@ void AffichageConsole::affichePlateau(Plateau p) {
 		if (i < p.getTaillePlateauY() - 1) {
 			for (int k = 0; k < p.getTaillePlateauX(); k++) {
 				if (k == 0 || k == p.getTaillePlateauX() - 1
-						|| p.getCase(k, i).getSecteur()
-								!= p.getCase(k, i+1).getSecteur()) {
+						|| p.getCase(k, i)->getSecteur()
+								!= p.getCase(k, i+1)->getSecteur()) {
 					cout << " ___  ";
 				} else {
 					cout << "      ";
@@ -244,7 +244,7 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 		cout << "Erreur ! x doit etre compris entre 0 et " << p.getTaillePlateauX() << " et y doit etre compris entre 0 et " << p.getTaillePlateauY() << endl;
 		return -1;
 	}
-	if(p.getCase(i, j).getPion()==NULL){
+	if(p.getCase(i, j)->getPion()==NULL){
 		cout << "Erreur ! la case (" << i << ", " << j << ") a deja un pion" << endl;
 		return -1;
 	}
@@ -300,7 +300,7 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY() << endl;
 		cin >> res;
 	}
-	while(p.getCase(colonne, res).getPion() != NULL){
+	while(p.getCase(colonne, res)->getPion() != NULL){
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
 		while(!(res>=0 && res<p.getTaillePlateauY())){
@@ -321,7 +321,7 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX() << endl;
 		cin >> res;
 	}
-	while(p.getCase(res, ligne).getPion() != NULL){
+	while(p.getCase(res, ligne)->getPion() != NULL){
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
 		while(!(res>=0 && res<p.getTaillePlateauX())){

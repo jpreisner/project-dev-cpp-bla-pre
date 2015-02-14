@@ -27,6 +27,7 @@ using namespace std;
 
 class Animal;
 class Gazelle;
+static int idStatic = 0;
 
 class Joueur {
 private:
@@ -47,9 +48,11 @@ private:
 
 public:
 	/* FIXME : J'aurai aimé ne pas mettre "=1" à id_j car je veux qu'il soit obligatoire. Problème : si j'enlève le =1, il m'envoi une erreur car cet argument n'a pas de valeur par défaut */
-	Joueur(int nbPoints = 0, string nom = "", int id_j=1, int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
-			nbPoints(nbPoints), nom(nom), listAnimaux(0),  id(id_j) {
+	/* DONE j'ai ajouté un idStatic qui s'incrémenta a chaque fois comme ça leidJoueur est forcément unique */
+	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
+			nbPoints(nbPoints), nom(nom), listAnimaux(0),  id(idStatic) {
 		initListPions(nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
+		idStatic++;
 	}
 
 	virtual ~Joueur() {};
@@ -72,6 +75,7 @@ public:
 	}
 
 	int jouer();
+
 
 	int placementAnimal(Animal a, int x, int y);
 
@@ -98,6 +102,15 @@ public:
 	void setId(int id) {
 		this->id = id;
 	}
+
+	friend bool operator==(const Joueur& j1, const Joueur& j2) {
+	    return j1.getId() == j1.getId() && j1.getNom() == j2.getNom();
+	}
+
+	/**
+	 *  Ajoute le nombre de points passé en parametre
+	 */
+	void ajouterPoints(int nb);
 };
 
 #endif /* JOUEUR_H_ */

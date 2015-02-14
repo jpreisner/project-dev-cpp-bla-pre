@@ -37,8 +37,14 @@ public:
 		return strm;
 	}
 
-	int ajouterPion(Pion &p);
+	/**
+	 * Ajoute le pion en parametr ea la case
+	 */
+	int ajouterPion(Pion* p);
 
+	/**
+	 * Enlever le pion de la case
+	 */
 	int supprimerPion();
 
 	Pion* getPion() {
