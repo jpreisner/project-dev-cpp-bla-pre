@@ -11,7 +11,7 @@
 
 #include "../Plateau/Plateau.h"
 
-int ImpalaJones::deplacer(int nbCases, Plateau plateau){
+int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 	if(!(nbCases>=1 && nbCases<=3)){
 		cout << "Erreur ! nbCases doit etre compris entre 1 et 3" << endl;
 		return -1;
@@ -74,13 +74,24 @@ int ImpalaJones::deplacer(int nbCases, Plateau plateau){
 	}
 
 	/*
-	if(plateau.getCase(getX(), getY()).ajouterPion(*this)!=-1){
-		plateau.getCase(ancien_x, ancien_y).supprimerPion();
+	 * Attention : supprimerPion provoque une grosse erreur
+	 */
+	/*
+	if(plateau->getCase(ancien_x, ancien_y).supprimerPion()==-1){
+		cout << "Erreur lors de la suppression d'Impala Jones à la position (" << ancien_x << ", " << ancien_y << ")" << endl;
+		return -1;
+ 	}
+
+	if(plateau->getCase(getX(), getY()).ajouterPion(*this)!=-1){
+		cout << "Erreur lors de l'ajout de Impala Jones à la position (" << getX() << ", " << getY() << ")" << endl;
+		cout << "On remet Impala Jones à son ancienne position en (" << ancien_x << ", " << ancien_y << ")" << endl;
+		if(plateau->getCase(ancien_x, ancien_y).ajouterPion(*this)!=-1){
+			cout << "Erreur lors de l'ajout de Impala Jones à la position (" << ancien_x << ", " << ancien_y << ")" << endl;
+		}
+		return -1;
 	}
-	else{
-		cout << "Probleme quand on souhaite positionner le pion" << endl;
-	}
-*/
+	*/
+
 
 	return 0;
 }
