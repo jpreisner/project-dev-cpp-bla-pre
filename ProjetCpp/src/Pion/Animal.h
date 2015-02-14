@@ -37,6 +37,11 @@ public:
 		return valeur;
 	}
 
+
+	Joueur* getJoueur() const{
+		return joueur;
+	}
+
 	/**
 	 * on le pose en (x,y)
 	 */

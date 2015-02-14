@@ -15,52 +15,40 @@
 
 class Pion;
 
-
-/**
- * Permet d'initialiser tous les pions d'un joueur
- * 6 gazelles
- * 5 zebres
- * 1 elephant
- * 1 lion
- * 2 crocos
- */
-void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nbLions, int nbCrocos) {
-
-	/**
-	 * Utiliser les pointeurs ???
-	 */
-
+void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nbLions, int nbCrocos){
 	int i;
 
 	// 6 gazelles
 	for (i = 0; i < nbGazelles; i++) {
-		listAnimaux.push_back((new Gazelle()));
+		listAnimaux.push_back((new Gazelle(this)));
 	}
 	// 5 zebres
 	for (i = 0; i < nbZebres; i++) {
-		listAnimaux.push_back((new Zebre()));
+		listAnimaux.push_back((new Zebre(this)));
 	}
 	// 1 elephant
 	for (i = 0; i < nbElephants; i++) {
-		listAnimaux.push_back((new Elephant()));
+		listAnimaux.push_back((new Elephant(this)));
 	}
 	// 1 lion
 	for (i = 0; i < nbLions; i++) {
-		listAnimaux.push_back((new Lion()));
+		listAnimaux.push_back((new Lion(this)));
 	}
 	// 2 crocodiles
 	for (i = 0; i < nbCrocos; i++) {
-		listAnimaux.push_back((new Crocodile()));
+		listAnimaux.push_back((new Crocodile(this)));
 	}
 }
 
-int jouer() {
-
+int Joueur::jouer(){
 	return 0;
 }
 
-int placementAnimal(Animal a, int x, int y){
-
+int Joueur::placementAnimal(Animal a, int x, int y){
 	return 0;
+}
+
+void Joueur::ajouterPoints(int nb){
+	setNbPoints(getNbPoints() + nb);
 }
 

@@ -19,7 +19,7 @@
 bool Regle::colonneRempli(Plateau p, int colonne){
 	int i;
 	for(i=1; i<p.getTaillePlateauY()-1; i++){
-		if(p.getCase(colonne, i).getPion() == NULL){
+		if(p.getCase(colonne, i)->getPion() == NULL){
 			return false;
 		}
 	}
@@ -32,7 +32,7 @@ bool Regle::colonneRempli(Plateau p, int colonne){
 bool Regle::ligneRempli(Plateau p, int ligne){
 	int i;
 	for(i=1; i<p.getTaillePlateauX()-1; i++){
-		if(p.getCase(i, ligne).getPion() == NULL){
+		if(p.getCase(i, ligne)->getPion() == NULL){
 			return false;
 		}
 	}

@@ -33,7 +33,7 @@ int main() {
 	int nbLions = 1;
 	int nbCrocos = 2;
 
-	Joueur j(0, "Zizou", 1, nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
+	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	cout << j << endl;
 
 	unsigned int i;
@@ -49,6 +49,29 @@ int main() {
 	p.initImpalaJones(ij);
 	affichage.affichePlateau(p);
 	/*p.print();*/
+
+	Joueur* ptJ = &j;
+
+	Animal a1 = Gazelle(ptJ);
+	Animal a2 = Zebre(ptJ);
+	Animal a3 = Elephant(ptJ);
+
+	Animal* pt1 = &a1;
+	Animal* pt2 = &a2;
+	Animal* pt3 = &a3;
+
+
+	p.ajouterAnimal(5,2,pt1);
+	p.ajouterAnimal(6,2,pt2);
+	p.ajouterAnimal(6,3,pt3);
+	affichage.affichePlateau(p);
+
+	cout<<"AVANT BONUS INNAUGURATION"<<endl;
+	p.bonusInauguration();
+	cout<<"APRES BONUS INNAUGURATION"<<endl;
+	cout << j << endl;
+
+	/* cases a remplir*/
 
 	/*
 	cout << "Test Déplacement de ImpalaJones" << endl;

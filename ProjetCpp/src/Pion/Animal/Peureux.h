@@ -19,7 +19,7 @@ class Peureux: public Animal {
 private:
 	vector<Animal> listAnimauxImpressionnant;
 public:
-	Peureux(int v = 0) : Animal(v) {};
+	Peureux(int v = 0, Joueur* j = NULL) : Animal(v,j) {};
 
 	virtual ~Peureux(){};
 

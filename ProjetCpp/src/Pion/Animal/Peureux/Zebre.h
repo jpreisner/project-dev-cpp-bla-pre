@@ -14,7 +14,7 @@
 
 class Zebre: public Peureux {
 public:
-	Zebre() : Peureux(6) {};
+	Zebre(Joueur* j) : Peureux(6,j) {};
 	~Zebre(){};
 
 	virtual string print() const {

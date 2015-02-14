@@ -18,7 +18,6 @@ public:
 			Joueur(0, "I-A", id) {
 	}
 	virtual ~Ordinateur() {
-
 	}
 
 	friend ostream& operator<<(ostream &strm, const Ordinateur &a) {

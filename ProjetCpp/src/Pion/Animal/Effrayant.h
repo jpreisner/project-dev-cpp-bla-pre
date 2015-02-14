@@ -19,7 +19,7 @@ class Effrayant: public Animal {
 private:
 	vector<Animal> listAnimauxEffrayes;
 public:
-	Effrayant(int v = 0) : Animal(v) {};
+	Effrayant(int v = 0, Joueur* j = NULL) : Animal(v,j) {};
 	virtual ~Effrayant(){};
 
 	/**

@@ -14,7 +14,7 @@
 
 class Crocodile: public Effrayant {
 public:
-	Crocodile() : Effrayant(0) {};
+	Crocodile(Joueur* j) : Effrayant(0,j) {};
 	~Crocodile(){};
 
 	virtual string print() const {

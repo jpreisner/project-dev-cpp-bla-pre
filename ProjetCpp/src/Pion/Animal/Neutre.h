@@ -14,7 +14,7 @@
 
 class Neutre: public Animal {
 public:
-	Neutre(int v = 0) : Animal(v) {};
+	Neutre(int v = 0, Joueur* j = NULL) : Animal(v,j) {};
 	virtual ~Neutre(){};
 
 	virtual string print() const{

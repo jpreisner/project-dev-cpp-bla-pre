@@ -16,7 +16,7 @@ using namespace std;
 
 class Lion: public Effrayant {
 public:
-	Lion() : Effrayant(1) {};
+	Lion(Joueur* j) : Effrayant(1,j) {};
 	~Lion() {};
 
 	virtual string print() const {
