@@ -17,13 +17,13 @@ public:
 	Regle(){};
 	virtual ~Regle(){};
 
-	bool colonneRempli(Plateau p, int colonne);
-	bool ligneRempli(Plateau p, int ligne);
-	bool finPartie(Plateau p);
+	static bool colonneRempli(Plateau p, int colonne);
+	static bool ligneRempli(Plateau p, int ligne);
+	static bool finPartie(Plateau p);
 
 	/* Par rapport au déplacement de Impala Jones */
-	int possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij);
-	bool testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases);
+	static int possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij);
+	static bool testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases);
 
 	/* Par rapport aux effraiments */
 

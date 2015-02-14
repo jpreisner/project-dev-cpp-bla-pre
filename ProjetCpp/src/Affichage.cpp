@@ -24,7 +24,6 @@ int Affichage::demandeTypeAffichage(){
 		cout << "    1 - Affichage sur console" << endl;
 		cout << "    2 - Autres (?)" << endl;
 		cout << "======================================" << endl;
-		int res;
 		cin >> res;
 	}
 	return res;

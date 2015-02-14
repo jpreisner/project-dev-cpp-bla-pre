@@ -11,8 +11,10 @@
 #include <string>
 
 #include "Joueur.h"
+#include "Pion.h"
 #include "Plateau/Case.h"
 #include "Plateau/Plateau.h"
+#include "Regle.h"
 
 int AffichageConsole::menuDemarrage() {
 	cout << "======================================" << endl;
@@ -84,10 +86,9 @@ void AffichageConsole::affichePlateau(Plateau p) {
 				} else {
 					// CASES ACCESSIBLES
 					if (p.getCase(j, i).getPion() != NULL) {
-						if (j == 7) {
-							cout << "  I ";
-						} else {
-							cout << "  I  |";
+						afficheImpalaJones();
+						if (j != 7) {
+							cout << " | ";
 						}
 					} else {
 						if (j == 7) {
@@ -130,15 +131,71 @@ void AffichageConsole::affichePlateau(Plateau p) {
 	/*cout << s << endl;*/
 }
 
-int AffichageConsole::demandeDeplacerImpalaJones(){
-	cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3" << endl;
+int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
+	cout << "======================================" << endl;
+	int possibilite = Regle::possibiliteDeplacementImpalaJones(p, ij);
 	int res;
-	cin >> res;
-	while(!(res>=1 && res<=3)){
-		cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
-		cin >> res;
+	if(possibilite == 0){
+		cout << "Fin du jeu !" << endl;
+		cout << "======================================" << endl;
+		return -1;
 	}
-	return res;
+	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
+	else if(possibilite == -1){
+		cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3" << endl;
+		cin >> res;
+		while(!(res>=1 && res<=3)){
+			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
+			cin >> res;
+		}
+		cout << "======================================" << endl;
+		return res;
+	}
+	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
+	else if(possibilite == -2){
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 2" << endl;
+		cin >> res;
+		while(!(res==1 || res==2)){
+			cout << "Erreur! Veuillez choisir entre 1 et 2" << endl;
+			cin >> res;
+		}
+		cout << "======================================" << endl;
+		return res;
+	}
+	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
+	else if(possibilite == -3){
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 3" << endl;
+		cin >> res;
+		while(!(res==1 || res==3)){
+			cout << "Erreur! Veuillez choisir entre 1 et 3" << endl;
+			cin >> res;
+		}
+		cout << "======================================" << endl;
+		return res;
+	}
+	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
+	else if(possibilite == -4){
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 2 et 3" << endl;
+		cin >> res;
+		while(!(res==2 || res==3)){
+			cout << "Erreur! Veuillez choisir entre 2 et 3" << endl;
+			cin >> res;
+		}
+		cout << "======================================" << endl;
+		return res;
+	}
+	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
+	else if(possibilite > 0){
+		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les trois cases suivantes sont pleines" << endl;
+		cout << "---> Impala Jones est avancé de " << possibilite << " cases" << endl;
+		cout << "======================================" << endl;
+		return possibilite;
+	}
+	else{
+		cout << "Erreur dans l'appel de la méthode possibiliteDeplacementImpalaJones" << endl;
+		cout << "======================================" << endl;
+		return -1;
+	}
 }
 
 void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
@@ -158,11 +215,12 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 
 
 int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
+	cout << "======================================" << endl;
 	int nbPion = listAnimaux.size();
 	cout << "Voici votre liste de pion : " << endl;
 	cout << "---> ";
 	afficheListAnimal(listAnimaux);
-	cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau selon sa position dans votre liste de pion" << endl;
+	cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau (selon sa position dans votre liste de pion)" << endl;
 	int positionAnimal;
 	cin >> positionAnimal;
 	while(!(positionAnimal>=0 && positionAnimal<=(nbPion-1))){
@@ -170,14 +228,15 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 		cout << "Voici votre liste de pion : " << endl;
 		cout << "---> ";
 		afficheListAnimal(listAnimaux);
-		cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau selon sa position dans votre liste de pion" << endl;
+		cout << "Sélectionner l'animal que vous souhaitez poser sur le plateau (selon sa position dans votre liste de pion)" << endl;
 		cin >> positionAnimal;
 	}
-
+	cout << "======================================" << endl;
 	return positionAnimal;
 }
 
 int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
+	cout << "======================================" << endl;
 	cout << "Selectionnez une case (entrez x et y) " << endl;
 	int i, j;
 	cin >> i >> j;
@@ -193,6 +252,7 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 	/* TODO : a vérifier */
 	*x=i;
 	*y=j;
+	cout << "======================================" << endl;
 	return 0;
 }
 
@@ -202,7 +262,7 @@ void AffichageConsole::affichePion(Pion *p, Joueur *j){
 }
 
 void AffichageConsole::afficheImpalaJones(){
-	cout << "(IJ)" << endl;
+	cout << "(IJ)";
 }
 
 int AffichageConsole::menuJoueur(Joueur *j){
@@ -232,6 +292,7 @@ int AffichageConsole::menuJoueur(Joueur *j){
 }
 
 int AffichageConsole::demandeLigne(Plateau p, int colonne){
+	cout << "======================================" << endl;
 	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
@@ -247,10 +308,12 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 			cin >> res;
 		}
 	}
+	cout << "======================================" << endl;
 	return res;
 }
 
 int AffichageConsole::demandeColonne(Plateau p, int ligne){
+	cout << "======================================" << endl;
 	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
@@ -266,5 +329,6 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 			cin >> res;
 		}
 	}
+	cout << "======================================" << endl;
 	return res;
 }

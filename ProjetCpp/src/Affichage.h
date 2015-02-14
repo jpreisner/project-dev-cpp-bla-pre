@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Pion/Animal.h"
+#include "Pion/ImpalaJones.h"
 
 
 class Joueur;
@@ -27,7 +28,7 @@ public:
 	virtual int afficheRegle() = 0;
 	virtual void demandeNomJoueur(Joueur *j, int numJoueur) = 0;
 	virtual void affichePlateau(Plateau p) = 0;
-	virtual int demandeDeplacerImpalaJones() = 0;
+	virtual int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) = 0;
 	virtual void afficheListAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual int selectionnerAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual int selectionnerPosition(int *x, int *y, Plateau p) = 0;

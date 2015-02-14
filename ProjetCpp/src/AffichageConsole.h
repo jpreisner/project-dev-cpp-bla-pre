@@ -12,6 +12,7 @@
 
 #include "Affichage.h"
 #include "Pion/Animal.h"
+#include "Pion/ImpalaJones.h"
 
 class Animal;
 
@@ -23,7 +24,7 @@ public:
 	int afficheRegle();
 	void demandeNomJoueur(Joueur *j, int numJoueur);
 	void affichePlateau(Plateau p);
-	int demandeDeplacerImpalaJones();
+	int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij);
 	void afficheListAnimal(vector<Animal*> listAnimaux);
 	int selectionnerAnimal(vector<Animal*> listAnimaux);
 	int selectionnerPosition(int *x, int *y, Plateau p);
