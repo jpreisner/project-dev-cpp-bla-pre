@@ -28,7 +28,7 @@ public:
 	}
 
 	string print() const{
-		return "ImpalaJones";
+		return "(I.J)";
 	}
 };
 
