@@ -7,3 +7,6 @@
 
 #include "Sauvegarde.h"
 
+void Sauvegarde::sauvegarderPartie(Partie* p){
+
+}
