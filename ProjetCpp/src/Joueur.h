@@ -12,12 +12,8 @@
 #include <string>
 #include <vector>
 
-#include "Pion/Animal/Effrayant/Crocodile.h"
-#include "Pion/Animal/Effrayant/Lion.h"
-#include "Pion/Animal/Neutre/Elephant.h"
-#include "Pion/Animal/Peureux/Gazelle.h"
-#include "Pion/Animal/Peureux/Zebre.h"
 #include "Pion/Animal.h"
+#include "Plateau/Plateau.h"
 
 using namespace std;
 
@@ -26,7 +22,7 @@ using namespace std;
  */
 
 class Animal;
-class Gazelle;
+
 static int idStatic = 0;
 
 class Joueur {
@@ -44,46 +40,56 @@ private:
 	 * 1 lion
 	 * 2 crocos
 	 */
-	void initListPions(int nbGazelles = 6, int nbZebres = 5, int nbElephants = 1, int nbLions = 1, int nbCrocos = 2);
+	void initListPions(int nbGazelles = 6, int nbZebres = 5, int nbElephants = 1, int nbLions = 1,
+			int nbCrocos = 2);
 
 public:
 	/* FIXME : J'aurai aimé ne pas mettre "=1" à id_j car je veux qu'il soit obligatoire. Problème : si j'enlève le =1, il m'envoi une erreur car cet argument n'a pas de valeur par défaut */
 	/* DONE j'ai ajouté un idStatic qui s'incrémenta a chaque fois comme ça leidJoueur est forcément unique */
-	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0, int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
-			nbPoints(nbPoints), nom(nom), listAnimaux(0),  id(idStatic) {
+	Joueur(int nbPoints = 0, string nom = "", int nbGazelles = 0, int nbZebres = 0,
+			int nbElephants = 0, int nbLions = 0, int nbCrocos = 0) :
+			nbPoints(nbPoints), nom(nom), listAnimaux(0), id(idStatic){
 		initListPions(nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 		idStatic++;
 	}
 
-	virtual ~Joueur() {};
+	virtual ~Joueur(){};
 
-	int getNbPoints() const {
+	int getNbPoints() const{
 		return nbPoints;
 	}
 
-	const string& getNom() const {
+	const string& getNom() const{
 		return nom;
 	}
 
-	void setNbPoints(int nbPoints) {
+	void setNbPoints(int nbPoints){
 		this->nbPoints = nbPoints;
 	}
 
-	friend ostream& operator<<(ostream &strm, const Joueur &a) {
-		strm << "Joueur(" << a.nom << ") : "<< a.nbPoints << "."<< endl;
+	friend ostream& operator<<(ostream &strm, const Joueur &a){
+		strm << "Joueur(" << a.nom << ") : " << a.nbPoints << "." << endl;
 		return strm;
 	}
 
-	int jouer();
-
+	/**
+	 * Ajoute l'animal sur la case x/y
+	 * 1 = gazelle,
+	 * 2 = zebre
+	 * 3 = elephant
+	 * 4 = lion
+	 * 5 = croco
+	 * renvoie vrai si l'ajout a ete fait.
+	 */
+	bool jouer(int x, int y, int typeAnimal, Plateau* p);
 
 	int placementAnimal(Animal a, int x, int y);
 
-	const vector<Animal*>& getListAnimaux() const {
+	const vector<Animal*>& getListAnimaux() const{
 		return listAnimaux;
 	}
 
-	void setListAnimaux(const vector<Animal*>& listAnimaux) {
+	void setListAnimaux(const vector<Animal*>& listAnimaux){
 		this->listAnimaux = listAnimaux;
 	}
 
@@ -91,20 +97,26 @@ public:
 		return listAnimaux[i];
 	}
 
-	void setNom(const string& nom) {
+	void setNom(const string& nom){
 		this->nom = nom;
 	}
 
-	int getId() const {
+	int getId() const{
 		return id;
 	}
 
-	void setId(int id) {
+	void setId(int id){
 		this->id = id;
 	}
 
-	friend bool operator==(const Joueur& j1, const Joueur& j2) {
-	    return j1.getId() == j1.getId() && j1.getNom() == j2.getNom();
+	friend bool operator==(const Joueur& j1, const Joueur& j2){
+		if(j1==NULL || j2 == NULL){
+			return false;
+		}
+		if(j1 == j2){
+			return true;
+		}
+		return j1.getId() == j1.getId() && j1.getNom() == j2.getNom();
 	}
 
 	/**
