@@ -44,14 +44,20 @@ int main() {
 		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
 	}
 
+
 	ImpalaJones ij(1, 0);
-	cout << "Position de Impala Jones : (" << ij.getX() << ", " << ij.getY() << ")" << endl;
+	//cout << "Position de Impala Jones : (" << ij.getX() << ", " << ij.getY() << ")" << endl;
 
 	AffichageConsole affichage;
 	Plateau p;
 	p.initImpalaJones(ij);
+	cout << "Print de Impala Jones : " << ij.print() << endl;
+	if(p.getCase(1, 0)->getPion() != NULL){
+		cout << "OK pion !=  NULL" << endl;
+	}
+	cout << "2eme print : " << p.getCase(1, 0)->getPion()->print() << endl;
 	affichage.affichePlateau(p);
-	/*p.print();*/
+	//p.print();
 
 
 	Joueur* ptJ = &j;
@@ -80,9 +86,9 @@ int main() {
 	}
 	affichage.affichePlateau(p);
 
-	/* cases a remplir*/
+	// cases a remplir
 
-	/* Ajout d'un lion*/
+	// Ajout d'un lion
 	cout<<"Test methode joueur d'un joueur"<<endl;
 	Plateau* ptPlateau = &p;
 	ptJ->jouer(3,4,4,ptPlateau);
@@ -90,14 +96,19 @@ int main() {
 
 
 	cout << "Test Déplacement de ImpalaJones" << endl;
+	//ImpalaJones ij(1, 0);
 	ij.deplacer(3, ptPlateau);
 	ij.deplacer(3, ptPlateau);
 	cout << ij << endl;
 	affichage.affichePlateau(p);
 
-	/*cout << ij << endl;
-	ij.deplacer(3, p);
 	cout << ij << endl;
+	ij.deplacer(3, &p);
+	cout << ij << endl;
+	affichage.affichePlateau(p);
+
+
+	/*
 	ij.deplacer(3, p);
 	cout << ij << endl;
 	ij.deplacer(3, p);

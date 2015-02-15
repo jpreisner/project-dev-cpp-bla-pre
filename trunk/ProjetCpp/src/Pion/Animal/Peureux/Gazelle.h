@@ -9,6 +9,8 @@
 
 #include <string>
 
+#include "../../../Joueur.h"
+#include "../../Animal.h"
 #include "../Peureux.h"
 
 class Lion;
@@ -18,8 +20,10 @@ public:
 	Gazelle(Joueur* j) : Peureux(2,j) {};
 	~Gazelle() {};
 
-	virtual string print() const {
-		return "Gazelle";
+	string print() const {
+		ostringstream id;
+		id << getJoueur()->getId();
+		return "(G," + id.str() + ")";
 	}
 };
 

@@ -7,13 +7,16 @@
 
 #include "Joueur.h"
 
+#include <iterator>
+#include <typeinfo>
+
 #include "Pion/Animal/Effrayant/Crocodile.h"
 #include "Pion/Animal/Effrayant/Lion.h"
 #include "Pion/Animal/Neutre/Elephant.h"
 #include "Pion/Animal/Peureux/Gazelle.h"
 #include "Pion/Animal/Peureux/Zebre.h"
 #include "Plateau/Case.h"
-#include <typeinfo>
+#include "Plateau/Plateau.h"
 
 void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nbLions,
 		int nbCrocos){
@@ -45,7 +48,8 @@ bool Joueur::jouer(int x, int y, int typeAnimal, Plateau* p){
 	if (p->getCase(x, y)->getPion() != NULL) {
 		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")" << endl;
 		return false;
-	} else {
+	}
+	else {
 		Pion* pion;
 
 		/* instanciation du pointeur selon le type demandé en parametre */

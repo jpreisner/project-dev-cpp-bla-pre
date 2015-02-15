@@ -10,6 +10,8 @@
 
 #include <string>
 
+#include "../../../Joueur.h"
+#include "../../Animal.h"
 #include "../Neutre.h"
 
 class Elephant: public Neutre {
@@ -18,7 +20,9 @@ public:
 	~Elephant() {};
 
 	virtual string print() const {
-		return "Elephant";
+		ostringstream id;
+		id << getJoueur()->getId();
+		return "(E," + id.str() + ")";
 	}
 };
 

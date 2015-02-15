@@ -8,26 +8,27 @@
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 
-#include <iostream>
+#include <sstream>
 #include <string>
 
+#include "../Joueur.h"
 #include "../Pion.h"
+
+class Joueur;
 
 using namespace std;
 
-class Joueur;
 
 class Animal: public Pion {
 // attributs
 private:
 	int valeur;
 	bool cache;
-
 	Joueur* joueur;
+
 // méthodes
 public:
-	Animal(int v = 0, Joueur* joueur = NULL) :
-			valeur(v), cache(false), joueur(joueur) {
+	Animal(int v = 0, Joueur* joueur = NULL) : valeur(v), cache(false), joueur(joueur) {
 	}
 	virtual ~Animal() {
 	}
@@ -58,6 +59,9 @@ public:
 	int retourner();
 
 	virtual string print() const{
+		//ostringstream id;
+		//id << getJoueur()->getId();
+		//return "(Animal," + id.str() + ")";
 		return "Animal";
 	}
 
