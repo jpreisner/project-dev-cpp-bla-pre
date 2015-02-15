@@ -7,8 +7,11 @@
 
 #ifndef UTILS_SAUVEGARDE_H_
 #define UTILS_SAUVEGARDE_H_
+#include "../Partie.h"
 
 class Sauvegarde {
+
+	static void sauvegarderPartie(Partie* p);
 };
 
 #endif /* UTILS_SAUVEGARDE_H_ */
