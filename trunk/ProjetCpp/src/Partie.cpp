@@ -7,6 +7,9 @@
 
 #include "Partie.h"
 
+#include <fstream>
+#include <string>
+
 /**
  * Lancer le premier tour
  */
@@ -23,10 +26,25 @@ int Partie::initJoueurs(){
 	return 0;
 }
 
-void Partie::sauvegarde(string path){
-
+int Partie::sauvegarde(string path){
+	return 0;
 }
 
-void Partie::chargement(string path){
+int Partie::chargement(string path){
+	string file = path + ".txt";
+	// Lecture
+	ifstream fichier(file, ios::in);
+	if(!fichier){
+		cout << "Erreur lors de l'ouverture du fichier " << file << endl;
+		return -1;
+	}
+	// Lecture ligne par ligne
+    string ligne;
+    while(getline(fichier, ligne)){
+            cout << ligne << endl;
+    }
 
+	// Fin de la lecture
+	fichier.close();
+	return 0;
 }
