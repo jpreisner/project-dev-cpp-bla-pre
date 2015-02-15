@@ -110,12 +110,6 @@ public:
 	}
 
 	friend bool operator==(const Joueur& j1, const Joueur& j2){
-		if(j1==NULL || j2 == NULL){
-			return false;
-		}
-		if(j1 == j2){
-			return true;
-		}
 		return j1.getId() == j1.getId() && j1.getNom() == j2.getNom();
 	}
 

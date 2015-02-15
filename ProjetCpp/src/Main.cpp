@@ -73,7 +73,7 @@ int main() {
 
 	p.bonusInauguration();
 	
-	cout << "##### JOUEUR après bonus inauguration : "<<j << endl;
+	cout << "Test d'un joueur après bonus inauguration : "<<j << endl;
 
 	if(p.supprimerPion(5,2)){
 		cout<<"Pion Bien supprimé"<<endl;
@@ -83,19 +83,19 @@ int main() {
 	/* cases a remplir*/
 
 	/* Ajout d'un lion*/
-	cout<<"Methode joueur d'un joueur"<<endl;
+	cout<<"Test methode joueur d'un joueur"<<endl;
 	Plateau* ptPlateau = &p;
 	ptJ->jouer(3,4,4,ptPlateau);
 	affichage.affichePlateau(p);
 
-	/*
+
 	cout << "Test Déplacement de ImpalaJones" << endl;
-	ImpalaJones ij(1, 0);
+	ij.deplacer(3, ptPlateau);
+	ij.deplacer(3, ptPlateau);
 	cout << ij << endl;
-	ij.deplacer(3, p);
-	cout << ij << endl;
-	ij.deplacer(3, p);
-	cout << ij << endl;
+	affichage.affichePlateau(p);
+
+	/*cout << ij << endl;
 	ij.deplacer(3, p);
 	cout << ij << endl;
 	ij.deplacer(3, p);
