@@ -8,12 +8,9 @@
 #include "Case.h"
 
 int Case::ajouterPion(Pion* p){
-	cout << "Dans ajouterPion (Case.cpp), print = " << p->print();
 	// ajout possible
 	if(getPion()==NULL){
-		cout << "On rentre dans le if" << endl;
-		pion = p;	// voir si c'est ok, car pointeur sur pion
-		cout << "print du pion de la case = " << pion->print();
+		pion = p;
 		return 0;
 	}
 	// un pion est present sur la case : probleme !

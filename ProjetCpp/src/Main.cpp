@@ -40,35 +40,29 @@ int main() {
 	cout << j << endl;
 
 	unsigned int i;
+	/*
 	for (i = 0; i < j.getListAnimaux().size(); i++) {
 		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
 	}
-
+	*/
 
 	ImpalaJones ij(1, 0);
-	//cout << "Position de Impala Jones : (" << ij.getX() << ", " << ij.getY() << ")" << endl;
-
 	AffichageConsole affichage;
 	Plateau p;
-	p.initImpalaJones(ij);
-	cout << "Print de Impala Jones : " << ij.print() << endl;
-	if(p.getCase(1, 0)->getPion() != NULL){
-		cout << "OK pion !=  NULL" << endl;
-	}
-	cout << "2eme print : " << p.getCase(1, 0)->getPion()->print() << endl;
+	p.initImpalaJones(&ij);
 	affichage.affichePlateau(p);
-	//p.print();
-
 
 	Joueur* ptJ = &j;
-	
-	Animal a1 = Gazelle(ptJ);
-	Animal a2 = Zebre(ptJ);
-	Animal a3 = Elephant(ptJ);
 
-	Animal* pt1 = &a1;
-	Animal* pt2 = &a2;
-	Animal* pt3 = &a3;
+	Animal* pt1 = j.getAnimal(0);	// gazelle
+	Animal* pt2 = j.getAnimal(6);	// zebre
+	Animal* pt3 = j.getAnimal(11);	// elephant
+
+	cout << "Affichage des animaux à ajouter (apres pointeur)" << endl;
+
+	cout << "A1 = " << pt1->print() << endl;
+	cout << "A2 = " << pt2->print() << endl;
+	cout << "A3 = " << pt3->print() << endl;
 
 
 	p.ajouterAnimal(5,2,pt1);

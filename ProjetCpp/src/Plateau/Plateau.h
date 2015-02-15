@@ -78,12 +78,7 @@ public:
 	int ajouterAnimal(int x, int y, Animal* a);
 
 	/* Ajout d'ImpalaJones sur la case 1/0 */
-	void initImpalaJones(ImpalaJones ij){
-		cout << "Dans Plateau.h->initImpalaJones , print = " << ij.print() << endl;
-		ImpalaJones * ptI = &ij;
-		cout << "Apres pointeur : print = " << ptI->print() << endl;
-		cases[1][0].ajouterPion(ptI);
-	}
+	int initImpalaJones(ImpalaJones *ij);
 
 	Case* getCase(int x, int y) {
 		return &cases[x][y];

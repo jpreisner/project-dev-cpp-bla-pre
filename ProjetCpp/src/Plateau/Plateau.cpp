@@ -76,3 +76,13 @@ bool Plateau::supprimerPion(int x, int y){
 	}
 
 }
+
+int Plateau::initImpalaJones(ImpalaJones *ij){
+	/*
+	cout << "Dans Plateau.h->initImpalaJones , print = " << ij.print() << endl;
+	ImpalaJones * ptI = &ij;
+	cout << "Apres pointeur : print = " << ptI->print() << endl;
+	cases[1][0].ajouterPion(ptI);
+	*/
+	return getCase(1, 0)->ajouterPion(ij);
+}
