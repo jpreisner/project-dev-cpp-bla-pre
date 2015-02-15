@@ -23,7 +23,7 @@ public:
 	virtual ~Pion() {};
 
 	virtual string print() const{
-		return "Pion";
+		return "Pion ";
 	}
 
 	void setPosition(int x, int y){

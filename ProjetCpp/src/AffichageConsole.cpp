@@ -65,70 +65,97 @@ void AffichageConsole::demandeNomJoueur(Joueur *j, int numJoueur) {
 	cout << "======================================" << endl;
 	string nom;
 	cin >> nom;
-	/** Verifier si le nom est correct? Comment? **/
+	/** Verifier si le nom est correct? Comment? NULL? **/
 	j->setNom(nom);
 }
 
 void AffichageConsole::affichePlateau(Plateau p) {
-	/*string s = ""; */
-	for (int i = 0; i < p.getTaillePlateauY(); i++) {
-		for (int j = 0; j < p.getTaillePlateauX(); j++) {
+	int i, j;
 
-			/* Affichage des cases d'IMPALA JONES*/
-			if (i == 0 || i == 6 || j == 0 || j == 7) {
-				//CASES NON ACCESSIBLES
-				if ((i == 0 && j == 0) || (i == 6 && j == 0)) {
-					//en haut à gauche ou en bas a gauche
-					cout << "  X  |";
-				} else if ((i == 0 && j == 7) || (i == 6 && j == 7)) {
-					//en haut à droite ou en bas à droite
-					cout << "  X  ";
-				} else {
-					// CASES ACCESSIBLES
-					if (p.getCase(j, i)->getPion() != NULL) {
-						afficheImpalaJones();
-						if (j != 7) {
-							cout << " | ";
-						}
-					} else {
-						if (j == 7) {
-							cout << "     ";
-						} else {
-							cout << "     |";
-						}
-					}
-				}
-			} else {
-				/* Affichage des zones du jeu et des PIONS */
-				if (p.getCase(j, i)->getPion() != NULL) {
-					cout << " " <<p.getCase(j, i)->getPion() << " ";
-				} else {
-					cout << "   ";
-				}
-
-				if (p.getCase(j, i)->getSecteur() != p.getCase(j+1, i)->getSecteur()) {
-					cout << "  |";
-				} else {
-					cout << "   ";
-				}
-			}
+	/* Affichage des i */
+	cout << "      ";
+	for(i=0; i<p.getTaillePlateauX(); i++){
+		cout << "  i=" << i << "   ";
+		if(i==0||i==6){
+			cout << " ";
 		}
-		cout << "\n";
-		if (i < p.getTaillePlateauY() - 1) {
-			for (int k = 0; k < p.getTaillePlateauX(); k++) {
-				if (k == 0 || k == p.getTaillePlateauX() - 1
-						|| p.getCase(k, i)->getSecteur()
-								!= p.getCase(k, i+1)->getSecteur()) {
-					cout << " ___  ";
-				} else {
-					cout << "      ";
-				}
-			}
-		}
-		cout << "\n";
-
 	}
-	/*cout << s << endl;*/
+	cout << "\n";
+
+	/* Affichage de la toute 1ère ligne horizontale */
+	cout << "    ||";
+	for(i=0; i<p.getTaillePlateauX(); i++){
+		if(i == 7){
+			cout << "|";
+		}
+		cout << "=======|";
+		if(i == 0){
+			cout << "|";
+		}
+	}
+	cout << "|\n";
+
+	/* Affichage du reste du plateau */
+	for(j=0; j<p.getTaillePlateauY(); j++){
+		/* Partie du haut */
+		cout << "j=" << j << " ||";
+		for(i=0; i<p.getTaillePlateauX(); i++){
+			if(i == 7){
+				cout << "|";
+			}
+			// Cases inaccessibles
+			if((i==0 && j==0) || (i==7 && j==0) || (i==0 && j==6) || (i==7 && j==6)){
+				cout << "=======";
+			}
+			// Cases accessibles
+
+			/* Affichage du pion ici */
+			else if(p.getCase(i, j)->getPion() != NULL){	// Si animal = caché ==> caché
+				cout << " " << p.getCase(i, j)->getPion()->print() << " ";
+			}
+			else{
+				cout << "       ";
+			}
+			if(i == 0){
+				cout << "|";
+			}
+
+			/* Distinction des secteurs */
+			if (j!=0 && j!=p.getTaillePlateauY()-1 && i!=0 && i!=p.getTaillePlateauX()-1 && p.getCase(i, j)->getSecteur() == p.getCase(i+1, j)->getSecteur()) {
+				cout << " ";
+			}
+			else {
+				cout << "|";
+			}
+			//cout << "|";
+		}
+		cout << "|\n";
+
+		/* Partie du bas */
+		cout << "    ||";
+		for(i=0; i<p.getTaillePlateauX(); i++){
+			if(i == 7){
+				cout << "|";
+			}
+			// Cases inaccessibles
+			if(j==0 || j==5 || j==6){
+				cout << "=======";
+			}
+			// Cases accessibles
+			/* Distinction des secteurs */
+			else if (j!=0 && j!=p.getTaillePlateauY()-1 && i!=0 && i!=p.getTaillePlateauX()-1 && p.getCase(i, j)->getSecteur() == p.getCase(i, j+1)->getSecteur()) {
+				cout << "       ";
+			}
+			else {
+				cout << "-------";
+			}
+			if(i == 0){
+				cout << "|";
+			}
+			cout << "|";
+		}
+		cout << "|\n";
+	}
 }
 
 int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
@@ -256,11 +283,13 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 	return 0;
 }
 
+/* Pas besoin */
 void AffichageConsole::affichePion(Pion *p, Joueur *j){
 	/* appel de print p et de l'id du joueur */
 	cout << "(" << p->print() << ", " << j->getId() << ")" << endl;
 }
 
+/* Pas besoin */
 void AffichageConsole::afficheImpalaJones(){
 	cout << "(IJ)";
 }

@@ -13,7 +13,8 @@
 #include <vector>
 
 #include "Pion/Animal.h"
-#include "Plateau/Plateau.h"
+
+class Plateau;
 
 using namespace std;
 
@@ -23,7 +24,7 @@ using namespace std;
 
 class Animal;
 
-static int idStatic = 0;
+static int idStatic = 1;
 
 class Joueur {
 private:
@@ -68,7 +69,7 @@ public:
 	}
 
 	friend ostream& operator<<(ostream &strm, const Joueur &a){
-		strm << "Joueur(" << a.nom << ") : " << a.nbPoints << "." << endl;
+		strm << "Joueur(" << a.nom << ", " << a.id << ") : " << a.nbPoints << "." << endl;
 		return strm;
 	}
 
@@ -103,10 +104,6 @@ public:
 
 	int getId() const{
 		return id;
-	}
-
-	void setId(int id){
-		this->id = id;
 	}
 
 	friend bool operator==(const Joueur& j1, const Joueur& j2){

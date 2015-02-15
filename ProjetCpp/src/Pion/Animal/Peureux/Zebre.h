@@ -8,8 +8,11 @@
 #ifndef ZEBRE_H_
 #define ZEBRE_H_
 
+#include <iostream>
 #include <string>
 
+#include "../../../Joueur.h"
+#include "../../Animal.h"
 #include "../Peureux.h"
 
 class Zebre: public Peureux {
@@ -17,8 +20,10 @@ public:
 	Zebre(Joueur* j) : Peureux(6,j) {};
 	~Zebre(){};
 
-	virtual string print() const {
-		return "Zebre";
+	string print() const {
+		ostringstream id;
+		id << getJoueur()->getId();
+		return "(Z," + id.str() + ")";
 	}
 };
 
