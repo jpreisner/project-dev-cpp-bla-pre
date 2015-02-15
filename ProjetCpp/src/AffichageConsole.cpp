@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 #include "Joueur.h"
 #include "Pion.h"
@@ -44,8 +45,23 @@ int AffichageConsole::menuDemarrage() {
 }
 
 int AffichageConsole::afficheRegle() {
+	cout << "======================================" << endl;
+	cout << "        Affichage des règles :        " << endl;
+	cout << "======================================" << endl;
+	// Lecture
+	ifstream fichier("Regles.txt", ios::in);
+	if(!fichier){
+		cout << "Erreur lors de l'ouverture du fichier Regles.txt" << endl;
+		return -1;
+	}
+	// Lecture ligne par ligne
+    string ligne;
+    while(getline(fichier, ligne)){
+            cout << ligne << endl;
+    }
 
-	/** Faire un affichage des regles qui sont dans un texte **/
+	// Fin de la lecture
+	fichier.close();
 
 	int res;
 	cout << "======================================" << endl;

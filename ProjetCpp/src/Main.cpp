@@ -101,6 +101,9 @@ int main() {
 	cout << ij << endl;
 	affichage.affichePlateau(p);
 
+	/* Test de l'affichage des regles
+	affichage.afficheRegle();
+	*/
 
 	/*
 	ij.deplacer(3, p);

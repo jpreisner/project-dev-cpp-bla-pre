@@ -65,8 +65,8 @@ public:
 		return strm;
 	}*/
 
-	void sauvegarde(string path);
-	void chargement(string path);
+	int sauvegarde(string path);
+	int chargement(string path);
 };
 
 #endif /* PARTIE_H_ */
