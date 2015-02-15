@@ -15,6 +15,9 @@
 #include "Pion/Animal.h"
 #include "Pion/ImpalaJones.h"
 #include "Plateau/Plateau.h"
+#include "Pion/Animal/Peureux/Gazelle.h"
+#include "Pion/Animal/Neutre/Elephant.h"
+#include "Pion/Animal/Peureux/Zebre.h"
 
 class AffichageConsole;
 
@@ -50,8 +53,9 @@ int main() {
 	affichage.affichePlateau(p);
 	/*p.print();*/
 
-	Joueur* ptJ = &j;
 
+	Joueur* ptJ = &j;
+	
 	Animal a1 = Gazelle(ptJ);
 	Animal a2 = Zebre(ptJ);
 	Animal a3 = Elephant(ptJ);
@@ -64,12 +68,12 @@ int main() {
 	p.ajouterAnimal(5,2,pt1);
 	p.ajouterAnimal(6,2,pt2);
 	p.ajouterAnimal(6,3,pt3);
+	cout<<"Afficahge du plateau : <<endl;
 	affichage.affichePlateau(p);
 
-	cout<<"AVANT BONUS INNAUGURATION"<<endl;
 	p.bonusInauguration();
-	cout<<"APRES BONUS INNAUGURATION"<<endl;
-	cout << j << endl;
+	
+	cout << "##### JOUEUR après bonus inauguration : "<<j << endl;
 
 	if(p.supprimerPion(5,2)){
 		cout<<"Pion Bien supprimé"<<endl;
@@ -77,6 +81,12 @@ int main() {
 	affichage.affichePlateau(p);
 
 	/* cases a remplir*/
+
+	/* Ajout d'un lion*/
+	cout<<"Methode joueur d'un joueur"<<endl;
+	Plateau* ptPlateau = &p;
+	ptJ->jouer(3,4,4,ptPlateau);
+	affichage.affichePlateau(p);
 
 	/*
 	cout << "Test Déplacement de ImpalaJones" << endl;
