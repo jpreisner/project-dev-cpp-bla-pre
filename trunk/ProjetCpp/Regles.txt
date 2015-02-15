@@ -1,0 +1,46 @@
+Matériel
+    - 1 plateau de jeu
+    - 2x15 pions "animal" (2x6 gazelles, 2x5 zèbres, 2x1 éléphant, 2x1 lion, 2x2 crocodiles)
+    - 1 figurine "Impala Jones" et son socle
+    - 1 pion "inauguration"
+
+Pour commencer la partie
+
+ - Placer le plateau au centre de la table. Laisser le pion "inauguration" à côté du plateau.
+ - Chaque joueur choisit une couleur et prend les 15 pions "animal" qu'il place devant lui face visible.
+ - Choisir le premier joueur. Le premier joueur place "Impala Jones" sur une case de la piste périphérique. Le deuxième joueur entame ensuite le premier tour de jeu.
+
+Le tour de jeu
+
+ - Tour à tour, chaque joueur réalise les 2 actions suivantes.
+ - Poser un pion "animal" dans le parc
+     - Le joueur place un pion "animal" dans le parc, dans la même rangée (ligne ou colonne) que celle où se trouve Impala Jones.
+     - Le joueur doit respecter les effets particulier de l'animal joué:
+         - Le zèbre
+             Placé sur une case adjacente à un lion, le zèbre doit se placer face cachée.
+         - La gazelle
+             Placée sur une case adjacente à un lion, la gazelle doit se placer face cachée.
+         - Le lion
+             Lorsque le lion est placé, tous les zèbres adjacents doivent se retourner face cachée, et toutes les gazelles adjacentes doivent retourner dans la réserve de pions de leur propriétaire.
+         - L'éléphant
+             L'éléphant n'a peur de rien et ne se cache jamais.
+         - Le crocodile
+             Lorsque le crocodile est placé sur une case adjacente à une gazelle séparée par une rivière, le joueur peut s'il le souhaite permuter la position du crocodile et de la gazelle.
+             Le joueur peut répéter la permutation en cascade si elle est de nouveau réalisable à partir de la case atteinte par le crocodile.
+     - Si à l'issue de la pose, le joueur a rempli le premier enclos du parc, il gagne le pion d'inauguration qui lui accorde un bonus de 5 points.
+
+ - Déplacer Impala Jones
+     - Le joueur doit ensuite déplacer Impala Jones de 1, 2 ou 3 cases sur la piste périphérique du parc dans la direction indiquée par les flèches sur le plateau.
+     - Impala Jones doit s'arrêter face à une rangée qui offre une possibilité de placement à l'adversaire.
+     - Si les 3 rangées sont complètement occupées, le joueur doit avancer Impala Jones jusqu'à la première case face à laquelle il y a au moins une possibilité de placement.
+
+ - Si un joueur n'a plus de pion "animal" disponible, il doit passer son tour. Si les deux joueurs n'ont plus de pion "animal" disponible, la partie prend fin.
+
+
+Fin de la partie
+ - La partie s'arrête lorsque les 2 joueurs ont placé tous leurs pions "animal".
+ - Pour chaque enclos du parc, le joueur qui a la majorité de pions remporte le total des points de tous les animaux (amis et adverses) non cachés.
+ - Le joueur qui a le pion d'inauguration ajoute un bonus de 5 points à son score.
+ - Le joueur qui a le score le plus élevé gagne la partie.
+
+Source : http://www.jeuxdenim.be/jeu-DrolesDeZebres#Laregledujeu
