@@ -68,7 +68,7 @@ int main() {
 	p.ajouterAnimal(5,2,pt1);
 	p.ajouterAnimal(6,2,pt2);
 	p.ajouterAnimal(6,3,pt3);
-	cout<<"Afficahge du plateau : <<endl;
+	cout<<"Affichage du plateau :" <<endl;
 	affichage.affichePlateau(p);
 
 	p.bonusInauguration();
