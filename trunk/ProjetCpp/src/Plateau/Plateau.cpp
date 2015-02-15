@@ -23,7 +23,7 @@ int Plateau::ajouterAnimal(int x, int y, Animal* a){
 }
 
 bool Plateau::secteurRempli(int secteur){
-	Joueur* joueur;
+	Joueur* joueur = NULL;
 	for (int i = 1; i < TAILLE_PLATEAU_X - 1; ++i) {
 		for (int j = 1; j < TAILLE_PLATEAU_Y - 1; ++j) {
 			if (getCase(i, j)->getSecteur() == secteur) {
@@ -32,7 +32,6 @@ bool Plateau::secteurRempli(int secteur){
 					return false;
 				} else {
 					/* il y a un pion sur la case*/
-
 					if (joueur == NULL) {
 						Animal* a = (Animal*) getCase(i, j)->getPion();
 						joueur = a->getJoueur();
