@@ -73,24 +73,13 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 		return -1;
 	}
 
-	/*
-	 * Attention : supprimerPion provoque une grosse erreur
-	 */
-	/*
-	if(plateau->getCase(ancien_x, ancien_y).supprimerPion()==-1){
-		cout << "Erreur lors de la suppression d'Impala Jones à la position (" << ancien_x << ", " << ancien_y << ")" << endl;
-		return -1;
- 	}
+	/* suppression d'Impalajones de son ancienne position */
+	plateau->getCase(ancien_x, ancien_y)->supprimerPion();
 
-	if(plateau->getCase(getX(), getY()).ajouterPion(*this)!=-1){
-		cout << "Erreur lors de l'ajout de Impala Jones à la position (" << getX() << ", " << getY() << ")" << endl;
-		cout << "On remet Impala Jones à son ancienne position en (" << ancien_x << ", " << ancien_y << ")" << endl;
-		if(plateau->getCase(ancien_x, ancien_y).ajouterPion(*this)!=-1){
-			cout << "Erreur lors de l'ajout de Impala Jones à la position (" << ancien_x << ", " << ancien_y << ")" << endl;
-		}
-		return -1;
-	}
-	*/
+	/* ajout d'impalaJones a sa nouvelle position */
+	plateau->getCase(getX(), getY())->ajouterPion(this);
+
+
 
 
 	return 0;
