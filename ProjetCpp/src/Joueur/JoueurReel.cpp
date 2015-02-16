@@ -8,7 +8,6 @@
 #include "JoueurReel.h"
 
 #include <iterator>
-#include <typeinfo>
 #include <vector>
 
 #include "../Pion/Animal/Effrayant/Crocodile.h"
@@ -19,49 +18,77 @@
 #include "../Plateau/Case.h"
 #include "../Plateau/Plateau.h"
 
-bool JoueurReel::jouer(int x, int y, int typeAnimal, Plateau* p) {
+bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 	if (p->getCase(x, y)->getPion() != NULL) {
-		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")"
-				<< endl;
+		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")" << endl;
 		return false;
 	} else {
-		Pion* pion;
+		Animal* animal;
+		int typeAnimal = affiche->selectionnerAnimal(getListAnimaux());
+		int nbPion = getListAnimaux().size();
+		int pos = 0;
 
 		// instanciation du pointeur selon le type demandé en parametre
-		switch (typeAnimal) {
-		case 1:
-			pion = new Gazelle(this);
+		switch(typeAnimal) {
+		case 1 :
+			while (pos < nbPion) {
+				if (dynamic_cast<Gazelle*>(getListAnimaux()[pos]) == NULL) {
+					pos++;
+				} else {
+					break;
+				}
+			}
 			break;
-		case 2:
-			pion = new Zebre(this);
+		case 2 :
+			while (pos < nbPion) {
+				if (dynamic_cast<Zebre*>(getListAnimaux()[pos]) == NULL) {
+					pos++;
+				} else {
+					break;
+				}
+			}
 			break;
-		case 3:
-			pion = new Elephant(this);
+		case 3 :
+			while (pos < nbPion) {
+				if (dynamic_cast<Elephant*>(getListAnimaux()[pos]) == NULL) {
+					pos++;
+				} else {
+					break;
+				}
+			}
 			break;
-		case 4:
-			pion = new Lion(this);
+		case 4 :
+			while (pos < nbPion) {
+				if (dynamic_cast<Lion*>(getListAnimaux()[pos]) == NULL) {
+					pos++;
+				} else {
+					break;
+				}
+			}
 			break;
-		case 5:
-			pion = new Crocodile(this);
+		case 5 :
+			while (pos < nbPion) {
+				if (dynamic_cast<Crocodile*>(getListAnimaux()[pos]) == NULL) {
+					pos++;
+				} else {
+					break;
+				}
+			}
 			break;
 		default:
-			break;
-		}
+			cerr << "L'animal n'existe pas" << endl;
+			return false;		}
 
-		// test avec les animaux en reserve du joueur
-		for (unsigned int i = 0; i < getListAnimaux().size(); i++) {
-			// equivalent du instanceOF, peut-ètre à revoir
-			if (typeid( *pion ) == typeid(*getListAnimaux()[i])) {
-				// ajout de l'animal à la case
-				p->getCase(x, y)->ajouterPion(getListAnimaux()[i]);
-				// suppression de l'animal dans la reserve du joueur
-				getListAnimaux().erase(getListAnimaux().begin() + i - 1);
-				return true;
-			}
+		if (pos < nbPion) {
+			// ajout de l'animal à la case
+			p->getCase(x, y)->ajouterPion(getListAnimaux()[pos]);
+			// suppression de l'animal dans la reserve du joueur
+			getListAnimaux().erase(getListAnimaux().begin() + pos - 1);
+			return true;
+		} else {
+			cerr << "L'animal n'est pas dans les pions disponibles du joueur" << endl;
+			return false;
 		}
-		cerr << "L'animal n'est pas dans les pions disponibles du joueur"
-				<< endl;
-		return false;
 	}
 	return false;
 }

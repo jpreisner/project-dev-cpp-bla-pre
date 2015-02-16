@@ -75,7 +75,7 @@ int main() {
 	// Ajout d'un lion
 	cout<<"Test methode joueur d'un joueur"<<endl;
 	Plateau* ptPlateau = &p;
-	ptJ->jouer(3,4,4,ptPlateau);
+	ptJ->jouer(3,4,ptPlateau,&affichage);
 	affichage.affichePlateau(p);
 
 
