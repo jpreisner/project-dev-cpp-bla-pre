@@ -80,9 +80,9 @@ int AffichageConsole::afficheRegle() {
 	return res;
 }
 
-void AffichageConsole::demandeNomJoueur(Joueur *j, int numJoueur) {
+void AffichageConsole::demandeNomJoueur(Joueur *j) {
 	cout << "======================================" << endl;
-	cout << "Veuillez entrer le nom du joueur n°" << numJoueur << " : " << endl;
+	cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
 	cout << "======================================" << endl;
 	string nom;
 	cin >> nom;
@@ -346,29 +346,54 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux) {
  *  TODO : A MODIFIER
  */
 int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
-	cout << "======================================" << endl;
-	int nbPion = listAnimaux.size();
-	cout << "Voici votre liste de pion : " << endl;
-	cout << "---> ";
-	afficheListAnimal(listAnimaux);
-	cout
-			<< "Sélectionner l'animal que vous souhaitez poser sur le plateau (selon sa position dans votre liste de pion)"
-			<< endl;
-	int positionAnimal;
-	cin >> positionAnimal;
-	while (!(positionAnimal >= 0 && positionAnimal <= (nbPion - 1))) {
-		cout << "Erreur ! Veuillez entrer un nombre compris entre 0 et "
-				<< (nbPion - 1) << endl;
-		cout << "Voici votre liste de pion : " << endl;
-		cout << "---> ";
-		afficheListAnimal(listAnimaux);
-		cout
-				<< "Sélectionner l'animal que vous souhaitez poser sur le plateau (selon sa position dans votre liste de pion)"
-				<< endl;
-		cin >> positionAnimal;
+	if(listAnimaux.size() == 0){
+		cout << "Vous n'avez pas de pion disponible" << endl;
+		return -1;
 	}
 	cout << "======================================" << endl;
-	return positionAnimal;
+	int nbPion = listAnimaux.size();
+	afficheListAnimal(listAnimaux);
+	cout << "Veuillez entrer le nom d'un animal" << endl;
+	string nomAnimal;
+	cin >> nomAnimal;
+	// on met en minuscule pour ne pas avoir de probleme
+	for(int i=0; i<nomAnimal.size(); i++){
+		if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
+			nomAnimal[i] = 'e';
+		}
+		else{
+			nomAnimal[i] = tolower(nomAnimal[i]);
+		}
+	}
+	bool ok = false;
+	int res;
+	while(!ok){
+		if(nomAnimal.compare("gazelle")==0){
+			res=1;
+			ok = true;
+		}
+		else if(nomAnimal.compare("zebre")==0){
+			res=2;
+			ok = true;
+		}
+		else if(nomAnimal.compare("elephant")==0){
+			res=3;
+			ok = true;
+		}
+		else if(nomAnimal.compare("lion")==0){
+			res=4;
+			ok = true;
+		}
+		else if(nomAnimal.compare("crocodile")==0){
+			res=5;
+			ok = true;
+		}
+		else{
+			cout << "Erreur ! Le nom de l'animal est incorrect" << endl;
+		}
+	}
+	cout << "======================================" << endl;
+	return res;
 }
 
 int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p) {

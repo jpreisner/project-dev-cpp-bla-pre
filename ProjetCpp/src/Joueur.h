@@ -14,6 +14,8 @@
 
 #include "Pion/Animal.h"
 
+class Affichage;
+
 class Plateau;
 
 using namespace std;
@@ -114,6 +116,8 @@ public:
 	 *  Ajoute le nombre de points passé en parametre
 	 */
 	void ajouterPoints(int nb);
+
+	//Animal* selectAnimal(Affichage affichage);
 };
 
 #endif /* JOUEUR_H_ */
