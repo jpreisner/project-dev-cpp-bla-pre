@@ -240,7 +240,9 @@ int Regle::valeurSecteur(Plateau p, int secteur){
 					return 0;
 				} else {
 					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-					result += animal->getValeur();
+					if(!animal->isCache()){
+						result += animal->getValeur();
+					}
 				}
 			}
 		}
