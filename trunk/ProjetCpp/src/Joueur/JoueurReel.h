@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <string>
-
+#include "../Affichage.h"
 #include "../Joueur.h"
 
 class JoueurReel: public Joueur {
@@ -18,7 +18,7 @@ public:
 	JoueurReel(string nom) : Joueur(0,nom) {};
 	virtual ~JoueurReel(){};
 
-	bool jouer(int x, int y, int typeAnimal, Plateau* p);
+	bool jouer(int x, int y, Plateau* p, Affichage * affiche);
 
 	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {
 		strm << "Joueur Reel : " << a.getNom() << endl;

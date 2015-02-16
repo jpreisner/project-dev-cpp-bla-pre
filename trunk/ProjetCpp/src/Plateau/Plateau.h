@@ -28,6 +28,12 @@ private:
 	Case cases[TAILLE_PLATEAU_X][TAILLE_PLATEAU_Y];
 public:
 	Plateau(){
+		initPlateau1();
+	}
+	virtual ~Plateau(){
+	}
+
+	void initPlateau1(){
 		/* ZONE 1 */
 		cases[1][1] = Case(SECT1);
 		cases[1][2] = Case(SECT1);
@@ -70,9 +76,6 @@ public:
 		cases[5][5] = Case(SECT6);
 		cases[6][5] = Case(SECT6);
 	}
-	virtual ~Plateau(){
-	}
-
 	int deplacerPion();
 
 	int ajouterAnimal(int x, int y, Animal* a);
@@ -91,14 +94,10 @@ public:
 		return TAILLE_PLATEAU_Y;
 	}
 
-	/**
-	 * Afficahge du plateau
-	 */
+	/* Affichage du plateau */
 	string print();
 
-	/**
-	 * return true si le secteur i est rempli par un seul joueur
-	 */
+	/* return true si le secteur i est rempli par un seul joueur */
 	bool secteurRempli(int secteur);
 
 	/* return true si le bonus Inauguration a ete donne */
@@ -106,6 +105,8 @@ public:
 
 	/* supprime le pion sur la case i/j*/
 	bool supprimerPion(int x, int y);
+
+
 };
 
 #endif /* PLATEAU_H_ */

@@ -390,6 +390,18 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
 		}
 		else{
 			cout << "Erreur ! Le nom de l'animal est incorrect" << endl;
+			cout << "Veuillez entrer le nom d'un animal" << endl;
+
+			cin >> nomAnimal;
+				// on met en minuscule pour ne pas avoir de probleme
+				for(int i=0; i<nomAnimal.size(); i++){
+					if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
+						nomAnimal[i] = 'e';
+					}
+					else{
+						nomAnimal[i] = tolower(nomAnimal[i]);
+					}
+				}
 		}
 	}
 	cout << "======================================" << endl;

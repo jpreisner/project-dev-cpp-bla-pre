@@ -84,7 +84,7 @@ public:
 	 * 5 = croco
 	 * renvoie vrai si l'ajout a ete fait.
 	 */
-	virtual bool jouer(int x, int y, int typeAnimal, Plateau* p) = 0;
+	virtual bool jouer(int x, int y, Plateau* p, Affichage * affiche) = 0;
 
 	int placementAnimal(Animal a, int x, int y);
 
@@ -116,8 +116,6 @@ public:
 	 *  Ajoute le nombre de points passé en parametre
 	 */
 	void ajouterPoints(int nb);
-
-	//Animal* selectAnimal(Affichage affichage);
 };
 
 #endif /* JOUEUR_H_ */
