@@ -8,35 +8,22 @@
 #ifndef PARTIE_H_
 #define PARTIE_H_
 
-#include <iostream>
+#include <string>
 
 #include "Joueur.h"
-#include "Pion.h"
 #include "Plateau/Plateau.h"
 
 class Partie {
 private:
-	Joueur joueur1;
-	Joueur joueur2;
-	Plateau plateau;
+	Joueur *joueur1;
+	Joueur *joueur2;
+	Plateau *plateau;
 public:
-	Partie() {
-	}
+	Partie() {};
 
-	virtual ~Partie() {
-	}
+	virtual ~Partie() {};
 
-	const Joueur& getJoueur1() const {
-		return joueur1;
-	}
 
-	const Joueur& getJoueur2() const {
-		return joueur2;
-	}
-
-	const Plateau& getPlateau() const {
-		return plateau;
-	}
 
 	/**
 	 * Lancer le premier tour
@@ -67,6 +54,18 @@ public:
 
 	int sauvegarde(string path);
 	int chargement(string path);
+
+	const Joueur* getJoueur1() {
+		return joueur1;
+	}
+
+	const Joueur* getJoueur2(){
+		return joueur2;
+	}
+
+	const Plateau* getPlateau(){
+		return plateau;
+	}
 };
 
 #endif /* PARTIE_H_ */

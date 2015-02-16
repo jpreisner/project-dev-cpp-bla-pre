@@ -15,11 +15,11 @@
 
 class Ordinateur: public Joueur {
 public:
-	Ordinateur() :
-			Joueur(0, "I-A") {
+	Ordinateur() : Joueur(0, "I-A") {
 	}
-	virtual ~Ordinateur() {
-	}
+	virtual ~Ordinateur() {};
+
+	bool jouer(int x, int y, int typeAnimal, Plateau* p);
 
 	friend ostream& operator<<(ostream &strm, const Ordinateur &a) {
 		strm << "Ordinateur : " << a.getNom() << endl;

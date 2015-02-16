@@ -11,13 +11,11 @@
 #include <vector>
 
 #include "AffichageConsole.h"
+#include "Joueur/JoueurReel.h"
 #include "Joueur.h"
 #include "Pion/Animal.h"
 #include "Pion/ImpalaJones.h"
 #include "Plateau/Plateau.h"
-#include "Pion/Animal/Peureux/Gazelle.h"
-#include "Pion/Animal/Neutre/Elephant.h"
-#include "Pion/Animal/Peureux/Zebre.h"
 
 class AffichageConsole;
 
@@ -36,7 +34,9 @@ int main() {
 	int nbLions = 1;
 	int nbCrocos = 2;
 
-	Joueur j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
+	//JoueurReel j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
+	JoueurReel j("Zizou");
+
 	cout << j << endl;
 
 	unsigned int i;
