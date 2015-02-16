@@ -46,8 +46,13 @@ int main() {
 	}
 	*/
 
-	ImpalaJones ij(1, 0);
+	cout << "Test affichage de la liste de pion" << endl;
 	AffichageConsole affichage;
+	affichage.afficheListAnimal(j.getListAnimaux());
+
+
+
+	ImpalaJones ij(1, 0);
 	Plateau p;
 	p.initImpalaJones(&ij);
 	affichage.affichePlateau(p);
