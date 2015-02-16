@@ -23,7 +23,17 @@ public:
 
 	virtual ~Partie() {};
 
+	const Joueur* getJoueur1() {
+		return joueur1;
+	}
 
+	const Joueur* getJoueur2(){
+		return joueur2;
+	}
+
+	const Plateau* getPlateau(){
+		return plateau;
+	}
 
 	/**
 	 * Lancer le premier tour
@@ -55,17 +65,6 @@ public:
 	int sauvegarde(string path);
 	int chargement(string path);
 
-	const Joueur* getJoueur1() {
-		return joueur1;
-	}
-
-	const Joueur* getJoueur2(){
-		return joueur2;
-	}
-
-	const Plateau* getPlateau(){
-		return plateau;
-	}
 };
 
 #endif /* PARTIE_H_ */

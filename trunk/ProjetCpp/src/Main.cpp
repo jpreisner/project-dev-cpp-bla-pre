@@ -28,23 +28,8 @@ int main() {
 	/**
 	 * Test initialisation joueur + liste des animaux
 	 */
-	int nbGazelles = 6;
-	int nbZebres = 5;
-	int nbElephants = 1;
-	int nbLions = 1;
-	int nbCrocos = 2;
-
-	//JoueurReel j(0, "Zizou", nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos);
 	JoueurReel j("Zizou");
-
 	cout << j << endl;
-
-	unsigned int i;
-	/*
-	for (i = 0; i < j.getListAnimaux().size(); i++) {
-		cout << "listAnimaux[" << i << "]=" << j.getAnimal(i)->print() << endl;
-	}
-	*/
 
 	cout << "Test affichage de la liste de pion" << endl;
 	AffichageConsole affichage;
