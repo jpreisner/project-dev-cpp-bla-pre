@@ -8,14 +8,15 @@
 #ifndef ORDINATEUR_H_
 #define ORDINATEUR_H_
 
+#include <iostream>
 #include <string>
 
 #include "../Joueur.h"
 
 class Ordinateur: public Joueur {
 public:
-	Ordinateur(int id=2) :
-			Joueur(0, "I-A", id) {
+	Ordinateur() :
+			Joueur(0, "I-A") {
 	}
 	virtual ~Ordinateur() {
 	}
