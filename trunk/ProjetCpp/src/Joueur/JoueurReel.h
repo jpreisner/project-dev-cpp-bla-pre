@@ -18,6 +18,8 @@ public:
 	JoueurReel(string nom) : Joueur(0,nom) {};
 	virtual ~JoueurReel(){};
 
+	bool bonusInauguration(Plateau p);
+
 	bool jouer(int x, int y, Plateau* p, Affichage * affiche);
 
 	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {

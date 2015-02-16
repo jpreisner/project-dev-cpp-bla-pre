@@ -60,8 +60,6 @@ int main() {
 	p.ajouterAnimal(6,3,pt3);
 	cout<<"Affichage du plateau :" <<endl;
 	affichage.affichePlateau(p);
-
-	p.bonusInauguration();
 	
 	cout << "Test d'un joueur après bonus inauguration : "<<j << endl;
 /*

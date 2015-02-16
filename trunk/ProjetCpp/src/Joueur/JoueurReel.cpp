@@ -84,6 +84,12 @@ bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 			p->getCase(x, y)->ajouterPion(getListAnimaux()[pos]);
 			// suppression de l'animal dans la reserve du joueur
 			getListAnimaux().erase(getListAnimaux().begin() + pos - 1);
+
+			/* BONUS INNAUGURATION */
+			if (p->secteurRempli(p->getCase(x, y)->getSecteur())){
+				ajouterPoints(5);
+			}
+
 			return true;
 		} else {
 			cerr << "L'animal n'est pas dans les pions disponibles du joueur" << endl;
