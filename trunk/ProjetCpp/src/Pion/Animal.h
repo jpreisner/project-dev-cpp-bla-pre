@@ -23,12 +23,11 @@ class Animal: public Pion {
 // attributs
 private:
 	int valeur;
-	bool cache;
 	Joueur* joueur;
 
 // méthodes
 public:
-	Animal(int v = 0, Joueur* joueur = NULL) : valeur(v), cache(false), joueur(joueur) {
+	Animal(int v = 0, Joueur* joueur = NULL) : valeur(v), joueur(joueur) {
 	}
 	virtual ~Animal() {
 	}
@@ -64,7 +63,6 @@ public:
 		//return "(Animal," + id.str() + ")";
 		return "Animal";
 	}
-
 };
 
 #endif /* ANIMAL_H_ */

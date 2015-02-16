@@ -7,8 +7,9 @@
 
 #include "Regle.h"
 
-#include <stddef.h>
-
+#include "Joueur.h"
+#include "Pion/Animal/Peureux.h"
+#include "Pion/Animal.h"
 #include "Pion.h"
 #include "Plateau/Case.h"
 #include "Plateau/Plateau.h"
@@ -239,9 +240,11 @@ int Regle::valeurSecteur(Plateau p, int secteur){
 				if (p.getCase(i, j)->getPion() == NULL) {
 					return 0;
 				} else {
-					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-					if(!animal->isCache()){
-						result += animal->getValeur();
+					Peureux *peureux = dynamic_cast<Peureux*>(p.getCase(i, j)->getPion());
+					//Animal * animal = (Animal*) p.getCase(i, j)->getPion();
+					//if(!animal->isCache()){
+					if(peureux != NULL && !peureux->isCache()){
+						result += peureux->getValeur();
 					}
 				}
 			}

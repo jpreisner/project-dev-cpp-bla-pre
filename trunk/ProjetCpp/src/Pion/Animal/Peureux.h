@@ -18,8 +18,10 @@ using namespace std;
 class Peureux: public Animal {
 private:
 	vector<Animal> listAnimauxImpressionnant;
+	bool cache;
+
 public:
-	Peureux(int v = 0, Joueur* j = NULL) : Animal(v,j) {};
+	Peureux(int v = 0, Joueur* j = NULL) : Animal(v,j), cache(false){};
 
 	virtual ~Peureux(){};
 
@@ -39,6 +41,14 @@ public:
 
 	virtual string print() const{
 		return "Peureux";
+	}
+
+	bool isCache() const {
+		return cache;
+	}
+
+	void setCache(bool cache) {
+		this->cache = cache;
 	}
 };
 

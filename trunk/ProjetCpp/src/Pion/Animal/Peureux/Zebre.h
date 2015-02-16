@@ -23,6 +23,9 @@ public:
 	string print() const {
 		ostringstream id;
 		id << getJoueur()->getId();
+		if(isCache()){
+			return "(-," + id.str() + ")";
+		}
 		return "(Z," + id.str() + ")";
 	}
 };

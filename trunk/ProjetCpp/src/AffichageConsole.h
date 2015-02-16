@@ -22,7 +22,7 @@ public:
 	virtual ~AffichageConsole(){};
 	int menuDemarrage();
 	int afficheRegle();
-	void demandeNomJoueur(Joueur *j, int numJoueur);
+	void demandeNomJoueur(Joueur *j);
 	void affichePlateau(Plateau p);
 	int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij);
 	void afficheListAnimal(vector<Animal*> listAnimaux);
