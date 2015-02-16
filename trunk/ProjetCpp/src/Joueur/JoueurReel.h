@@ -15,8 +15,8 @@
 
 class JoueurReel: public Joueur {
 public:
-	JoueurReel(string nom, int id) :
-			Joueur(0, nom, id) {
+	JoueurReel(string nom) :
+			Joueur(0,nom) {
 	}
 	virtual ~JoueurReel();
 
