@@ -187,6 +187,7 @@ int Regle::calculPointsJoueur(Plateau p, Joueur j){
 
 /**
  * renvoie le joueur qui a la majorité dans un secteur
+ * retourne NULL si une case n'a pas de pion
  */
 Joueur* Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
 	int j1 = 0;
@@ -196,6 +197,9 @@ Joueur* Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
 
 	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {
 		for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
+			if(p.getCase(i, j)->getPion() == NULL){
+				return NULL;
+			}
 			if (p.getCase(i, j)->getSecteur() == secteur) {
 				if (joueur1 == NULL && joueur2 == NULL) {
 					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
