@@ -172,13 +172,13 @@ int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
 
 /* calcule les points d'un joueur,
  * renvoie 0 si un secteur n'est pas rempli*/
-int Regle::calculPointsJoueur(Plateau p, Joueur j){
+int Regle::calculPointsJoueur(Plateau p, Joueur * j){
 	int result = 0;
 	for (int i = SECT1; i <= SECT6; i++) {
 		if (!p.secteurRempli(i)) {
 			return 0;
 		}
-		if (j == *joueurMajoriteDansSecteur(p, i)) {
+		if (*j == *joueurMajoriteDansSecteur(p, i)) {
 			result += valeurSecteur(p,i);
 		}
 	}
