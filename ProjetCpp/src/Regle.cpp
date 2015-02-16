@@ -170,9 +170,63 @@ int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
 	return 0;
 }
 
+/* calcule les points d'un joueur,
+ * renvoie 0 si un secteur n'est pas rempli*/
+int Regle::calculPointsJoueur(Plateau p, Joueur j){
+	int result = 0;
+	for (int i = SECT1; i <= SECT6; i++) {
+		if (!p.secteurRempli(i)) {
+			return 0;
+		}
+		if (j == *joueurMajoriteDansSecteur(p, i)) {
+			result += valeurSecteur(p,i);
+		}
+	}
+	return result;
+}
 
+/**
+ * renvoie le joueur qui a la majorité dans un secteur
+ */
+Joueur* Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
+	int j1 = 0;
+	Joueur * joueur1 = NULL;
+	int j2 = 0;
+	Joueur * joueur2 = NULL;
 
-/* ATTENTION, n'apeller cette methode que lorsque le plateau est rempli */
+	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {
+		for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
+			if (p.getCase(i, j)->getSecteur() == secteur) {
+				if (joueur1 == NULL && joueur2 == NULL) {
+					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
+					joueur1 = animal->getJoueur();
+					j1++;
+				} else {
+					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
+					if (animal->getJoueur() == joueur1) {
+						j1++;
+					} else {
+						if (joueur2 == NULL) {
+							Animal * animal = (Animal*) p.getCase(i, j)->getPion();
+							joueur2 = animal->getJoueur();
+							j2++;
+						} else {
+							j2++;
+						}
+					}
+				}
+			}
+		}
+	}
+	if (j2 > j1) {
+		return joueur2;
+	} else {
+		return joueur1;
+	}
+}
+
+/* ATTENTION, n'apeller cette methode que lorsque le plateau est rempli
+ * return 0 si une des cases n'est pas remplie*/
 int Regle::valeurSecteur(Plateau p, int secteur){
 	int result = 0;
 	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {
@@ -181,7 +235,7 @@ int Regle::valeurSecteur(Plateau p, int secteur){
 				if (p.getCase(i, j)->getPion() == NULL) {
 					return 0;
 				} else {
-					Animal * animal = p.getCase(i, j)->getPion();
+					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
 					result += animal->getValeur();
 				}
 			}

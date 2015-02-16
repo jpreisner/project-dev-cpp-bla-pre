@@ -9,7 +9,7 @@
 #define REGLE_H_
 
 #include "Pion/ImpalaJones.h"
-
+#include "Joueur.h"
 class Plateau;
 
 class Regle {
@@ -28,6 +28,8 @@ public:
 	/* Par rapport aux effraiments */
 
 	/* Comptage des points */
+	static int calculPointsJoueur(Plateau p,Joueur j);
+	static Joueur* joueurMajoriteDansSecteur(Plateau p,int secteur);
 	static int valeurSecteur(Plateau p,int secteur);
 
 };
