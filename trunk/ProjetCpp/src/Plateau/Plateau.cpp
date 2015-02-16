@@ -19,6 +19,8 @@ int Plateau::deplacerPion(){
 }
 
 int Plateau::ajouterAnimal(int x, int y, Animal* a){
+	a->setY(y);
+	a->setX(x);
 	return getCase(x, y)->ajouterPion(a);
 }
 
@@ -78,11 +80,24 @@ bool Plateau::supprimerPion(int x, int y){
 }
 
 int Plateau::initImpalaJones(ImpalaJones *ij){
-	/*
-	cout << "Dans Plateau.h->initImpalaJones , print = " << ij.print() << endl;
-	ImpalaJones * ptI = &ij;
-	cout << "Apres pointeur : print = " << ptI->print() << endl;
-	cases[1][0].ajouterPion(ptI);
-	*/
-	return getCase(1, 0)->ajouterPion(ij);
+	return getCase(ij->getX(), ij->getY())->ajouterPion(ij);
 }
+
+void Plateau::echangerAnimalCases(Animal* a1, Animal* a2){
+	int x_a1 = a1->getX();
+	int y_a1 = a1->getY();
+	int x_a2 = a2->getX();
+	int y_a2 = a2->getY();
+
+	a1->setX(x_a2);
+	a1->setY(y_a2);
+	a2->setX(x_a1);
+	a2->setY(y_a2);
+
+	getCase(x_a1, y_a1)->supprimerPion();
+	getCase(x_a2, y_a2)->supprimerPion();
+
+	getCase(x_a1, y_a1)->ajouterPion(a2);
+	getCase(x_a2, y_a2)->ajouterPion(a1);
+}
+

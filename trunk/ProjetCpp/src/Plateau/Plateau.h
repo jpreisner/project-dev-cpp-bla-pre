@@ -106,7 +106,8 @@ public:
 	/* supprime le pion sur la case i/j*/
 	bool supprimerPion(int x, int y);
 
-
+	/* methode pour echanger les 2 pions de 2 cases*/
+	void echangerAnimalCases(Animal* a1, Animal* a2);
 };
 
 #endif /* PLATEAU_H_ */
