@@ -73,7 +73,7 @@ bool Joueur::jouer(int x, int y, int typeAnimal, Plateau* p){
 				return true;
 			}
 		}
-		cerr << "L'animal n'est pas dans les pionts disponibles du joueur" << endl;
+		cerr << "L'animal n'est pas dans les pions disponibles du joueur" << endl;
 		return false;
 	}
 }
