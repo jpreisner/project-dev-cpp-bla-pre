@@ -19,19 +19,20 @@ private:
 	Joueur *joueur2;
 	Plateau *plateau;
 public:
-	Partie() {};
+	Partie(Joueur *joueur1, Joueur *joueur2, Plateau *plateau) :
+			joueur1(joueur1), joueur2(joueur2), plateau(plateau){};
 
-	virtual ~Partie() {};
+	virtual ~Partie(){};
 
-	const Joueur* getJoueur1() {
+	Joueur* getJoueur1(){
 		return joueur1;
 	}
 
-	const Joueur* getJoueur2(){
+	Joueur* getJoueur2(){
 		return joueur2;
 	}
 
-	const Plateau* getPlateau(){
+	Plateau* getPlateau(){
 		return plateau;
 	}
 
@@ -46,21 +47,21 @@ public:
 	int initJoueurs();
 
 	/*friend ostream& operator<<(ostream &strm, const Partie &a) {
-		strm << "Partie" << endl;
-		strm << "\t Pions Joueur 1 : " << endl;
-		for (int i = 0; i < a.getJoueur1().getNbPoints(); i++) {
-			strm << "\t Pion " << i << " : " << a.getJoueur1().getAnimal(i)->print() << endl;
-		}
+	 strm << "Partie" << endl;
+	 strm << "\t Pions Joueur 1 : " << endl;
+	 for (int i = 0; i < a.getJoueur1().getNbPoints(); i++) {
+	 strm << "\t Pion " << i << " : " << a.getJoueur1().getAnimal(i)->print() << endl;
+	 }
 
-		strm << "\t Pions Joueur 2 : " << endl;
-		for (int i = 0; i < a.getJoueur2().getNbPoints(); i++) {
-			strm << "\t Pion " << i << " : " << a.getJoueur2().getAnimal(i)->print() << endl;
-		}
+	 strm << "\t Pions Joueur 2 : " << endl;
+	 for (int i = 0; i < a.getJoueur2().getNbPoints(); i++) {
+	 strm << "\t Pion " << i << " : " << a.getJoueur2().getAnimal(i)->print() << endl;
+	 }
 
-		//TODO AFFICHER PLATEAU
-		strm << a.plateau.print() << endl;
-		return strm;
-	}*/
+	 //TODO AFFICHER PLATEAU
+	 strm << a.plateau.print() << endl;
+	 return strm;
+	 }*/
 
 	int sauvegarde(string path);
 	int chargement(string path);
