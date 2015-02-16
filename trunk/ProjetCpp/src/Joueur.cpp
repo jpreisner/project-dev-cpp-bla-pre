@@ -44,39 +44,6 @@ void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nb
 	}
 }
 
-bool Joueur::jouer(int x, int y, int typeAnimal, Plateau* p){
-	if (p->getCase(x, y)->getPion() != NULL) {
-		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")" << endl;
-		return false;
-	}
-	else {
-		Pion* pion;
-
-		/* instanciation du pointeur selon le type demandé en parametre */
-		switch (typeAnimal) {
-			case 1:		pion = new Gazelle(this);		break;
-			case 2:		pion = new Zebre(this);			break;
-			case 3:		pion = new Elephant(this);		break;
-			case 4:		pion = new Lion(this);			break;
-			case 5:		pion = new Crocodile(this);		break;
-			default:			break;
-		}
-
-		/* test avec les animaux en reserve du joueur*/
-		for (unsigned int i = 0; i < listAnimaux.size(); i++) {
-			/* equivalent du instanceOF, peut-ètre à revoir.*/
-			if (typeid( *pion ) == typeid(*listAnimaux[i])) {
-				/* ajotu de l'animal à la case*/
-				p->getCase(x, y)->ajouterPion(listAnimaux[i]);
-				/* suppression de l'animal dans la reserve du joueur*/
-				listAnimaux.erase(listAnimaux.begin() + i - 1);
-				return true;
-			}
-		}
-		cerr << "L'animal n'est pas dans les pions disponibles du joueur" << endl;
-		return false;
-	}
-}
 
 int Joueur::placementAnimal(Animal a, int x, int y){
 	return 0;
