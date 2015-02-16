@@ -14,6 +14,7 @@
 #include "../Joueur.h"
 #include "../Pion.h"
 
+class Affichage;
 class Plateau;
 class Joueur;
 
@@ -49,10 +50,9 @@ public:
 	int poser(int x, int y);
 
 	/**
-	 * action en fonction des autres animaux environnants
+	 * action appelé lorsque l'animal est posé et est en fonction des autres animaux environnants
 	 */
-	virtual int action(Plateau *p) = 0;
-	//int action(Plateau *p){return 0;}
+	virtual void action(Plateau *p, Affichage *affichage) = 0;
 
 	/**
 	 * cacher ou montrer

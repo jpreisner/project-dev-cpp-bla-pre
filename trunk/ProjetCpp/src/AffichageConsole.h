@@ -33,6 +33,7 @@ public:
 	int demandeLigne(Plateau p, int colonne);
 	int demandeColonne(Plateau p, int ligne);
 	void afficheImpalaJones();
+	int demandeChoixActionCrocodile(vector<Gazelle*> voisin);
 	/* A COMPLETER */
 };
 

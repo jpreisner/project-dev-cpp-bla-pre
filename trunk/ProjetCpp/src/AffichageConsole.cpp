@@ -351,13 +351,12 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
 		return -1;
 	}
 	cout << "======================================" << endl;
-	int nbPion = listAnimaux.size();
 	afficheListAnimal(listAnimaux);
 	cout << "Veuillez entrer le nom d'un animal" << endl;
 	string nomAnimal;
 	cin >> nomAnimal;
 	// on met en minuscule pour ne pas avoir de probleme
-	for(int i=0; i<nomAnimal.size(); i++){
+	for(unsigned int i=0; i<nomAnimal.size(); i++){
 		if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
 			nomAnimal[i] = 'e';
 		}
@@ -394,7 +393,7 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
 
 			cin >> nomAnimal;
 				// on met en minuscule pour ne pas avoir de probleme
-				for(int i=0; i<nomAnimal.size(); i++){
+				for(unsigned int i=0; i<nomAnimal.size(); i++){
 					if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
 						nomAnimal[i] = 'e';
 					}
@@ -517,4 +516,32 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne) {
 	}
 	cout << "======================================" << endl;
 	return res;
+}
+
+int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin){
+	int nbVoisin = voisin.size();
+	cout << "======================================" << endl;
+	cout << "Vous pouvez échanger votre crocodile avec " << nbVoisin << " gazelle";
+	if(nbVoisin>1){
+		cout << "s";
+	}
+	cout << "\n";
+
+	int i;
+	cout << "Que souhaitez-vous faire?" << endl;
+	for(i=1; i<=nbVoisin; i++){
+		cout << "   " << i << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+	}
+	cout << "   " << i << " - ne rien faire" << endl;
+	cout << "======================================" << endl;
+	while(!(i>=1 && i<=nbVoisin+1)){
+		cout << "Erreur ! le chiffre entré n'est pas compris entre 1 et " << nbVoisin+1 << endl;
+		cout << "Que souhaitez-vous faire?" << endl;
+		for(i=1; i<=nbVoisin; i++){
+			cout << "   " << i << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+		}
+		cout << "   " << i << " - ne rien faire" << endl;
+		cout << "======================================" << endl;
+	}
+	return i;
 }
