@@ -17,7 +17,7 @@ using namespace std;
 
 class Peureux: public Animal {
 private:
-	vector<Animal> listAnimauxImpressionnant;
+	vector<Animal*> listAnimauxImpressionnant;
 	bool cache;
 
 public:
@@ -28,7 +28,7 @@ public:
 	/**
 	 * retirer l'animal a la liste des animaux impressionnants
 	 */
-	void ajouterAnimalImpressionnant(const Animal& a){
+	void ajouterAnimalImpressionnant(Animal *a){
 		listAnimauxImpressionnant.push_back(a);
 	}
 
@@ -36,7 +36,7 @@ public:
 	 * retirer l'animal a la liste des animaux impressionnants
 	 * TODO
 	 */
-	void retirerAnimalImpressionnant(const Animal& a){
+	void retirerAnimalImpressionnant(Animal *a){
 	}
 
 	virtual string print() const{
@@ -50,6 +50,10 @@ public:
 	void setCache(bool cache) {
 		this->cache = cache;
 	}
+
+	void seCache();
+
+	void fuite(Plateau *p);
 };
 
 #endif /* PEUREUX_H_ */

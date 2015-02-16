@@ -17,7 +17,7 @@ using namespace std;
 
 class Effrayant: public Animal {
 private:
-	vector<Animal> listAnimauxEffrayes;
+	vector<Animal*> listAnimauxEffrayes;
 public:
 	Effrayant(int v = 0, Joueur* j = NULL) : Animal(v,j) {};
 	virtual ~Effrayant(){};
@@ -25,7 +25,7 @@ public:
 	/**
 	 * Ajouter l'animal a la liste des animaux effrayes
 	 */
-	void ajouterAnimalEffraye(const Animal& a){
+	void ajouterAnimalEffraye(Animal *a){
 		listAnimauxEffrayes.push_back(a);
 	}
 
@@ -33,7 +33,7 @@ public:
 	 * retirer l'animal a la liste des animaux effrayes
 	 * TODO
 	 */
-	void retirerAnimalEffraye(const Animal& a){
+	void retirerAnimalEffraye(Animal *a){
 	}
 
 	virtual string print() const{

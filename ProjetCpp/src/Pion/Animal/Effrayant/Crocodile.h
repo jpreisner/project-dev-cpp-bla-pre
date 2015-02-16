@@ -24,6 +24,7 @@ public:
 		id << getJoueur()->getId();
 		return "(C," + id.str() + ")";
 	}
+	int action(Plateau *p){return 0;}
 
 };
 

@@ -14,6 +14,7 @@
 #include "../Joueur.h"
 #include "../Pion.h"
 
+class Plateau;
 class Joueur;
 
 using namespace std;
@@ -50,7 +51,8 @@ public:
 	/**
 	 * action en fonction des autres animaux environnants
 	 */
-	int action();
+	virtual int action(Plateau *p) = 0;
+	//int action(Plateau *p){return 0;}
 
 	/**
 	 * cacher ou montrer
