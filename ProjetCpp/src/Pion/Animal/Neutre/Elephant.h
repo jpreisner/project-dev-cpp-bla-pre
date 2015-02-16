@@ -24,7 +24,8 @@ public:
 		id << getJoueur()->getId();
 		return "(E," + id.str() + ")";
 	}
-	int action(Plateau *p){return 0;}
+
+	void action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* ELEPHANT_H_ */

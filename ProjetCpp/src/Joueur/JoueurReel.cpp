@@ -23,7 +23,6 @@ bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")" << endl;
 		return false;
 	} else {
-		Animal* animal;
 		int typeAnimal = affiche->selectionnerAnimal(getListAnimaux());
 		int nbPion = getListAnimaux().size();
 		int pos = 0;

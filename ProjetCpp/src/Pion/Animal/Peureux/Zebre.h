@@ -8,7 +8,7 @@
 #ifndef ZEBRE_H_
 #define ZEBRE_H_
 
-#include <iostream>
+#include <sstream>
 #include <string>
 
 #include "../../../Joueur.h"
@@ -29,7 +29,7 @@ public:
 		return "(Z," + id.str() + ")";
 	}
 
-	int action(Plateau *p){return 0;}
+	void action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* ZEBRE_H_ */

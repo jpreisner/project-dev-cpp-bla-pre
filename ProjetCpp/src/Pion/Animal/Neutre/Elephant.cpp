@@ -6,3 +6,6 @@
  */
 
 #include "Elephant.h"
+
+void Elephant::action(Plateau *p, Affichage *affichage){
+}

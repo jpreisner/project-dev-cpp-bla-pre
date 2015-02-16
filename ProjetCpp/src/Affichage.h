@@ -10,7 +10,7 @@
 
 #include <vector>
 
-#include "Pion/Animal.h"
+#include "Pion/Animal/Peureux/Gazelle.h"
 #include "Pion/ImpalaJones.h"
 
 
@@ -37,6 +37,7 @@ public:
 	virtual int demandeLigne(Plateau p, int colonne) = 0;
 	virtual int demandeColonne(Plateau p, int ligne) = 0;
 	virtual void afficheImpalaJones() = 0;
+	virtual int demandeChoixActionCrocodile(vector<Gazelle*> voisin) = 0;
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */
 };
