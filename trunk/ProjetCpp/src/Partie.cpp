@@ -31,6 +31,7 @@ int Partie::sauvegarde(string path){
 }
 
 int Partie::chargement(string path){
+	/*
 	string file = path + ".txt";
 	// Lecture
 	ifstream fichier(file, ios::in);
@@ -46,5 +47,6 @@ int Partie::chargement(string path){
 
 	// Fin de la lecture
 	fichier.close();
+	*/
 	return 0;
 }
