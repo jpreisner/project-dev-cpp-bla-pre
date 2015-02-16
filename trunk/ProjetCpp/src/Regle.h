@@ -28,7 +28,7 @@ public:
 	/* Par rapport aux effraiments */
 
 	/* Comptage des points */
-
+	static int valeurSecteur(Plateau p,int secteur);
 
 };
 

@@ -18,8 +18,8 @@
  */
 bool Regle::colonneRempli(Plateau p, int colonne){
 	int i;
-	for(i=1; i<p.getTaillePlateauY()-1; i++){
-		if(p.getCase(colonne, i)->getPion() == NULL){
+	for (i = 1; i < p.getTaillePlateauY() - 1; i++) {
+		if (p.getCase(colonne, i)->getPion() == NULL) {
 			return false;
 		}
 	}
@@ -31,8 +31,8 @@ bool Regle::colonneRempli(Plateau p, int colonne){
  */
 bool Regle::ligneRempli(Plateau p, int ligne){
 	int i;
-	for(i=1; i<p.getTaillePlateauX()-1; i++){
-		if(p.getCase(i, ligne)->getPion() == NULL){
+	for (i = 1; i < p.getTaillePlateauX() - 1; i++) {
+		if (p.getCase(i, ligne)->getPion() == NULL) {
 			return false;
 		}
 	}
@@ -44,8 +44,8 @@ bool Regle::ligneRempli(Plateau p, int ligne){
  */
 bool Regle::finPartie(Plateau p){
 	int i;
-	for(i=1; i<p.getTaillePlateauX()-1; i++){
-		if(!colonneRempli(p, i)){
+	for (i = 1; i < p.getTaillePlateauX() - 1; i++) {
+		if (!colonneRempli(p, i)) {
 			return false;
 		}
 	}
@@ -59,68 +59,67 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 	int new_x;
 	int new_y;
 	// Cas ou ImpalaJones est sur la ligne horizontale du haut
-		if(y==0){
-			// Cas ou il passe sur la ligne verticale de droite
-			if(x+nbCases>=TAILLE_PLATEAU_X-1){
-				nbCases-=(TAILLE_PLATEAU_X-1-x);
-				new_x = TAILLE_PLATEAU_X-1;
-				new_y = 1 + nbCases;
-				return !ligneRempli(p, new_y);
-			}
-			// Cas ou il reste sur ligne horizontale du haut
-			else{
-				new_x = x+nbCases;
-				return !colonneRempli(p, new_x);
-			}
+	if (y == 0) {
+		// Cas ou il passe sur la ligne verticale de droite
+		if (x + nbCases >= TAILLE_PLATEAU_X - 1) {
+			nbCases -= (TAILLE_PLATEAU_X - 1 - x);
+			new_x = TAILLE_PLATEAU_X - 1;
+			new_y = 1 + nbCases;
+			return !ligneRempli(p, new_y);
 		}
-		// Cas ou ImpalaJones est sur la ligne horizontale du bas
-		else if(y==TAILLE_PLATEAU_Y-1){
-			// Cas ou il passe sur la ligne verticale de gauche
-			if(x-nbCases<=0){
-				nbCases-=x;
-				new_x = 0;
-				new_y = TAILLE_PLATEAU_Y-2 - nbCases;
-				return !ligneRempli(p, new_y);
-			}
-			// Cas ou il reste sur la ligne horizontale du bas
-			else{
-				new_x = x-nbCases;
-				return !colonneRempli(p, new_x);
-			}
+		// Cas ou il reste sur ligne horizontale du haut
+		else {
+			new_x = x + nbCases;
+			return !colonneRempli(p, new_x);
 		}
-		// Cas ou ImpalaJones est sur la ligne verticale de gauche
-		else if(x == 0){
-			// Cas ou il passe sur la ligne horizontale du haut
-			if(y-nbCases<=0){
-				nbCases-=y;
-				new_y = 0;
-				new_x = 1 + nbCases;
-				return !colonneRempli(p, new_x);
-			}
-			// Cas ou il reste sur la ligne verticale de gauche
-			else{
-				new_y = y-nbCases;
-				return !ligneRempli(p, new_y);
-			}
+	}
+	// Cas ou ImpalaJones est sur la ligne horizontale du bas
+	else if (y == TAILLE_PLATEAU_Y - 1) {
+		// Cas ou il passe sur la ligne verticale de gauche
+		if (x - nbCases <= 0) {
+			nbCases -= x;
+			new_x = 0;
+			new_y = TAILLE_PLATEAU_Y - 2 - nbCases;
+			return !ligneRempli(p, new_y);
 		}
-		// Cas ou ImpalaJones est sur la ligne verticale de droite
-		else if (x == TAILLE_PLATEAU_X-1){
-			// Cas ou il passe sur la ligne horizontale du bas
-			if(y+nbCases>=TAILLE_PLATEAU_Y-1){
-				nbCases-=(TAILLE_PLATEAU_Y-1-y);
-				new_y = TAILLE_PLATEAU_Y-1;
-				new_x = TAILLE_PLATEAU_X-2-nbCases;
-				return !colonneRempli(p, new_x);
-			}
-			// Cas ou il reste sur la ligne verticale de droite
-			else{
-				new_y = y+nbCases;
-				return !ligneRempli(p, new_y);
-			}
+		// Cas ou il reste sur la ligne horizontale du bas
+		else {
+			new_x = x - nbCases;
+			return !colonneRempli(p, new_x);
 		}
+	}
+	// Cas ou ImpalaJones est sur la ligne verticale de gauche
+	else if (x == 0) {
+		// Cas ou il passe sur la ligne horizontale du haut
+		if (y - nbCases <= 0) {
+			nbCases -= y;
+			new_y = 0;
+			new_x = 1 + nbCases;
+			return !colonneRempli(p, new_x);
+		}
+		// Cas ou il reste sur la ligne verticale de gauche
+		else {
+			new_y = y - nbCases;
+			return !ligneRempli(p, new_y);
+		}
+	}
+	// Cas ou ImpalaJones est sur la ligne verticale de droite
+	else if (x == TAILLE_PLATEAU_X - 1) {
+		// Cas ou il passe sur la ligne horizontale du bas
+		if (y + nbCases >= TAILLE_PLATEAU_Y - 1) {
+			nbCases -= (TAILLE_PLATEAU_Y - 1 - y);
+			new_y = TAILLE_PLATEAU_Y - 1;
+			new_x = TAILLE_PLATEAU_X - 2 - nbCases;
+			return !colonneRempli(p, new_x);
+		}
+		// Cas ou il reste sur la ligne verticale de droite
+		else {
+			new_y = y + nbCases;
+			return !ligneRempli(p, new_y);
+		}
+	}
 	return true;
 }
-
 
 /**
  * Permet de savoir quelles sont les possibilités pour le joueur de déplacer Impala Jones :
@@ -145,28 +144,48 @@ int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
 	/* Interpretation */
 
 	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
-	if(caseSuivante1 && caseSuivante2 && caseSuivante3){
+	if (caseSuivante1 && caseSuivante2 && caseSuivante3) {
 		return -1;
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
-	else if(caseSuivante1 && caseSuivante2 && !caseSuivante3){
+	else if (caseSuivante1 && caseSuivante2 && !caseSuivante3) {
 		return -2;
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
-	else if(caseSuivante1 && !caseSuivante2 && !caseSuivante3){
+	else if (caseSuivante1 && !caseSuivante2 && !caseSuivante3) {
 		return -3;
 	}
 	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
-	else if(!caseSuivante1 && caseSuivante2 && !caseSuivante3){
+	else if (!caseSuivante1 && caseSuivante2 && !caseSuivante3) {
 		return -4;
 	}
 	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
 	int i;
-	for(i=4; i<19; i++){
-		if(testDeplacementImpalaJones(p, x, y, i)){
+	for (i = 4; i < 19; i++) {
+		if (testDeplacementImpalaJones(p, x, y, i)) {
 			return i;
 		}
 	}
 	/* Si on sort de la boucle, cela veut dire qu'aucune case ne peut etre jouée -> fin de la partie */
 	return 0;
+}
+
+
+
+/* ATTENTION, n'apeller cette methode que lorsque le plateau est rempli */
+int Regle::valeurSecteur(Plateau p, int secteur){
+	int result = 0;
+	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {
+		for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
+			if (p.getCase(i, j)->getSecteur() == secteur) {
+				if (p.getCase(i, j)->getPion() == NULL) {
+					return 0;
+				} else {
+					Animal * animal = p.getCase(i, j)->getPion();
+					result += animal->getValeur();
+				}
+			}
+		}
+	}
+	return result;
 }
