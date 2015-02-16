@@ -14,6 +14,7 @@
 #include "../Pion/ImpalaJones.h"
 #include "../Pion.h"
 #include "Case.h"
+#include "Secteurs.h"
 
 #define TAILLE_PLATEAU_X 8
 #define TAILLE_PLATEAU_Y 7
@@ -25,9 +26,8 @@ class Pion;
 class Plateau {
 private:
 	Case cases[TAILLE_PLATEAU_X][TAILLE_PLATEAU_Y];
-	enum secteurs : int{SECT1 = 1, SECT2 = 2, SECT3 = 3, SECT4 = 4, SECT5 = 5, SECT6 = 6};
 public:
-	Plateau() {
+	Plateau(){
 		/* ZONE 1 */
 		cases[1][1] = Case(SECT1);
 		cases[1][2] = Case(SECT1);
@@ -70,7 +70,7 @@ public:
 		cases[5][5] = Case(SECT6);
 		cases[6][5] = Case(SECT6);
 	}
-	virtual ~Plateau() {
+	virtual ~Plateau(){
 	}
 
 	int deplacerPion();
@@ -80,7 +80,7 @@ public:
 	/* Ajout d'ImpalaJones sur la case 1/0 */
 	int initImpalaJones(ImpalaJones *ij);
 
-	Case* getCase(int x, int y) {
+	Case* getCase(int x, int y){
 		return &cases[x][y];
 	}
 
