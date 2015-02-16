@@ -64,10 +64,10 @@ int main() {
 	p.bonusInauguration();
 	
 	cout << "Test d'un joueur après bonus inauguration : "<<j << endl;
-
+/*
 	if(p.supprimerPion(5,2)){
 		cout<<"Pion Bien supprimé"<<endl;
-	}
+	}*/
 	affichage.affichePlateau(p);
 
 	// cases a remplir
@@ -90,6 +90,11 @@ int main() {
 	ij.deplacer(3, &p);
 	cout << ij << endl;
 	affichage.affichePlateau(p);
+
+	cout<<p.getCase(5,2)->getPion()->getX()<<endl;
+	p.echangerAnimalCases(pt1,pt2);
+	affichage.affichePlateau(p);
+	cout<<p.getCase(5,2)->getPion()->getX()<<endl;
 
 	/* Test de l'affichage des regles
 	affichage.afficheRegle();
