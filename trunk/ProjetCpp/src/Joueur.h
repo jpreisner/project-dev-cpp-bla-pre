@@ -86,7 +86,7 @@ public:
 	 */
 	virtual bool jouer(int x, int y, Plateau* p, Affichage * affiche) = 0;
 
-	int placementAnimal(Animal a, int x, int y);
+	int placementAnimal(Animal *a, int x, int y);
 
 	vector<Animal*>& getListAnimaux(){
 		return listAnimaux;

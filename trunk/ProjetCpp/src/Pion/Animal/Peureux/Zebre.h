@@ -28,6 +28,8 @@ public:
 		}
 		return "(Z," + id.str() + ")";
 	}
+
+	int action(Plateau *p){return 0;}
 };
 
 #endif /* ZEBRE_H_ */

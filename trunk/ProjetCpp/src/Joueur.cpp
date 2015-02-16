@@ -40,7 +40,7 @@ void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nb
 }
 
 
-int Joueur::placementAnimal(Animal a, int x, int y){
+int Joueur::placementAnimal(Animal *a, int x, int y){
 	return 0;
 }
 

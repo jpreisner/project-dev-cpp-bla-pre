@@ -28,6 +28,7 @@ public:
 		}
 		return "(G," + id.str() + ")";
 	}
+	int action(Plateau *p){return 0;}
 };
 
 #endif /* GAZELLE_H_ */
