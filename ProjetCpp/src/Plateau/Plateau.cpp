@@ -32,41 +32,11 @@ bool Plateau::secteurRempli(int secteur){
 				if (getCase(i, j)->getPion() == NULL) {
 					/* pas de pion sur la case*/
 					return false;
-				} else {
-					/* il y a un pion sur la case*/
-					if (joueur == NULL) {
-						Animal* a = (Animal*) getCase(i, j)->getPion();
-						joueur = a->getJoueur();
-					} else {
-						Animal* a = (Animal*) getCase(i, j)->getPion();
-						if (joueur != a->getJoueur()) {
-							return false;
-
-						}
-					}
 				}
 			}
 		}
 	}
 	return true;
-}
-
-bool Plateau::bonusInauguration(){
-	for (int i = SECT1; i <= SECT6; i++) {
-		if (secteurRempli(i)) {
-			for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
-				for (int k = 1; k < TAILLE_PLATEAU_Y - 1; k++) {
-					if (getCase(j, k)->getSecteur() == i) {
-						Animal* a = (Animal*) getCase(j, k)->getPion();
-						a->getJoueur()->ajouterPoints(5);
-						return true;
-						/* Ajout OK */
-					}
-				}
-			}
-		}
-	}
-	return false;
 }
 
 bool Plateau::supprimerPion(int x, int y){
@@ -76,7 +46,6 @@ bool Plateau::supprimerPion(int x, int y){
 	} else {
 		return false;
 	}
-
 }
 
 int Plateau::initImpalaJones(ImpalaJones *ij){
