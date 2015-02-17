@@ -57,15 +57,26 @@ void Plateau::echangerAnimalCases(Animal* a1, Animal* a2){
 	int x_a2 = a2->getX();
 	int y_a2 = a2->getY();
 
+	// Suppression des pions
+	if(getCase(x_a1, y_a1)->supprimerPion() == -1){
+		cout << "Erreur pour supprimer l'animal " << a1->print() << " qui n'est pas présent en (" << x_a1 << ", " << y_a1 << ")" << endl;
+	}
+	if(getCase(x_a2, y_a2)->supprimerPion() == -1){
+		cout << "Erreur pour supprimer l'animal " << a2->print() << " qui n'est pas présent en (" << x_a2 << ", " << y_a2 << ")" << endl;
+	}
+
 	a1->setX(x_a2);
 	a1->setY(y_a2);
 	a2->setX(x_a1);
-	a2->setY(y_a2);
+	a2->setY(y_a1);
 
-	getCase(x_a1, y_a1)->supprimerPion();
-	getCase(x_a2, y_a2)->supprimerPion();
+	// Ajout des pions
+	if(getCase(x_a1, y_a1)->ajouterPion(a2) == -1){
+		cout << "Erreur pour ajouter l'animal " << a2->print() << " en (" << x_a1 << ", " << y_a1 << ")" << endl;
+	}
+	if(getCase(x_a2, y_a2)->ajouterPion(a1) == -1){
+		cout << "Erreur pour ajouter l'animal " << a1->print() << " en (" << x_a2 << ", " << y_a2 << ")" << endl;
+	}
 
-	getCase(x_a1, y_a1)->ajouterPion(a2);
-	getCase(x_a2, y_a2)->ajouterPion(a1);
 }
 

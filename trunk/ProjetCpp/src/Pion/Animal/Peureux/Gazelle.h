@@ -28,7 +28,7 @@ public:
 		}
 		return "(G," + id.str() + ")";
 	}
-	void action(Plateau *p, Affichage *affichage);
+	int action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* GAZELLE_H_ */

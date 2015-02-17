@@ -37,7 +37,7 @@ public:
 	virtual int demandeLigne(Plateau p, int colonne) = 0;
 	virtual int demandeColonne(Plateau p, int ligne) = 0;
 	virtual void afficheImpalaJones() = 0;
-	virtual int demandeChoixActionCrocodile(vector<Gazelle*> voisin) = 0;
+	virtual int demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plateau p) = 0;
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */
 };

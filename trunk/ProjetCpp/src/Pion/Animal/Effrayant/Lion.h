@@ -29,7 +29,7 @@ public:
 		id << getJoueur()->getId();
 		return "(L," + id.str() + ")";
 	}
-	void action(Plateau *p, Affichage *affichage);
+	int action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* LION_H_ */

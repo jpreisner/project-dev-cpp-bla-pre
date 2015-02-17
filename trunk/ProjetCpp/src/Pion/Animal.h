@@ -51,8 +51,9 @@ public:
 
 	/**
 	 * action appelé lorsque l'animal est posé et est en fonction des autres animaux environnants
+	 * Renvoie 1 si il n'y a plus d'action a effectué après l'appel de cette fonction, et 0 sinon
 	 */
-	virtual void action(Plateau *p, Affichage *affichage) = 0;
+	virtual int action(Plateau *p, Affichage *affichage) = 0;
 
 	/**
 	 * cacher ou montrer
