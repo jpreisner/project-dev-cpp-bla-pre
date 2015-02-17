@@ -525,7 +525,12 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne) {
 	return res;
 }
 
-int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin){
+int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plateau p){
+	// On a besoin d'afficher au joueur le plateau actuel avant de faire une action
+	affichePlateau(p);
+
+
+	int res;
 	int nbVoisin = voisin.size();
 	cout << "======================================" << endl;
 	cout << "Vous pouvez échanger votre crocodile avec " << nbVoisin << " gazelle";
@@ -536,19 +541,21 @@ int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin){
 
 	int i;
 	cout << "Que souhaitez-vous faire?" << endl;
-	for(i=1; i<=nbVoisin; i++){
-		cout << "   " << i << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+	for(i=0; i<nbVoisin; i++){
+		cout << "   " << i+1 << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
 	}
-	cout << "   " << i << " - ne rien faire" << endl;
+	cout << "   " << i+1 << " - ne rien faire" << endl;
 	cout << "======================================" << endl;
-	while(!(i>=1 && i<=nbVoisin+1)){
+	cin >> res;
+	while(!(res>=1 && res<=nbVoisin+1)){
 		cout << "Erreur ! le chiffre entré n'est pas compris entre 1 et " << nbVoisin+1 << endl;
 		cout << "Que souhaitez-vous faire?" << endl;
-		for(i=1; i<=nbVoisin; i++){
-			cout << "   " << i << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+		for(i=0; i<nbVoisin; i++){
+			cout << "   " << i+1 << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
 		}
-		cout << "   " << i << " - ne rien faire" << endl;
+		cout << "   " << i+1 << " - ne rien faire" << endl;
 		cout << "======================================" << endl;
+		cin >> res;
 	}
-	return i;
+	return res;
 }

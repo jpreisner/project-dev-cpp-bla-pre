@@ -29,7 +29,7 @@ public:
 		return "(Z," + id.str() + ")";
 	}
 
-	void action(Plateau *p, Affichage *affichage);
+	int action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* ZEBRE_H_ */

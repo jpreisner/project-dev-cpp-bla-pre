@@ -80,9 +80,22 @@ bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 
 		if (pos < nbPion) {
 			// ajout de l'animal à la case
-			p->getCase(x, y)->ajouterPion(getListAnimaux()[pos]);
+			p->ajouterAnimal(x, y, getListAnimaux()[pos]);
 			// suppression de l'animal dans la reserve du joueur
 			getListAnimaux().erase(getListAnimaux().begin() + pos - 1);
+
+
+			Animal *a = dynamic_cast<Animal*>(p->getCase(x, y)->getPion());
+			if(a == NULL){
+				cout << "Erreur dans jouer (JoueurReel.cpp) : le pion posé n'est pas un animal !" << endl;
+				// Supprimer le pion?
+				return false;
+			}
+			int continuer = 0;
+			while(continuer == 0){
+				continuer = a->action(p, affiche);
+				affiche->affichePlateau(*p);
+			}
 
 			/* BONUS INNAUGURATION */
 			if (p->secteurRempli(p->getCase(x, y)->getSecteur())){
