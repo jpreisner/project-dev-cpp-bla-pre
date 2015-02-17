@@ -13,7 +13,7 @@
 #include "../Peureux/Gazelle.h"
 #include "../Peureux/Zebre.h"
 
-int Lion::action(Plateau *p, Affichage *affichage){
+void Lion::action(Plateau *p, Affichage *affichage){
 
 	// Gazelle
 	if(getX()<p->getTaillePlateauX()-1 && dynamic_cast<Gazelle*>(p->getCase(getX()+1, getY())->getPion())!=NULL){
@@ -50,5 +50,4 @@ int Lion::action(Plateau *p, Affichage *affichage){
 		Zebre* z = dynamic_cast<Zebre*>(p->getCase(getX(), getY()-1)->getPion());
 		z->seCache();
 	}
-	return 1;
 }
