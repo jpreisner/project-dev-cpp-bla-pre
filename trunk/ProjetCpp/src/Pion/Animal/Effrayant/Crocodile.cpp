@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../../../Affichage.h"
+#include "../../../Affichage/Affichage.h"
 #include "../../../Pion.h"
 #include "../../../Plateau/Case.h"
 #include "../../../Plateau/Plateau.h"

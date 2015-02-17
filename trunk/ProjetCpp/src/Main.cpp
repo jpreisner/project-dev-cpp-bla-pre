@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-#include "AffichageConsole.h"
+#include "Affichage/AffichageConsole.h"
 #include "Joueur/JoueurReel.h"
 #include "Joueur.h"
 #include "Pion/Animal.h"
