@@ -16,6 +16,7 @@
 #include "Joueur.h"
 #include "Partie.h"
 #include "Regle.h"
+#include "Utils/Sauvegarde.h"
 
 using namespace std;
 
@@ -59,25 +60,38 @@ int main(){
 		Partie partie = Partie(vectJoueur,plateau);
 
 		/* affichage plateau*/
-		affichage->affichePlateau(*plateau);
+		affichage->affichePlateau(*partie.getPlateau());
 
 		/* InitPartie */
-		affichage->demandePositionInitialeImpalaJones(plateau->getImpalaJones());
-		partie.lancerPartie(plateau->getImpalaJones()->getX(), plateau->getImpalaJones()->getY());
+		affichage->demandePositionInitialeImpalaJones(partie.getPlateau()->getImpalaJones());
+		partie.lancerPartie(partie.getPlateau()->getImpalaJones()->getX(), partie.getPlateau()->getImpalaJones()->getY());
 
 		/* JEU, JUSQUA CE QUE LA PARTIE SOIE FINIE*/
 		int nbJoueurs = vectJoueur.size();
 		int tourJoueur = 0;
-		while (!Regle::finPartie(*plateau)) {
+		while (!Regle::finPartie(*partie.getPlateau())) {
 			cout<< "\n"<<endl;
 			/* affichage plateau*/
-			affichage->affichePlateau(*plateau);
+			affichage->affichePlateau(*partie.getPlateau());
 
 			cout<< "======================================"<<endl;
 			cout<< "\t Tour du joueur : "<<partie.getJoueurI(tourJoueur)->getNom()<<endl;
+			int jeu = 0;
+			do{
+				 jeu = affichage->menuJoueur(partie.getJoueurI(tourJoueur));
 
-			partie.getJoueurI(tourJoueur)->jouer(plateau,affichage);
-			affichage->affichePlateau(*plateau);
+				if(jeu == 2){
+					partie.getJoueurI(tourJoueur)->jouer(partie.getPlateau(),affichage);
+					break;
+				}else{
+					switch(jeu){
+						case(1) : affichage->afficheListAnimal(partie.getJoueurI(tourJoueur)->getListAnimaux());	break;
+						case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt");	break;
+						case(4) : return 0;
+					}
+				}
+			}while(jeu!=2);
+			affichage->affichePlateau(*partie.getPlateau());
 			affichage->demandeDeplacerImpalaJones(*partie.getPlateau(),*partie.getPlateau()->getImpalaJones());
 			if(tourJoueur == nbJoueurs){
 				tourJoueur = 0;

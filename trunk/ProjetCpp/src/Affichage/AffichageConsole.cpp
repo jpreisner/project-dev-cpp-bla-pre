@@ -462,8 +462,8 @@ int AffichageConsole::menuJoueur(Joueur *j){
 	cout << "======================================" << endl;
 	cout << "Joueur : " << j->getNom() << "(J" << j->getId() << ") :" << endl;
 	cout << "Que voulez-vous faire?" << endl;
-	cout << "   1 - Déplacer Impala Jones" << endl;
-	cout << "   2 - Afficher votre liste de pions" << endl;
+	cout << "   1 - Afficher votre liste de pions" << endl;
+	cout << "   2 - Jouer un pion sur le plateau" << endl;
 	cout << "   3 - Sauvegarder la partie" << endl;
 	cout << "   4 - Quitter la partie" << endl;
 	int res;
@@ -471,8 +471,8 @@ int AffichageConsole::menuJoueur(Joueur *j){
 	while (!(res >= 1 && res <= 4)) {
 		cout << "Erreur ! Veuillez entrer un nombre entre 1 et 4" << endl;
 		cout << "Que voulez-vous faire?" << endl;
-		cout << "   1 - Déplacer Impala Jones" << endl;
-		cout << "   2 - Afficher votre liste de pions" << endl;
+		cout << "   1 - Afficher votre liste de pions" << endl;
+		cout << "   2 - Jouer un pion sur le plateau" << endl;
 		cout << "   3 - Sauvegarder la partie" << endl;
 		cout << "   4 - Quitter la partie" << endl;
 		cin >> res;

@@ -18,12 +18,12 @@
 using namespace std;
 
 class Sauvegarde {
-
-	static bool sauvegarderPartie(Partie p, string fileName);
+private:
 	static void ecrireJoueur(Joueur *j,ofstream& fichier);
 	static void ecrirePlateau(Plateau p,ofstream& fichier);
 	static void ecrireCase(Case *c, ofstream& fichier,int i, int j);
-
+public:
+	static bool sauvegarderPartie(Partie p, string fileName);
 };
 
 #endif /* UTILS_SAUVEGARDE_H_ */
