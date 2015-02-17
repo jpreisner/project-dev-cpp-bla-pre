@@ -80,3 +80,48 @@ void Plateau::echangerAnimalCases(Animal* a1, Animal* a2){
 
 }
 
+
+
+void Plateau::initPlateau1(){
+		/* ZONE 1 */
+		cases[1][1] = Case(SECT1);
+		cases[1][2] = Case(SECT1);
+		cases[1][3] = Case(SECT1);
+		cases[2][3] = Case(SECT1);
+		cases[2][4] = Case(SECT1);
+
+		/* ZONE 2 */
+		cases[2][1] = Case(SECT2);
+		cases[2][2] = Case(SECT2);
+		cases[3][2] = Case(SECT2);
+		cases[3][3] = Case(SECT2);
+		cases[3][4] = Case(SECT2);
+		cases[4][4] = Case(SECT2);
+		cases[5][4] = Case(SECT2);
+
+		/* ZONE 3 */
+		cases[3][1] = Case(SECT3);
+		cases[4][1] = Case(SECT3);
+		cases[5][1] = Case(SECT3);
+		cases[6][1] = Case(SECT3);
+		cases[4][2] = Case(SECT3);
+		cases[4][3] = Case(SECT3);
+		cases[5][3] = Case(SECT3);
+
+		/* ZONE 4 */
+		cases[5][2] = Case(SECT4);
+		cases[6][2] = Case(SECT4);
+		cases[6][3] = Case(SECT4);
+
+		/* ZONE 5 */
+		cases[1][4] = Case(SECT5);
+		cases[1][5] = Case(SECT5);
+		cases[2][5] = Case(SECT5);
+
+		/* ZONE 6 */
+		cases[6][4] = Case(SECT6);
+		cases[3][5] = Case(SECT6);
+		cases[4][5] = Case(SECT6);
+		cases[5][5] = Case(SECT6);
+		cases[6][5] = Case(SECT6);
+	}

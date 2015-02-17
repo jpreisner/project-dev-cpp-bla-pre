@@ -27,9 +27,9 @@ bool Sauvegarde::sauvegarderPartie(Partie p, string fileName){
 	if (fichier) {
 
 		fichier << "--------------------------------" << endl;
-		Sauvegarde::ecrireJoueur(p.getJoueur1(), fichier);
+		Sauvegarde::ecrireJoueur(p.getJoueurI(1), fichier);
 		fichier << "--------------------------------" << endl;
-		Sauvegarde::ecrireJoueur(p.getJoueur2(), fichier);
+		Sauvegarde::ecrireJoueur(p.getJoueurI(2), fichier);
 		fichier << "--------------------------------" << endl;
 		Sauvegarde::ecrirePlateau(*p.getPlateau(), fichier);
 

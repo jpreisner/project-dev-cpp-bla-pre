@@ -8,6 +8,6 @@
 #include "Ordinateur.h"
 
 // TODO
-bool Ordinateur::jouer(int x, int y, int typeAnimal, Plateau *p){
+bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 	return false;
 }
