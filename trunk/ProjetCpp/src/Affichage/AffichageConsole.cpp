@@ -10,6 +10,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cstdlib>
+
 
 #include "../Joueur.h"
 #include "../Pion/Animal/Effrayant/Crocodile.h"
@@ -239,7 +241,6 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
 			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
 			cin >> res;
 		}
-		ij.deplacer(res,&p);
 		cout << "======================================" << endl;
 		return res;
 	}
@@ -359,7 +360,7 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 				cout << ", ";
 			}
 			cout << nbCrocodile << " crocodile";
-			if (nbZebre > 1) {
+			if (nbCrocodile > 1) {
 				cout << "s";
 			}
 			precedent = true;
@@ -487,16 +488,15 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
-	while (!(res >= 0 && res < p.getTaillePlateauY())) {
-		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY() << endl;
+	while (!(res >= 1 && res <= p.getTaillePlateauY()-2)) {
+		cout << "Erreur ! Veuillez entrer un chiffre entre 1 et " << p.getTaillePlateauY()-2 << endl;
 		cin >> res;
 	}
 	while (p.getCase(colonne, res)->getPion() != NULL) {
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
-		while (!(res >= 0 && res < p.getTaillePlateauY())) {
-			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY()
-					<< endl;
+		while (!(res >= 1 && res <= p.getTaillePlateauY()-2)) {
+			cout << "Erreur ! Veuillez entrer un chiffre entre 1 et " << p.getTaillePlateauY()-2 << endl;
 			cin >> res;
 		}
 	}
@@ -509,16 +509,15 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
-	while (!(res >= 0 && res < p.getTaillePlateauX())) {
-		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX() << endl;
+	while (!(res >= 1 && res <= p.getTaillePlateauX()-2)) {
+		cout << "Erreur ! Veuillez entrer un chiffre entre 1 et " << p.getTaillePlateauX()-2 << endl;
 		cin >> res;
 	}
 	while (p.getCase(res, ligne)->getPion() != NULL) {
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
-		while (!(res >= 0 && res < p.getTaillePlateauX())) {
-			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX()
-					<< endl;
+		while (!(res >= 1 && res <= p.getTaillePlateauX()-2)) {
+			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX()-2 << endl;
 			cin >> res;
 		}
 	}
@@ -586,4 +585,61 @@ void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 	}
 	ij->setX(inputX);
 	ij->setY(inputY);
+}
+
+int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2){
+	int random = rand()%2;
+	cout << "======================================" << endl;
+	cout << "Tirage au sort pour déterminer le 1er qui joue (Pile ou Face) : ";
+	if(random == 0){
+		cout << j1->getNom();
+	}
+	else{
+		cout << j2->getNom();
+	}
+	cout << ", choisissez pile (P) ou face (F)" << endl;
+	char res;
+	cin >> res;
+	res = tolower(res);
+	while(res != 'p' && res != 'f' ){
+		cout << "Erreur ! Veuillez entrez P (pour pile) ou F (pour face)" << endl;
+		cin >> res;
+		res = tolower(res);
+	}
+
+	int random_pile_face = rand()%2;	// 0 = pile, 1 = face
+	if(random_pile_face == 0){
+		cout << "Pile ! ";
+	}
+	else{
+		cout << "Face ! ";
+	}
+	if((random_pile_face == 0 && res == 'p') || (random_pile_face == 1 && res == 'f')){
+		// Le joueur n°(random) a gagné
+		if(random == 0){
+			cout << j1->getNom() << ", vous avez gagné !" << endl;
+		}
+		else{
+			cout << j2->getNom() << ", vous avez gagné !" << endl;
+		}
+		return random;
+	}
+	else{
+		// Le joueur n°(random) a perdu
+		if(random == 1){
+			cout << j1->getNom() << ", vous avez gagné !" << endl;
+			return 0;
+		}
+		cout << j2->getNom() << ", vous avez gagné !" << endl;
+		return 1;
+	}
+}
+
+void AffichageConsole::messageDebutPartie(Joueur *j){
+	cout << j->getNom() << " : à vous de commencer !" << endl;
+}
+
+void AffichageConsole::afficheTour(Joueur *j){
+	cout<< "======================================"<<endl;
+	cout<< "\t Tour du joueur n°" << j->getId() << " : "<<j->getNom()<<endl;
 }

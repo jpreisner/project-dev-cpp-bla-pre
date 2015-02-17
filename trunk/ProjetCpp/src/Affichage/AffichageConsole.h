@@ -35,6 +35,9 @@ public:
 	void afficheImpalaJones();
 	int demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plateau p);
 	void demandePositionInitialeImpalaJones(ImpalaJones * ij);
+	int pileOuFace(Joueur *j1, Joueur *j2);
+	void messageDebutPartie(Joueur *j);
+	void afficheTour(Joueur *j);
 	/* A COMPLETER */
 };
 
