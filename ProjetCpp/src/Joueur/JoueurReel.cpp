@@ -18,9 +18,25 @@
 #include "../Plateau/Case.h"
 #include "../Plateau/Plateau.h"
 
-bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
-	if (p->getCase(x, y)->getPion() != NULL) {
-		cerr << "Ajout impossible du pion en case :(" << x << "," << y << ")" << endl;
+bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche){
+	int xImpala = plateau->getImpalaJones()->getX();
+	int yImpala = plateau->getImpalaJones()->getY();
+	int xPion = 0;
+	int yPion = 0;
+	if (xImpala == 0 || xImpala == TAILLE_PLATEAU_X) {
+		/* Impala sur une ligne verticale */
+		yPion = yImpala;
+		/*  on demande la position du Y */
+		xPion = affiche->demandeColonne(*plateau, xPion);
+	} else {
+		/* Impala sur une ligne horizontale */
+		xPion = xImpala;
+		/*  on demande la position du X */
+		yPion = affiche->demandeLigne(*plateau, yPion);
+	}
+
+	if (plateau->getCase(xPion, yPion)->getPion() != NULL) {
+		cerr << "Ajout impossible du pion en case :(" << xPion << "," << yPion << ")" << endl;
 		return false;
 	} else {
 		int typeAnimal = affiche->selectionnerAnimal(getListAnimaux());
@@ -76,16 +92,17 @@ bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 			break;
 		default:
 			cerr << "L'animal n'existe pas" << endl;
-			return false;		}
+			return false;
+		}
 
 		if (pos < nbPion) {
 			// ajout de l'animal à la case
-			p->ajouterAnimal(x, y, getListAnimaux()[pos]);
+			plateau->ajouterAnimal(xPion, yPion, getListAnimaux()[pos]);
 			// suppression de l'animal dans la reserve du joueur
 			getListAnimaux().erase(getListAnimaux().begin() + pos - 1);
 
 
-			Animal *a = dynamic_cast<Animal*>(p->getCase(x, y)->getPion());
+			Animal *a = dynamic_cast<Animal*>(plateau->getCase(xPion, yPion)->getPion());
 			if(a == NULL){
 				cout << "Erreur dans jouer (JoueurReel.cpp) : le pion posé n'est pas un animal !" << endl;
 				// Supprimer le pion?
@@ -93,13 +110,15 @@ bool JoueurReel::jouer(int x, int y, Plateau* p, Affichage * affiche){
 			}
 			int continuer = 0;
 			while(continuer == 0){
-				continuer = a->action(p, affiche);
-				affiche->affichePlateau(*p);
+				continuer = a->action(plateau, affiche);
+				affiche->affichePlateau(*plateau);
 			}
 
 			/* BONUS INNAUGURATION */
-			if (p->secteurRempli(p->getCase(x, y)->getSecteur())){
+			if (!plateau->getbonusInauguration()
+					&& plateau->secteurRempli(plateau->getCase(xPion, yPion)->getSecteur())) {
 				ajouterPoints(5);
+				plateau->setBonusInauguration(true);
 			}
 
 			return true;

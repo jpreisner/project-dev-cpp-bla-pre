@@ -20,7 +20,7 @@ public:
 
 	bool bonusInauguration(Plateau p);
 
-	bool jouer(int x, int y, Plateau* p, Affichage * affiche);
+	bool jouer(Plateau* plateau, Affichage * affiche);
 
 	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {
 		strm << "Joueur Reel : " << a.getNom() << endl;

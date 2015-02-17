@@ -84,7 +84,7 @@ public:
 	 * 5 = croco
 	 * renvoie vrai si l'ajout a ete fait.
 	 */
-	virtual bool jouer(int x, int y, Plateau* p, Affichage * affiche) = 0;
+	virtual bool jouer(Plateau* plateau, Affichage * affiche) = 0;
 
 	int placementAnimal(Animal *a, int x, int y);
 

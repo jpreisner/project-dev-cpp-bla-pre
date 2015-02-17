@@ -15,21 +15,16 @@
 
 class Partie {
 private:
-	Joueur *joueur1;
-	Joueur *joueur2;
+	vector<Joueur*> vectJoueur;
 	Plateau *plateau;
 public:
-	Partie(Joueur *joueur1, Joueur *joueur2, Plateau *plateau) :
-			joueur1(joueur1), joueur2(joueur2), plateau(plateau){};
+	Partie(vector<Joueur*> vectJoueur, Plateau *plateau) :
+		vectJoueur(vectJoueur), plateau(plateau){};
 
 	virtual ~Partie(){};
 
-	Joueur* getJoueur1(){
-		return joueur1;
-	}
-
-	Joueur* getJoueur2(){
-		return joueur2;
+	Joueur* getJoueurI(int i){
+		return vectJoueur[i];
 	}
 
 	Plateau* getPlateau(){
@@ -37,31 +32,14 @@ public:
 	}
 
 	/**
-	 * Lancer le premier tour
+	 * Lancer le premier tour en initialisant la position d'ImpalaJones
 	 */
-	int lancerPartie();
+	int lancerPartie(int x, int y);
 
 	/**
 	 * Demander les noms, attribuer les cartes
 	 */
 	int initJoueurs();
-
-	/*friend ostream& operator<<(ostream &strm, const Partie &a) {
-	 strm << "Partie" << endl;
-	 strm << "\t Pions Joueur 1 : " << endl;
-	 for (int i = 0; i < a.getJoueur1().getNbPoints(); i++) {
-	 strm << "\t Pion " << i << " : " << a.getJoueur1().getAnimal(i)->print() << endl;
-	 }
-
-	 strm << "\t Pions Joueur 2 : " << endl;
-	 for (int i = 0; i < a.getJoueur2().getNbPoints(); i++) {
-	 strm << "\t Pion " << i << " : " << a.getJoueur2().getAnimal(i)->print() << endl;
-	 }
-
-	 //TODO AFFICHER PLATEAU
-	 strm << a.plateau.print() << endl;
-	 return strm;
-	 }*/
 
 	int sauvegarde(string path);
 	int chargement(string path);

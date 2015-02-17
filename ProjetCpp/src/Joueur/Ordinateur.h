@@ -19,7 +19,7 @@ public:
 	}
 	virtual ~Ordinateur() {};
 
-	bool jouer(int x, int y, int typeAnimal, Plateau* p);
+	bool jouer(Plateau* plateau, Affichage * affiche);
 
 	friend ostream& operator<<(ostream &strm, const Ordinateur &a) {
 		strm << "Ordinateur : " << a.getNom() << endl;

@@ -22,9 +22,9 @@
 #include "../Plateau/Plateau.h"
 #include "../Regle.h"
 
-int AffichageConsole::menuDemarrage() {
+int AffichageConsole::menuDemarrage(){
 	cout << "======================================" << endl;
-	cout << "Bienvenue dans le jeu Drole de Zebres!" << endl;
+	cout << "Bienvenue dans le jeu Droles de Zebres!" << endl;
 	cout << "   1 - Jouer (Joueur vs Ordi)" << endl;
 	cout << "   2 - Jouer (Joueur vs Joueur)" << endl;
 	cout << "   3 - Regles" << endl;
@@ -34,10 +34,9 @@ int AffichageConsole::menuDemarrage() {
 	int res;
 	cin >> res;
 	while (!(res >= 1 && res <= 5)) {
-		cout << "Erreur ! Veuillez entrer un chiffre compris entre 1 et 5"
-				<< endl;
+		cout << "Erreur ! Veuillez entrer un chiffre compris entre 1 et 5" << endl;
 		cout << "======================================" << endl;
-		cout << "Bienvenue dans le jeu Drole de Zebres!" << endl;
+		cout << "Bienvenue dans le jeu Droles de Zebres!" << endl;
 		cout << "   1 - Jouer (Joueur vs Ordi)" << endl;
 		cout << "   2 - Jouer (Joueur vs Joueur)" << endl;
 		cout << "   3 - Regles" << endl;
@@ -49,7 +48,7 @@ int AffichageConsole::menuDemarrage() {
 	return res;
 }
 
-int AffichageConsole::afficheRegle() {
+int AffichageConsole::afficheRegle(){
 	cout << "======================================" << endl;
 	cout << "        Affichage des règles :        " << endl;
 	cout << "======================================" << endl;
@@ -80,14 +79,14 @@ int AffichageConsole::afficheRegle() {
 	return res;
 }
 
-void AffichageConsole::demandeNomJoueur(Joueur *j) {
+void AffichageConsole::demandeNomJoueur(Joueur *j){
 	cout << "======================================" << endl;
 	cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
 	cout << "======================================" << endl;
 	string nom;
 	cin >> nom;
 	/** Verifier si le nom est correct? Comment? NULL? **/
-	while(nom.compare("I-A")==0){
+	while (nom.compare("I-A") == 0) {
 		cout << "Erreur ! Vous ne pouvez pas vous appeler I-A (réservé à l'ordinateur)" << endl;
 		cout << "======================================" << endl;
 		cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
@@ -97,7 +96,7 @@ void AffichageConsole::demandeNomJoueur(Joueur *j) {
 	j->setNom(nom);
 }
 
-void AffichageConsole::affichePlateau(Plateau p) {
+void AffichageConsole::affichePlateau(Plateau p){
 	int i, j;
 
 	/* Affichage des i */
@@ -222,7 +221,7 @@ void AffichageConsole::affichePlateau(Plateau p) {
 	}
 }
 
-int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
+int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
 	cout << "======================================" << endl;
 	int possibilite = Regle::possibiliteDeplacementImpalaJones(p, ij);
 	int res;
@@ -233,13 +232,11 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
 	}
 	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
 	else if (possibilite == -1) {
-		cout
-				<< "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"
+		cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"
 				<< endl;
 		cin >> res;
 		while (!(res >= 1 && res <= 3)) {
-			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3"
-					<< endl;
+			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
 			cin >> res;
 		}
 		cout << "======================================" << endl;
@@ -247,8 +244,7 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
 	else if (possibilite == -2) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 2"
-				<< endl;
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 2" << endl;
 		cin >> res;
 		while (!(res == 1 || res == 2)) {
 			cout << "Erreur! Veuillez choisir entre 1 et 2" << endl;
@@ -259,8 +255,7 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
 	else if (possibilite == -3) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 3"
-				<< endl;
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 3" << endl;
 		cin >> res;
 		while (!(res == 1 || res == 3)) {
 			cout << "Erreur! Veuillez choisir entre 1 et 3" << endl;
@@ -271,8 +266,7 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
 	}
 	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
 	else if (possibilite == -4) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 2 et 3"
-				<< endl;
+		cout << "Déplacement d'Impala Jones : veuillez choisir entre 2 et 3" << endl;
 		cin >> res;
 		while (!(res == 2 || res == 3)) {
 			cout << "Erreur! Veuillez choisir entre 2 et 3" << endl;
@@ -286,20 +280,17 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) {
 		cout
 				<< "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les trois cases suivantes sont pleines"
 				<< endl;
-		cout << "---> Impala Jones est avancé de " << possibilite << " cases"
-				<< endl;
+		cout << "---> Impala Jones est avancé de " << possibilite << " cases" << endl;
 		cout << "======================================" << endl;
 		return possibilite;
 	} else {
-		cout
-				<< "Erreur dans l'appel de la méthode possibiliteDeplacementImpalaJones"
-				<< endl;
+		cout << "Erreur dans l'appel de la méthode possibiliteDeplacementImpalaJones" << endl;
 		cout << "======================================" << endl;
 		return -1;
 	}
 }
 
-void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux) {
+void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 	int nbGazelle = 0;
 	int nbLion = 0;
 	int nbZebre = 0;
@@ -310,25 +301,20 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux) {
 	for (i = 0; i < nbPion; i++) {
 		if (dynamic_cast<Gazelle*>(listAnimaux[i]) != NULL) {
 			nbGazelle++;
-		}
-		else if (dynamic_cast<Zebre*>(listAnimaux[i]) != NULL) {
+		} else if (dynamic_cast<Zebre*>(listAnimaux[i]) != NULL) {
 			nbZebre++;
-		}
-		else if (dynamic_cast<Elephant*>(listAnimaux[i]) != NULL) {
+		} else if (dynamic_cast<Elephant*>(listAnimaux[i]) != NULL) {
 			nbElephant++;
-		}
-		else if (dynamic_cast<Lion*>(listAnimaux[i]) != NULL) {
+		} else if (dynamic_cast<Lion*>(listAnimaux[i]) != NULL) {
 			nbLion++;
-		}
-		else if (dynamic_cast<Crocodile*>(listAnimaux[i]) != NULL) {
+		} else if (dynamic_cast<Crocodile*>(listAnimaux[i]) != NULL) {
 			nbCrocodile++;
 		}
 	}
 	cout << "Vous avez : ";
 	if (nbGazelle + nbZebre + nbElephant + nbLion + nbCrocodile == 0) {
 		cout << "aucun pion" << endl;
-	}
-	else {
+	} else {
 		bool precedent = false;
 		if (nbGazelle > 0) {
 			cout << nbGazelle << " gazelle";
@@ -381,11 +367,8 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux) {
 	}
 }
 
-/**
- *  TODO : A MODIFIER
- */
-int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
-	if(listAnimaux.size() == 0){
+int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
+	if (listAnimaux.size() == 0) {
 		cout << "Vous n'avez pas de pion disponible" << endl;
 		return -1;
 	}
@@ -395,73 +378,62 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux) {
 	string nomAnimal;
 	cin >> nomAnimal;
 	// on met en minuscule pour ne pas avoir de probleme
-	for(unsigned int i=0; i<nomAnimal.size(); i++){
-		if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
+	for (unsigned int i = 0; i < nomAnimal.size(); i++) {
+		if (nomAnimal[i] == 'é' || nomAnimal[i] == 'è') {
 			nomAnimal[i] = 'e';
-		}
-		else{
+		} else {
 			nomAnimal[i] = tolower(nomAnimal[i]);
 		}
 	}
 	bool ok = false;
 	int res;
-	while(!ok){
-		if(nomAnimal.compare("gazelle")==0){
-			res=1;
+	while (!ok) {
+		if (nomAnimal.compare("gazelle") == 0) {
+			res = 1;
 			ok = true;
-		}
-		else if(nomAnimal.compare("zebre")==0){
-			res=2;
+		} else if (nomAnimal.compare("zebre") == 0) {
+			res = 2;
 			ok = true;
-		}
-		else if(nomAnimal.compare("elephant")==0){
-			res=3;
+		} else if (nomAnimal.compare("elephant") == 0) {
+			res = 3;
 			ok = true;
-		}
-		else if(nomAnimal.compare("lion")==0){
-			res=4;
+		} else if (nomAnimal.compare("lion") == 0) {
+			res = 4;
 			ok = true;
-		}
-		else if(nomAnimal.compare("crocodile")==0){
-			res=5;
+		} else if (nomAnimal.compare("crocodile") == 0) {
+			res = 5;
 			ok = true;
-		}
-		else{
+		} else {
 			cout << "Erreur ! Le nom de l'animal est incorrect" << endl;
 			cout << "Veuillez entrer le nom d'un animal" << endl;
 
 			cin >> nomAnimal;
-				// on met en minuscule pour ne pas avoir de probleme
-				for(unsigned int i=0; i<nomAnimal.size(); i++){
-					if(nomAnimal[i] == 'é' || nomAnimal[i] == 'è'){
-						nomAnimal[i] = 'e';
-					}
-					else{
-						nomAnimal[i] = tolower(nomAnimal[i]);
-					}
+			// on met en minuscule pour ne pas avoir de probleme
+			for (unsigned int i = 0; i < nomAnimal.size(); i++) {
+				if (nomAnimal[i] == 'é' || nomAnimal[i] == 'è') {
+					nomAnimal[i] = 'e';
+				} else {
+					nomAnimal[i] = tolower(nomAnimal[i]);
 				}
+			}
 		}
 	}
 	cout << "======================================" << endl;
 	return res;
 }
 
-int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p) {
+int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p){
 	cout << "======================================" << endl;
 	cout << "Selectionnez une case (entrez x et y) " << endl;
 	int i, j;
 	cin >> i >> j;
-	if (!(i >= 0 && i <= p.getTaillePlateauX() && j >= 0
-			&& j <= p.getTaillePlateauY())) {
-		cout << "Erreur ! x doit etre compris entre 0 et "
-				<< p.getTaillePlateauX()
-				<< " et y doit etre compris entre 0 et "
-				<< p.getTaillePlateauY() << endl;
+	if (!(i >= 0 && i <= p.getTaillePlateauX() && j >= 0 && j <= p.getTaillePlateauY())) {
+		cout << "Erreur ! x doit etre compris entre 0 et " << p.getTaillePlateauX()
+				<< " et y doit etre compris entre 0 et " << p.getTaillePlateauY() << endl;
 		return -1;
 	}
 	if (p.getCase(i, j)->getPion() == NULL) {
-		cout << "Erreur ! la case (" << i << ", " << j << ") a deja un pion"
-				<< endl;
+		cout << "Erreur ! la case (" << i << ", " << j << ") a deja un pion" << endl;
 		return -1;
 	}
 
@@ -473,17 +445,17 @@ int AffichageConsole::selectionnerPosition(int *x, int *y, Plateau p) {
 }
 
 /* Pas besoin */
-void AffichageConsole::affichePion(Pion *p, Joueur *j) {
+void AffichageConsole::affichePion(Pion *p, Joueur *j){
 	/* appel de print p et de l'id du joueur */
 	cout << "(" << p->print() << ", " << j->getId() << ")" << endl;
 }
 
 /* Pas besoin */
-void AffichageConsole::afficheImpalaJones() {
+void AffichageConsole::afficheImpalaJones(){
 	cout << "(IJ)";
 }
 
-int AffichageConsole::menuJoueur(Joueur *j) {
+int AffichageConsole::menuJoueur(Joueur *j){
 	/* Afficher le nom du joueur qui doit jouer + lui proposer de poser un pion, de regarder sa liste de pion, de sauvegarder
 	 * 	ou de déclarer forfait
 	 */
@@ -509,23 +481,21 @@ int AffichageConsole::menuJoueur(Joueur *j) {
 	return res;
 }
 
-int AffichageConsole::demandeLigne(Plateau p, int colonne) {
+int AffichageConsole::demandeLigne(Plateau p, int colonne){
 	cout << "======================================" << endl;
-	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion"
-			<< endl;
+	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
 	while (!(res >= 0 && res < p.getTaillePlateauY())) {
-		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et "
-				<< p.getTaillePlateauY() << endl;
+		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY() << endl;
 		cin >> res;
 	}
 	while (p.getCase(colonne, res)->getPion() != NULL) {
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
 		while (!(res >= 0 && res < p.getTaillePlateauY())) {
-			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et "
-					<< p.getTaillePlateauY() << endl;
+			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauY()
+					<< endl;
 			cin >> res;
 		}
 	}
@@ -533,23 +503,21 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne) {
 	return res;
 }
 
-int AffichageConsole::demandeColonne(Plateau p, int ligne) {
+int AffichageConsole::demandeColonne(Plateau p, int ligne){
 	cout << "======================================" << endl;
-	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion"
-			<< endl;
+	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion" << endl;
 	int res;
 	cin >> res;
 	while (!(res >= 0 && res < p.getTaillePlateauX())) {
-		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et "
-				<< p.getTaillePlateauX() << endl;
+		cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX() << endl;
 		cin >> res;
 	}
 	while (p.getCase(res, ligne)->getPion() != NULL) {
 		cout << "Erreur ! La case est occupée" << endl;
 		cin >> res;
 		while (!(res >= 0 && res < p.getTaillePlateauX())) {
-			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et "
-					<< p.getTaillePlateauX() << endl;
+			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX()
+					<< endl;
 			cin >> res;
 		}
 	}
@@ -590,4 +558,31 @@ int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plate
 		cin >> res;
 	}
 	return res;
+}
+
+void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
+	int inputX = 0;
+	int inputY = 0;
+	cout << "======================================" << endl;
+	cout << "Ou souhaitez vous deposer ImpalaJones (position en x)" << endl;
+	cin >> inputX;
+	cout << "Veuillez maintenant saisir la position en y" << endl;
+	cin >> inputY;
+
+	while (((inputX != 0 && inputX != TAILLE_PLATEAU_X - 1)
+			&& (inputY != 0 && inputY != TAILLE_PLATEAU_Y - 1))
+			|| (inputX == 0 && inputY == 0)
+			|| (inputX == 0 && inputY == TAILLE_PLATEAU_Y - 1)
+			|| (inputX == TAILLE_PLATEAU_X - 1 && inputY == 0)
+			|| (inputX == TAILLE_PLATEAU_X - 1 && inputY == TAILLE_PLATEAU_Y - 1)) {
+		cout
+				<< "Erreur, vous devez le placer a une extremité du plateau, excepté dans les quarts de virage"
+				<< endl;
+		cout << "Position en X" << endl;
+		cin >> inputX;
+		cout << "Position en Y" << endl;
+		cin >> inputY;
+	}
+	ij->setX(inputX);
+	ij->setY(inputY);
 }

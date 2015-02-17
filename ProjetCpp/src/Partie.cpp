@@ -13,9 +13,9 @@
 /**
  * Lancer le premier tour
  */
-int Partie::lancerPartie(){
-
-	return 0;
+int Partie::lancerPartie(int x, int y){
+	ImpalaJones * ij = new ImpalaJones(x,y);
+	return getPlateau()->initImpalaJones(ij);
 }
 
 /**
