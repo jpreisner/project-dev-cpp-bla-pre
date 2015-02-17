@@ -7,6 +7,5 @@
 
 #include "Elephant.h"
 
-int Elephant::action(Plateau *p, Affichage *affichage){
-	return 1;
+void Elephant::action(Plateau *p, Affichage *affichage){
 }

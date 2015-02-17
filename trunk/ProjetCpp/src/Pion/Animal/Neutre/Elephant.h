@@ -25,7 +25,7 @@ public:
 		return "(E," + id.str() + ")";
 	}
 
-	int action(Plateau *p, Affichage *affichage);
+	void action(Plateau *p, Affichage *affichage);
 };
 
 #endif /* ELEPHANT_H_ */
