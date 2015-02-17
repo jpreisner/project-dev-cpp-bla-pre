@@ -9,9 +9,9 @@
 #define PARTIE_H_
 
 #include <string>
+#include <vector>
 
 #include "Joueur.h"
-#include "Plateau/Plateau.h"
 
 class Partie {
 private:
@@ -35,6 +35,8 @@ public:
 	 * Lancer le premier tour en initialisant la position d'ImpalaJones
 	 */
 	int lancerPartie(int x, int y);
+
+	int deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage *affichage);
 
 	/**
 	 * Demander les noms, attribuer les cartes
