@@ -77,9 +77,9 @@ void Sauvegarde::ecrirePlateau(Plateau p, ofstream& fichier){
 	for (int i = 0; i < TAILLE_PLATEAU_Y; i++) {
 		for (int j = 0; j < TAILLE_PLATEAU_X; j++) {
 			Sauvegarde::ecrireCase(p.getCase(i, j), fichier, i, j);
-			fichier << "#####" << endl;
+			fichier << "-------------" << endl;
 		}
-		fichier << "#####" << endl;
+		fichier << "-------------" << endl;
 	}
 }
 
@@ -87,7 +87,7 @@ void Sauvegarde::ecrireCase(Case *c, ofstream& fichier, int i, int j){
 	fichier << "Case : (" << i << "," << j << ")" << endl;
 	fichier << "Secteur : " << c->getSecteur() << endl;
 	if (c->getPion() != NULL) {
-		fichier << "\tPion : " << c->getPion() << endl;
+		fichier << "\tPion : " << c->getPion()->print() << endl;
 		if (dynamic_cast<ImpalaJones*>(c->getPion()) != NULL) {
 			/* ImpalaJones*/
 			fichier << "ImpalaJones." << endl;
