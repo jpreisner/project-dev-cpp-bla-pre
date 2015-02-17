@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <string>
-#include "../Affichage.h"
+#include "../Affichage/Affichage.h"
 #include "../Joueur.h"
 
 class JoueurReel: public Joueur {

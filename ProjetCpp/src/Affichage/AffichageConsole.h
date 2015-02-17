@@ -11,8 +11,8 @@
 #include <vector>
 
 #include "Affichage.h"
-#include "Pion/Animal.h"
-#include "Pion/ImpalaJones.h"
+#include "../Pion/Animal.h"
+#include "../Pion/ImpalaJones.h"
 
 class Animal;
 

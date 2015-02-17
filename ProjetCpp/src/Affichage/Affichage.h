@@ -10,8 +10,8 @@
 
 #include <vector>
 
-#include "Pion/Animal/Peureux/Gazelle.h"
-#include "Pion/ImpalaJones.h"
+#include "../Pion/Animal/Peureux/Gazelle.h"
+#include "../Pion/ImpalaJones.h"
 
 
 class Joueur;

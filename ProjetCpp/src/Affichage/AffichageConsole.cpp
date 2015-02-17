@@ -11,16 +11,16 @@
 #include <iostream>
 #include <string>
 
-#include "Joueur.h"
-#include "Pion/Animal/Effrayant/Crocodile.h"
-#include "Pion/Animal/Effrayant/Lion.h"
-#include "Pion/Animal/Neutre/Elephant.h"
-#include "Pion/Animal/Peureux/Gazelle.h"
-#include "Pion/Animal/Peureux/Zebre.h"
-#include "Pion.h"
-#include "Plateau/Case.h"
-#include "Plateau/Plateau.h"
-#include "Regle.h"
+#include "../Joueur.h"
+#include "../Pion/Animal/Effrayant/Crocodile.h"
+#include "../Pion/Animal/Effrayant/Lion.h"
+#include "../Pion/Animal/Neutre/Elephant.h"
+#include "../Pion/Animal/Peureux/Gazelle.h"
+#include "../Pion/Animal/Peureux/Zebre.h"
+#include "../Pion.h"
+#include "../Plateau/Case.h"
+#include "../Plateau/Plateau.h"
+#include "../Regle.h"
 
 int AffichageConsole::menuDemarrage() {
 	cout << "======================================" << endl;
@@ -87,6 +87,13 @@ void AffichageConsole::demandeNomJoueur(Joueur *j) {
 	string nom;
 	cin >> nom;
 	/** Verifier si le nom est correct? Comment? NULL? **/
+	while(nom.compare("I-A")==0){
+		cout << "Erreur ! Vous ne pouvez pas vous appeler I-A (réservé à l'ordinateur)" << endl;
+		cout << "======================================" << endl;
+		cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
+		cout << "======================================" << endl;
+		cin >> nom;
+	}
 	j->setNom(nom);
 }
 
