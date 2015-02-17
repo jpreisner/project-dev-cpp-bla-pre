@@ -85,6 +85,7 @@ public:
 	 * renvoie vrai si l'ajout a ete fait.
 	 */
 	virtual bool jouer(Plateau* plateau, Affichage * affiche) = 0;
+	virtual bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche) = 0;
 
 	int placementAnimal(Animal *a, int x, int y);
 
