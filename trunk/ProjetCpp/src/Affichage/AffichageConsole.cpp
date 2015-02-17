@@ -111,37 +111,34 @@ void AffichageConsole::affichePlateau(Plateau p) {
 	cout << "\n";
 
 	/* Affichage de la toute 1ère ligne horizontale */
-	cout << "    ||";
-	for (i = 0; i < p.getTaillePlateauX(); i++) {
-		if (i == 7) {
-			cout << "|";
-		}
-		cout << "=======|";
-		if (i == 0) {
-			cout << "|";
-		}
+	cout << "              ";
+	for (i = 1; i < p.getTaillePlateauX()-1; i++) {
+		cout << "========";
 	}
-	cout << "|\n";
+	cout << "=\n";
 
 	/* Affichage du reste du plateau */
 	for (j = 0; j < p.getTaillePlateauY(); j++) {
 		/* Partie du haut */
-		cout << "j=" << j << " ||";
+		cout << "j=" << j;
+		if(j!= 0 && j!=p.getTaillePlateauY()-1){
+			cout << " ||";
+		}
 		for (i = 0; i < p.getTaillePlateauX(); i++) {
-			if (i == 7) {
+			if (i == p.getTaillePlateauX()-1) {
 				cout << "|";
 			}
 			// Cases inaccessibles
-			if ((i == 0 && j == 0) || (i == 7 && j == 0) || (i == 0 && j == 6)
-					|| (i == 7 && j == 6)) {
-				cout << "=======";
+			if ((i == 0 && j == 0) || (i == 0 && j == 6)) {
+				cout << "          ";
 			}
 			// Cases accessibles
 
 			/* Affichage du pion ici */
-			else if (p.getCase(i, j)->getPion() != NULL) { // Si animal = caché ==> caché
+			else if (p.getCase(i, j)->getPion() != NULL) {
 				cout << " " << p.getCase(i, j)->getPion()->print() << " ";
-			} else {
+			}
+			else if(!(i == 7 && j == 6) && !(i == 7 && j == 0)){
 				cout << "       ";
 			}
 			if (i == 0) {
@@ -154,39 +151,74 @@ void AffichageConsole::affichePlateau(Plateau p) {
 					&& p.getCase(i, j)->getSecteur()
 							== p.getCase(i + 1, j)->getSecteur()) {
 				cout << " ";
-			} else {
+			}
+			else if(!((i == 7 && j == 6)  || (i == 7 && j == 0))){
 				cout << "|";
 			}
-			//cout << "|";
 		}
-		cout << "|\n";
-
-		/* Partie du bas */
-		cout << "    ||";
-		for (i = 0; i < p.getTaillePlateauX(); i++) {
-			if (i == 7) {
-				cout << "|";
-			}
-			// Cases inaccessibles
-			if (j == 0 || j == 5 || j == 6) {
-				cout << "=======";
-			}
-			// Cases accessibles
-			/* Distinction des secteurs */
-			else if (j != 0 && j != p.getTaillePlateauY() - 1 && i != 0
-					&& i != p.getTaillePlateauX() - 1
-					&& p.getCase(i, j)->getSecteur()
-							== p.getCase(i, j + 1)->getSecteur()) {
-				cout << "       ";
-			} else {
-				cout << "-------";
-			}
-			if (i == 0) {
-				cout << "|";
-			}
+		if(j!=0 && j!=p.getTaillePlateauY()-1){
 			cout << "|";
 		}
-		cout << "|\n";
+		cout << "\n";
+
+		/* Partie du bas */
+		cout << "    ";
+		if(j == p.getTaillePlateauY()-1){
+			cout << "  ";
+		}
+		else if(j == p.getTaillePlateauY()-2 || j==0){
+			cout << " =";
+		}
+		else{
+			cout << "||";
+		}
+
+		for (i = 0; i < p.getTaillePlateauX(); i++) {
+			if(!(i==p.getTaillePlateauX()-1 && j==p.getTaillePlateauY()-1)){
+				if (i == 7) {
+					cout << "|";
+				}
+				// Cases inaccessibles
+				if(i==0 && j==p.getTaillePlateauY()-1){
+					cout << "        ";
+				}
+				else if ((j == 0 || j == 5 || j == 6)) {
+					cout << "=======";
+				}
+				// Cases accessibles
+				/* Distinction des secteurs */
+				else if (j != 0 && j != p.getTaillePlateauY() - 1 && i != 0 && i != p.getTaillePlateauX() - 1
+						&& p.getCase(i, j)->getSecteur() == p.getCase(i, j + 1)->getSecteur()) {
+					cout << "       ";
+				}
+				else {
+					cout << "-------";
+				}
+				if (i == 0 && j!=p.getTaillePlateauY()-1) {
+					cout << "|";
+				}
+				if((i==0 || i == p.getTaillePlateauX()-2 || i == p.getTaillePlateauX()-1)){
+					if(j == p.getTaillePlateauY()-1 || (i == p.getTaillePlateauX()-1 && j==p.getTaillePlateauY()-2)
+							|| (i == p.getTaillePlateauX()-1 && j==0)){
+						cout << "=";
+					}
+					else{
+						cout << "|";
+					}
+				}
+
+				else if(j==0 || j == p.getTaillePlateauY()-2 || j == p.getTaillePlateauY()-1){
+					cout << "=";
+				}
+				else {
+					cout << "o";
+				}
+			}
+		}
+		if(j!=p.getTaillePlateauY()-1 && j!=p.getTaillePlateauY()-2 && j!=0){
+			cout << "|";
+		}
+		cout << "\n";
 	}
 }
 
