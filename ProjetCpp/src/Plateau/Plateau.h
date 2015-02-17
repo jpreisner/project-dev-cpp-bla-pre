@@ -42,7 +42,6 @@ public:
 
 	int ajouterAnimal(int x, int y, Animal* a);
 
-	/* Ajout d'ImpalaJones sur la case 1/0 */
 	int initImpalaJones(ImpalaJones *ij);
 
 	Case* getCase(int x, int y){

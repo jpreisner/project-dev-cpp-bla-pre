@@ -6,19 +6,19 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
 #include <time.h>
 #include <cstdlib>
+#include <iostream>
+#include <vector>
 
 #include "Affichage/AffichageConsole.h"
-#include "Affichage/Affichage.h"
 #include "Joueur/JoueurReel.h"
 #include "Joueur/Ordinateur.h"
-#include "Plateau/Plateau.h"
 #include "Joueur.h"
 #include "Partie.h"
+#include "Pion/ImpalaJones.h"
+#include "Plateau/Plateau.h"
 #include "Regle.h"
-#include "Utils/Sauvegarde.h"
 
 using namespace std;
 
@@ -92,12 +92,11 @@ int main(){
 			vectJoueur.push_back(joueur1);
 			vectJoueur.push_back(joueur2);
 
-			// Initialisation du plateau et de la partie
-			Plateau *plateau = new Plateau();
-			Partie partie = Partie(vectJoueur,plateau);
+			// Initialisation de la partie
+			Partie partie = Partie(vectJoueur,new Plateau());
 
 			// Affichage du plateau
-			affichage->affichePlateau(*plateau);
+			affichage->affichePlateau(*partie.getPlateau());
 
 			// Tirage au sort pour savoir qui commence
 			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1]);	// i=0 ou 1
@@ -106,10 +105,10 @@ int main(){
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
 
 			// Demande de placement de Impala Jones
-			affichage->demandePositionInitialeImpalaJones(plateau->getImpalaJones());
-
-			// Lancement de la partie
-			partie.lancerPartie(plateau->getImpalaJones()->getX(), plateau->getImpalaJones()->getY());
+			do{
+				affichage->demandePositionInitialeImpalaJones(partie.getPlateau()->getImpalaJones());
+			}
+			while(partie.getPlateau()->initImpalaJones(partie.getPlateau()->getImpalaJones()));
 
 			// Détermination du joueur qui doit maintenant jouer
 			int nbJoueurs = vectJoueur.size();
@@ -119,48 +118,13 @@ int main(){
 			else{
 				tourJoueur++;
 			}
-			int nbCases, jeu;
+
 			// Déroulement du jeu jusqu'à que la partie prenne fin
-			while (!Regle::finPartie(*plateau)) {
-				// Affiche du plateau
-				affichage->affichePlateau(*plateau);
-
-				// Message indiquant c'est a qui de jouer
-				affichage->afficheTour(partie.getJoueurI(tourJoueur));
-
-				// Affichage du menu du joueur
-				do{
-					jeu = affichage->menuJoueur(partie.getJoueurI(tourJoueur));
-					// Si jeu = 2 ==> le joueur joue
-					if(jeu == 2){
-						bool joue = false;
-						do{
-							joue = partie.getJoueurI(tourJoueur)->jouer(partie.getPlateau(),affichage);
-						}while(!joue);
-						break;
-					}
-					// Le joueur ne joue pas mais fait une autre action
-					else{
-						switch(jeu){
-							// Le joueur souhaite afficher sa liste de pions
-							case(1) : affichage->afficheListAnimal(partie.getJoueurI(tourJoueur)->getListAnimaux());	break;
-
-							// Le joueur souhaite sauvegarder la partie
-							case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
-
-							// Le joueur souhaite quitter la partie
-							case(4) : return 0;
-						}
-					}
-				}while(jeu!=2);
-
-				// Affiche du plateau apres que le joueur ait joué
-				affichage->affichePlateau(*partie.getPlateau());
-
-				// Le joueur doit déplacer Impala Jones avant de passer son tour
-				nbCases = affichage->demandeDeplacerImpalaJones(*partie.getPlateau(),*partie.getPlateau()->getImpalaJones());
-				partie.getPlateau()->getImpalaJones()->deplacer(nbCases, partie.getPlateau());
-
+			while(!Regle::finPartie(*partie.getPlateau())){
+				if(partie.deroulementJeu(vectJoueur, tourJoueur, affichage) == 0){
+					// Le joueur a décidé de quitter
+					return 0;
+				}
 				// Détermination du prochain joueur
 				if(tourJoueur == nbJoueurs-1){
 					tourJoueur = 0;
