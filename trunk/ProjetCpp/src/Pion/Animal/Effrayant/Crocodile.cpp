@@ -8,17 +8,11 @@
 #include "../../../Plateau/Plateau.h"
 #include "../Peureux/Gazelle.h"
 
-
-/**
- * set et insert
- */
-
 /**
  * Renvoie 1 si le joueur ne veut pas faire d'action, 0 sinon
  */
 void Crocodile::action(Plateau *p, Affichage *affichage) {
 	set<Gazelle*> gazellesEchangees;
-	cout << "taille=" << gazellesEchangees.size() << endl;
 	bool continuer = true;
 	while(continuer){
 		int secteurCroco = p->getCase(getX(), getY())->getSecteur();

@@ -15,12 +15,13 @@
 
 class JoueurReel: public Joueur {
 public:
-	JoueurReel(string nom) : Joueur(0,nom) {};
+	JoueurReel(string nom="") : Joueur(0,nom) {};
 	virtual ~JoueurReel(){};
 
 	bool bonusInauguration(Plateau p);
 
 	bool jouer(Plateau* plateau, Affichage * affiche);
+	bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche);
 
 	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {
 		strm << "Joueur Reel : " << a.getNom() << endl;
