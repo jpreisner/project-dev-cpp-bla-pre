@@ -81,7 +81,10 @@ int main(){
 				 jeu = affichage->menuJoueur(partie.getJoueurI(tourJoueur));
 
 				if(jeu == 2){
-					partie.getJoueurI(tourJoueur)->jouer(partie.getPlateau(),affichage);
+					bool joue = false;
+					do{
+						joue = partie.getJoueurI(tourJoueur)->jouer(partie.getPlateau(),affichage);
+					}while(!joue);
 					break;
 				}else{
 					switch(jeu){

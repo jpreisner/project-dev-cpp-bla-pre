@@ -104,7 +104,7 @@ bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche){
 
 			Animal *a = dynamic_cast<Animal*>(plateau->getCase(xPion, yPion)->getPion());
 			if(a == NULL){
-				cout << "Erreur dans jouer (JoueurReel.cpp) : le pion posé n'est pas un animal !" << endl;
+				cerr << "Erreur dans jouer (JoueurReel.cpp) : le pion posé n'est pas un animal !" << endl;
 				// Supprimer le pion?
 				return false;
 			}
