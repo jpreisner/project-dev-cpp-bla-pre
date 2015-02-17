@@ -67,7 +67,7 @@ int main(){
 		partie.lancerPartie(partie.getPlateau()->getImpalaJones()->getX(), partie.getPlateau()->getImpalaJones()->getY());
 
 		/* JEU, JUSQUA CE QUE LA PARTIE SOIE FINIE*/
-		int nbJoueurs = vectJoueur.size();
+		int nbJoueurs = vectJoueur.size()-1;
 		int tourJoueur = 0;
 		while (!Regle::finPartie(*partie.getPlateau())) {
 			cout<< "\n"<<endl;
@@ -92,7 +92,10 @@ int main(){
 				}
 			}while(jeu!=2);
 			affichage->affichePlateau(*partie.getPlateau());
-			affichage->demandeDeplacerImpalaJones(*partie.getPlateau(),*partie.getPlateau()->getImpalaJones());
+			int nbPasImpalaJones = 0;
+			nbPasImpalaJones = affichage->demandeDeplacerImpalaJones(*partie.getPlateau(),*partie.getPlateau()->getImpalaJones());
+			plateau->getImpalaJones()->deplacer(nbPasImpalaJones,partie.getPlateau());
+
 			if(tourJoueur == nbJoueurs){
 				tourJoueur = 0;
 			}else{

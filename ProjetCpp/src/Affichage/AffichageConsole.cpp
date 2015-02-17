@@ -239,6 +239,7 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
 			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
 			cin >> res;
 		}
+		ij.deplacer(res,&p);
 		cout << "======================================" << endl;
 		return res;
 	}
