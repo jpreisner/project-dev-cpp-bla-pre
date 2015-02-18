@@ -29,14 +29,16 @@ private:
 	ImpalaJones *ij;
 	bool bonusInauguration;
 public:
-	Plateau() : bonusInauguration(false){
+	Plateau(int num_plateau=1) : bonusInauguration(false){
 		ij = new ImpalaJones(0,0);
-		initPlateau1();
+		initPlateau(num_plateau);
 	}
 	virtual ~Plateau(){
 	}
 
-	void initPlateau1();
+	void initPlateau(int num_plateau);
+	void initPlateauNormal();
+	void initPlateauReservePresident();
 
 	int deplacerPion();
 

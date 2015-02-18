@@ -643,3 +643,18 @@ void AffichageConsole::afficheTour(Joueur *j){
 	cout<< "======================================"<<endl;
 	cout<< "\t Tour du joueur n°" << j->getId() << " : "<<j->getNom()<<endl;
 }
+
+int AffichageConsole::demandePlateau(){
+	cout<< "======================================"<<endl;
+	cout << "Choisissez un plateau :" << endl;
+	cout << "   1 - Plateau normal" << endl;
+	cout << "   2 - Réserve du Président" << endl;
+	int res;
+	cin >> res;
+	while(res!=1 && res!=2){
+		cout << "Erreur ! Veuillez choisir un nombre compris entre 1 et 2" << endl;
+		cin >> res;
+	}
+	cout<< "======================================"<<endl;
+	return res;
+}
