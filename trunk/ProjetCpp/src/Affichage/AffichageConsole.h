@@ -38,6 +38,7 @@ public:
 	int pileOuFace(Joueur *j1, Joueur *j2);
 	void messageDebutPartie(Joueur *j);
 	void afficheTour(Joueur *j);
+	int demandePlateau();
 	/* A COMPLETER */
 };
 

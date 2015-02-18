@@ -42,6 +42,7 @@ public:
 	virtual int pileOuFace(Joueur *j1, Joueur *j2) = 0;
 	virtual void messageDebutPartie(Joueur *j) = 0;
 	virtual void afficheTour(Joueur *j) = 0;
+	virtual int demandePlateau() = 0;
 
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */

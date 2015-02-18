@@ -93,7 +93,8 @@ int main(){
 			vectJoueur.push_back(joueur2);
 
 			// Initialisation de la partie
-			Partie partie = Partie(vectJoueur,new Plateau());
+			int num_plateau = affichage->demandePlateau();
+			Partie partie = Partie(vectJoueur,new Plateau(num_plateau));
 
 			// Affichage du plateau
 			affichage->affichePlateau(*partie.getPlateau());
