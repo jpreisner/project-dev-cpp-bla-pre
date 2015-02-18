@@ -15,7 +15,7 @@
 #include "Pion/Animal.h"
 
 class Affichage;
-
+class ImpalaJones;
 class Plateau;
 
 using namespace std;
@@ -118,6 +118,9 @@ public:
 	 *  Ajoute le nombre de points passé en parametre
 	 */
 	void ajouterPoints(int nb);
+
+	virtual int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage) = 0;
+	virtual void joueurInitImpala(Plateau *p, Affichage *affichage) = 0;
 };
 
 #endif /* JOUEUR_H_ */

@@ -71,9 +71,7 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 		return 1;	// fin de partie
 	}
 
-	// Le joueur doit déplacer Impala Jones avant de passer son tour
-	int possibilite = Regle::possibiliteDeplacementImpalaJones(*getPlateau(), *getPlateau()->getImpalaJones());
-	nbCases = affichage->demandeDeplacerImpalaJones(*getPlateau(),*getPlateau()->getImpalaJones(), possibilite);
+	nbCases = getJoueurI(tourJoueur)->deplacementImpalaJones(*getPlateau(), *getPlateau()->getImpalaJones(), affichage);
 
 	// Au cas ou, mais ne devrait pas arrivé car finPartie est appelé avant
 	if(nbCases == -1){

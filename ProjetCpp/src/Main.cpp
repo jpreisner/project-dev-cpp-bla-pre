@@ -106,10 +106,7 @@ int main(){
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
 
 			// Demande de placement de Impala Jones
-			do{
-				affichage->demandePositionInitialeImpalaJones(partie.getPlateau()->getImpalaJones());
-			}
-			while(partie.getPlateau()->initImpalaJones(partie.getPlateau()->getImpalaJones()));
+			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(), affichage); /* TODO A TESTER */
 
 			// Détermination du joueur qui doit maintenant jouer
 			int nbJoueurs = vectJoueur.size();
@@ -121,7 +118,6 @@ int main(){
 			}
 
 			// Déroulement du jeu jusqu'à que la partie prenne fin
-			//while(!Regle::finPartie(*partie.getPlateau())){
 			int continuer = 0;
 			while(continuer != 1){
 				continuer = partie.deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok

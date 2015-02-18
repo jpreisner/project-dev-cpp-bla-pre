@@ -10,8 +10,10 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "../Joueur.h"
+#include "../Plateau/Plateau.h"
 
 class Ordinateur: public Joueur {
 public:
@@ -26,6 +28,10 @@ public:
 		strm << "Ordinateur : " << a.getNom() << endl;
 		return strm;
 	}
+	int randomColonne(Plateau p, int ligne);
+	int randomLigne(Plateau p, int colonne);
+	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
+	void joueurInitImpala(Plateau *p, Affichage *affichage);
 };
 
 
