@@ -111,7 +111,7 @@ public:
 	}
 
 	friend bool operator==(const Joueur& j1, const Joueur& j2){
-		return j1.getId() == j1.getId() && j1.getNom() == j2.getNom();
+		return j1.getId() == j1.getId();
 	}
 
 	/**
