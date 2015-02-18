@@ -27,6 +27,8 @@ public:
 		strm << "Joueur Reel : " << a.getNom() << endl;
 		return strm;
 	}
+	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
+	void joueurInitImpala(Plateau *p, Affichage *affichage);
 };
 
 #endif /* JOUEURREEL_H_ */

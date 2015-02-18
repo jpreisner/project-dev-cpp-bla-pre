@@ -15,8 +15,11 @@
 #include "../Pion/Animal/Neutre/Elephant.h"
 #include "../Pion/Animal/Peureux/Gazelle.h"
 #include "../Pion/Animal/Peureux/Zebre.h"
+#include "../Pion/ImpalaJones.h"
+#include "../Pion.h"
 #include "../Plateau/Case.h"
 #include "../Plateau/Plateau.h"
+#include "../Regle.h"
 
 
 bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche) {
@@ -135,4 +138,17 @@ bool JoueurReel::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 		}
 	}
 	return false;
+}
+
+int JoueurReel::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage){
+	// Le joueur doit déplacer Impala Jones avant de passer son tour
+	int possibilite = Regle::possibiliteDeplacementImpalaJones(p,ij);
+	return affichage->demandeDeplacerImpalaJones(p, ij, possibilite);
+}
+
+void JoueurReel::joueurInitImpala(Plateau *p, Affichage *affichage){
+	do{
+		affichage->demandePositionInitialeImpalaJones(p->getImpalaJones());
+	}
+	while(p->initImpalaJones(p->getImpalaJones()));
 }

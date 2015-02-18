@@ -279,21 +279,21 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 	}
 
 
-	/* Impala Jones ne peut pas etre placé que la la case +1  */
+	/* Impala Jones ne peut pas etre placé que a la case +1  */
 	else if (possibilite == -5) {
 		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
 		cout << "---> Impala Jones est avancé de 1 case" << endl;
 		cout << "======================================" << endl;
 		return 1;
 	}
-	/* Impala Jones ne peut pas etre placé que la la case +2  */
+	/* Impala Jones ne peut pas etre placé que a la case +2  */
 	else if (possibilite == -6) {
 		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+1) et (+3) sont pleines"<< endl;
 		cout << "---> Impala Jones est avancé de 2 cases" << endl;
 		cout << "======================================" << endl;
 		return 2;
 	}
-	/* Impala Jones ne peut pas etre placé que la la case +3  */
+	/* Impala Jones ne peut pas etre placé que a la case +3  */
 	else if (possibilite == -7) {
 		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
 		cout << "---> Impala Jones est avancé de 3 cases" << endl;
