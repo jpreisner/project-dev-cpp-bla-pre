@@ -126,8 +126,11 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
  * Permet de savoir quelles sont les possibilités pour le joueur de déplacer Impala Jones :
  * 		-> Si le joueur peut le déplacer sur 1 des 3 prochaines cases (les 3 prochaines cases sont dispo) : renvoie -1
  * 		-> Si le joueur peut le déplacer sur la case suivante (+1) et celle d'après (+2) mais pas la +3 : renvoie -2
- * 		-> Si le joueur peut le déplacer sur la case suivante (+1) et 2 cases plus loin mais pas la +2 : renvoie -3
+ * 		-> Si le joueur peut le déplacer sur la case suivante (+1) et 2 cases plus loin (+3) mais pas la +2 : renvoie -3
  * 		-> Si le joueur peut le déplacer sur la 2ème case plus loin (+2) et celle encore d'apres (+3) mais pas la +1 : renvoie -4
+ * 		-> Si le joueur peut le déplacer uniquement sur la prochaine case (+1) : renvoie -5
+ * 		-> Si le joueur peut le déplacer uniquement sur la 2ème case (+2) : renvoie -6
+ * 		-> Si le joueur peut le déplacer uniquement sur la 3ème case (+3) : renvoie -7
  * 		-> Sinon, renvoie le nombre de case plus loin où il doit jouer (entier >=1)
  */
 int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
@@ -144,21 +147,33 @@ int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
 
 	/* Interpretation */
 
-	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
+	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes (case +1 et +2 et +3) */
 	if (caseSuivante1 && caseSuivante2 && caseSuivante3) {
 		return -1;
 	}
-	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
+	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante (case +1 et +2) */
 	else if (caseSuivante1 && caseSuivante2 && !caseSuivante3) {
 		return -2;
 	}
-	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
-	else if (caseSuivante1 && !caseSuivante2 && !caseSuivante3) {
+	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la 3ème (case +1 et +3) */
+	else if (caseSuivante1 && !caseSuivante2 && caseSuivante3) {
 		return -3;
 	}
-	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
-	else if (!caseSuivante1 && caseSuivante2 && !caseSuivante3) {
+	/* Impala Jones peut etre placé soit sur la 2ème case, soit sur la 3ème (case +2 et +3) */
+	else if (!caseSuivante1 && caseSuivante2 && caseSuivante3) {
 		return -4;
+	}
+	/* Impala Jones peut etre placé que sur la prochaine case (case +1) */
+	else if (caseSuivante1 && !caseSuivante2 && !caseSuivante3) {
+		return -5;
+	}
+	/* Impala Jones peut etre placé soit sur la 2ème case suivante (case +2) */
+	else if (!caseSuivante1 && caseSuivante2 && !caseSuivante3) {
+		return -6;
+	}
+	/* Impala Jones peut etre placé soit sur la 3ème case (case +3) */
+	else if (!caseSuivante1 && !caseSuivante2 && caseSuivante3) {
+		return -7;
 	}
 	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
 	int i;

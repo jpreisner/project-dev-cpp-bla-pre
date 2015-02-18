@@ -138,7 +138,7 @@ void AffichageConsole::affichePlateau(Plateau p){
 
 			/* Affichage du pion ici */
 			else if (p.getCase(i, j)->getPion() != NULL) {
-				cout << " " << p.getCase(i, j)->getPion()->print() << " ";
+				affichePion(p.getCase(i, j)->getPion());
 			}
 			else if(!(i == 7 && j == 6) && !(i == 7 && j == 0)){
 				cout << "       ";
@@ -224,9 +224,8 @@ void AffichageConsole::affichePlateau(Plateau p){
 	}
 }
 
-int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
+int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int possibilite){
 	cout << "======================================" << endl;
-	int possibilite = Regle::possibiliteDeplacementImpalaJones(p, ij);
 	unsigned int res;
 	if (possibilite == 0) {
 		cout << "Fin du jeu !" << endl;
@@ -278,15 +277,37 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij){
 		cout << "======================================" << endl;
 		return res;
 	}
+
+
+	/* Impala Jones ne peut pas etre placé que la la case +1  */
+	else if (possibilite == -5) {
+		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avancé de 1 case" << endl;
+		cout << "======================================" << endl;
+		return 1;
+	}
+	/* Impala Jones ne peut pas etre placé que la la case +2  */
+	else if (possibilite == -6) {
+		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+1) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avancé de 2 cases" << endl;
+		cout << "======================================" << endl;
+		return 2;
+	}
+	/* Impala Jones ne peut pas etre placé que la la case +3  */
+	else if (possibilite == -7) {
+		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avancé de 3 cases" << endl;
+		cout << "======================================" << endl;
+		return 3;
+	}
 	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
 	else if (possibilite > 0) {
-		cout
-				<< "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les trois cases suivantes sont pleines"
-				<< endl;
+		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les trois cases suivantes sont pleines"<< endl;
 		cout << "---> Impala Jones est avancé de " << possibilite << " cases" << endl;
 		cout << "======================================" << endl;
 		return possibilite;
-	} else {
+	}
+	else {
 		cout << "Erreur dans l'appel de la méthode possibiliteDeplacementImpalaJones" << endl;
 		cout << "======================================" << endl;
 		return -1;
@@ -430,17 +451,16 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 void AffichageConsole::affichePion(Pion *p){
 	/* appel de print p et de l'id du joueur */
 	if(dynamic_cast<Animal*> (p) != NULL){
-		Animal * a = dynamic_cast<Animal*> (p);
-		cout << "(" << a->print() << ", " << a->getJoueur()->getId() << ")" << endl;
-	}else{
-		cout << "(IJ)";
-
+		cout << " " << p->print() << " ";
+	}
+	else{
+		afficheImpalaJones();
 	}
 }
 
 /* Pas besoin */
 void AffichageConsole::afficheImpalaJones(){
-	cout << "(IJ)";
+	cout << " (I.J) ";
 }
 
 int AffichageConsole::menuJoueur(Joueur *j){

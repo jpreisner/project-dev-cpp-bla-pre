@@ -21,7 +21,7 @@ public:
 		}
 
 		else {
-			cin.clear(); // Le flux est dasn un état invalide donc on le remet en état valide
+			cin.clear(); // Le flux est dans un état invalide donc on le remet en état valide
 		}
 	}
 
