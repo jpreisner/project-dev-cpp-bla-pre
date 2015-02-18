@@ -43,7 +43,7 @@ public:
 	virtual void afficheTour(Joueur *j) = 0;
 	virtual int demandePlateau() = 0;
 	virtual void afficherVainqueur(Joueur* j)=0;
-
+	virtual void messageBonusInnauguration(const string& nomJoueur)=0;
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */
 };

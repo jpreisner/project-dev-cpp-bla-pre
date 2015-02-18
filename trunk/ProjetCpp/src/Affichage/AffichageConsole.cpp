@@ -647,6 +647,12 @@ int AffichageConsole::demandePlateau(){
 
 void AffichageConsole::afficherVainqueur(Joueur* j){
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
-	cout << "FELICITATIONS" << j->getNom()<<", vous remportez la partie"<< endl;
+	cout << "FELICITATIONS " << j->getNom()<<", vous remportez la partie"<< endl;
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
+}
+
+void AffichageConsole::messageBonusInnauguration(const string& nomJoueur){
+	cout<< "-----------------------"<<endl;
+	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus innauguration"<< endl;
+	cout<< "-----------------------"<<endl;
 }
