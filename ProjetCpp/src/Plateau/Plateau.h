@@ -26,10 +26,11 @@ class Pion;
 class Plateau {
 private:
 	Case cases[TAILLE_PLATEAU_X][TAILLE_PLATEAU_Y];
+	int typePlateau;
 	ImpalaJones *ij;
 	bool bonusInauguration;
 public:
-	Plateau(int num_plateau=1) : bonusInauguration(false){
+	Plateau(int num_plateau=1) : typePlateau(num_plateau), bonusInauguration(false){
 		ij = new ImpalaJones(0,0);
 		initPlateau(num_plateau);
 	}
@@ -56,6 +57,10 @@ public:
 	}
 	unsigned int getTaillePlateauY(){
 		return TAILLE_PLATEAU_Y;
+	}
+
+	int getTypePlateau() const{
+		return typePlateau;
 	}
 
 	/* Affichage du plateau */
