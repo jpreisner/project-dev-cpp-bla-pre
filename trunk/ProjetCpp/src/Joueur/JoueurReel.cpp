@@ -175,7 +175,7 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 				case(1) : affichage->afficheListAnimal(getListAnimaux());	break;
 
 				// Le joueur souhaite sauvegarder la partie
-				case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+				case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
 
 				// Le joueur souhaite quitter la partie
 				case(4) : return 0;
