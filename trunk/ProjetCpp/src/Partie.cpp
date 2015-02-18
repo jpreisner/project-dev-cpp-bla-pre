@@ -20,13 +20,12 @@
  * Lancer le premier tour
  */
 int Partie::lancerPartie(int x, int y){
-	cout << "coord ij=(" << getPlateau()->getImpalaJones()->getX() << ", " << getPlateau()->getImpalaJones()->getY() << ")" << endl;
 	ImpalaJones * ij = new ImpalaJones(x,y);
 	return getPlateau()->initImpalaJones(ij);
 }
 
 int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage *affichage){
-	int nbCases, jeu;
+	int nbCases;
 
 	// Affiche du plateau
 	affichage->affichePlateau(*getPlateau());
@@ -40,37 +39,15 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 	}
 	// Cas ou le joueur peut jouer
 	else{
-		// Affichage du menu du joueur
-		do{
-			jeu = affichage->menuJoueur(getJoueurI(tourJoueur));
-			// Si jeu = 2 ==> le joueur joue
-			if(jeu == 2){
-				bool joue = false;
-				do{
-					joue = getJoueurI(tourJoueur)->jouer(getPlateau(),affichage);
-				}while(!joue);
-				break;
-			}
-			// Le joueur ne joue pas mais fait une autre action
-			else{
-				switch(jeu){
-					// Le joueur souhaite afficher sa liste de pions
-					case(1) : affichage->afficheListAnimal(getJoueurI(tourJoueur)->getListAnimaux());	break;
-
-					// Le joueur souhaite sauvegarder la partie
-					case(3) : Sauvegarde::sauvegarderPartie(*this,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
-
-					// Le joueur souhaite quitter la partie
-					case(4) : return -2;
-				}
-			}
-		}while(jeu!=2);
+		if(getJoueurI(tourJoueur)->jouerTour(getPlateau(),affichage, *this) == 0){
+			return -2;
+		}
 	}
-
 	if(Regle::finPartie(*getPlateau())){
 		return 1;	// fin de partie
 	}
 
+	// On recupere le nombre de case qui faut décaler Impala Jones
 	nbCases = getJoueurI(tourJoueur)->deplacementImpalaJones(*getPlateau(), *getPlateau()->getImpalaJones(), affichage);
 
 	// Au cas ou, mais ne devrait pas arrivé car finPartie est appelé avant
@@ -78,6 +55,7 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 		return 1;
 	}
 
+	// Deplacement d'Impala Jones
 	int ancien_x = getPlateau()->getImpalaJones()->getX();
 	int ancien_y = getPlateau()->getImpalaJones()->getY();
 	return getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau(), ancien_x, ancien_y);

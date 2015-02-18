@@ -593,10 +593,17 @@ void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 	ij->setY(inputY);
 }
 
-int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2){
-	int random = rand()%2;
+int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 	cout << "======================================" << endl;
 	cout << "Tirage au sort pour déterminer le 1er qui joue (Pile ou Face) : ";
+	int random;
+	if(typeJeu == 1){
+		random = 0;
+	}
+	else{
+		random = rand()%2;
+	}
+
 	if(random == 0){
 		cout << j1->getNom();
 	}
@@ -680,5 +687,17 @@ void AffichageConsole::messageBonusInnauguration(const string& nomJoueur){
 void AffichageConsole::messagePlusDePion(){
 	cout<< "======================================"<<endl;
 	cout << "Vous n'avez plus de pion, vous ne pouvez donc pas jouer !" << endl;
+	cout<< "======================================"<<endl;
+}
+
+void AffichageConsole::messageInitImpalaOrdi(int x, int y){
+	cout<< "======================================"<<endl;
+	cout << "L'ordinateur a positionné Impala Jones en (" << x << ", " << y << ")" << endl;
+	cout<< "======================================"<<endl;
+}
+
+void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
+	cout<< "======================================"<<endl;
+	cout << "L'ordinateur a joué" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
 	cout<< "======================================"<<endl;
 }

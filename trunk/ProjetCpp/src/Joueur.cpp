@@ -39,58 +39,7 @@ void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nb
 	}
 }
 
-
-int Joueur::placementAnimal(Animal *a, int x, int y){
-	return 0;
-}
-
 void Joueur::ajouterPoints(int nb){
 	setNbPoints(getNbPoints() + nb);
 }
-
-
-/*
-Animal* Joueur::selectAnimal(Affichage affichage){
-	int id_animal = affichage.selectionnerAnimal(getListAnimaux());
-	int nbPion = getListAnimaux().size();
-	int pos = 0;
-	bool ok = false;
-	while(!ok){
-		// Gazelle
-		if(id_animal == 1){
-			while(pos<nbPion){
-				if(dynamic_cast<Gazelle*>(listAnimaux[pos]) == NULL){
-					pos++;
-				}
-				else{
-					Gazelle* gazelle = listAnimaux[pos];
-
-				}
-			}
-			if(pos == nbPion){
-				cout << "Erreur ! Vous n'avez pas de gazelle dans votre liste de pion" << endl;
-			}
-		}
-		// Zebre
-		else if(id_animal == 2){
-
-		}
-		// Lion
-		else if(id_animal == 3){
-
-		}
-		// Elephant
-		else if(id_animal == 4){
-
-		}
-		// Crocodile
-		else if(id_animal == 5){
-
-		}
-		else{
-			cout << "Probleme dans la fonction selectAnimal dans Joueur.cpp : l'id de l'animal choisi renvoyé par la fonction selectionnerAnimal n'est pas connu" << endl;
-		}
-	}
-}
-*/
 

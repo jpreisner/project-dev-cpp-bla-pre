@@ -100,7 +100,7 @@ int main(){
 			affichage->affichePlateau(*partie.getPlateau());
 
 			// Tirage au sort pour savoir qui commence
-			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1]);	// i=0 ou 1
+			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1], menu_demarrage);	// i=0 ou 1
 
 			// Début de la partie
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
