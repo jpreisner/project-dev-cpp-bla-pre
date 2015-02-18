@@ -52,8 +52,6 @@ public:
 	}
 
 	void seCache();
-
-	void fuite(Plateau *p);
 };
 
 #endif /* PEUREUX_H_ */

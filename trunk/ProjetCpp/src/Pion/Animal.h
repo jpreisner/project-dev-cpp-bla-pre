@@ -44,10 +44,6 @@ public:
 		return joueur;
 	}
 
-	/**
-	 * on le pose en (x,y)
-	 */
-	int poser(int x, int y);
 
 	/**
 	 * action appelé lorsque l'animal est posé et est en fonction des autres animaux environnants
@@ -55,15 +51,8 @@ public:
 	 */
 	virtual void action(Plateau *p, Affichage *affichage) = 0;
 
-	/**
-	 * cacher ou montrer
-	 */
-	int retourner();
 
 	virtual string print() const{
-		//ostringstream id;
-		//id << getJoueur()->getId();
-		//return "(Animal," + id.str() + ")";
 		return "Animal";
 	}
 };

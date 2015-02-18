@@ -20,3 +20,10 @@ void Gazelle::action(Plateau *p, Affichage *affichage){
 		seCache();
 	}
 }
+
+void Gazelle::fuite(Plateau *p){
+	p->getCase(getX(), getY())->supprimerPion();
+	setX(-1);
+	setY(-1);
+	getJoueur()->getListAnimaux().push_back(this);
+}
