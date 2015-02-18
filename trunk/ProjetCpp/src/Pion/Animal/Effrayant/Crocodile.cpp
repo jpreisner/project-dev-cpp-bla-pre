@@ -23,22 +23,30 @@ void Crocodile::action(Plateau *p, Affichage *affichage) {
 		if (getX()<p->getTaillePlateauX()-1 && dynamic_cast<Gazelle*>(p->getCase(getX()+1, getY())->getPion())!= NULL
 				&& secteurCroco != p->getCase(getX() + 1, getY())->getSecteur()) {
 			Gazelle* g = dynamic_cast<Gazelle*>(p->getCase(getX() + 1, getY())->getPion());
-			voisin.push_back(g);
+			if(!g->isCache()){
+				voisin.push_back(g);
+			}
 		}
 		if (getX() > 0 && dynamic_cast<Gazelle*>(p->getCase(getX()-1, getY())->getPion()) != NULL
 				&& secteurCroco != p->getCase(getX()-1, getY())->getSecteur()) {
 			Gazelle* g = dynamic_cast<Gazelle*>(p->getCase(getX() - 1, getY())->getPion());
-			voisin.push_back(g);
+			if(!g->isCache()){
+				voisin.push_back(g);
+			}
 		}
 		if (getY() < p->getTaillePlateauY() - 1 && dynamic_cast<Gazelle*>(p->getCase(getX(), getY() + 1)->getPion()) != NULL
 				&& secteurCroco != p->getCase(getX(), getY()+1)->getSecteur()) {
 			Gazelle* g = dynamic_cast<Gazelle*>(p->getCase(getX(), getY() + 1)->getPion());
-			voisin.push_back(g);
+			if(!g->isCache()){
+				voisin.push_back(g);
+			}
 		}
 		if (getY() > 0 && dynamic_cast<Gazelle*>(p->getCase(getX(), getY() - 1)->getPion()) != NULL
 				&& secteurCroco != p->getCase(getX(), getY()-1)->getSecteur()) {
 			Gazelle* g = dynamic_cast<Gazelle*>(p->getCase(getX(), getY() - 1)->getPion());
-			voisin.push_back(g);
+			if(!g->isCache()){
+				voisin.push_back(g);
+			}
 		}
 
 		if (voisin.size() > 0) {

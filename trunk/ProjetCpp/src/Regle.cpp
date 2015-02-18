@@ -65,8 +65,10 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 		if (x + nbCases >= TAILLE_PLATEAU_X - 1) {
 			nbCases -= (TAILLE_PLATEAU_X - 1 - x);
 			new_x = TAILLE_PLATEAU_X - 1;
-			new_y = 1 + nbCases;
-			return !ligneRempli(p, new_y);
+			//new_y = 1 + nbCases;
+			new_y = 1;
+			//return !ligneRempli(p, new_y);
+			return testDeplacementImpalaJones(p, new_x, new_y, nbCases);
 		}
 		// Cas ou il reste sur ligne horizontale du haut
 		else {
@@ -80,8 +82,10 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 		if (x - nbCases <= 0) {
 			nbCases -= x;
 			new_x = 0;
-			new_y = TAILLE_PLATEAU_Y - 2 - nbCases;
-			return !ligneRempli(p, new_y);
+			//new_y = TAILLE_PLATEAU_Y - 2 - nbCases;
+			new_y = TAILLE_PLATEAU_Y - 2;
+			//return !ligneRempli(p, new_y);
+			return testDeplacementImpalaJones(p, new_x, new_y, nbCases);
 		}
 		// Cas ou il reste sur la ligne horizontale du bas
 		else {
@@ -95,8 +99,10 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 		if (y - nbCases <= 0) {
 			nbCases -= y;
 			new_y = 0;
-			new_x = 1 + nbCases;
-			return !colonneRempli(p, new_x);
+			//new_x = 1 + nbCases;
+			new_x = 1;
+			//return !colonneRempli(p, new_x);
+			return testDeplacementImpalaJones(p, new_x, new_y, nbCases);
 		}
 		// Cas ou il reste sur la ligne verticale de gauche
 		else {
@@ -110,8 +116,10 @@ bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 		if (y + nbCases >= TAILLE_PLATEAU_Y - 1) {
 			nbCases -= (TAILLE_PLATEAU_Y - 1 - y);
 			new_y = TAILLE_PLATEAU_Y - 1;
-			new_x = TAILLE_PLATEAU_X - 2 - nbCases;
-			return !colonneRempli(p, new_x);
+			//new_x = TAILLE_PLATEAU_X - 2 - nbCases;
+			new_x = TAILLE_PLATEAU_X - 2;
+			//return !colonneRempli(p, new_x);
+			return testDeplacementImpalaJones(p, new_x, new_y, nbCases);
 		}
 		// Cas ou il reste sur la ligne verticale de droite
 		else {
