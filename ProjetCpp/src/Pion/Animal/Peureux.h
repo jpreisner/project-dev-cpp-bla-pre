@@ -17,27 +17,12 @@ using namespace std;
 
 class Peureux: public Animal {
 private:
-	vector<Animal*> listAnimauxImpressionnant;
 	bool cache;
 
 public:
 	Peureux(int v = 0, Joueur* j = NULL) : Animal(v,j), cache(false){};
 
 	virtual ~Peureux(){};
-
-	/**
-	 * retirer l'animal a la liste des animaux impressionnants
-	 */
-	void ajouterAnimalImpressionnant(Animal *a){
-		listAnimauxImpressionnant.push_back(a);
-	}
-
-	/**
-	 * retirer l'animal a la liste des animaux impressionnants
-	 * TODO
-	 */
-	void retirerAnimalImpressionnant(Animal *a){
-	}
 
 	virtual string print() const{
 		return "Peureux";
