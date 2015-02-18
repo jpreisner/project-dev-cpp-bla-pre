@@ -59,9 +59,6 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 		}
 	}while(jeu!=2);
 
-	// Affiche du plateau apres que le joueur ait joué
-	affichage->affichePlateau(*getPlateau());
-
 	// Le joueur doit déplacer Impala Jones avant de passer son tour
 	nbCases = affichage->demandeDeplacerImpalaJones(*getPlateau(),*getPlateau()->getImpalaJones());
 	getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau());
