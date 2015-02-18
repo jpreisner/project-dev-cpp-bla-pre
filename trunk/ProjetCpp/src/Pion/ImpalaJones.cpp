@@ -37,7 +37,8 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 	}
 	// Cas ou ImpalaJones est sur la ligne horizontale du bas
 	else if(getY()==TAILLE_PLATEAU_Y-1){
-		if(getX()-nbCases<=0){
+		int x = getX();
+		if(x-nbCases<=0){
 			nbCases-=getX();
 			setX(0);
 			setY(TAILLE_PLATEAU_Y-2 - nbCases);
@@ -48,7 +49,8 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 	}
 	// Cas ou ImpalaJones est sur la ligne verticale du haut
 	else if(getX() == 0){
-		if(getY()-nbCases<=0){
+		int y = getY();
+		if(y-nbCases<=0){
 			nbCases-=getY();
 			setY(0);
 			setX(1 + nbCases);
@@ -78,9 +80,5 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 
 	/* ajout d'impalaJones a sa nouvelle position */
 	plateau->getCase(getX(), getY())->ajouterPion(this);
-
-
-
-
 	return 0;
 }
