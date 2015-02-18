@@ -676,3 +676,9 @@ void AffichageConsole::messageBonusInnauguration(const string& nomJoueur){
 	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus innauguration"<< endl;
 	cout<< "-----------------------"<<endl;
 }
+
+void AffichageConsole::messagePlusDePion(){
+	cout<< "======================================"<<endl;
+	cout << "Vous n'avez plus de pion, vous ne pouvez donc pas jouer !" << endl;
+	cout<< "======================================"<<endl;
+}

@@ -121,10 +121,16 @@ int main(){
 			}
 
 			// Déroulement du jeu jusqu'à que la partie prenne fin
-			while(!Regle::finPartie(*partie.getPlateau())){
-				if(partie.deroulementJeu(vectJoueur, tourJoueur, affichage) == 0){
+			//while(!Regle::finPartie(*partie.getPlateau())){
+			int continuer = 0;
+			while(continuer != 1){
+				continuer = partie.deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok
+				if(continuer == -2){
 					// Le joueur a décidé de quitter
 					return 0;
+				}
+				else if(continuer == -1){
+					cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
 				}
 				// Détermination du prochain joueur
 				if(tourJoueur == nbJoueurs-1){
@@ -136,7 +142,6 @@ int main(){
 			}
 			/* Affichage en fin de partie */
 			partie.finPartie(vectJoueur,affichage);
-
 		}
 
 		// Afficher les règles

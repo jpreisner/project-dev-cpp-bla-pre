@@ -21,7 +21,7 @@ public:
 	virtual ~ImpalaJones(){};
 
 	// nbCases doit etre compris entre 1 et 3
-	int deplacer(int nbCases, Plateau *plateau);
+	int deplacer(int nbCases, Plateau *plateau, int ancien_x, int ancien_y);
 
 	friend ostream& operator<<(ostream &strm, const ImpalaJones &ij) {
 		return strm << "ImpalaJones (" << ij.getX() << ", " << ij.getY() << ")" << endl;

@@ -11,25 +11,23 @@
 
 #include "../Plateau/Plateau.h"
 
-int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
+int ImpalaJones::deplacer(int nbCases, Plateau *plateau, int ancien_x, int ancien_y){
 	if(nbCases<0){
 		cout << "Erreur ! nbCases doit etre supérieur à 0" << endl;
 		return -1;
 	}
-
-	/**
-	 * Gerer le cas où le joueur peut pas poser le pion pour nbCases (car toutes les cases sont prises)?
-	 */
-
+	/*
 	int ancien_x = getX();
 	int ancien_y = getY();
-
+	*/
 	// Cas ou ImpalaJones est sur la ligne horizontale du haut
 	if(getY()==0){
 		if(getX()+nbCases>=TAILLE_PLATEAU_X-1){
 			nbCases-=(TAILLE_PLATEAU_X-1-getX());
 			setX(TAILLE_PLATEAU_X-1);
-			setY(1 + nbCases);
+			//setY(1 + nbCases);
+			setY(1);
+			return deplacer(nbCases, plateau, ancien_x, ancien_y);
 		}
 		else{
 			setX(getX()+nbCases);
@@ -41,7 +39,9 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 		if(x-nbCases<=0){
 			nbCases-=getX();
 			setX(0);
-			setY(TAILLE_PLATEAU_Y-2 - nbCases);
+			//setY(TAILLE_PLATEAU_Y-2 - nbCases);
+			setY(TAILLE_PLATEAU_Y-2);
+			return deplacer(nbCases, plateau, ancien_x, ancien_y);
 		}
 		else{
 			setX(getX()-nbCases);
@@ -53,7 +53,9 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 		if(y-nbCases<=0){
 			nbCases-=getY();
 			setY(0);
-			setX(1 + nbCases);
+			//setX(1 + nbCases);
+			setX(1);
+			return deplacer(nbCases, plateau, ancien_x, ancien_y);
 		}
 		else{
 			setY(getY()-nbCases);
@@ -64,7 +66,9 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
 		if(getY()+nbCases>=TAILLE_PLATEAU_Y-1){
 			nbCases-=(TAILLE_PLATEAU_Y-1-getY());
 			setY(TAILLE_PLATEAU_Y-1);
-			setX(TAILLE_PLATEAU_X-2-nbCases);
+			//setX(TAILLE_PLATEAU_X-2-nbCases);
+			setX(TAILLE_PLATEAU_X-2);
+			return deplacer(nbCases, plateau, ancien_x, ancien_y);
 		}
 		else{
 			setY(getY()+nbCases);

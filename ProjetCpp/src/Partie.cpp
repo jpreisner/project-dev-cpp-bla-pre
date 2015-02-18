@@ -34,37 +34,55 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 	// Message indiquant c'est a qui de jouer
 	affichage->afficheTour(getJoueurI(tourJoueur));
 
-	// Affichage du menu du joueur
-	do{
-		jeu = affichage->menuJoueur(getJoueurI(tourJoueur));
-		// Si jeu = 2 ==> le joueur joue
-		if(jeu == 2){
-			bool joue = false;
-			do{
-				joue = getJoueurI(tourJoueur)->jouer(getPlateau(),affichage);
-			}while(!joue);
-			break;
-		}
-		// Le joueur ne joue pas mais fait une autre action
-		else{
-			switch(jeu){
-				// Le joueur souhaite afficher sa liste de pions
-				case(1) : affichage->afficheListAnimal(getJoueurI(tourJoueur)->getListAnimaux());	break;
-
-				// Le joueur souhaite sauvegarder la partie
-				case(3) : Sauvegarde::sauvegarderPartie(*this,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
-
-				// Le joueur souhaite quitter la partie
-				case(4) : return 0;
+	// Cas ou le joueur n'a plus de pion
+	if(getJoueurI(tourJoueur)->getListAnimaux().size() == 0){
+		affichage->messagePlusDePion();
+	}
+	// Cas ou le joueur peut jouer
+	else{
+		// Affichage du menu du joueur
+		do{
+			jeu = affichage->menuJoueur(getJoueurI(tourJoueur));
+			// Si jeu = 2 ==> le joueur joue
+			if(jeu == 2){
+				bool joue = false;
+				do{
+					joue = getJoueurI(tourJoueur)->jouer(getPlateau(),affichage);
+				}while(!joue);
+				break;
 			}
-		}
-	}while(jeu!=2);
+			// Le joueur ne joue pas mais fait une autre action
+			else{
+				switch(jeu){
+					// Le joueur souhaite afficher sa liste de pions
+					case(1) : affichage->afficheListAnimal(getJoueurI(tourJoueur)->getListAnimaux());	break;
+
+					// Le joueur souhaite sauvegarder la partie
+					case(3) : Sauvegarde::sauvegarderPartie(*this,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+
+					// Le joueur souhaite quitter la partie
+					case(4) : return -2;
+				}
+			}
+		}while(jeu!=2);
+	}
+
+	if(Regle::finPartie(*getPlateau())){
+		return 1;	// fin de partie
+	}
 
 	// Le joueur doit déplacer Impala Jones avant de passer son tour
 	int possibilite = Regle::possibiliteDeplacementImpalaJones(*getPlateau(), *getPlateau()->getImpalaJones());
 	nbCases = affichage->demandeDeplacerImpalaJones(*getPlateau(),*getPlateau()->getImpalaJones(), possibilite);
-	getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau());
-	return 1;
+
+	// Au cas ou, mais ne devrait pas arrivé car finPartie est appelé avant
+	if(nbCases == -1){
+		return 1;
+	}
+
+	int ancien_x = getPlateau()->getImpalaJones()->getX();
+	int ancien_y = getPlateau()->getImpalaJones()->getY();
+	return getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau(), ancien_x, ancien_y);
 }
 
 /**

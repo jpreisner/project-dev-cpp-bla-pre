@@ -40,6 +40,7 @@ public:
 	int demandePlateau();
 	void afficherVainqueur(Joueur* j);
 	void messageBonusInnauguration(const string& nomJoueur);
+	void messagePlusDePion();
 	/* A COMPLETER */
 };
 
