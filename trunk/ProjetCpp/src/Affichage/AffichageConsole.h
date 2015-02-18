@@ -24,7 +24,7 @@ public:
 	int afficheRegle();
 	void demandeNomJoueur(Joueur *j);
 	void affichePlateau(Plateau p);
-	int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij);
+	int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int possibilite);
 	void afficheListAnimal(vector<Animal*> listAnimaux);
 	int selectionnerAnimal(vector<Animal*> listAnimaux);
 	void affichePion(Pion *p);

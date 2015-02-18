@@ -28,7 +28,7 @@ public:
 	virtual int afficheRegle() = 0;
 	virtual void demandeNomJoueur(Joueur *j) = 0;
 	virtual void affichePlateau(Plateau p) = 0;
-	virtual int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) = 0;
+	virtual int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int possibilite) = 0;
 	virtual void afficheListAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual int selectionnerAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual void affichePion(Pion *p) = 0;

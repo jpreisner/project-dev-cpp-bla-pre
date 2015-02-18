@@ -12,8 +12,8 @@
 #include "../Plateau/Plateau.h"
 
 int ImpalaJones::deplacer(int nbCases, Plateau *plateau){
-	if(!(nbCases>=1 && nbCases<=3)){
-		cout << "Erreur ! nbCases doit etre compris entre 1 et 3" << endl;
+	if(nbCases<0){
+		cout << "Erreur ! nbCases doit etre supérieur à 0" << endl;
 		return -1;
 	}
 

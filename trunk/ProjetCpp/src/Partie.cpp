@@ -61,7 +61,8 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 	}while(jeu!=2);
 
 	// Le joueur doit déplacer Impala Jones avant de passer son tour
-	nbCases = affichage->demandeDeplacerImpalaJones(*getPlateau(),*getPlateau()->getImpalaJones());
+	int possibilite = Regle::possibiliteDeplacementImpalaJones(*getPlateau(), *getPlateau()->getImpalaJones());
+	nbCases = affichage->demandeDeplacerImpalaJones(*getPlateau(),*getPlateau()->getImpalaJones(), possibilite);
 	getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau());
 	return 1;
 }
