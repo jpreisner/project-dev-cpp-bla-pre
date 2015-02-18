@@ -43,12 +43,6 @@ public:
 	/* le tour du joueur passé en parametre */
 	void finPartie(vector<Joueur*> vectJoueur, Affichage *affichage);
 
-	/* sauvegarde la partie courante avec le nom de fichier passé en parametre */
-	int sauvegarde(string path);
-
-	/* charge la partie courante avec le nom de fichier passé en parametre */
-	int chargement(string path);
-
 };
 
 #endif /* PARTIE_H_ */

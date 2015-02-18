@@ -87,29 +87,3 @@ void Partie::finPartie(vector<Joueur*> vectJoueur, Affichage *affichage){
 	/* affichage du vainqueur */
 	affichage->afficherVainqueur(vainqueur);
 }
-
-
-int Partie::sauvegarde(string path){
-	return 0;
-}
-
-int Partie::chargement(string path){
-	/*
-	string file = path + ".txt";
-	// Lecture
-	ifstream fichier(file, ios::in);
-	if(!fichier){
-		cout << "Erreur lors de l'ouverture du fichier " << file << endl;
-		return -1;
-	}
-	// Lecture ligne par ligne
-    string ligne;
-    while(getline(fichier, ligne)){
-            cout << ligne << endl;
-    }
-
-	// Fin de la lecture
-	fichier.close();
-	*/
-	return 0;
-}
