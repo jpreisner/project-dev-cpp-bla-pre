@@ -18,7 +18,7 @@
  * Renvoie vrai si la colonne passée en paramètre possède aucune case vide (toutes les cases contiennent des pions)
  */
 bool Regle::colonneRempli(Plateau p, int colonne){
-	int i;
+	unsigned int i;
 	for (i = 1; i < p.getTaillePlateauY() - 1; i++) {
 		if (p.getCase(colonne, i)->getPion() == NULL) {
 			return false;
@@ -31,7 +31,7 @@ bool Regle::colonneRempli(Plateau p, int colonne){
  * Renvoie vrai si la ligne passée en paramètre possède aucune case vide (toutes les cases contiennent des pions)
  */
 bool Regle::ligneRempli(Plateau p, int ligne){
-	int i;
+	unsigned int i;
 	for (i = 1; i < p.getTaillePlateauX() - 1; i++) {
 		if (p.getCase(i, ligne)->getPion() == NULL) {
 			return false;
@@ -44,7 +44,7 @@ bool Regle::ligneRempli(Plateau p, int ligne){
  * Renvoie vrai si la partie est terminée (toutes les cases sont remplies d'un pion)
  */
 bool Regle::finPartie(Plateau p){
-	int i;
+	unsigned int i;
 	for (i = 1; i < p.getTaillePlateauX() - 1; i++) {
 		if (!colonneRempli(p, i)) {
 			return false;
