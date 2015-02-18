@@ -32,6 +32,7 @@ public:
 	int randomLigne(Plateau p, int colonne);
 	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
 	void joueurInitImpala(Plateau *p, Affichage *affichage);
+	int jouerTour(Plateau* p, Affichage* affichage, Partie partie);
 };
 
 

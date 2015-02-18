@@ -17,6 +17,7 @@
 class Affichage;
 class ImpalaJones;
 class Plateau;
+class Partie;
 
 using namespace std;
 
@@ -88,7 +89,7 @@ public:
 
 	virtual bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche) = 0;
 
-	int placementAnimal(Animal *a, int x, int y);
+	virtual int jouerTour(Plateau* p, Affichage* affichage, Partie partie) = 0;
 
 	vector<Animal*>& getListAnimaux(){
 		return listAnimaux;

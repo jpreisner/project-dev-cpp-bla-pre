@@ -11,13 +11,13 @@
 #include <iterator>
 
 #include "../Affichage/Affichage.h"
+#include "../Partie.h"
 #include "../Pion/Animal.h"
 #include "../Pion/ImpalaJones.h"
 #include "../Pion.h"
 #include "../Plateau/Case.h"
 #include "../Regle.h"
 
-// TODO
 bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 	// Tirage aléatoire de la case à jouer
 	int xImpala = plateau->getImpalaJones()->getX();
@@ -117,7 +117,8 @@ bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 				affiche->messageBonusInnauguration(getNom());
 			}
 
-			// Tirage aléatoire de Impala
+			// Affichage au joueur réel du coup jouer par l'ordinateur
+			affiche->afficheCoupJoueOrdi(a);
 
 			return true;
 		}
@@ -218,4 +219,10 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 	p->getImpalaJones()->setX(random_x);
 	p->getImpalaJones()->setY(random_y);
 	p->initImpalaJones(p->getImpalaJones());
+	affichage->messageInitImpalaOrdi(random_x, random_y);
+}
+
+int Ordinateur::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
+	jouer(p, affichage);
+	return 1;
 }

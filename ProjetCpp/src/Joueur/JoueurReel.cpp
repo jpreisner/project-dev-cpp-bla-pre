@@ -10,6 +10,7 @@
 #include <iterator>
 #include <vector>
 
+#include "../Partie.h"
 #include "../Pion/Animal/Effrayant/Crocodile.h"
 #include "../Pion/Animal/Effrayant/Lion.h"
 #include "../Pion/Animal/Neutre/Elephant.h"
@@ -20,6 +21,7 @@
 #include "../Plateau/Case.h"
 #include "../Plateau/Plateau.h"
 #include "../Regle.h"
+#include "../Utils/Sauvegarde.h"
 
 
 bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche) {
@@ -151,4 +153,34 @@ void JoueurReel::joueurInitImpala(Plateau *p, Affichage *affichage){
 		affichage->demandePositionInitialeImpalaJones(p->getImpalaJones());
 	}
 	while(p->initImpalaJones(p->getImpalaJones()));
+}
+
+int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
+	int jeu;
+	// Affichage du menu du joueur
+	do{
+		jeu = affichage->menuJoueur(this);	/* TODO : a ne pas afficher si c'est l'ordi */
+		// Si jeu = 2 ==> le joueur joue
+		if(jeu == 2){
+			bool joue = false;
+			do{
+				joue = jouer(p, affichage);
+			}while(!joue);
+			break;
+		}
+		// Le joueur ne joue pas mais fait une autre action
+		else{
+			switch(jeu){
+				// Le joueur souhaite afficher sa liste de pions
+				case(1) : affichage->afficheListAnimal(getListAnimaux());	break;
+
+				// Le joueur souhaite sauvegarder la partie
+				case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt");	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+
+				// Le joueur souhaite quitter la partie
+				case(4) : return 0;
+			}
+		}
+	}while(jeu!=2);
+	return 1;
 }
