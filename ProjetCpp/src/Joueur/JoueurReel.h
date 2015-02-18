@@ -15,7 +15,9 @@
 
 class JoueurReel: public Joueur {
 public:
-	JoueurReel(string nom="") : Joueur(0,nom) {};
+	JoueurReel(int nbPoints = 0, string nom = "", int nbGazelles = 6, int nbZebres = 5,
+			int nbElephants = 1, int nbLions = 1, int nbCrocos = 2) :
+			Joueur(nbPoints, nom, nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos){};
 	virtual ~JoueurReel(){};
 
 	bool bonusInauguration(Plateau p);

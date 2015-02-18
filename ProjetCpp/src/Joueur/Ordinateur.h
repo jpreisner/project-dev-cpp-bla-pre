@@ -17,8 +17,9 @@
 
 class Ordinateur: public Joueur {
 public:
-	Ordinateur() : Joueur(0, "I-A") {
-	}
+	Ordinateur(int nbPoints = 0, string nom="I-A", int nbGazelles = 6, int nbZebres = 5,
+			int nbElephants = 1, int nbLions = 1, int nbCrocos = 2) :
+			Joueur(nbPoints, nom , nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos){};
 	virtual ~Ordinateur() {};
 
 	bool jouer(Plateau* plateau, Affichage * affiche);
