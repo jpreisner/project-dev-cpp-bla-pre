@@ -31,8 +31,7 @@ public:
 	virtual int demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij) = 0;
 	virtual void afficheListAnimal(vector<Animal*> listAnimaux) = 0;
 	virtual int selectionnerAnimal(vector<Animal*> listAnimaux) = 0;
-	virtual int selectionnerPosition(int *x, int *y, Plateau p) = 0;
-	virtual void affichePion(Pion *p, Joueur *j) = 0;
+	virtual void affichePion(Pion *p) = 0;
 	virtual int menuJoueur(Joueur *j) = 0;
 	virtual int demandeLigne(Plateau p, int colonne) = 0;
 	virtual int demandeColonne(Plateau p, int ligne) = 0;

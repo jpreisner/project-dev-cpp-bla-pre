@@ -19,15 +19,15 @@
 #include "Pion/ImpalaJones.h"
 #include "Plateau/Plateau.h"
 #include "Regle.h"
-
+#include "Utils/SaisieSecure.h"
 using namespace std;
 
 int main(){
-	int res;
+	unsigned int res;
 	do{
 		cout << "1- Test de programme" << endl;
 		cout << "2- Appel du vrai programme" << endl;
-		cin >> res;
+		SaisieSecure::saisieSecureInt(res);
 	}while(res != 1 && res != 2);
 
 	// Test, permet de debugger nos fonctions qu'on ajoute au fur et a mesure

@@ -6,8 +6,8 @@
  */
 
 #include "Affichage.h"
-
 #include <iostream>
+#include "../Utils/SaisieSecure.h"
 
 int Affichage::demandeTypeAffichage(){
 	cout << "======================================" << endl;
@@ -15,8 +15,8 @@ int Affichage::demandeTypeAffichage(){
 	cout << "    1 - Affichage sur console" << endl;
 	cout << "    2 - Autres (?)" << endl;
 	cout << "======================================" << endl;
-	int res;
-	cin >> res;
+	unsigned int res;
+	SaisieSecure::saisieSecureInt(res);
 	while(res!=1){
 		cout << "Erreur ! Veuillez entrer un numéro compris entre 1 et 1" << endl;
 		cout << "======================================" << endl;
@@ -24,7 +24,7 @@ int Affichage::demandeTypeAffichage(){
 		cout << "    1 - Affichage sur console" << endl;
 		cout << "    2 - Autres (?)" << endl;
 		cout << "======================================" << endl;
-		cin >> res;
+		SaisieSecure::saisieSecureInt(res);
 	}
 	return res;
 }

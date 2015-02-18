@@ -51,10 +51,10 @@ public:
 		return &cases[x][y];
 	}
 
-	int getTaillePlateauX(){
+	unsigned int getTaillePlateauX(){
 		return TAILLE_PLATEAU_X;
 	}
-	int getTaillePlateauY(){
+	unsigned int getTaillePlateauY(){
 		return TAILLE_PLATEAU_Y;
 	}
 
