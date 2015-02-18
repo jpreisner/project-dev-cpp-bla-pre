@@ -44,6 +44,7 @@ public:
 
 	int ajouterAnimal(int x, int y, Animal* a);
 
+	/* Ajout d'ImpalaJones sur la case correspondant a sa position */
 	int initImpalaJones(ImpalaJones *ij);
 
 	Case* getCase(int x, int y){
