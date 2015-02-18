@@ -202,8 +202,9 @@ int Regle::calculPointsJoueur(Plateau p, Joueur * j){
 		if (!p.secteurRempli(i)) {
 			return 0;
 		}
-		if (*j == *joueurMajoriteDansSecteur(p, i)) {
+		if (j->getId() == joueurMajoriteDansSecteur(p, i)) {
 			result += valeurSecteur(p,i);
+
 		}
 	}
 	return result;
@@ -213,43 +214,40 @@ int Regle::calculPointsJoueur(Plateau p, Joueur * j){
  * renvoie le joueur qui a la majorité dans un secteur
  * retourne NULL si une case n'a pas de pion
  */
-Joueur* Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
-	int j1 = 0;
-	Joueur * joueur1 = NULL;
-	int j2 = 0;
-	Joueur * joueur2 = NULL;
+int Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
+	int idJ1 = 0;
+	int idJ2 = 0;
+	unsigned int nbAnimalJ1 = 0;
+	unsigned int nbAnimalJ2 = 0;
 
-	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {
-		for (int j = 1; j < TAILLE_PLATEAU_X - 1; j++) {
+	for (unsigned int i = 1; i < p.getTaillePlateauX() - 1; i++) {
+		for (unsigned int j = 1; j < p.getTaillePlateauY() - 1; j++) {
 			if(p.getCase(i, j)->getPion() == NULL){
-				return NULL;
+				return 0;
 			}
 			if (p.getCase(i, j)->getSecteur() == secteur) {
-				if (joueur1 == NULL && joueur2 == NULL) {
-					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-					joueur1 = animal->getJoueur();
-					j1++;
-				} else {
-					Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-					if (animal->getJoueur() == joueur1) {
-						j1++;
-					} else {
-						if (joueur2 == NULL) {
-							Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-							joueur2 = animal->getJoueur();
-							j2++;
-						} else {
-							j2++;
-						}
+				Animal * animal = (Animal*) p.getCase(i, j)->getPion();
+
+				if(idJ1 == animal->getJoueur()->getId()){
+					nbAnimalJ1++;
+				}else if(idJ2 == animal->getJoueur()->getId()){
+					nbAnimalJ2++;
+				}else{
+					if (idJ1 == 0 && idJ2 == 0) {
+						idJ1 = animal->getJoueur()->getId();
+						nbAnimalJ1++;
+					}else if(idJ2 == 0){
+						idJ2 = animal->getJoueur()->getId();
+						nbAnimalJ2++;
 					}
 				}
 			}
 		}
 	}
-	if (j2 > j1) {
-		return joueur2;
+	if (nbAnimalJ2 > nbAnimalJ1) {
+		return idJ2;
 	} else {
-		return joueur1;
+		return idJ1;
 	}
 }
 
