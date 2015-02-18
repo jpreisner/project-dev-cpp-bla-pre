@@ -658,3 +658,9 @@ int AffichageConsole::demandePlateau(){
 	cout<< "======================================"<<endl;
 	return res;
 }
+
+void AffichageConsole::afficherVainqueur(Joueur* j){
+	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
+	cout << "FELICITATIONS" << j->getNom()<<", vous remportez la partie"<< endl;
+	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
+}
