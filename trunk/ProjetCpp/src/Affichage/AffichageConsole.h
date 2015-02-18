@@ -39,6 +39,7 @@ public:
 	void messageDebutPartie(Joueur *j);
 	void afficheTour(Joueur *j);
 	int demandePlateau();
+	void afficherVainqueur(Joueur* j);
 	/* A COMPLETER */
 };
 

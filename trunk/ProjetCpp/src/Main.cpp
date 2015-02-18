@@ -134,6 +134,23 @@ int main(){
 					tourJoueur++;
 				}
 			}
+			/* Affichage en fin de partie */
+			Joueur *vainqueur = NULL;
+			for(unsigned int i=0;i<vectJoueur.size();i++){
+				int total = vectJoueur[i]->getNbPoints()+Regle::calculPointsJoueur(*partie.getPlateau(),vectJoueur[i]);
+				vectJoueur[i]->setNbPoints(total);
+
+				if(vainqueur == NULL){
+					vainqueur = vectJoueur[i];
+				}else{
+					if(vainqueur->getNbPoints()<vectJoueur[i]->getNbPoints()){
+						vainqueur = vectJoueur[i];
+					}
+				}
+			}
+
+			/* affichage du vainqueur */
+			affichage->afficherVainqueur(vainqueur);
 		}
 
 		// Afficher les règles
