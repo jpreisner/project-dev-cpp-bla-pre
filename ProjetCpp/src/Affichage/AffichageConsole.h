@@ -39,6 +39,7 @@ public:
 	void afficheTour(Joueur *j);
 	int demandePlateau();
 	void afficherVainqueur(Joueur* j);
+	void messageBonusInnauguration(const string& nomJoueur);
 	/* A COMPLETER */
 };
 

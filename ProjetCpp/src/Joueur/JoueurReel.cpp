@@ -125,6 +125,7 @@ bool JoueurReel::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 			if (!plateau->getbonusInauguration() && plateau->secteurRempli(plateau->getCase(xPion, yPion)->getSecteur())) {
 				ajouterPoints(5);
 				plateau->setBonusInauguration(true);
+				affiche->messageBonusInnauguration(getNom());
 			}
 			return true;
 		}
