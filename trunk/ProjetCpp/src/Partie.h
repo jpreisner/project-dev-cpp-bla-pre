@@ -31,19 +31,22 @@ public:
 		return plateau;
 	}
 
-	/**
-	 * Lancer le premier tour en initialisant la position d'ImpalaJones
-	 */
-	int lancerPartie(int x, int y);
-
-	int deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage *affichage);
-
-	/**
-	 * Demander les noms, attribuer les cartes
-	 */
+	/* Demander les noms, attribuer les cartes */
 	int initJoueurs();
 
+	/* Lancer le premier tour en initialisant la position d'ImpalaJones	 */
+	int lancerPartie(int x, int y);
+
+	/* le tour du joueur passé en parametre */
+	int deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage *affichage);
+
+	/* le tour du joueur passé en parametre */
+	void finPartie(vector<Joueur*> vectJoueur, Affichage *affichage);
+
+	/* sauvegarde la partie courante avec le nom de fichier passé en parametre */
 	int sauvegarde(string path);
+
+	/* charge la partie courante avec le nom de fichier passé en parametre */
 	int chargement(string path);
 
 };

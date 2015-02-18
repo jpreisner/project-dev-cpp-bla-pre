@@ -9,6 +9,7 @@
 
 #include <iostream>
 
+#include "Regle.h"
 #include "Affichage/Affichage.h"
 #include "Pion/ImpalaJones.h"
 #include "Pion.h"
@@ -72,6 +73,26 @@ int Partie::initJoueurs(){
 
 	return 0;
 }
+
+void Partie::finPartie(vector<Joueur*> vectJoueur, Affichage *affichage){
+	Joueur *vainqueur = NULL;
+	for(unsigned int i=0;i<vectJoueur.size();i++){
+		int total = vectJoueur[i]->getNbPoints()+Regle::calculPointsJoueur(*getPlateau(),vectJoueur[i]);
+		vectJoueur[i]->setNbPoints(total);
+
+		if(vainqueur == NULL){
+			vainqueur = vectJoueur[i];
+		}else{
+			if(vainqueur->getNbPoints()<vectJoueur[i]->getNbPoints()){
+				vainqueur = vectJoueur[i];
+			}
+		}
+	}
+
+	/* affichage du vainqueur */
+	affichage->afficherVainqueur(vainqueur);
+}
+
 
 int Partie::sauvegarde(string path){
 	return 0;
