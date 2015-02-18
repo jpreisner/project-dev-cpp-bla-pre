@@ -23,7 +23,8 @@ private:
 	static void ecrirePlateau(Plateau p,ofstream& fichier);
 	static void ecrireCase(Case *c, ofstream& fichier,int i, int j);
 public:
-	static bool sauvegarderPartie(Partie p, string fileName);
+	static bool sauvegarderPartie(Partie p, string fileName, int idJoueur);
+	static Partie* chargementPartie(string fileName);
 };
 
 #endif /* UTILS_SAUVEGARDE_H_ */
