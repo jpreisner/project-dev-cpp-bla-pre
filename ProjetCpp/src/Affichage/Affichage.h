@@ -43,10 +43,11 @@ public:
 	virtual void afficheTour(Joueur *j) = 0;
 	virtual int demandePlateau() = 0;
 	virtual void afficherVainqueur(Joueur* j)=0;
-	virtual void messageBonusInnauguration(const string& nomJoueur)=0;
+	virtual void messageBonusInauguration(const string& nomJoueur)=0;
 	virtual void messagePlusDePion() = 0;
 	virtual void messageInitImpalaOrdi(int x, int y) = 0;
 	virtual void afficheCoupJoueOrdi(Animal *a) = 0;
+	virtual void afficheSauvegarde() = 0;
 	virtual void scoreFinal(Joueur *j1, Joueur *j2) = 0;
 	virtual bool retourMenuPrincipal() = 0;
 	virtual void finProgramme() = 0;

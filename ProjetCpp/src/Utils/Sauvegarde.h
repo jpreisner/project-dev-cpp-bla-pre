@@ -21,10 +21,10 @@ class Sauvegarde {
 private:
 	static void ecrireJoueur(Joueur *j,ofstream& fichier);
 	static void ecrirePlateau(Plateau p,ofstream& fichier);
-	static void ecrireCase(Case *c, ofstream& fichier,int i, int j);
+	static void ecrirePion(Pion *p, ofstream& fichier);
 public:
 	static bool sauvegarderPartie(Partie p, string fileName, int idJoueur);
-	static Partie* chargementPartie(string fileName);
+	static Partie* chargementPartie(string fileName,int& tourJoueur);
 };
 
 #endif /* UTILS_SAUVEGARDE_H_ */

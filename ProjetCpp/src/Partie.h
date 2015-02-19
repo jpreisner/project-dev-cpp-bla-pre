@@ -27,6 +27,10 @@ public:
 		return vectJoueur[i];
 	}
 
+	vector<Joueur*> getVectJoueur(){
+		return vectJoueur;
+	}
+
 	Plateau* getPlateau(){
 		return plateau;
 	}

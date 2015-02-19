@@ -17,6 +17,7 @@ class Lion;
 class Gazelle: public Peureux {
 public:
 	Gazelle(Joueur* j) : Peureux(2,j) {};
+	Gazelle() : Peureux(6) {};
 	~Gazelle() {};
 
 	string print() const {
