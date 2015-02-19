@@ -234,11 +234,10 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 	}
 	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
 	else if (possibilite == -1) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"
-				<< endl;
+		cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"<< endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res >= 1 && res <= 3)) {
-			cout << "Erreur! Veuillez choisir un nombre compris entre 1 et 3" << endl;
+			cout << "Erreur! Veuillez choisir un nombre compris entre 1, 2 et 3" << endl;
 			SaisieSecure::saisieSecureInt(res);
 		}
 		cout << "======================================" << endl;
@@ -451,7 +450,13 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 void AffichageConsole::affichePion(Pion *p){
 	/* appel de print p et de l'id du joueur */
 	if(dynamic_cast<Animal*> (p) != NULL){
-		cout << " " << p->print() << " ";
+		Peureux* peureux = dynamic_cast<Peureux*>(p);
+		if(peureux != NULL && peureux->isCache()){
+			cout << " (-," << peureux->getJoueur()->getId() << ") ";
+		}
+		else{
+			cout << " " << p->print() << " ";
+		}
 	}
 	else{
 		afficheImpalaJones();
@@ -680,7 +685,7 @@ void AffichageConsole::afficherVainqueur(Joueur* j){
 
 void AffichageConsole::messageBonusInnauguration(const string& nomJoueur){
 	cout<< "-----------------------"<<endl;
-	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus innauguration"<< endl;
+	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus inauguration (+5)"<< endl;
 	cout<< "-----------------------"<<endl;
 }
 
@@ -699,5 +704,33 @@ void AffichageConsole::messageInitImpalaOrdi(int x, int y){
 void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
 	cout<< "======================================"<<endl;
 	cout << "L'ordinateur a joué" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
+	cout<< "======================================"<<endl;
+}
+
+void AffichageConsole::scoreFinal(Joueur *j1, Joueur *j2){
+	cout << "Score final : " << j1->getNom() << " : " << j1->getNbPoints() << " points, et  " << j2->getNom() << " : " << j2->getNbPoints() << "points" << endl;
+}
+
+bool AffichageConsole::retourMenuPrincipal(){
+	cout<< "======================================"<<endl;
+	cout << "Voulez-vous revenir au menu principal ?"<< endl;
+	cout << "   1 - Oui" << endl;
+	cout << "   2 - Non" << endl;
+	unsigned int res;
+	SaisieSecure::saisieSecureInt(res);
+	while(res!=1 && res!=2){
+		cout << "Erreur ! Veuillez choisir un nombre compris entre 1 et 2" << endl;
+		SaisieSecure::saisieSecureInt(res);
+	}
+	cout<< "======================================"<<endl;
+	if(res == 1){
+		return true;
+	}
+	return false;
+}
+
+void AffichageConsole::finProgramme(){
+	cout<< "======================================"<<endl;
+	cout << "A bientot !" << endl;
 	cout<< "======================================"<<endl;
 }

@@ -21,6 +21,7 @@ public:
 
 	static bool colonneRempli(Plateau p, int colonne);
 	static bool ligneRempli(Plateau p, int ligne);
+	static bool caseRempli(Plateau p, int colonne, int ligne);
 	static bool finPartie(Plateau p);
 
 	/* Par rapport au déplacement de Impala Jones */

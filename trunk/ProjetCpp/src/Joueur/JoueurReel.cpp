@@ -184,3 +184,6 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 	}while(jeu!=2);
 	return 1;
 }
+int JoueurReel::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage){
+	return affichage->demandeChoixActionCrocodile(voisin, p);
+}

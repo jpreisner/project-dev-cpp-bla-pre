@@ -18,6 +18,7 @@ class Affichage;
 class ImpalaJones;
 class Plateau;
 class Partie;
+class Gazelle;
 
 using namespace std;
 
@@ -122,6 +123,7 @@ public:
 
 	virtual int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage) = 0;
 	virtual void joueurInitImpala(Plateau *p, Affichage *affichage) = 0;
+	virtual int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage) = 0;
 };
 
 #endif /* JOUEUR_H_ */

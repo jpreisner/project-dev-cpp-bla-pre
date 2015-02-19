@@ -51,7 +51,7 @@ void Crocodile::action(Plateau *p, Affichage *affichage) {
 
 		if (voisin.size() > 0) {
 			// Appel d'une fonction d'affichage
-			unsigned int choix = affichage->demandeChoixActionCrocodile(voisin, *p);
+			unsigned int choix = getJoueur()->choixActionCrocodile(voisin, *p, affichage);
 			// Echanges et suppression de la liste de voisin car il va falloir calculer les nouveaux voisins
 			if (choix != voisin.size() + 1) {
 				gazellesEchangees.insert(voisin[choix-1]);	// Gérer les doublons

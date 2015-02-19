@@ -7,10 +7,9 @@
 #ifndef GAZELLE_H_
 #define GAZELLE_H_
 
+#include <sstream>
 #include <string>
 
-#include "../../../Joueur.h"
-#include "../../Animal.h"
 #include "../Peureux.h"
 
 class Lion;
@@ -23,9 +22,11 @@ public:
 	string print() const {
 		ostringstream id;
 		id << getJoueur()->getId();
+		/*
 		if(isCache()){
 			return "(-," + id.str() + ")";
 		}
+		*/
 		return "(G," + id.str() + ")";
 	}
 	void action(Plateau *p, Affichage *affichage);

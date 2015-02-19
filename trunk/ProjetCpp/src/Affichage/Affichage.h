@@ -47,6 +47,9 @@ public:
 	virtual void messagePlusDePion() = 0;
 	virtual void messageInitImpalaOrdi(int x, int y) = 0;
 	virtual void afficheCoupJoueOrdi(Animal *a) = 0;
+	virtual void scoreFinal(Joueur *j1, Joueur *j2) = 0;
+	virtual bool retourMenuPrincipal() = 0;
+	virtual void finProgramme() = 0;
 	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
 	/* A COMPLETER */
 };
