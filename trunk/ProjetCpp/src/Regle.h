@@ -28,8 +28,6 @@ public:
 	static int possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij);
 	static bool testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases);
 
-	/* Par rapport aux effraiments */
-
 	/* Comptage des points */
 	static int calculPointsJoueur(Plateau p, Joueur *j);
 	static int joueurMajoriteDansSecteur(Plateau p,int secteur);
