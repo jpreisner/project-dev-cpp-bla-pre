@@ -20,6 +20,7 @@ public:
 			Joueur(nbPoints, nom, nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos){};
 	virtual ~JoueurReel(){};
 
+	/** UTILISE QUELQUE PART???????? **/
 	bool bonusInauguration(Plateau p);
 
 	bool jouer(Plateau* plateau, Affichage * affiche);
