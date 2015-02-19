@@ -86,4 +86,5 @@ void Partie::finPartie(vector<Joueur*> vectJoueur, Affichage *affichage){
 
 	/* affichage du vainqueur */
 	affichage->afficherVainqueur(vainqueur);
+	affichage->scoreFinal(vectJoueur[0], vectJoueur[1]);
 }

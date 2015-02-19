@@ -14,6 +14,10 @@
 #include "Plateau/Case.h"
 #include "Plateau/Plateau.h"
 
+
+bool Regle::caseRempli(Plateau p, int colonne, int ligne){
+	return (p.getCase(colonne, ligne)->getPion() != NULL);
+}
 /**
  * Renvoie vrai si la colonne passée en paramètre possède aucune case vide (toutes les cases contiennent des pions)
  */

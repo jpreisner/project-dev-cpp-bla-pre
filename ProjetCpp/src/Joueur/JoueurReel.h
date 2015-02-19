@@ -32,6 +32,7 @@ public:
 	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
 	void joueurInitImpala(Plateau *p, Affichage *affichage);
 	int jouerTour(Plateau* p, Affichage* affichage, Partie partie);
+	int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage);
 };
 
 #endif /* JOUEURREEL_H_ */

@@ -8,15 +8,15 @@
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 
-#include <sstream>
 #include <string>
+#include <sstream>
 
-#include "../Joueur.h"
 #include "../Pion.h"
+#include "../Joueur.h"
 
 class Affichage;
-class Plateau;
 class Joueur;
+class Plateau;
 
 using namespace std;
 

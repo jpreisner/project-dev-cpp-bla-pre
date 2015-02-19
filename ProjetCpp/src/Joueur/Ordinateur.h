@@ -13,6 +13,8 @@
 #include <vector>
 
 #include "../Joueur.h"
+#include "../Pion/Animal/Peureux/Gazelle.h"
+#include "../Pion/ImpalaJones.h"
 #include "../Plateau/Plateau.h"
 
 class Ordinateur: public Joueur {
@@ -34,6 +36,7 @@ public:
 	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
 	void joueurInitImpala(Plateau *p, Affichage *affichage);
 	int jouerTour(Plateau* p, Affichage* affichage, Partie partie);
+	int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage);
 };
 
 
