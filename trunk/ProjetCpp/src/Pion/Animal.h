@@ -8,15 +8,15 @@
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 
-#include <string>
 #include <sstream>
+#include <string>
 
-#include "../Pion.h"
 #include "../Joueur.h"
+#include "../Pion.h"
 
 class Affichage;
-class Joueur;
 class Plateau;
+class Joueur;
 
 using namespace std;
 
@@ -44,7 +44,9 @@ public:
 		return joueur;
 	}
 
-
+	void setJoueur(Joueur* j){
+		joueur = j;
+	}
 	/**
 	 * action appelé lorsque l'animal est posé et est en fonction des autres animaux environnants
 	 * Renvoie 1 si il n'y a plus d'action a effectué après l'appel de cette fonction, et 0 sinon

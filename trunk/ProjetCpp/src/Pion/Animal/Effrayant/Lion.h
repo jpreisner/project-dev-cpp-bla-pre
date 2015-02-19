@@ -20,8 +20,8 @@ using namespace std;
 
 class Lion: public Effrayant {
 public:
-	Lion(Joueur* j) : Effrayant(1,j) {
-	};
+	Lion(Joueur* j) : Effrayant(1,j) {};
+	Lion() : Effrayant(1) {};
 	~Lion() {};
 
 	virtual string print() const {

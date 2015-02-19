@@ -683,7 +683,7 @@ void AffichageConsole::afficherVainqueur(Joueur* j){
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
 }
 
-void AffichageConsole::messageBonusInnauguration(const string& nomJoueur){
+void AffichageConsole::messageBonusInauguration(const string& nomJoueur){
 	cout<< "-----------------------"<<endl;
 	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus inauguration (+5)"<< endl;
 	cout<< "-----------------------"<<endl;
@@ -706,6 +706,11 @@ void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
 	cout << "L'ordinateur a joué" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
 	cout<< "======================================"<<endl;
 }
+
+void AffichageConsole::afficheSauvegarde(){
+	cout << "Sauvegarde bien effectuée dans le fichier save.txt" << endl;
+}
+
 
 void AffichageConsole::scoreFinal(Joueur *j1, Joueur *j2){
 	cout << "Score final : " << j1->getNom() << " : " << j1->getNbPoints() << " points, et  " << j2->getNom() << " : " << j2->getNbPoints() << "points" << endl;

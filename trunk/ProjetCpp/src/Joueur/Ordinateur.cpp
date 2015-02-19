@@ -125,7 +125,7 @@ bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 			if (!plateau->getbonusInauguration() && plateau->secteurRempli(plateau->getCase(xPion, yPion)->getSecteur())) {
 				ajouterPoints(5);
 				plateau->setBonusInauguration(true);
-				affiche->messageBonusInnauguration(getNom());
+				affiche->messageBonusInauguration(getNom());
 			}
 
 			// Affichage au joueur réel du coup jouer par l'ordinateur

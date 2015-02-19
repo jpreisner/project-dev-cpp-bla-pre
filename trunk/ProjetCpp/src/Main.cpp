@@ -20,6 +20,8 @@
 #include "Plateau/Plateau.h"
 #include "Regle.h"
 #include "Utils/SaisieSecure.h"
+#include "Utils/Sauvegarde.h"
+
 using namespace std;
 
 int main(){
@@ -32,8 +34,8 @@ int main(){
 
 	// Test, permet de debugger nos fonctions qu'on ajoute au fur et a mesure
 	if(res == 1){
-		/*
-		JoueurReel j("Zizou");
+		//Sauvegarde::chargementPartie("save.txt");
+		/*JoueurReel j("Zizou");
 		cout << j << endl;
 
 		// Affichage de la liste initialisée
@@ -47,8 +49,7 @@ int main(){
 
 		j.jouerCase(2, 1, &p, &affichage);
 		j.jouerCase(3, 2, &p, &affichage);
-		j.jouerCase(3, 1, &p, &affichage);
-		*/
+		j.jouerCase(3, 1, &p, &affichage);*/
 	}
 	// Vrai programme qui sera ici quand tout sera fini
 	else{
@@ -96,7 +97,7 @@ int main(){
 
 				// Initialisation de la partie
 				int num_plateau = affichage->demandePlateau();
-				Partie partie = Partie(vectJoueur,new Plateau(num_plateau));
+				Partie partie = Partie(vectJoueur,new Plateau(num_plateau, new ImpalaJones(0,0)));
 
 				// Affichage du plateau
 				affichage->affichePlateau(*partie.getPlateau());
@@ -146,9 +147,33 @@ int main(){
 				affichage->afficheRegle();
 			}
 
-			// Charger une partie
-			else if (menu_demarrage == 4) {
+		// Charger une partie
+		else if (menu_demarrage == 4) {
+			int tourJoueur;
+			Partie* partie = Sauvegarde::chargementPartie("save.txt",tourJoueur);
 
+			// Déroulement du jeu jusqu'à que la partie prenne fin
+			int continuer = 0;
+			while(continuer != 1){
+
+				continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
+				if(continuer == -2){
+					// Le joueur a décidé de quitter
+					return 0;
+				}
+				else if(continuer == -1){
+					cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
+				}
+				// Détermination du prochain joueur
+				if(tourJoueur == partie->getVectJoueur().size()-1){
+					tourJoueur = 0;
+				}
+				else{
+					tourJoueur++;
+				}
+			}
+			/* Affichage en fin de partie */
+			partie->finPartie(partie->getVectJoueur(),affichage);
 			}
 
 			// Quitter

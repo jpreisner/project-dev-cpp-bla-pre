@@ -18,6 +18,7 @@
 class Zebre: public Peureux {
 public:
 	Zebre(Joueur* j) : Peureux(6,j) {};
+	Zebre() : Peureux(6) {};
 	~Zebre(){};
 
 	string print() const {

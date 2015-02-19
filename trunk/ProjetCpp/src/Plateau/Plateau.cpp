@@ -48,6 +48,7 @@ bool Plateau::supprimerPion(int x, int y){
 }
 
 int Plateau::initImpalaJones(ImpalaJones *ij){
+	setImpalaJones(ij);
 	return getCase(ij->getX(), ij->getY())->ajouterPion(ij);
 }
 

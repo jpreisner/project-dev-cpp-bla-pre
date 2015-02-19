@@ -17,6 +17,7 @@
 class Elephant: public Neutre {
 public:
 	Elephant(Joueur* j) : Neutre(1,j) {};
+	Elephant() : Neutre(1) {};
 	~Elephant() {};
 
 	virtual string print() const {

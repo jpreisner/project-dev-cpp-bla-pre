@@ -130,7 +130,7 @@ bool JoueurReel::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 			if (!plateau->getbonusInauguration() && plateau->secteurRempli(plateau->getCase(xPion, yPion)->getSecteur())) {
 				ajouterPoints(5);
 				plateau->setBonusInauguration(true);
-				affiche->messageBonusInnauguration(getNom());
+				affiche->messageBonusInauguration(getNom());
 			}
 			return true;
 		}
@@ -172,13 +172,16 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 		else{
 			switch(jeu){
 				// Le joueur souhaite afficher sa liste de pions
-				case(1) : affichage->afficheListAnimal(getListAnimaux());	break;
+				case 1 : affichage->afficheListAnimal(getListAnimaux());	break;
 
 				// Le joueur souhaite sauvegarder la partie
-				case(3) : Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());	break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+				case 3 :
+						Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());
+						affichage->afficheSauvegarde();
+				break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
 
 				// Le joueur souhaite quitter la partie
-				case(4) : return 0;
+				case 4 : return 0;
 			}
 		}
 	}while(jeu!=2);

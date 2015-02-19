@@ -30,8 +30,7 @@ private:
 	ImpalaJones *ij;
 	bool bonusInauguration;
 public:
-	Plateau(int num_plateau=1) : typePlateau(num_plateau), bonusInauguration(false){
-		ij = new ImpalaJones(0,0);
+	Plateau(int num_plateau=1,ImpalaJones *ij= NULL) : typePlateau(num_plateau), ij(ij), bonusInauguration(false){
 		initPlateau(num_plateau);
 	}
 	virtual ~Plateau(){
@@ -63,6 +62,11 @@ public:
 		return typePlateau;
 	}
 
+
+	void setImpalaJones(ImpalaJones* ij){
+		this->ij = ij;
+	}
+
 	/* Affichage du plateau */
 	string print();
 
@@ -87,6 +91,7 @@ public:
 	ImpalaJones* getImpalaJones(){
 		return ij;
 	}
+
 };
 
 #endif /* PLATEAU_H_ */
