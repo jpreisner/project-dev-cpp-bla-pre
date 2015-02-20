@@ -94,7 +94,7 @@ int AffichageConsole::afficheRegle(){
  */
 void AffichageConsole::demandeNomJoueur(Joueur *j){
 	cout << "======================================" << endl;
-	cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
+	cout << "Veuillez entrer le nom du joueur n." << j->getId() << " : " << endl;
 	cout << "======================================" << endl;
 	string nom;
 	cin >> nom;
@@ -102,7 +102,7 @@ void AffichageConsole::demandeNomJoueur(Joueur *j){
 	while (nom.compare("I-A") == 0) {
 		cout << "Erreur ! Vous ne pouvez pas vous appeler I-A (reserve a l'ordinateur)" << endl;
 		cout << "======================================" << endl;
-		cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
+		cout << "Veuillez entrer le nom du joueur n." << j->getId() << " : " << endl;
 		cout << "======================================" << endl;
 		cin >> nom;
 	}
