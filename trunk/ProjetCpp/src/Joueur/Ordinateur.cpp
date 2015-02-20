@@ -27,11 +27,19 @@ bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 		yPion = yImpala;
 		//  on demande la position du Y
 		xPion = randomColonne(*plateau, yPion);
+		if(xPion == -1){
+			cerr << "Erreur dans jouer (Ordinateur) : la ligne " << yPion << " est remplie" << endl;
+			return false;
+		}
 	} else {
 		// Impala sur une ligne horizontale
 		xPion = xImpala;
 		//  on demande la position du X
 		yPion = randomLigne(*plateau, xPion);
+		if(yPion == -1){
+			cerr << "Erreur dans jouer (Ordinateur) : la colonne " << xPion << " est remplie" << endl;
+			return false;
+		}
 	}
 
 	cout << "########################" << endl;
@@ -70,7 +78,7 @@ int Ordinateur::randomColonne(Plateau p, int ligne){
 	unsigned int i;
 	vector<int> tab(0);
 	cout << "Dans randomColonne: valeur accepté pour la ligne (" << ligne << ") : " << endl;
-	for(i=1; i<p.getTaillePlateauY()-1; i++){
+	for(i=1; i<p.getTaillePlateauX()-1; i++){
 		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
 		if(!Regle::caseRempli(p, i, ligne)){
 			cout << i << " ";
