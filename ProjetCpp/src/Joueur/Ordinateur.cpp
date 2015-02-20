@@ -16,6 +16,18 @@
 #include "../Plateau/Case.h"
 #include "../Regle.h"
 
+/**
+ * Pas besoin d'effectuer ce qu'il y a a faire dans jouerTour de JoueurReel, car l'ordinateur souhaite automatiquement jouer
+ * Renvoie 1 car l'ordinateur ne veut pas quitter la partie
+ */
+int Ordinateur::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
+	jouer(p, affichage);
+	return 1;
+}
+
+/**
+ * L'ordinateur tire aléatoirement les coordonnéespour poser un animal puis appelle la méthode jouerCase
+ */
 bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 	// Tirage aléatoire de la case à jouer
 	int xImpala = plateau->getImpalaJones()->getX();
@@ -48,58 +60,11 @@ bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 	return jouerCase(xPion, yPion, plateau, affiche);
 }
 
-
-int Ordinateur::randomLigne(Plateau p, int colonne){
-	unsigned int i;
-	vector<int> tab(0);
-	cout << "Dans randomLigne : valeur accepté pour la colonne (" << colonne << ") : " << endl;
-	for(i=1; i<p.getTaillePlateauY()-1; i++){
-		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
-		if(!Regle::caseRempli(p, colonne, i)){
-			cout << i << " ";
-			tab.push_back(i);
-		}
-	}
-	cout << endl;
-
-	int size = tab.size();
-	if(size == 0){
-		cout << "Aucune possibilité dans randomLigne" << endl;
-		return -1;
-	}
-	// Tirage d'un indice aléatoire
-	int random = rand()%size;
-
-	// On renvoi le résultat
-	return tab[random];
-}
-
-int Ordinateur::randomColonne(Plateau p, int ligne){
-	unsigned int i;
-	vector<int> tab(0);
-	cout << "Dans randomColonne: valeur accepté pour la ligne (" << ligne << ") : " << endl;
-	for(i=1; i<p.getTaillePlateauX()-1; i++){
-		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
-		if(!Regle::caseRempli(p, i, ligne)){
-			cout << i << " ";
-			tab.push_back(i);
-		}
-	}
-	cout << endl;
-
-	int size = tab.size();
-	if(size == 0){
-		cout << "Aucune possibilité dans randomLigne" << endl;
-		return -1;
-	}
-	// Tirage d'un indice aléatoire
-	int random = rand()%size;
-
-	// On renvoi le résultat
-	return tab[random];
-}
-
-
+/**
+ * Selon les coordonnées passées en paramètre, ici l'ordinateur selectionne au hasard un animal à poser,
+ * puis la méthode le pose sur le plateau ensuite la méthode action de l'animal est appelé
+ * et enfin, le bonus inauguration est traité
+ */
 bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche){
 	// Ajout impossible du pion en case (xPion, yPion)
 	if (plateau->getCase(xPion, yPion)->getPion() != NULL) {
@@ -149,6 +114,67 @@ bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 	return false;
 }
 
+/**
+ * Tire au hasard une ligne de la colonne passé en paramètre
+ * Le résultat offrira la coordonnée (colonne, ligne), qui sera une case disponible
+ */
+int Ordinateur::randomLigne(Plateau p, int colonne){
+	unsigned int i;
+	vector<int> tab(0);
+	cout << "Dans randomLigne : valeur accepté pour la colonne (" << colonne << ") : " << endl;
+	for(i=1; i<p.getTaillePlateauY()-1; i++){
+		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
+		if(!Regle::caseRempli(p, colonne, i)){
+			cout << i << " ";
+			tab.push_back(i);
+		}
+	}
+	cout << endl;
+
+	int size = tab.size();
+	if(size == 0){
+		cout << "Aucune possibilité dans randomLigne" << endl;
+		return -1;
+	}
+	// Tirage d'un indice aléatoire
+	int random = rand()%size;
+
+	// On renvoi le résultat
+	return tab[random];
+}
+
+/**
+ * Tire au hasard une colonne de la ligne passé en paramètre
+ * Le résultat offrira la coordonnée (colonne, ligne), qui sera une case disponible
+ */
+int Ordinateur::randomColonne(Plateau p, int ligne){
+	unsigned int i;
+	vector<int> tab(0);
+	cout << "Dans randomColonne: valeur accepté pour la ligne (" << ligne << ") : " << endl;
+	for(i=1; i<p.getTaillePlateauX()-1; i++){
+		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
+		if(!Regle::caseRempli(p, i, ligne)){
+			cout << i << " ";
+			tab.push_back(i);
+		}
+	}
+	cout << endl;
+
+	int size = tab.size();
+	if(size == 0){
+		cout << "Aucune possibilité dans randomLigne" << endl;
+		return -1;
+	}
+	// Tirage d'un indice aléatoire
+	int random = rand()%size;
+
+	// On renvoi le résultat
+	return tab[random];
+}
+
+/**
+ * Détermine les possibles déplacements d'Impala Jones, et l'ordinateur tire au hasard poser Impala Jones en conséquence
+ */
 int Ordinateur::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage){
 	int random = 0;
 
@@ -274,10 +300,6 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 	affichage->messageInitImpalaOrdi(random_x, random_y);
 }
 
-int Ordinateur::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
-	jouer(p, affichage);
-	return 1;
-}
 
 int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage){
 	return voisin.size() + 1;	// l'IA ne fait rien

@@ -27,8 +27,8 @@ private:
 
 public:
 	static bool sauvegarderPartie(Partie p, string fileName, int idJoueur);
-	static int chargementPartie(string fileName,unsigned int& tourJoueur, Partie* partie);
+	static Partie* chargementPartie(string fileName,int& tourJoueur);
 
 };
-
+ 
 #endif /* UTILS_SAUVEGARDE_H_ */
