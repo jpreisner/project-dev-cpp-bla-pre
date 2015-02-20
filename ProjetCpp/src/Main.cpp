@@ -126,28 +126,30 @@ int main() {
 			int tourJoueur;
 			Partie* partie = Sauvegarde::chargementPartie("save.txt", tourJoueur);
 
-			// Déroulement du jeu jusqu'à que la partie prenne fin
-			int continuer = 0;
-			while (continuer != 1) {
-				continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
-				if (continuer == -2) {
-					// Le joueur a décidé de quitter
-					return 0;
+			if(partie != NULL){
+				// Déroulement du jeu jusqu'à que la partie prenne fin
+				int continuer = 0;
+				while (continuer != 1) {
+					continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
+					if (continuer == -2) {
+						// Le joueur a décidé de quitter
+						return 0;
+					}
+					else if (continuer == -1) {
+						cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
+					}
+					int nbJoueurs = partie->getVectJoueur().size();
+					// Détermination du prochain joueur
+					if (tourJoueur == nbJoueurs - 1) {
+						tourJoueur = 0;
+					}
+					else {
+						tourJoueur++;
+					}
 				}
-				else if (continuer == -1) {
-					cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
-				}
-				int nbJoueurs = partie->getVectJoueur().size();
-				// Détermination du prochain joueur
-				if (tourJoueur == nbJoueurs - 1) {
-					tourJoueur = 0;
-				}
-				else {
-					tourJoueur++;
-				}
+				/* Affichage en fin de partie */
+				partie->finPartie(partie->getVectJoueur(), affichage);
 			}
-			/* Affichage en fin de partie */
-			partie->finPartie(partie->getVectJoueur(), affichage);
 		}
 
 		// Quitter
