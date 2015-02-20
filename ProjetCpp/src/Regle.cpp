@@ -259,8 +259,12 @@ int Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
 	}
 }
 
-/* ATTENTION, n'appeller cette methode que lorsque le plateau est rempli
- * return 0 si une des cases n'est pas remplie*/
+/*
+ * Renvoie la valeur de tous les pions présents dans un secteur rempli
+ *
+ * ATTENTION, n'appeller cette methode que lorsque le plateau est rempli
+ * return 0 si une des cases n'est pas remplie
+ */
 int Regle::valeurSecteur(Plateau p, int secteur){
 	int result = 0;
 	for (int i = 1; i < TAILLE_PLATEAU_Y - 1; i++) {

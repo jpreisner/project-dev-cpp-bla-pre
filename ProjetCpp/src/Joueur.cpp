@@ -13,6 +13,9 @@
 #include "Pion/Animal/Peureux/Gazelle.h"
 #include "Pion/Animal/Peureux/Zebre.h"
 
+/**
+ * Initialise la liste des pions d'un joueur
+ */
 void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nbLions,
 		int nbCrocos){
 	int i;
@@ -39,7 +42,9 @@ void Joueur::initListPions(int nbGazelles, int nbZebres, int nbElephants, int nb
 	}
 }
 
+/**
+ * Incrémente le nombre de points du joueur avec le nombre passé en paramètre
+ */
 void Joueur::ajouterPoints(int nb){
 	setNbPoints(getNbPoints() + nb);
 }
-

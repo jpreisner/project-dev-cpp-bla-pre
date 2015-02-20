@@ -276,7 +276,6 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 		}
 		// Maintenant tirage aléatoire de y
 		size = p->getTaillePlateauY()-2;
-		cout << "sizeeeeeeeeeeeeee Y = " << size << endl;
 		random_y = rand()%size+1;
 	}
 	// colonne
@@ -290,8 +289,6 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 		}
 		// Maintenant tirage aléatoire de x
 		size = p->getTaillePlateauX()-2;
-		cout << "sizeeeeeeeeeeeeee X = " << size << endl;
-
 		random_x = rand()%size+1;
 	}
 	cout << "########################" << endl;

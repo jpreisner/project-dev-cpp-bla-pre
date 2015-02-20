@@ -64,6 +64,9 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 	return getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau(), ancien_x, ancien_y);
 }
 
+/**
+ * Calcul les points des joueurs, détermine qui est le vainqueur, et l'affiche avec le score final des 2 joueurs
+ */
 void Partie::finPartie(vector<Joueur*> vectJoueur, Affichage *affichage){
 	Joueur *vainqueur = NULL;
 	for(unsigned int i=0;i<vectJoueur.size();i++){
