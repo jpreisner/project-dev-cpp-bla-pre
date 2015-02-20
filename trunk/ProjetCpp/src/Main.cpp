@@ -126,9 +126,7 @@ int main() {
 		// Charger une partie
 		else if (menu_demarrage == 4) {
 			int tourJoueur;
-			string nomFichier;
-			cout<<"Veuillez saisir le nom du fichier de sauvegarde a charger: "<<endl;
-			cin>>nomFichier;
+			string nomFichier = affichage->saisieFileChargement();
 			Partie* partie = Sauvegarde::chargementPartie(nomFichier, tourJoueur);
 
 			if(partie != NULL){
