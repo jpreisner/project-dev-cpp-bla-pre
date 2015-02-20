@@ -16,6 +16,16 @@
 #include "../Plateau/Case.h"
 #include "../Regle.h"
 
+
+/**
+ * Compteur permettant de savoir les choix de l'ordinateur lorsqu'il a la possibilité d'échanger un crocodile avec une gazelle
+ * Pour ne pas obtenir une boucle longue, voir infini, on fixe un compteur à 3
+ * -> lorsqu'au bout de 3 fois, si l'ordinateur a tiré aléatoirement le fait de faire un échange avec une gazelle, celui-ci sera forcé
+ * a s'arreter
+ */
+static int cptActionCroco = 3;
+
+
 /**
  * Pas besoin d'effectuer ce qu'il y a a faire dans jouerTour de JoueurReel, car l'ordinateur souhaite automatiquement jouer
  * Renvoie 1 car l'ordinateur ne veut pas quitter la partie
@@ -304,5 +314,29 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
  * L'ordinateur interprete l'échange entre un crocodile et une gazelle, ou non
  */
 int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage){
-	return voisin.size() + 1;	// l'IA ne fait rien
+	int size = voisin.size() + 1;
+
+	// voisin est vide, donc on retourne 1 pour qu'aucun changement soit effectué
+	if(size == 1){
+		cptActionCroco = 3;
+		return 1;
+	}
+
+	// Dans le cas ou le cpt est à 0 : on force l'ordinateur a choisir "ne rien faire"
+	if(cptActionCroco == 0){
+		return size;
+	}
+
+	// Tirage au sort de l'action a faire
+	int random = rand()%size + 1;
+
+	// Cas ou l'ordinateur a tiré aléatoirement l'option "ne rien faire"
+	if(random == size){
+		// On remet le compteur à 3
+		cptActionCroco = 3;
+	}
+	else{
+		cptActionCroco--;
+	}
+	return random;
 }
