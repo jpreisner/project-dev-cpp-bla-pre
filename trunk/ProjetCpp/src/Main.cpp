@@ -97,7 +97,7 @@ int main(){
 
 				// Initialisation de la partie
 				int num_plateau = affichage->demandePlateau();
-				Partie partie = Partie(vectJoueur,new Plateau(num_plateau, new ImpalaJones(0,0)));
+				Partie partie = Partie(vectJoueur,new Plateau(num_plateau, false,new ImpalaJones(0,0)));
 
 				// Affichage du plateau
 				affichage->affichePlateau(*partie.getPlateau());

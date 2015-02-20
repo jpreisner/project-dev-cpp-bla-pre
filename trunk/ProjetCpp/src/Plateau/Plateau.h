@@ -30,11 +30,11 @@ private:
 	ImpalaJones *ij;
 	bool bonusInauguration;
 public:
-	Plateau(int num_plateau=1,ImpalaJones *ij= NULL) : typePlateau(num_plateau), ij(ij), bonusInauguration(false){
+	Plateau(int num_plateau = 1, bool bonusInauguration = false, ImpalaJones *ij = NULL) :
+			typePlateau(num_plateau), ij(ij), bonusInauguration(bonusInauguration){
 		initPlateau(num_plateau);
 	}
-	virtual ~Plateau(){
-	}
+	virtual ~Plateau(){}
 
 	Case* getCase(int x, int y){
 		return &cases[x][y];
