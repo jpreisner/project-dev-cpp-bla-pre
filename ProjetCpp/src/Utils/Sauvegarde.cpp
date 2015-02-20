@@ -88,6 +88,11 @@ void Sauvegarde::ecrireJoueur(Joueur *j, ofstream& fichier){
 void Sauvegarde::ecrirePlateau(Plateau p, ofstream& fichier){
 	fichier << "PLATEAU :" << endl;
 	fichier << p.getTypePlateau() << endl;
+	if(p.getbonusInauguration()){
+		fichier << "true" << endl;
+	}else{
+		fichier << "false" << endl;
+	}
 	for (int i = 0; i < TAILLE_PLATEAU_X; i++) {
 		for (int j = 0; j < TAILLE_PLATEAU_Y; j++) {
 			fichier << "-Case : (" << i << "," << j << ")" << endl;
@@ -228,6 +233,7 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 			} else if (ligne.compare("PLATEAU :") == 0) {
 				int plateauId;
 				int joueurIdPion;
+				bool bonusInnauguration;
 				int xCase;
 				int yCase;
 				getline(fichier, buf);
@@ -237,14 +243,30 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 
 				plateau = new Plateau(plateauId);
 
+				/* bonus innauguration*/
+				getline(fichier, buf);
+
+				if (buf.compare("true") == 0) {
+					bonusInnauguration = true;
+				}else{
+					bonusInnauguration = false;
+				}
+
+				plateau = new Plateau(plateauId,bonusInnauguration);
 				/* parcours des cases */
 
 				for (int i = 0; i < TAILLE_PLATEAU_X; i++) {
 					for (int j = 0; j < TAILLE_PLATEAU_Y; j++) {
 						getline(fichier, buf);
+						//cerr<<buf<<endl;
+						if (buf.compare("-------------") == 0) {
+							getline(fichier, buf);
+
+						}
 
 						string strCase("-Case : ");
 
+						// on recupere les positions de x et x
 						if (buf.find(strCase) != string::npos) {
 							if (isdigit(buf[9], loc)) {
 								xCase = atoi(buf.substr(9).c_str());
@@ -255,8 +277,10 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 						}
 
 						getline(fichier, buf);
+
+						// Il y a un pion dans la case
 						if (buf.compare("-------------") != 0) {
-							/* PION */
+							//IMPALA JONES
 							if (buf.compare("ImpalaJones") == 0) {
 								pion = new ImpalaJones(xCase, yCase);
 								/* Ajouter Impala */
@@ -265,8 +289,8 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 							//	cout<<"INIT IMPALA"<<endl;
 								plateau->initImpalaJones(dynamic_cast<ImpalaJones*>(pion));
 
-							} else if (buf.compare("-------------") != 0) {
-							//	cout<<"Trouvé un Animal"<<endl;
+							} else {
+								//ANIMAL
 
 								string G = "Gazelle";
 								string Z = "Zebre";
@@ -314,12 +338,12 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 										}
 									}
 								}
-								/* AjouterPion */
-								pion->setX(xCase);
-								pion->setY(yCase);
-								plateau->getCase(xCase, yCase)->ajouterPion(pion);
-							}
 
+							}
+							/* AjouterPion */
+							pion->setX(xCase);
+							pion->setY(yCase);
+							plateau->getCase(xCase, yCase)->ajouterPion(pion);
 						}
 					}
 				}
