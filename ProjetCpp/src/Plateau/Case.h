@@ -26,6 +26,7 @@ public:
 			secteur(secteur), pion(NULL) {
 	}
 	virtual ~Case() {
+		delete pion;
 	}
 
 	friend ostream& operator<<(ostream &strm, const Case &a) {
