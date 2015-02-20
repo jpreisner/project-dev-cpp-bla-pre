@@ -54,7 +54,6 @@ void Sauvegarde::ecrireJoueur(Joueur *j, ofstream& fichier){
 	} else if (dynamic_cast<Ordinateur*>(j) != NULL) {
 		fichier << "ORDINATEUR" << endl;
 	}
-	fichier << "ID : " << j->getId() << endl;
 	fichier << "NOM : " << j->getNom() << endl;
 	fichier << "POINTS : " << j->getNbPoints() << endl;
 
@@ -165,18 +164,12 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 
 			if (ligne.compare("JOUEUR") == 0) {
 				string nom;
-				int i_id, i_points, i_lions, i_gazelles, i_zebres, i_crocodiles, i_elephants;
+				int i_points, i_lions, i_gazelles, i_zebres, i_crocodiles, i_elephants;
 				bool jreel = false;
 
 				getline(fichier, buf);
 				if (buf.compare("REEL") == 0) {
 					jreel = true;
-				}
-
-				/* ID */
-				getline(fichier, buf);
-				if (isdigit(buf[5], loc)) {
-					i_id = atoi(buf.substr(5).c_str());
 				}
 
 				/* NOM */
@@ -258,7 +251,6 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 				for (int i = 0; i < TAILLE_PLATEAU_X; i++) {
 					for (int j = 0; j < TAILLE_PLATEAU_Y; j++) {
 						getline(fichier, buf);
-						//cerr<<buf<<endl;
 						if (buf.compare("-------------") == 0) {
 							getline(fichier, buf);
 
@@ -350,7 +342,7 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 			}
 		}
 	} else {
-		cerr << "problème dans l'ouverture du fichier de sauvegarde" << endl;
+		cout << "problème dans l'ouverture du fichier de sauvegarde" << endl;
 		return NULL; 
 	}
 
