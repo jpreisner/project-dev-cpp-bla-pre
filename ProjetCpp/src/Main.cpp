@@ -126,7 +126,10 @@ int main() {
 		// Charger une partie
 		else if (menu_demarrage == 4) {
 			int tourJoueur;
-			Partie* partie = Sauvegarde::chargementPartie("save.txt", tourJoueur);
+			string nomFichier;
+			cout<<"Veuillez saisir le nom du fichier de sauvegarde a charger: "<<endl;
+			cin>>nomFichier;
+			Partie* partie = Sauvegarde::chargementPartie(nomFichier, tourJoueur);
 
 			if(partie != NULL){
 				// Déroulement du jeu jusqu'à que la partie prenne fin
