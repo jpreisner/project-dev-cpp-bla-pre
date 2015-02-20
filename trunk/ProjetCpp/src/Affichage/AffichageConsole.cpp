@@ -25,6 +25,10 @@
 #include "../Regle.h"
 #include "../Utils/SaisieSecure.h"
 
+/**
+ * Menu affiché au tout debut du programme (avant le lancement d'une partie)
+ * Renvoie ce que l'utilisateur souhaite faire
+ */
 int AffichageConsole::menuDemarrage(){
 	cout << "======================================" << endl;
 	cout << "Bienvenue dans le jeu Droles de Zebres!" << endl;
@@ -51,6 +55,9 @@ int AffichageConsole::menuDemarrage(){
 	return res;
 }
 
+/**
+ * Affiche les règles présentes dans le fichiers Regles.txt
+ */
 int AffichageConsole::afficheRegle(){
 	cout << "======================================" << endl;
 	cout << "        Affichage des règles :        " << endl;
@@ -82,6 +89,9 @@ int AffichageConsole::afficheRegle(){
 	return res;
 }
 
+/**
+ * Demande le nom d'un joueur, et l'attribut au joueur passé en paramètre
+ */
 void AffichageConsole::demandeNomJoueur(Joueur *j){
 	cout << "======================================" << endl;
 	cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
@@ -99,6 +109,9 @@ void AffichageConsole::demandeNomJoueur(Joueur *j){
 	j->setNom(nom);
 }
 
+/**
+ * Affiche le plateau sur la console
+ */
 void AffichageConsole::affichePlateau(Plateau p){
 	unsigned int i, j;
 
@@ -224,6 +237,10 @@ void AffichageConsole::affichePlateau(Plateau p){
 	}
 }
 
+/**
+ * Demande à l'utilisateur d'entrer le nombre de case qu'il souhaite déplacer Impala Jones, si cela est possible
+ * Interprète l'entier possibilite qui résulte de l'appel de la fonction possibiliteDeplacementImpalaJones dans Regle.cpp
+ */
 int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int possibilite){
 	cout << "======================================" << endl;
 	unsigned int res;
@@ -313,6 +330,9 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 	}
 }
 
+/**
+ * Affiche une liste d'animaux
+ */
 void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 	int nbGazelle = 0;
 	int nbLion = 0;
@@ -390,6 +410,14 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 	}
 }
 
+/**
+ * Demande au joueur d'entrer le nom d'un animal et renvoie un entier :
+ *  1 = gazelle
+ *  2 = zebre
+ *  3 = elephant
+ *  4 = lion
+ *  5 = crocodile
+ */
 int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 	if (listAnimaux.size() == 0) {
 		cout << "Vous n'avez pas de pion disponible" << endl;
@@ -445,8 +473,9 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 	return res;
 }
 
-
-/* Pas besoin */
+/**
+ * Affichage d'un pion : gère le cas d'un animal caché
+ */
 void AffichageConsole::affichePion(Pion *p){
 	/* appel de print p et de l'id du joueur */
 	if(dynamic_cast<Animal*> (p) != NULL){
@@ -463,15 +492,18 @@ void AffichageConsole::affichePion(Pion *p){
 	}
 }
 
-/* Pas besoin */
+/**
+ * Affichage d'Impala Jones
+ */
 void AffichageConsole::afficheImpalaJones(){
 	cout << " (I.J) ";
 }
 
+/*
+ * Affiche le nom du joueur qui doit jouer + lui proposer de poser un pion, de regarder sa liste de pion, de sauvegarder
+ * 	ou de déclarer forfait
+ */
 int AffichageConsole::menuJoueur(Joueur *j){
-	/* Afficher le nom du joueur qui doit jouer + lui proposer de poser un pion, de regarder sa liste de pion, de sauvegarder
-	 * 	ou de déclarer forfait
-	 */
 	cout << "======================================" << endl;
 	cout << "Joueur : " << j->getNom() << "(J" << j->getId() << ") :" << endl;
 	cout << "Que voulez-vous faire?" << endl;
@@ -494,6 +526,10 @@ int AffichageConsole::menuJoueur(Joueur *j){
 	return res;
 }
 
+/**
+ * Demande au joueur de selectionner une ligne disponible dans le plateau, lorsque Impala Jones est positionné à la colonne
+ * passée en paramètre
+ */
 int AffichageConsole::demandeLigne(Plateau p, int colonne){
 	cout << "======================================" << endl;
 	cout << "Veuillez entrer la ligne ou vous souhaitez poser votre pion" << endl;
@@ -515,6 +551,10 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 	return res;
 }
 
+/**
+ * Demande au joueur de selectionner une colonne disponible dans le plateau, lorsque Impala Jones est positionné à la ligne
+ * passée en paramètre
+ */
 int AffichageConsole::demandeColonne(Plateau p, int ligne){
 	cout << "======================================" << endl;
 	cout << "Veuillez entrer la colonne ou vous souhaitez poser votre pion" << endl;
@@ -536,10 +576,13 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 	return res;
 }
 
+/**
+ * Demande au joueur ce qu'il souhaite faire lorsque l'action du crocodile est "activée"
+ * (soit quand il y a possibilité d'échanger avec une gazelle)
+ */
 int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plateau p){
 	// On a besoin d'afficher au joueur le plateau actuel avant de faire une action
 	affichePlateau(p);
-
 
 	unsigned int res;
 	unsigned int nbVoisin = voisin.size();
@@ -571,6 +614,10 @@ int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plate
 	return res;
 }
 
+/**
+ * Demande au joueur qui joue en 1er de positionner Impala Jones
+ *  ==> modifie x et y de Impala Jones, le positionnement dans le Plateau s'effectuera dans Plateau
+ */
 void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 	unsigned int inputX = 0;
 	unsigned int inputY = 0;
@@ -598,6 +645,11 @@ void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 	ij->setY(inputY);
 }
 
+/**
+ * Implémentation du jeu "pile ou face" : renvoie un entier correspondant au joueur qui doit jouer en premier
+ * 0 : joueur 1 joue en 1er
+ * 1 : joueur 2 joue en 1er
+ */
 int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 	cout << "======================================" << endl;
 	cout << "Tirage au sort pour déterminer le 1er qui joue (Pile ou Face) : ";
@@ -653,15 +705,25 @@ int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 	}
 }
 
+/**
+ * Message indiquant au joueur passé en paramètre qu'il doit jouer en 1er
+ */
 void AffichageConsole::messageDebutPartie(Joueur *j){
 	cout << j->getNom() << " : à vous de commencer !" << endl;
 }
 
+/**
+ * Message indiquant qui doit jouer
+ */
 void AffichageConsole::afficheTour(Joueur *j){
 	cout<< "======================================"<<endl;
 	cout<< "\t Tour du joueur n°" << j->getId() << " : "<<j->getNom()<<endl;
 }
 
+/**
+ * Message au début du jeu avant le lancement d'une partie
+ * Demande aux joueurs sur quels plateaux souhaitent-ils jouer
+ */
 int AffichageConsole::demandePlateau(){
 	cout<< "======================================"<<endl;
 	cout << "Choisissez un plateau :" << endl;
@@ -677,45 +739,70 @@ int AffichageConsole::demandePlateau(){
 	return res;
 }
 
+/**
+ * Affiche le vainqueur (passé en paramètre)
+ */
 void AffichageConsole::afficherVainqueur(Joueur* j){
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
 	cout << "FELICITATIONS " << j->getNom()<<", vous remportez la partie"<< endl;
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
 }
 
+/**
+ * Affiche qui a obtenu le bonus d'inauguration
+ */
 void AffichageConsole::messageBonusInauguration(const string& nomJoueur){
 	cout<< "-----------------------"<<endl;
 	cout << "FELICITATIONS " << nomJoueur<<", vous obtenez le bonus inauguration (+5)"<< endl;
 	cout<< "-----------------------"<<endl;
 }
 
+/**
+ * Affiche un message comme quoi le joueur n'a plus de pion dans sa main
+ */
 void AffichageConsole::messagePlusDePion(){
 	cout<< "======================================"<<endl;
 	cout << "Vous n'avez plus de pion, vous ne pouvez donc pas jouer !" << endl;
 	cout<< "======================================"<<endl;
 }
 
+/**
+ * Message indiquant que l'ordinateur a poser Impala Jones en (x,y)
+ */
 void AffichageConsole::messageInitImpalaOrdi(int x, int y){
 	cout<< "======================================"<<endl;
 	cout << "L'ordinateur a positionné Impala Jones en (" << x << ", " << y << ")" << endl;
 	cout<< "======================================"<<endl;
 }
 
+/**
+ * Message indiquant ce qu'a jouer l'ordinateur en (x,y)
+ */
 void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
 	cout<< "======================================"<<endl;
 	cout << "L'ordinateur a joué" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
 	cout<< "======================================"<<endl;
 }
 
+/**
+ * Message indiquant que la sauvegarde a correctement été effectuée
+ */
 void AffichageConsole::afficheSauvegarde(){
 	cout << "Sauvegarde bien effectuée dans le fichier save.txt" << endl;
 }
 
-
+/**
+ * Affiche le score final des 2 joueurs
+ */
 void AffichageConsole::scoreFinal(Joueur *j1, Joueur *j2){
 	cout << "Score final : " << j1->getNom() << " : " << j1->getNbPoints() << " points, et  " << j2->getNom() << " : " << j2->getNbPoints() << "points" << endl;
 }
 
+/**
+ * Message affiché en fin de partie, propose à l'utilisateur s'il souhaite retourner au menu principal ou quitter
+ * 1 = oui, il souhaite retourner au menu principal
+ * 2 = non
+ */
 bool AffichageConsole::retourMenuPrincipal(){
 	cout<< "======================================"<<endl;
 	cout << "Voulez-vous revenir au menu principal ?"<< endl;
@@ -734,6 +821,10 @@ bool AffichageConsole::retourMenuPrincipal(){
 	return false;
 }
 
+/**
+ * Message d'au revoir, lorsque le joueur sort du programme après avoir décider qu'il ne souhaitait pas retourner au menu principal
+ * (méthode précédente)
+ */
 void AffichageConsole::finProgramme(){
 	cout<< "======================================"<<endl;
 	cout << "A bientot !" << endl;

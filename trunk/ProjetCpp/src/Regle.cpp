@@ -202,7 +202,8 @@ int Regle::possibiliteDeplacementImpalaJones(Plateau p, ImpalaJones ij){
 }
 
 /* calcule les points d'un joueur,
- * renvoie 0 si un secteur n'est pas rempli*/
+ * renvoie 0 si un secteur n'est pas rempli
+ */
 int Regle::calculPointsJoueur(Plateau p, Joueur * j){
 	int result = 0;
 	for (int i = SECT1; i <= SECT6; i++) {
@@ -258,7 +259,7 @@ int Regle::joueurMajoriteDansSecteur(Plateau p, int secteur){
 	}
 }
 
-/* ATTENTION, n'apeller cette methode que lorsque le plateau est rempli
+/* ATTENTION, n'appeller cette methode que lorsque le plateau est rempli
  * return 0 si une des cases n'est pas remplie*/
 int Regle::valeurSecteur(Plateau p, int secteur){
 	int result = 0;
@@ -269,8 +270,6 @@ int Regle::valeurSecteur(Plateau p, int secteur){
 					return 0;
 				} else {
 					Peureux *peureux = dynamic_cast<Peureux*>(p.getCase(i, j)->getPion());
-					//Animal * animal = (Animal*) p.getCase(i, j)->getPion();
-					//if(!animal->isCache()){
 					if(peureux != NULL && !peureux->isCache()){
 						result += peureux->getValeur();
 					}

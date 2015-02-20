@@ -9,11 +9,16 @@
 #include <iostream>
 #include "../Utils/SaisieSecure.h"
 
+/**
+ * Demande à l'utilisateur quel type d'affichage souhaite-t-il avoir
+ * Pour le moment, seul l'affichage par console a été implémenté
+ *
+ *  Méthode statique
+ */
 int Affichage::demandeTypeAffichage(){
 	cout << "======================================" << endl;
 	cout << "Quel type d'affichage souhaitez-vous?" << endl;
 	cout << "    1 - Affichage sur console" << endl;
-	cout << "    2 - Autres (?)" << endl;
 	cout << "======================================" << endl;
 	unsigned int res;
 	SaisieSecure::saisieSecureInt(res);
@@ -22,7 +27,6 @@ int Affichage::demandeTypeAffichage(){
 		cout << "======================================" << endl;
 		cout << "Quel type d'affichage souhaitez-vous?" << endl;
 		cout << "    1 - Affichage sur console" << endl;
-		cout << "    2 - Autres (?)" << endl;
 		cout << "======================================" << endl;
 		SaisieSecure::saisieSecureInt(res);
 	}

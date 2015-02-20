@@ -138,7 +138,8 @@ void Sauvegarde::ecrirePion(Pion *p, ofstream& fichier){
 	}
 }
 
-int Sauvegarde::chargementPartie(string fileName,unsigned int& tourJoueur, Partie* partie){
+Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
+	Partie *partie;
 	Plateau *plateau;
 
 	vector<Joueur*> vectJoueur;
@@ -350,7 +351,7 @@ int Sauvegarde::chargementPartie(string fileName,unsigned int& tourJoueur, Parti
 		}
 	} else {
 		cerr << "problème dans l'ouverture du fichier de sauvegarde" << endl;
-		return -1;
+		return NULL; 
 	}
 
 	/*TODO Ajouter, et gerer bonus innaurugation a ne pas donner 2 fois */
@@ -361,5 +362,5 @@ int Sauvegarde::chargementPartie(string fileName,unsigned int& tourJoueur, Parti
 			tourJoueur = i;
 		}
 	}
-	return 0;
+	return partie;
 }

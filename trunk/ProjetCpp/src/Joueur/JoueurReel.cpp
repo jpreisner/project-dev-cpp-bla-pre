@@ -23,7 +23,47 @@
 #include "../Regle.h"
 #include "../Utils/Sauvegarde.h"
 
+/**
+ * Affiche le menu du joueur, puis execute l'action que le joueur souhaite faire :
+ *  jouer, afficher ses pions en main, sauvegarde ou quitter
+ *  Renvoie 0 si le joueur souhaite quitter, 1 sinon
+ */
+int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
+	int jeu;
+	// Affichage du menu du joueur
+	do{
+		jeu = affichage->menuJoueur(this);
+		// Si jeu = 2 ==> le joueur joue
+		if(jeu == 2){
+			bool joue = false;
+			do{
+				joue = jouer(p, affichage);
+			}while(!joue);
+			break;
+		}
+		// Le joueur ne joue pas mais fait une autre action
+		else{
+			switch(jeu){
+				// Le joueur souhaite afficher sa liste de pions
+				case 1 : affichage->afficheListAnimal(getListAnimaux());	break;
 
+				// Le joueur souhaite sauvegarder la partie
+				case 3 :
+						Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());
+						affichage->afficheSauvegarde();
+				break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+
+				// Le joueur souhaite quitter la partie
+				case 4 : return 0;
+			}
+		}
+	}while(jeu!=2);
+	return 1;
+}
+
+/**
+ * Le joueur sélectionne les coordonnées ou il souhaite poser un animal puis appelle la méthode jouerCase
+ */
 bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche) {
 	int xImpala = plateau->getImpalaJones()->getX();
 	int yImpala = plateau->getImpalaJones()->getY();
@@ -43,6 +83,10 @@ bool JoueurReel::jouer(Plateau* plateau, Affichage * affiche) {
 	return jouerCase(xPion, yPion, plateau, affiche);
 }
 
+/**
+ * Selon les coordonnées passées en paramètre, ici le joueur selectionne un animal à poser, puis la méthode le pose sur le plateau
+ *  ensuite la méthode action de l'animal est appelé et enfin, le bonus inauguration est traité
+ */
 bool JoueurReel::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche) {
 	if (plateau->getCase(xPion, yPion)->getPion() != NULL) {
 		cerr << "Ajout impossible du pion en case :(" << xPion << "," << yPion << ")" << endl;
@@ -142,12 +186,18 @@ bool JoueurReel::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 	return false;
 }
 
+/**
+ * Détermine les possibles déplacements d'Impala Jones, et demande au joueur ou souhaite-t-il poser Impala Jones en conséquence
+ */
 int JoueurReel::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage){
 	// Le joueur doit déplacer Impala Jones avant de passer son tour
 	int possibilite = Regle::possibiliteDeplacementImpalaJones(p,ij);
 	return affichage->demandeDeplacerImpalaJones(p, ij, possibilite);
 }
 
+/**
+ * Demande au joueur de positionner Impala Jones pour la 1ere fois sur le plateau
+ */
 void JoueurReel::joueurInitImpala(Plateau *p, Affichage *affichage){
 	do{
 		affichage->demandePositionInitialeImpalaJones(p->getImpalaJones());
@@ -155,38 +205,9 @@ void JoueurReel::joueurInitImpala(Plateau *p, Affichage *affichage){
 	while(p->initImpalaJones(p->getImpalaJones()));
 }
 
-int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
-	int jeu;
-	// Affichage du menu du joueur
-	do{
-		jeu = affichage->menuJoueur(this);	/* TODO : a ne pas afficher si c'est l'ordi */
-		// Si jeu = 2 ==> le joueur joue
-		if(jeu == 2){
-			bool joue = false;
-			do{
-				joue = jouer(p, affichage);
-			}while(!joue);
-			break;
-		}
-		// Le joueur ne joue pas mais fait une autre action
-		else{
-			switch(jeu){
-				// Le joueur souhaite afficher sa liste de pions
-				case 1 : affichage->afficheListAnimal(getListAnimaux());	break;
-
-				// Le joueur souhaite sauvegarder la partie
-				case 3 :
-						Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());
-						affichage->afficheSauvegarde();
-				break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
-
-				// Le joueur souhaite quitter la partie
-				case 4 : return 0;
-			}
-		}
-	}while(jeu!=2);
-	return 1;
-}
+/**
+ * Demande au joueur ce qu'il souhaite échanger le crocodile qu'il vient de poser avec une gazelle voisine, séparé d'une riviere
+ */
 int JoueurReel::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage){
 	return affichage->demandeChoixActionCrocodile(voisin, p);
 }

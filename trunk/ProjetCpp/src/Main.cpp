@@ -5,7 +5,7 @@
 // Copyright   : 
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-
+ 
 #include <time.h>
 #include <cstdlib>
 #include <iostream>
@@ -25,9 +25,6 @@
 using namespace std;
 
 int main() {
-	Partie* partie = NULL;
-
-
 	srand(time(NULL));
 	cout << "======================================" << endl;
 	cout << "            Drôle de Zèbres           " << endl;
@@ -73,10 +70,10 @@ int main() {
 
 			// Initialisation de la partie
 			int num_plateau = affichage->demandePlateau();
-			partie = new Partie(vectJoueur, new Plateau(num_plateau, false, new ImpalaJones(0, 0)));
+			Partie partie = Partie(vectJoueur, new Plateau(num_plateau, false, new ImpalaJones(0, 0)));
 
 			// Affichage du plateau
-			affichage->affichePlateau(*partie->getPlateau());
+			affichage->affichePlateau(*partie.getPlateau());
 
 			// Tirage au sort pour savoir qui commence
 			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1], menu_demarrage);	// i=0 ou 1
@@ -84,7 +81,7 @@ int main() {
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
 
 			// Demande de placement de Impala Jones
-			vectJoueur[tourJoueur]->joueurInitImpala(partie->getPlateau(), affichage); /* TODO A TESTER */
+			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(), affichage); /* TODO A TESTER */
 
 			// Détermination du joueur qui doit maintenant jouer
 			int nbJoueurs = vectJoueur.size();
@@ -98,7 +95,7 @@ int main() {
 			// Déroulement du jeu jusqu'à que la partie prenne fin
 			int continuer = 0;
 			while (continuer != 1) {
-				continuer = partie->deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok
+				continuer = partie.deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok
 				if (continuer == -2) {
 					// Le joueur a décidé de quitter
 					return 0;
@@ -115,7 +112,7 @@ int main() {
 				}
 			}
 			/* Affichage en fin de partie */
-			partie->finPartie(vectJoueur, affichage);
+			partie.finPartie(vectJoueur, affichage);
 		}
 
 		// Afficher les règles
@@ -126,34 +123,31 @@ int main() {
 
 		// Charger une partie
 		else if (menu_demarrage == 4) {
-			unsigned int tourJoueur;
-			int ouverturePartie = Sauvegarde::chargementPartie("save.txt", tourJoueur, partie);
+			int tourJoueur;
+			Partie* partie = Sauvegarde::chargementPartie("save.txt", tourJoueur);
 
-			if (ouverturePartie == 0) {
-				// Déroulement du jeu jusqu'à que la partie prenne fin
-				int continuer = 0;
-				while (continuer != 1) {
-					continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
-					if (continuer == -2) {
-						// Le joueur a décidé de quitter
-						return 0;
-					}
-					else if (continuer == -1) {
-						cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
-					}
-					unsigned int nbJoueurs = partie->getVectJoueur().size();
-					// Détermination du prochain joueur
-					if (tourJoueur == nbJoueurs - 1) {
-						tourJoueur = 0;
-					}
-					else {
-						tourJoueur++;
-					}
+			// Déroulement du jeu jusqu'à que la partie prenne fin
+			int continuer = 0;
+			while (continuer != 1) {
+				continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
+				if (continuer == -2) {
+					// Le joueur a décidé de quitter
+					return 0;
 				}
-				/* Affichage en fin de partie */
-				partie->finPartie(partie->getVectJoueur(), affichage);
+				else if (continuer == -1) {
+					cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
+				}
+				int nbJoueurs = partie->getVectJoueur().size();
+				// Détermination du prochain joueur
+				if (tourJoueur == nbJoueurs - 1) {
+					tourJoueur = 0;
+				}
+				else {
+					tourJoueur++;
+				}
 			}
-
+			/* Affichage en fin de partie */
+			partie->finPartie(partie->getVectJoueur(), affichage);
 		}
 
 		// Quitter
