@@ -35,10 +35,12 @@ int main() {
 	Affichage * affichage = NULL;
 	if (typeAffichage == 1) {
 		affichage = new AffichageConsole();
-	} else {
+	}
+	else {
 		cout << "Cette affichage n'a pas été implémentée" << endl;
 		return 0;
 	}
+	bool regle = false;
 	do {
 		// Appel du menu de démarrage
 		int menu_demarrage = affichage->menuDemarrage();
@@ -68,47 +70,44 @@ int main() {
 
 			// Initialisation de la partie
 			int num_plateau = affichage->demandePlateau();
-			Partie partie = Partie(vectJoueur,
-					new Plateau(num_plateau, false, new ImpalaJones(0, 0)));
+			Partie partie = Partie(vectJoueur, new Plateau(num_plateau, false, new ImpalaJones(0, 0)));
 
 			// Affichage du plateau
 			affichage->affichePlateau(*partie.getPlateau());
 
 			// Tirage au sort pour savoir qui commence
-			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1],
-					menu_demarrage);	// i=0 ou 1
+			int tourJoueur = affichage->pileOuFace(vectJoueur[0], vectJoueur[1], menu_demarrage);	// i=0 ou 1
 			// Début de la partie
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
 
 			// Demande de placement de Impala Jones
-			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(),
-					affichage); /* TODO A TESTER */
+			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(), affichage); /* TODO A TESTER */
 
 			// Détermination du joueur qui doit maintenant jouer
 			int nbJoueurs = vectJoueur.size();
 			if (tourJoueur == nbJoueurs - 1) {
 				tourJoueur = 0;
-			} else {
+			}
+			else {
 				tourJoueur++;
 			}
 
 			// Déroulement du jeu jusqu'à que la partie prenne fin
 			int continuer = 0;
 			while (continuer != 1) {
-				continuer = partie.deroulementJeu(vectJoueur, tourJoueur,
-						affichage);	// = 0 si tout est ok
+				continuer = partie.deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok
 				if (continuer == -2) {
 					// Le joueur a décidé de quitter
 					return 0;
-				} else if (continuer == -1) {
-					cerr
-							<< "Une erreur est présente dans deroulementJeu (Partie.cpp)"
-							<< endl;
+				}
+				else if (continuer == -1) {
+					cerr << "Une erreur est présente dans deroulementJeu (Partie.cpp)" << endl;
 				}
 				// Détermination du prochain joueur
 				if (tourJoueur == nbJoueurs - 1) {
 					tourJoueur = 0;
-				} else {
+				}
+				else {
 					tourJoueur++;
 				}
 			}
@@ -119,6 +118,7 @@ int main() {
 		// Afficher les règles
 		else if (menu_demarrage == 3) {
 			affichage->afficheRegle();
+			regle = true;
 		}
 
 		// Charger une partie
@@ -157,7 +157,7 @@ int main() {
 		else if (menu_demarrage == 5) {
 			return 0;
 		}
-	} while (affichage->retourMenuPrincipal());
+	} while (regle || affichage->retourMenuPrincipal());
 	affichage->finProgramme();
 
 	return 0;
