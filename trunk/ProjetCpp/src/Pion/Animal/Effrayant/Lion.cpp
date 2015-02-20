@@ -13,6 +13,11 @@
 #include "../Peureux/Gazelle.h"
 #include "../Peureux/Zebre.h"
 
+/**
+ * Action provoqué lorsque un lion est posé sur le plateau :
+ *  - si un zebre est présent sur une case voisine, il se cache
+ *  - si une gazelle est présente sur une case voisine, elle fuit
+ */
 void Lion::action(Plateau *p, Affichage *affichage){
 
 	// Gazelle

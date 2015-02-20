@@ -11,6 +11,10 @@
 
 #include "../Plateau/Plateau.h"
 
+/**
+ * Cette méthode prend en paramètre le nombre de case où Impala Jones sera plus loin, et sa position avant le déplacement
+ *  car cette méthode peut être appelé recursivement
+ */
 int ImpalaJones::deplacer(int nbCases, Plateau *plateau, int ancien_x, int ancien_y){
 	if(nbCases<0){
 		cout << "Erreur ! nbCases doit etre supérieur à 0" << endl;

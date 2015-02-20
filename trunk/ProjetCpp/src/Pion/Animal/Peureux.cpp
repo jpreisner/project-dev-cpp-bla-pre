@@ -12,6 +12,9 @@
 #include "../../Plateau/Case.h"
 #include "../../Plateau/Plateau.h"
 
+/**
+ * Lorsqu'un animal se cache
+ */
 void Peureux::seCache(){
 	cache = true;
 }
