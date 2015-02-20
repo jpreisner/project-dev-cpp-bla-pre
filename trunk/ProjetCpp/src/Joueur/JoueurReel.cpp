@@ -43,13 +43,17 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 		}
 		// Le joueur ne joue pas mais fait une autre action
 		else{
+			string filename;
+
 			switch(jeu){
 				// Le joueur souhaite afficher sa liste de pions
 				case 1 : affichage->afficheListAnimal(getListAnimaux());	break;
 
 				// Le joueur souhaite sauvegarder la partie
 				case 3 :
-						Sauvegarde::sauvegarderPartie(partie,"save.txt", getId());
+						cout<<"Veuillez saisir le nom du fichier de sauvegarde :"<<endl;
+						cin>>filename;
+						Sauvegarde::sauvegarderPartie(partie,filename, getId());
 						affichage->afficheSauvegarde();
 				break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
 
