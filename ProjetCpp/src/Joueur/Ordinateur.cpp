@@ -63,10 +63,6 @@ bool Ordinateur::jouer(Plateau* plateau, Affichage * affiche){
 			return false;
 		}
 	}
-
-	cout << "########################" << endl;
-	cout << "IA joue en (" << xPion << ", " << yPion << ")" << endl;
-	cout << "########################" << endl;
 	return jouerCase(xPion, yPion, plateau, affiche);
 }
 
@@ -83,9 +79,6 @@ bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 	else {
 		int nbPion = getListAnimaux().size();
 		int pos = rand()%nbPion;
-		cout << "########################" << endl;
-		cout << "IA position animal = " << pos << endl;
-		cout << "########################" << endl;
 
 		if (pos < nbPion) {
 			// ajout de l'animal à la case
@@ -131,7 +124,6 @@ bool Ordinateur::jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * a
 int Ordinateur::randomLigne(Plateau p, int colonne){
 	unsigned int i;
 	vector<int> tab(0);
-	cout << "Dans randomLigne : valeur accepté pour la colonne (" << colonne << ") : " << endl;
 	for(i=1; i<p.getTaillePlateauY()-1; i++){
 		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
 		if(!Regle::caseRempli(p, colonne, i)){
@@ -160,7 +152,6 @@ int Ordinateur::randomLigne(Plateau p, int colonne){
 int Ordinateur::randomColonne(Plateau p, int ligne){
 	unsigned int i;
 	vector<int> tab(0);
-	cout << "Dans randomColonne: valeur accepté pour la ligne (" << ligne << ") : " << endl;
 	for(i=1; i<p.getTaillePlateauX()-1; i++){
 		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
 		if(!Regle::caseRempli(p, i, ligne)){
@@ -191,25 +182,16 @@ int Ordinateur::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *aff
 	// Le joueur doit déplacer Impala Jones avant de passer son tour
 	int possibilite = Regle::possibiliteDeplacementImpalaJones(p,ij);
 	if (possibilite == 0) {
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : - 1 " << endl;
-		cout << "########################" << endl;
 		return -1;
 	}
 	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
 	else if (possibilite == -1) {
 		random = rand()%3 + 1;
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : " << random << endl;
-		cout << "########################" << endl;
 		return random;
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
 	else if (possibilite == -2) {
 		random = rand()%2 + 1;
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : " << random << endl;
-		cout << "########################" << endl;
 		return random;
 	}
 	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
@@ -218,45 +200,27 @@ int Ordinateur::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *aff
 		if(random == 2){
 			random = 3;
 		}
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : " << random << endl;
-		cout << "########################" << endl;
 		return random;
 	}
 	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
 	else if (possibilite == -4) {
 		random = rand()%2 + 2;
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : " << random << endl;
-		cout << "########################" << endl;
 		return random;
 	}
 	/* Impala Jones ne peut pas etre placé que a la case +1  */
 	else if (possibilite == -5) {
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : 1 obligé " << endl;
-		cout << "########################" << endl;
 		return 1;
 	}
 	/* Impala Jones ne peut pas etre placé que la la case +2  */
 	else if (possibilite == -6) {
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : 2 obligé " << endl;
-		cout << "########################" << endl;
 		return 2;
 	}
 	/* Impala Jones ne peut pas etre placé que la la case +3  */
 	else if (possibilite == -7) {
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : 3 obligé " << endl;
-		cout << "########################" << endl;
 		return 3;
 	}
 	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
 	else if (possibilite > 0) {
-		cout << "########################" << endl;
-		cout << "IA tirage deplacement IJ : obligé = " << possibilite << endl;
-		cout << "########################" << endl;
 		return possibilite;
 	}
 	else {
@@ -301,9 +265,7 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 		size = p->getTaillePlateauX()-2;
 		random_x = rand()%size+1;
 	}
-	cout << "########################" << endl;
-	cout << "Init IA Impala Jones  :  (" << random_x << ", " << random_y << ")" << endl;
- 	cout << "########################" << endl;
+
 	p->getImpalaJones()->setX(random_x);
 	p->getImpalaJones()->setY(random_y);
 	p->initImpalaJones(p->getImpalaJones());
@@ -319,11 +281,13 @@ int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Afficha
 	// voisin est vide, donc on retourne 1 pour qu'aucun changement soit effectué
 	if(size == 1){
 		cptActionCroco = 3;
+		cout << "fin" << endl;
 		return 1;
 	}
 
 	// Dans le cas ou le cpt est à 0 : on force l'ordinateur a choisir "ne rien faire"
 	if(cptActionCroco == 0){
+		cout << "fin" << endl;
 		return size;
 	}
 
@@ -334,9 +298,12 @@ int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Afficha
 	if(random == size){
 		// On remet le compteur à 3
 		cptActionCroco = 3;
+		cout << "fin" << endl;
 	}
 	else{
 		cptActionCroco--;
+		cout << "random" << endl;
 	}
+
 	return random;
 }
