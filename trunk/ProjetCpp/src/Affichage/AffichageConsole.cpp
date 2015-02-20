@@ -717,7 +717,7 @@ void AffichageConsole::messageDebutPartie(Joueur *j){
  */
 void AffichageConsole::afficheTour(Joueur *j){
 	cout<< "======================================"<<endl;
-	cout<< "\t Tour du joueur n°" << j->getId() << " : "<<j->getNom()<<endl;
+	cout<< "\t Tour du joueur n." << j->getId() << " : "<<j->getNom()<<endl;
 	cout<< "======================================"<<endl;
 }
 
