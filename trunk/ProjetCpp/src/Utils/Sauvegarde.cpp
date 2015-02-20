@@ -278,8 +278,6 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 								/* Ajouter Impala */
 								pion->setX(xCase);
 								pion->setY(yCase);
-							//	cout<<"INIT IMPALA"<<endl;
-								plateau->initImpalaJones(dynamic_cast<ImpalaJones*>(pion));
 
 							} else {
 								//ANIMAL
