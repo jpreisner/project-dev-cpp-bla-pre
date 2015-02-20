@@ -26,6 +26,8 @@
 
 using namespace std;
 
+/* sauvegarde la partie courante dans le fichier dont le nom est passé en parametre.
+ * l'idjoueur qui sauvegarde permet de déterminer quel est le joueur qui jouera lors du chargement futur*/
 bool Sauvegarde::sauvegarderPartie(Partie p, string fileName, int idJoueur){
 	ofstream fichier(fileName, ios::out | ios::trunc); // ouverture en écriture avec effacement du fichier ouvert
 	if (fichier) {
@@ -47,6 +49,8 @@ bool Sauvegarde::sauvegarderPartie(Partie p, string fileName, int idJoueur){
 	}
 }
 
+/* cette méthode est apellée dans la sauvegarde d'une partie, elle sauvegarde dans le fichier un joueur en écrivant
+ * tous ses parametres ainsi que ses pions possédés*/
 void Sauvegarde::ecrireJoueur(Joueur *j, ofstream& fichier){
 	fichier << "JOUEUR" << endl;
 	if (dynamic_cast<JoueurReel*>(j) != NULL) {
@@ -84,6 +88,8 @@ void Sauvegarde::ecrireJoueur(Joueur *j, ofstream& fichier){
 	fichier << "-ELEPHANT : " << nbElephant << endl;
 }
 
+/* cette méthode écrit le plateau dans le fichier passé en parametre. elle écrit le type de plateau ainsi que
+ * l'ensemble des cases avec leurs positions ainsi que le pion contenu si elle en contient un.*/
 void Sauvegarde::ecrirePlateau(Plateau p, ofstream& fichier){
 	fichier << "PLATEAU :" << endl;
 	fichier << p.getTypePlateau() << endl;
@@ -103,6 +109,8 @@ void Sauvegarde::ecrirePlateau(Plateau p, ofstream& fichier){
 	}
 }
 
+/* cette méthode est apellée dans écrirePlateau, elle écrit le détail d'un pion que ce soit le gardien de la reserve
+ * ou alors un animal de la reserve*/
 void Sauvegarde::ecrirePion(Pion *p, ofstream& fichier){
 	if (dynamic_cast<ImpalaJones*>(p) != NULL) {
 		/* ImpalaJones*/
@@ -137,6 +145,8 @@ void Sauvegarde::ecrirePion(Pion *p, ofstream& fichier){
 	}
 }
 
+/* cette méthode renvoie un pointeur sur une partie, initialisée a partir d'une sauvegarde précédemment faite
+ * le parametre tourJOueur permet d'indiquer l'id du joueur qui va commencer lors du chargement.*/
 Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 	Partie *partie;
 	Plateau *plateau;
