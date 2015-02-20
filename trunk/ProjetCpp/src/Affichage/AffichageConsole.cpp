@@ -788,8 +788,8 @@ void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
 /**
  * Message indiquant que la sauvegarde a correctement ete effectuee
  */
-void AffichageConsole::afficheSauvegarde(){
-	cout << "Sauvegarde bien effectuee dans le fichier save.txt" << endl;
+void AffichageConsole::afficheSauvegarde(string filename){
+	cout << "Sauvegarde bien effectuee dans le fichier : "<<filename << endl;
 }
 
 /**

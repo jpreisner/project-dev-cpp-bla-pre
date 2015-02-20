@@ -43,7 +43,7 @@ public:
 	void messagePlusDePion();
 	void messageInitImpalaOrdi(int x, int y);
 	void afficheCoupJoueOrdi(Animal *a);
-	void afficheSauvegarde();
+	void afficheSauvegarde(string filename);
 	void scoreFinal(Joueur *j1, Joueur *j2);
 	bool retourMenuPrincipal();
 	void finProgramme();	

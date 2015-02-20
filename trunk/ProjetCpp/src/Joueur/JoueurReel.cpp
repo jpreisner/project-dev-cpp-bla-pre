@@ -53,7 +53,7 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 				case 3 :
 						filename = affichage->saisieFileSauvegarde();
 						Sauvegarde::sauvegarderPartie(partie,filename, getId());
-						affichage->afficheSauvegarde();
+						affichage->afficheSauvegarde(filename);
 				break;
 
 				// Le joueur souhaite quitter la partie
