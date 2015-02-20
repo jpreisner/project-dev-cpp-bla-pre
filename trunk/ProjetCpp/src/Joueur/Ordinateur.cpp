@@ -127,12 +127,9 @@ int Ordinateur::randomLigne(Plateau p, int colonne){
 	for(i=1; i<p.getTaillePlateauY()-1; i++){
 		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
 		if(!Regle::caseRempli(p, colonne, i)){
-			cout << i << " ";
 			tab.push_back(i);
 		}
 	}
-	cout << endl;
-
 	int size = tab.size();
 	if(size == 0){
 		cout << "Aucune possibilité dans randomLigne" << endl;
@@ -155,12 +152,9 @@ int Ordinateur::randomColonne(Plateau p, int ligne){
 	for(i=1; i<p.getTaillePlateauX()-1; i++){
 		// Si la ligne i n'est pas rempli, alors l'IA pourra la jouer
 		if(!Regle::caseRempli(p, i, ligne)){
-			cout << i << " ";
 			tab.push_back(i);
 		}
 	}
-	cout << endl;
-
 	int size = tab.size();
 	if(size == 0){
 		cout << "Aucune possibilité dans randomLigne" << endl;
@@ -281,13 +275,11 @@ int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Afficha
 	// voisin est vide, donc on retourne 1 pour qu'aucun changement soit effectué
 	if(size == 1){
 		cptActionCroco = 3;
-		cout << "fin" << endl;
 		return 1;
 	}
 
 	// Dans le cas ou le cpt est à 0 : on force l'ordinateur a choisir "ne rien faire"
 	if(cptActionCroco == 0){
-		cout << "fin" << endl;
 		return size;
 	}
 
@@ -298,11 +290,9 @@ int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Afficha
 	if(random == size){
 		// On remet le compteur à 3
 		cptActionCroco = 3;
-		cout << "fin" << endl;
 	}
 	else{
 		cptActionCroco--;
-		cout << "random" << endl;
 	}
 
 	return random;
