@@ -8,4 +8,3 @@
 enum secteurs
 	: int {SECT1 = 1, SECT2 = 2, SECT3 = 3, SECT4 = 4, SECT5 = 5, SECT6 = 6
 };
-

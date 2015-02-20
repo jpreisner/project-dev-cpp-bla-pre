@@ -16,10 +16,7 @@ int ImpalaJones::deplacer(int nbCases, Plateau *plateau, int ancien_x, int ancie
 		cout << "Erreur ! nbCases doit etre supérieur à 0" << endl;
 		return -1;
 	}
-	/*
-	int ancien_x = getX();
-	int ancien_y = getY();
-	*/
+
 	// Cas ou ImpalaJones est sur la ligne horizontale du haut
 	if(getY()==0){
 		if(getX()+nbCases>=TAILLE_PLATEAU_X-1){

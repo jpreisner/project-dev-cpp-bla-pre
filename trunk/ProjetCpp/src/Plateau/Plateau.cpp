@@ -11,12 +11,6 @@
 
 #include "../Joueur.h"
 
-/**
- * Deplacement du pion sur le plateau
- */
-int Plateau::deplacerPion(){
-	return 0;
-}
 
 int Plateau::ajouterAnimal(int x, int y, Animal* a){
 	a->setY(y);

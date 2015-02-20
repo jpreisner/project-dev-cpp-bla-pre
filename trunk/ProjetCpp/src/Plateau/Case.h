@@ -37,16 +37,6 @@ public:
 		return strm;
 	}
 
-	/**
-	 * Ajoute le pion en parametr ea la case
-	 */
-	int ajouterPion(Pion* p);
-
-	/**
-	 * Enlever le pion de la case
-	 */
-	int supprimerPion();
-
 	Pion* getPion() {
 		return pion;
 	}
@@ -58,6 +48,16 @@ public:
 	void setSecteur(int secteur) {
 		this->secteur = secteur;
 	}
+
+	/**
+	 * Ajoute le pion en parametr ea la case
+	 */
+	int ajouterPion(Pion* p);
+
+	/**
+	 * Enlever le pion de la case
+	 */
+	int supprimerPion();
 };
 
 #endif /* CASE_H_ */
