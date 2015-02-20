@@ -830,3 +830,23 @@ void AffichageConsole::finProgramme(){
 	cout << "A bientot !" << endl;
 	cout<< "======================================"<<endl;
 }
+
+/**
+ * Demande le nom du fichier a charger
+ */
+string AffichageConsole::saisieFileChargement(){
+	string nomFichier;
+	cout<<"Veuillez saisir le nom du fichier de sauvegarde a charger: "<<endl;
+	cin>>nomFichier;
+	return nomFichier;
+}
+
+/**
+ * Demande le nom du fichier a sauvegarder
+ */
+string AffichageConsole::saisieFileSauvegarde(){
+	string nomFichier;
+	cout<<"Veuillez saisir le nom du fichier pour sauvegarder la partie: "<<endl;
+	cin>>nomFichier;
+	return nomFichier;
+}
