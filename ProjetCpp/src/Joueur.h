@@ -77,21 +77,6 @@ public:
 		return strm;
 	}
 
-	/**
-	 * Ajoute l'animal sur la case x/y
-	 * 1 = gazelle,
-	 * 2 = zebre
-	 * 3 = elephant
-	 * 4 = lion
-	 * 5 = croco
-	 * renvoie vrai si l'ajout a ete fait.
-	 */
-	virtual bool jouer(Plateau* plateau, Affichage * affiche) = 0;
-
-	virtual bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche) = 0;
-
-	virtual int jouerTour(Plateau* p, Affichage* affichage, Partie partie) = 0;
-
 	vector<Animal*>& getListAnimaux(){
 		return listAnimaux;
 	}
@@ -121,6 +106,9 @@ public:
 	 */
 	void ajouterPoints(int nb);
 
+	virtual bool jouer(Plateau* plateau, Affichage * affiche) = 0;
+	virtual bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche) = 0;
+	virtual int jouerTour(Plateau* p, Affichage* affichage, Partie partie) = 0;
 	virtual int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage) = 0;
 	virtual void joueurInitImpala(Plateau *p, Affichage *affichage) = 0;
 	virtual int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage) = 0;

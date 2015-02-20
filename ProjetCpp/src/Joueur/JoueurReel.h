@@ -20,20 +20,18 @@ public:
 			Joueur(nbPoints, nom, nbGazelles, nbZebres, nbElephants, nbLions, nbCrocos){};
 	virtual ~JoueurReel(){};
 
-	/** UTILISE QUELQUE PART???????? **/
-	bool bonusInauguration(Plateau p);
-
-	bool jouer(Plateau* plateau, Affichage * affiche);
-	bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche);
-
 	friend ostream& operator<<(ostream &strm, const JoueurReel &a) {
 		strm << "Joueur Reel : " << a.getNom() << endl;
 		return strm;
 	}
+
+	bool jouer(Plateau* plateau, Affichage * affiche);
+	bool jouerCase(int xPion, int yPion, Plateau* plateau, Affichage * affiche);
 	int deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *affichage);
 	void joueurInitImpala(Plateau *p, Affichage *affichage);
 	int jouerTour(Plateau* p, Affichage* affichage, Partie partie);
 	int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage);
+
 };
 
 #endif /* JOUEURREEL_H_ */

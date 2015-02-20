@@ -36,17 +36,6 @@ public:
 	virtual ~Plateau(){
 	}
 
-	void initPlateau(int num_plateau);
-	void initPlateauNormal();
-	void initPlateauReservePresident();
-
-	int deplacerPion();
-
-	int ajouterAnimal(int x, int y, Animal* a);
-
-	/* Ajout d'ImpalaJones sur la case correspondant a sa position */
-	int initImpalaJones(ImpalaJones *ij);
-
 	Case* getCase(int x, int y){
 		return &cases[x][y];
 	}
@@ -70,19 +59,10 @@ public:
 	/* Affichage du plateau */
 	string print();
 
-	/* return true si le secteur i est rempli par un seul joueur */
-	bool secteurRempli(int secteur);
-
 	/* return true si le bonus Inauguration a ete donne */
 	bool getbonusInauguration(){
 		return bonusInauguration;
 	}
-
-	/* supprime le pion sur la case i/j*/
-	bool supprimerPion(int x, int y);
-
-	/* methode pour echanger les 2 pions de 2 cases*/
-	void echangerAnimalCases(Animal* a1, Animal* a2);
 
 	void setBonusInauguration(bool bonusInauguration){
 		this->bonusInauguration = bonusInauguration;
@@ -91,6 +71,22 @@ public:
 	ImpalaJones* getImpalaJones(){
 		return ij;
 	}
+
+	void initPlateau(int num_plateau);
+	void initPlateauNormal();
+	void initPlateauReservePresident();
+	int ajouterAnimal(int x, int y, Animal* a);
+
+	/* Ajout d'ImpalaJones sur la case correspondant a sa position */
+	int initImpalaJones(ImpalaJones *ij);
+
+	/* return true si le secteur i est rempli par un seul joueur */
+	bool secteurRempli(int secteur);
+	/* supprime le pion sur la case i/j*/
+	bool supprimerPion(int x, int y);
+
+	/* methode pour echanger les 2 pions de 2 cases*/
+	void echangerAnimalCases(Animal* a1, Animal* a2);
 
 };
 

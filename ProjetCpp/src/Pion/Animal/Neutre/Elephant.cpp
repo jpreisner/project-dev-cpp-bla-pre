@@ -7,5 +7,6 @@
 
 #include "Elephant.h"
 
+/** L'éléphant ne fait aucune action lorsqu'il est posé sur le jeu **/
 void Elephant::action(Plateau *p, Affichage *affichage){
 }
