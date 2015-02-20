@@ -47,7 +47,8 @@ public:
 	void scoreFinal(Joueur *j1, Joueur *j2);
 	bool retourMenuPrincipal();
 	void finProgramme();	
-	/* A COMPLETER */
+	string saisieFileChargement();
+	string saisieFileSauvegarde();
 };
 
 #endif /* AFFICHAGECONSOLE_H_ */

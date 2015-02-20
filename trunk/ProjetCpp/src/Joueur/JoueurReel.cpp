@@ -51,11 +51,10 @@ int JoueurReel::jouerTour(Plateau* p, Affichage* affichage, Partie partie){
 
 				// Le joueur souhaite sauvegarder la partie
 				case 3 :
-						cout<<"Veuillez saisir le nom du fichier de sauvegarde :"<<endl;
-						cin>>filename;
+						filename = affichage->saisieFileSauvegarde();
 						Sauvegarde::sauvegarderPartie(partie,filename, getId());
 						affichage->afficheSauvegarde();
-				break;	// a modifier le save.txt, et proposer au joueur d'entrer un nom de sauvegarde
+				break;
 
 				// Le joueur souhaite quitter la partie
 				case 4 : return 0;
