@@ -1,7 +1,7 @@
 /*
  * AffichageConsole.cpp
  *
- *  Created on: 6 févr. 2015
+ *  Created on: 6 fevr. 2015
  *      Author: Julien
  */
 
@@ -26,7 +26,7 @@
 #include "../Utils/SaisieSecure.h"
 
 /**
- * Menu affiché au tout debut du programme (avant le lancement d'une partie)
+ * Menu affiche au tout debut du programme (avant le lancement d'une partie)
  * Renvoie ce que l'utilisateur souhaite faire
  */
 int AffichageConsole::menuDemarrage(){
@@ -56,11 +56,11 @@ int AffichageConsole::menuDemarrage(){
 }
 
 /**
- * Affiche les règles présentes dans le fichiers Regles.txt
+ * Affiche les regles presentes dans le fichiers Regles.txt
  */
 int AffichageConsole::afficheRegle(){
 	cout << "======================================" << endl;
-	cout << "        Affichage des règles :        " << endl;
+	cout << "        Affichage des regles :        " << endl;
 	cout << "======================================" << endl;
 	// Lecture
 	ifstream fichier("Regles.txt", ios::in);
@@ -90,7 +90,7 @@ int AffichageConsole::afficheRegle(){
 }
 
 /**
- * Demande le nom d'un joueur, et l'attribut au joueur passé en paramètre
+ * Demande le nom d'un joueur, et l'attribut au joueur passe en parametre
  */
 void AffichageConsole::demandeNomJoueur(Joueur *j){
 	cout << "======================================" << endl;
@@ -100,7 +100,7 @@ void AffichageConsole::demandeNomJoueur(Joueur *j){
 	cin >> nom;
 	/** Verifier si le nom est correct? Comment? NULL? **/
 	while (nom.compare("I-A") == 0) {
-		cout << "Erreur ! Vous ne pouvez pas vous appeler I-A (réservé à l'ordinateur)" << endl;
+		cout << "Erreur ! Vous ne pouvez pas vous appeler I-A (reserve a l'ordinateur)" << endl;
 		cout << "======================================" << endl;
 		cout << "Veuillez entrer le nom du joueur n°" << j->getId() << " : " << endl;
 		cout << "======================================" << endl;
@@ -125,7 +125,7 @@ void AffichageConsole::affichePlateau(Plateau p){
 	}
 	cout << "\n";
 
-	/* Affichage de la toute 1ère ligne horizontale */
+	/* Affichage de la toute 1ere ligne horizontale */
 	cout << "              ";
 	for (i = 1; i < p.getTaillePlateauX()-1; i++) {
 		cout << "========";
@@ -238,8 +238,8 @@ void AffichageConsole::affichePlateau(Plateau p){
 }
 
 /**
- * Demande à l'utilisateur d'entrer le nombre de case qu'il souhaite déplacer Impala Jones, si cela est possible
- * Interprète l'entier possibilite qui résulte de l'appel de la fonction possibiliteDeplacementImpalaJones dans Regle.cpp
+ * Demande a l'utilisateur d'entrer le nombre de case qu'il souhaite deplacer Impala Jones, si cela est possible
+ * Interprete l'entier possibilite qui resulte de l'appel de la fonction possibiliteDeplacementImpalaJones dans Regle.cpp
  */
 int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int possibilite){
 	cout << "======================================" << endl;
@@ -249,9 +249,9 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 		cout << "======================================" << endl;
 		return -1;
 	}
-	/* Impala Jones peut etre placé sur l'une des 3 cases suivantes */
+	/* Impala Jones peut etre place sur l'une des 3 cases suivantes */
 	else if (possibilite == -1) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"<< endl;
+		cout << "Deplacement d'Impala Jones : veuillez choisir un nombre compris entre 1 et 3"<< endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res >= 1 && res <= 3)) {
 			cout << "Erreur! Veuillez choisir un nombre compris entre 1, 2 et 3" << endl;
@@ -260,9 +260,9 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 		cout << "======================================" << endl;
 		return res;
 	}
-	/* Impala Jones peut etre placé soit sur la prochaine case, soit sur la suivante */
+	/* Impala Jones peut etre place soit sur la prochaine case, soit sur la suivante */
 	else if (possibilite == -2) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 2" << endl;
+		cout << "Deplacement d'Impala Jones : veuillez choisir entre 1 et 2" << endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res == 1 || res == 2)) {
 			cout << "Erreur! Veuillez choisir entre 1 et 2" << endl;
@@ -271,9 +271,9 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 		cout << "======================================" << endl;
 		return res;
 	}
-	/* Impala Jones peut etre placé soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
+	/* Impala Jones peut etre place soit sur la prochaine case, soit celle plus loin de 2 cases (+3)*/
 	else if (possibilite == -3) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 1 et 3" << endl;
+		cout << "Deplacement d'Impala Jones : veuillez choisir entre 1 et 3" << endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res == 1 || res == 3)) {
 			cout << "Erreur! Veuillez choisir entre 1 et 3" << endl;
@@ -282,9 +282,9 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 		cout << "======================================" << endl;
 		return res;
 	}
-	/* Impala Jones peut etre placé soit sur la 2ème case suivante, soit sur la 3ème case suivante */
+	/* Impala Jones peut etre place soit sur la 2eme case suivante, soit sur la 3eme case suivante */
 	else if (possibilite == -4) {
-		cout << "Déplacement d'Impala Jones : veuillez choisir entre 2 et 3" << endl;
+		cout << "Deplacement d'Impala Jones : veuillez choisir entre 2 et 3" << endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res == 2 || res == 3)) {
 			cout << "Erreur! Veuillez choisir entre 2 et 3" << endl;
@@ -295,36 +295,36 @@ int AffichageConsole::demandeDeplacerImpalaJones(Plateau p, ImpalaJones ij, int 
 	}
 
 
-	/* Impala Jones ne peut pas etre placé que a la case +1  */
+	/* Impala Jones ne peut pas etre place que a la case +1  */
 	else if (possibilite == -5) {
-		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
-		cout << "---> Impala Jones est avancé de 1 case" << endl;
+		cout << "Deplacement d'Impala Jones : vous n'avez pas la possibilite de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avance de 1 case" << endl;
 		cout << "======================================" << endl;
 		return 1;
 	}
-	/* Impala Jones ne peut pas etre placé que a la case +2  */
+	/* Impala Jones ne peut pas etre place que a la case +2  */
 	else if (possibilite == -6) {
-		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+1) et (+3) sont pleines"<< endl;
-		cout << "---> Impala Jones est avancé de 2 cases" << endl;
+		cout << "Deplacement d'Impala Jones : vous n'avez pas la possibilite de choisir sa position car les cases (+1) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avance de 2 cases" << endl;
 		cout << "======================================" << endl;
 		return 2;
 	}
-	/* Impala Jones ne peut pas etre placé que a la case +3  */
+	/* Impala Jones ne peut pas etre place que a la case +3  */
 	else if (possibilite == -7) {
-		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
-		cout << "---> Impala Jones est avancé de 3 cases" << endl;
+		cout << "Deplacement d'Impala Jones : vous n'avez pas la possibilite de choisir sa position car les cases (+2) et (+3) sont pleines"<< endl;
+		cout << "---> Impala Jones est avance de 3 cases" << endl;
 		cout << "======================================" << endl;
 		return 3;
 	}
-	/* Impala Jones ne peut pas etre placé sur l'une des 3 cases suivantes -> recherche de la première prochaine case libre */
+	/* Impala Jones ne peut pas etre place sur l'une des 3 cases suivantes -> recherche de la premiere prochaine case libre */
 	else if (possibilite > 0) {
-		cout << "Déplacement d'Impala Jones : vous n'avez pas la possibilité de choisir sa position car les trois cases suivantes sont pleines"<< endl;
-		cout << "---> Impala Jones est avancé de " << possibilite << " cases" << endl;
+		cout << "Deplacement d'Impala Jones : vous n'avez pas la possibilite de choisir sa position car les trois cases suivantes sont pleines"<< endl;
+		cout << "---> Impala Jones est avance de " << possibilite << " cases" << endl;
 		cout << "======================================" << endl;
 		return possibilite;
 	}
 	else {
-		cout << "Erreur dans l'appel de la méthode possibiliteDeplacementImpalaJones" << endl;
+		cout << "Erreur dans l'appel de la methode possibiliteDeplacementImpalaJones" << endl;
 		cout << "======================================" << endl;
 		return -1;
 	}
@@ -370,7 +370,7 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 			if (precedent) {
 				cout << ", ";
 			}
-			cout << nbZebre << " zèbre";
+			cout << nbZebre << " zebre";
 			if (nbZebre > 1) {
 				cout << "s";
 			}
@@ -380,7 +380,7 @@ void AffichageConsole::afficheListAnimal(vector<Animal*> listAnimaux){
 			if (precedent) {
 				cout << ", ";
 			}
-			cout << nbElephant << " éléphant";
+			cout << nbElephant << " elephant";
 			if (nbElephant > 1) {
 				cout << "s";
 			}
@@ -430,7 +430,7 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 	cin >> nomAnimal;
 	// on met en minuscule pour ne pas avoir de probleme
 	for (unsigned int i = 0; i < nomAnimal.size(); i++) {
-		if (nomAnimal[i] == 'é' || nomAnimal[i] == 'è') {
+		if (nomAnimal[i] == 'e' || nomAnimal[i] == 'e') {
 			nomAnimal[i] = 'e';
 		} else {
 			nomAnimal[i] = tolower(nomAnimal[i]);
@@ -461,7 +461,7 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 			cin >> nomAnimal;
 			// on met en minuscule pour ne pas avoir de probleme
 			for (unsigned int i = 0; i < nomAnimal.size(); i++) {
-				if (nomAnimal[i] == 'é' || nomAnimal[i] == 'è') {
+				if (nomAnimal[i] == 'e' || nomAnimal[i] == 'e') {
 					nomAnimal[i] = 'e';
 				} else {
 					nomAnimal[i] = tolower(nomAnimal[i]);
@@ -474,7 +474,7 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 }
 
 /**
- * Affichage d'un pion : gère le cas d'un animal caché
+ * Affichage d'un pion : gere le cas d'un animal cache
  */
 void AffichageConsole::affichePion(Pion *p){
 	/* appel de print p et de l'id du joueur */
@@ -501,7 +501,7 @@ void AffichageConsole::afficheImpalaJones(){
 
 /*
  * Affiche le nom du joueur qui doit jouer + lui proposer de poser un pion, de regarder sa liste de pion, de sauvegarder
- * 	ou de déclarer forfait
+ * 	ou de declarer forfait
  */
 int AffichageConsole::menuJoueur(Joueur *j){
 	cout << "======================================" << endl;
@@ -527,8 +527,8 @@ int AffichageConsole::menuJoueur(Joueur *j){
 }
 
 /**
- * Demande au joueur de selectionner une ligne disponible dans le plateau, lorsque Impala Jones est positionné à la colonne
- * passée en paramètre
+ * Demande au joueur de selectionner une ligne disponible dans le plateau, lorsque Impala Jones est positionne a la colonne
+ * passee en parametre
  */
 int AffichageConsole::demandeLigne(Plateau p, int colonne){
 	cout << "======================================" << endl;
@@ -540,7 +540,7 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 		SaisieSecure::saisieSecureInt(res);
 	}
 	while (p.getCase(colonne, res)->getPion() != NULL) {
-		cout << "Erreur ! La case est occupée" << endl;
+		cout << "Erreur ! La case est occupee" << endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res >= 1 && res <= p.getTaillePlateauY()-2)) {
 			cout << "Erreur ! Veuillez entrer un chiffre entre 1 et " << p.getTaillePlateauY()-2 << endl;
@@ -552,8 +552,8 @@ int AffichageConsole::demandeLigne(Plateau p, int colonne){
 }
 
 /**
- * Demande au joueur de selectionner une colonne disponible dans le plateau, lorsque Impala Jones est positionné à la ligne
- * passée en paramètre
+ * Demande au joueur de selectionner une colonne disponible dans le plateau, lorsque Impala Jones est positionne a la ligne
+ * passee en parametre
  */
 int AffichageConsole::demandeColonne(Plateau p, int ligne){
 	cout << "======================================" << endl;
@@ -565,7 +565,7 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 		SaisieSecure::saisieSecureInt(res);
 	}
 	while (p.getCase(res, ligne)->getPion() != NULL) {
-		cout << "Erreur ! La case est occupée" << endl;
+		cout << "Erreur ! La case est occupee" << endl;
 		SaisieSecure::saisieSecureInt(res);
 		while (!(res >= 1 && res <= p.getTaillePlateauX()-2)) {
 			cout << "Erreur ! Veuillez entrer un chiffre entre 0 et " << p.getTaillePlateauX()-2 << endl;
@@ -577,8 +577,8 @@ int AffichageConsole::demandeColonne(Plateau p, int ligne){
 }
 
 /**
- * Demande au joueur ce qu'il souhaite faire lorsque l'action du crocodile est "activée"
- * (soit quand il y a possibilité d'échanger avec une gazelle)
+ * Demande au joueur ce qu'il souhaite faire lorsque l'action du crocodile est "activee"
+ * (soit quand il y a possibilite d'echanger avec une gazelle)
  */
 int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plateau p){
 	// On a besoin d'afficher au joueur le plateau actuel avant de faire une action
@@ -587,7 +587,7 @@ int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plate
 	unsigned int res;
 	unsigned int nbVoisin = voisin.size();
 	cout << "======================================" << endl;
-	cout << "Vous pouvez échanger votre crocodile avec " << nbVoisin << " gazelle";
+	cout << "Vous pouvez echanger votre crocodile avec " << nbVoisin << " gazelle";
 	if(nbVoisin>1){
 		cout << "s";
 	}
@@ -596,16 +596,16 @@ int AffichageConsole::demandeChoixActionCrocodile(vector<Gazelle*> voisin, Plate
 	unsigned int i;
 	cout << "Que souhaitez-vous faire?" << endl;
 	for(i=0; i<nbVoisin; i++){
-		cout << "   " << i+1 << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+		cout << "   " << i+1 << " - echanger avec la gazelle placee en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
 	}
 	cout << "   " << i+1 << " - ne rien faire" << endl;
 	cout << "======================================" << endl;
 	SaisieSecure::saisieSecureInt(res);
 	while(!(res>=1 && res<=nbVoisin+1)){
-		cout << "Erreur ! le chiffre entré n'est pas compris entre 1 et " << nbVoisin+1 << endl;
+		cout << "Erreur ! le chiffre entre n'est pas compris entre 1 et " << nbVoisin+1 << endl;
 		cout << "Que souhaitez-vous faire?" << endl;
 		for(i=0; i<nbVoisin; i++){
-			cout << "   " << i+1 << " - échanger avec la gazelle placée en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
+			cout << "   " << i+1 << " - echanger avec la gazelle placee en (" << voisin[i]->getX() << ", " << voisin[i]->getY() << ")" << endl;
 		}
 		cout << "   " << i+1 << " - ne rien faire" << endl;
 		cout << "======================================" << endl;
@@ -634,7 +634,7 @@ void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 			|| (inputX == TAILLE_PLATEAU_X - 1 && inputY == 0)
 			|| (inputX == TAILLE_PLATEAU_X - 1 && inputY == TAILLE_PLATEAU_Y - 1)) {
 		cout
-				<< "Erreur, vous devez le placer a une extremité du plateau, excepté dans les quarts de virage"
+				<< "Erreur, vous devez le placer a une extremite du plateau, excepte dans les quarts de virage"
 				<< endl;
 		cout << "Position en X" << endl;
 		SaisieSecure::saisieSecureInt(inputX);
@@ -646,13 +646,13 @@ void AffichageConsole::demandePositionInitialeImpalaJones(ImpalaJones * ij){
 }
 
 /**
- * Implémentation du jeu "pile ou face" : renvoie un entier correspondant au joueur qui doit jouer en premier
+ * Implementation du jeu "pile ou face" : renvoie un entier correspondant au joueur qui doit jouer en premier
  * 0 : joueur 1 joue en 1er
  * 1 : joueur 2 joue en 1er
  */
 int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 	cout << "======================================" << endl;
-	cout << "Tirage au sort pour déterminer le 1er qui joue (Pile ou Face) : ";
+	cout << "Tirage au sort pour determiner le 1er qui joue (Pile ou Face) : ";
 	int random;
 	if(typeJeu == 1){
 		random = 0;
@@ -685,31 +685,31 @@ int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 		cout << "Face ! ";
 	}
 	if((random_pile_face == 0 && res == 'p') || (random_pile_face == 1 && res == 'f')){
-		// Le joueur n°(random) a gagné
+		// Le joueur n°(random) a gagne
 		if(random == 0){
-			cout << j1->getNom() << ", vous avez gagné !" << endl;
+			cout << j1->getNom() << ", vous avez gagne !" << endl;
 		}
 		else{
-			cout << j2->getNom() << ", vous avez gagné !" << endl;
+			cout << j2->getNom() << ", vous avez gagne !" << endl;
 		}
 		return random;
 	}
 	else{
 		// Le joueur n°(random) a perdu
 		if(random == 1){
-			cout << j1->getNom() << ", vous avez gagné !" << endl;
+			cout << j1->getNom() << ", vous avez gagne !" << endl;
 			return 0;
 		}
-		cout << j2->getNom() << ", vous avez gagné !" << endl;
+		cout << j2->getNom() << ", vous avez gagne !" << endl;
 		return 1;
 	}
 }
 
 /**
- * Message indiquant au joueur passé en paramètre qu'il doit jouer en 1er
+ * Message indiquant au joueur passe en parametre qu'il doit jouer en 1er
  */
 void AffichageConsole::messageDebutPartie(Joueur *j){
-	cout << j->getNom() << " : à vous de commencer !" << endl;
+	cout << j->getNom() << " : a vous de commencer !" << endl;
 }
 
 /**
@@ -721,14 +721,14 @@ void AffichageConsole::afficheTour(Joueur *j){
 }
 
 /**
- * Message au début du jeu avant le lancement d'une partie
+ * Message au debut du jeu avant le lancement d'une partie
  * Demande aux joueurs sur quels plateaux souhaitent-ils jouer
  */
 int AffichageConsole::demandePlateau(){
 	cout<< "======================================"<<endl;
 	cout << "Choisissez un plateau :" << endl;
 	cout << "   1 - Plateau normal" << endl;
-	cout << "   2 - Réserve du Président" << endl;
+	cout << "   2 - Reserve du President" << endl;
 	unsigned int res;
 	SaisieSecure::saisieSecureInt(res);
 	while(res!=1 && res!=2){
@@ -740,7 +740,7 @@ int AffichageConsole::demandePlateau(){
 }
 
 /**
- * Affiche le vainqueur (passé en paramètre)
+ * Affiche le vainqueur (passe en parametre)
  */
 void AffichageConsole::afficherVainqueur(Joueur* j){
 	cout<< "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
@@ -771,7 +771,7 @@ void AffichageConsole::messagePlusDePion(){
  */
 void AffichageConsole::messageInitImpalaOrdi(int x, int y){
 	cout<< "======================================"<<endl;
-	cout << "L'ordinateur a positionné Impala Jones en (" << x << ", " << y << ")" << endl;
+	cout << "L'ordinateur a positionne Impala Jones en (" << x << ", " << y << ")" << endl;
 	cout<< "======================================"<<endl;
 }
 
@@ -780,15 +780,15 @@ void AffichageConsole::messageInitImpalaOrdi(int x, int y){
  */
 void AffichageConsole::afficheCoupJoueOrdi(Animal *a){
 	cout<< "======================================"<<endl;
-	cout << "L'ordinateur a joué" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
+	cout << "L'ordinateur a joue" << a->print() << " en (" << a->getX() << ", " << a->getY() << ")" << endl;
 	cout<< "======================================"<<endl;
 }
 
 /**
- * Message indiquant que la sauvegarde a correctement été effectuée
+ * Message indiquant que la sauvegarde a correctement ete effectuee
  */
 void AffichageConsole::afficheSauvegarde(){
-	cout << "Sauvegarde bien effectuée dans le fichier save.txt" << endl;
+	cout << "Sauvegarde bien effectuee dans le fichier save.txt" << endl;
 }
 
 /**
@@ -799,7 +799,7 @@ void AffichageConsole::scoreFinal(Joueur *j1, Joueur *j2){
 }
 
 /**
- * Message affiché en fin de partie, propose à l'utilisateur s'il souhaite retourner au menu principal ou quitter
+ * Message affiche en fin de partie, propose a l'utilisateur s'il souhaite retourner au menu principal ou quitter
  * 1 = oui, il souhaite retourner au menu principal
  * 2 = non
  */
@@ -822,8 +822,8 @@ bool AffichageConsole::retourMenuPrincipal(){
 }
 
 /**
- * Message d'au revoir, lorsque le joueur sort du programme après avoir décider qu'il ne souhaitait pas retourner au menu principal
- * (méthode précédente)
+ * Message d'au revoir, lorsque le joueur sort du programme apres avoir decider qu'il ne souhaitait pas retourner au menu principal
+ * (methode precedente)
  */
 void AffichageConsole::finProgramme(){
 	cout<< "======================================"<<endl;
