@@ -29,7 +29,7 @@ using namespace std;
 /* sauvegarde la partie courante dans le fichier dont le nom est passé en parametre.
  * l'idjoueur qui sauvegarde permet de déterminer quel est le joueur qui jouera lors du chargement futur*/
 bool Sauvegarde::sauvegarderPartie(Partie p, string fileName, int idJoueur){
-	ofstream fichier(fileName, ios::out | ios::trunc); // ouverture en écriture avec effacement du fichier ouvert
+	ofstream fichier(fileName.c_str(), ios::out | ios::trunc); // ouverture en écriture avec effacement du fichier ouvert
 	if (fichier) {
 
 		fichier << "TOUR DU JOUEUR :" << endl;
@@ -153,9 +153,9 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 
 	vector<Joueur*> vectJoueur;
 	Joueur * joueur;
-	Pion* pion;
+	Pion* pion = NULL;
 
-	ifstream fichier(fileName, ios::in); // ouverture en écriture avec effacement du fichier ouvert
+	ifstream fichier(fileName.c_str(), ios::in); // ouverture en écriture avec effacement du fichier ouvert
 	string nom, buf;
 	string::size_type sz;
 	locale loc;
@@ -174,7 +174,7 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 
 			if (ligne.compare("JOUEUR") == 0) {
 				string nom;
-				int i_points, i_lions, i_gazelles, i_zebres, i_crocodiles, i_elephants;
+				int i_points = 0, i_lions = 0, i_gazelles = 0, i_zebres = 0, i_crocodiles = 0, i_elephants = 0;
 				bool jreel = false;
 
 				getline(fichier, buf);
@@ -234,11 +234,11 @@ Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 				vectJoueur.push_back(joueur);
 
 			} else if (ligne.compare("PLATEAU :") == 0) {
-				int plateauId;
+				int plateauId = 0;
 				int joueurIdPion;
 				bool bonusInnauguration;
-				int xCase;
-				int yCase;
+				int xCase = 0;
+				int yCase = 0;
 				getline(fichier, buf);
 				if (isdigit(buf[0], loc)) {
 					plateauId = atoi(buf.c_str());

@@ -668,7 +668,7 @@ int AffichageConsole::pileOuFace(Joueur *j1, Joueur *j2, int typeJeu){
 		cout << j2->getNom();
 	}
 	cout << ", choisissez pile (P) ou face (F)" << endl;
-	char res;
+	char res = ' ';
 	SaisieSecure::saisieSecureChar(res);
 	res = tolower(res);
 	while(res != 'p' && res != 'f' ){

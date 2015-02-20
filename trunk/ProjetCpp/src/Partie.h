@@ -16,7 +16,7 @@
 class Partie {
 private:
 	vector<Joueur*> vectJoueur;
-	Plateau *plateau;
+	Plateau *plateau = NULL;
 public:
 	Partie(vector<Joueur*> vectJoueur, Plateau *plateau) :
 		vectJoueur(vectJoueur), plateau(plateau){};
