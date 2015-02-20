@@ -25,6 +25,10 @@
 using namespace std;
 
 int main() {
+	Affichage * affichage = NULL;
+	Joueur *joueur1 = NULL;
+	Joueur *joueur2 = NULL;
+
 	srand(time(NULL));
 	cout << "======================================" << endl;
 	cout << "            Drôle de Zèbres           " << endl;
@@ -32,7 +36,6 @@ int main() {
 
 	// Demande le type d'affichage aux joueurs
 	int typeAffichage = Affichage::demandeTypeAffichage();
-	Affichage * affichage = NULL;
 	if (typeAffichage == 1) {
 		affichage = new AffichageConsole();
 	}
@@ -48,11 +51,9 @@ int main() {
 		// Jouer
 		if (menu_demarrage == 1 || menu_demarrage == 2) {
 			// Initialisation du joueur 1
-			Joueur *joueur1 = new JoueurReel();
+			joueur1 = new JoueurReel();
 			affichage->demandeNomJoueur(joueur1);
 
-			// Initialisation du joueur 2
-			Joueur *joueur2 = NULL;
 			// Cas ou le joueur 2 est un joueur "reel"
 			if (menu_demarrage == 2) {
 				joueur2 = new JoueurReel();
@@ -160,5 +161,8 @@ int main() {
 		}
 	} while (regle || affichage->retourMenuPrincipal());
 	affichage->finProgramme();
+	delete affichage;
+	delete joueur1;
+	delete joueur2;
 	return 0;
 }
