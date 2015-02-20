@@ -22,10 +22,6 @@ class Gazelle;
 
 using namespace std;
 
-/**
- * Classe abstraite, car contient une méthode virtuelle pure (=0) pour ne pas l'instancier.
- */
-
 class Animal;
 
 static int idStatic = 1;

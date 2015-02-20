@@ -35,9 +35,6 @@ public:
 		return plateau;
 	}
 
-	/* Demander les noms, attribuer les cartes */
-	int initJoueurs();
-
 	/* Lancer le premier tour en initialisant la position d'ImpalaJones	 */
 	int lancerPartie(int x, int y);
 

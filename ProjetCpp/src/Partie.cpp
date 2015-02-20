@@ -24,6 +24,9 @@ int Partie::lancerPartie(int x, int y){
 	return getPlateau()->initImpalaJones(ij);
 }
 
+/**
+ * Correspond à un ensemble de méthodes appelées successivement, permettant à un joueur de jouer un tour
+ */
 int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage *affichage){
 	int nbCases;
 
@@ -59,14 +62,6 @@ int Partie::deroulementJeu(vector<Joueur*> vectJoueur, int tourJoueur, Affichage
 	int ancien_x = getPlateau()->getImpalaJones()->getX();
 	int ancien_y = getPlateau()->getImpalaJones()->getY();
 	return getPlateau()->getImpalaJones()->deplacer(nbCases, getPlateau(), ancien_x, ancien_y);
-}
-
-/**
- * Demander les noms, attribuer les cartes
- */
-int Partie::initJoueurs(){
-
-	return 0;
 }
 
 void Partie::finPartie(vector<Joueur*> vectJoueur, Affichage *affichage){
