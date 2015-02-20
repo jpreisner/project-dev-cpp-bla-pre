@@ -255,6 +255,9 @@ int Ordinateur::deplacementImpalaJones(Plateau p, ImpalaJones ij, Affichage *aff
 	}
 }
 
+/**
+ * L'ordinateur positionne aléatoirement Impala Jones pour la 1ere fois sur le plateau
+ */
 void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 	int random_x, random_y;
 	int size;
@@ -300,7 +303,9 @@ void Ordinateur::joueurInitImpala(Plateau *p, Affichage *affichage){
 	affichage->messageInitImpalaOrdi(random_x, random_y);
 }
 
-
+/**
+ * L'ordinateur interprete l'échange entre un crocodile et une gazelle, ou non
+ */
 int Ordinateur::choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage){
 	return voisin.size() + 1;	// l'IA ne fait rien
 }

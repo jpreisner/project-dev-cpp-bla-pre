@@ -7,6 +7,9 @@
 
 #include "Case.h"
 
+/**
+ * Ajoute un pion passé en paramètre si aucun pion n'est présent
+ */
 int Case::ajouterPion(Pion* p){
 	// ajout possible
 	if(getPion()==NULL){
@@ -20,6 +23,9 @@ int Case::ajouterPion(Pion* p){
 	}
 }
 
+/**
+ * Supprime le pion de la case, s'il y en a un
+ */
 int Case::supprimerPion(){
 	if(getPion()!=NULL){
 		pion = NULL;

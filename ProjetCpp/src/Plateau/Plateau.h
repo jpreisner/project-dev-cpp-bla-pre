@@ -82,8 +82,6 @@ public:
 
 	/* return true si le secteur i est rempli par un seul joueur */
 	bool secteurRempli(int secteur);
-	/* supprime le pion sur la case i/j*/
-	bool supprimerPion(int x, int y);
 
 	/* methode pour echanger les 2 pions de 2 cases*/
 	void echangerAnimalCases(Animal* a1, Animal* a2);

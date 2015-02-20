@@ -12,6 +12,9 @@
 #include "../../../Plateau/Plateau.h"
 #include "../Effrayant/Lion.h"
 
+/**
+ * Action provoqué lorsque une gazelle est posée sur le plateau : elle se cache s'il y a un (ou plusieurs) lion sur les cases voisines
+ */
 void Gazelle::action(Plateau *p, Affichage *affichage){
 	if((getX()<p->getTaillePlateauX()-1 && dynamic_cast<Lion*>(p->getCase(getX()+1, getY())->getPion())!=NULL)
 	|| (getX()>0 && dynamic_cast<Lion*>(p->getCase(getX()-1, getY())->getPion())!=NULL)
@@ -21,6 +24,9 @@ void Gazelle::action(Plateau *p, Affichage *affichage){
 	}
 }
 
+/**
+ * Lorsqu'un lion est posé à côté d'une gazelle, celle-ci fuit et retourne dans les mains de son joueur
+ */
 void Gazelle::fuite(Plateau *p){
 	p->getCase(getX(), getY())->supprimerPion();
 	setX(-1);

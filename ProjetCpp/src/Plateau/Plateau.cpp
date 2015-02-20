@@ -11,13 +11,18 @@
 
 #include "../Joueur.h"
 
-
+/**
+ * Ajoute un animal sur le plateau en (x,y)
+ */
 int Plateau::ajouterAnimal(int x, int y, Animal* a){
 	a->setY(y);
 	a->setX(x);
 	return getCase(x, y)->ajouterPion(a);
 }
 
+/**
+ * Renvoie vrai si le secteur passé en paramètre est rempli (chaque case du secteur possède un pion)
+ */
 bool Plateau::secteurRempli(int secteur){
 	for (int i = 1; i < TAILLE_PLATEAU_X - 1; ++i) {
 		for (int j = 1; j < TAILLE_PLATEAU_Y - 1; ++j) {
@@ -32,20 +37,17 @@ bool Plateau::secteurRempli(int secteur){
 	return true;
 }
 
-bool Plateau::supprimerPion(int x, int y){
-	if (getCase(x, y) != NULL) {
-		getCase(x, y)->supprimerPion();
-		return true;
-	} else {
-		return false;
-	}
-}
-
+/*
+ * Ajoute Impala Jones passé en paramètre
+ */
 int Plateau::initImpalaJones(ImpalaJones *ij){
 	setImpalaJones(ij);
 	return getCase(ij->getX(), ij->getY())->ajouterPion(ij);
 }
 
+/**
+ * Echange les positions des 2 animaux passés en paramètre
+ */
 void Plateau::echangerAnimalCases(Animal* a1, Animal* a2){
 	int x_a1 = a1->getX();
 	int y_a1 = a1->getY();
@@ -75,6 +77,9 @@ void Plateau::echangerAnimalCases(Animal* a1, Animal* a2){
 
 }
 
+/**
+ * Initialise le plateau (au niveau des secteurs) correspondant à l'entier passé en paramètre
+ */
 void Plateau::initPlateau(int num_plateau){
 	if(num_plateau == 1){
 		initPlateauNormal();
@@ -84,6 +89,9 @@ void Plateau::initPlateau(int num_plateau){
 	}
 }
 
+/**
+ * Plateau "normal"
+ */
 void Plateau::initPlateauNormal(){
 		/* ZONE 1 */
 		cases[1][1] = Case(SECT1);
@@ -128,6 +136,9 @@ void Plateau::initPlateauNormal(){
 		cases[6][5] = Case(SECT6);
 }
 
+/**
+ * Reserve du président
+ */
 void Plateau::initPlateauReservePresident(){
 		/* ZONE 1 */
 		cases[1][1] = Case(SECT1);

@@ -9,7 +9,11 @@
 #include "../Peureux/Gazelle.h"
 
 /**
- * Renvoie 1 si le joueur ne veut pas faire d'action, 0 sinon
+ * Action provoqué lorsque un crocodile est posé sur le plateau :
+ *  1) enregistre les gazelles qui sont présentes dans une case voisine ET ou une rivière les sépare
+ *  2) Propose au joueur d'échanger le crocodile avec une gazelle si c'est possible
+ *  3) Répété tant que l'utilisateur ne souhaite pas faire d'action
+ *  4) Appel la méthode action des gazelles qui ont été échangées
  */
 void Crocodile::action(Plateau *p, Affichage *affichage) {
 	set<Gazelle*> gazellesEchangees;
