@@ -81,7 +81,7 @@ int main() {
 			affichage->messageDebutPartie(vectJoueur[tourJoueur]);
 
 			// Demande de placement de Impala Jones
-			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(), affichage); /* TODO A TESTER */
+			vectJoueur[tourJoueur]->joueurInitImpala(partie.getPlateau(), affichage);
 
 			// Détermination du joueur qui doit maintenant jouer
 			int nbJoueurs = vectJoueur.size();
@@ -98,6 +98,7 @@ int main() {
 				continuer = partie.deroulementJeu(vectJoueur, tourJoueur, affichage);	// = 0 si tout est ok
 				if (continuer == -2) {
 					// Le joueur a décidé de quitter
+					affichage->finProgramme();
 					return 0;
 				}
 				else if (continuer == -1) {
@@ -133,6 +134,7 @@ int main() {
 					continuer = partie->deroulementJeu(partie->getVectJoueur(), tourJoueur, affichage);	// = 0 si tout est ok
 					if (continuer == -2) {
 						// Le joueur a décidé de quitter
+						affichage->finProgramme();
 						return 0;
 					}
 					else if (continuer == -1) {
