@@ -31,7 +31,7 @@ int main() {
 
 	srand(time(NULL));
 	cout << "======================================" << endl;
-	cout << "            Drôle de Zèbres           " << endl;
+	cout << "            Drole de Zebres           " << endl;
 	cout << "======================================" << endl;
 
 	// Demande le type d'affichage aux joueurs
