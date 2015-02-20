@@ -437,7 +437,7 @@ int AffichageConsole::selectionnerAnimal(vector<Animal*> listAnimaux){
 		}
 	}
 	bool ok = false;
-	unsigned int res;
+	unsigned int res = 0;
 	while (!ok) {
 		if (nomAnimal.compare("gazelle") == 0) {
 			res = 1;
