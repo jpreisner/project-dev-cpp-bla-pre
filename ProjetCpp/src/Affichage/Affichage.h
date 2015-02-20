@@ -47,7 +47,7 @@ public:
 	virtual void messagePlusDePion() = 0;
 	virtual void messageInitImpalaOrdi(int x, int y) = 0;
 	virtual void afficheCoupJoueOrdi(Animal *a) = 0;
-	virtual void afficheSauvegarde() = 0;
+	virtual void afficheSauvegarde(string filename) = 0;
 	virtual void scoreFinal(Joueur *j1, Joueur *j2) = 0;
 	virtual bool retourMenuPrincipal() = 0;
 	virtual void finProgramme() = 0;

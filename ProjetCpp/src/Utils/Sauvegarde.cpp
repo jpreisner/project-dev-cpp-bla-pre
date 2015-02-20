@@ -149,7 +149,7 @@ void Sauvegarde::ecrirePion(Pion *p, ofstream& fichier){
  * le parametre tourJOueur permet d'indiquer l'id du joueur qui va commencer lors du chargement.*/
 Partie* Sauvegarde::chargementPartie(string fileName, int& tourJoueur){
 	Partie *partie;
-	Plateau *plateau;
+	Plateau *plateau = NULL;
 
 	vector<Joueur*> vectJoueur;
 	Joueur * joueur;
