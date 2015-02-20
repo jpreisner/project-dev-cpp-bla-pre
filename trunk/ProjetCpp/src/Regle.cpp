@@ -14,12 +14,15 @@
 #include "Plateau/Case.h"
 #include "Plateau/Plateau.h"
 
-
+/**
+ * Renvoie vrai si la case (colonne, ligne) dans le plateau possède un pion
+ */
 bool Regle::caseRempli(Plateau p, int colonne, int ligne){
 	return (p.getCase(colonne, ligne)->getPion() != NULL);
 }
+
 /**
- * Renvoie vrai si la colonne passée en paramètre possède aucune case vide (toutes les cases contiennent des pions)
+ * Renvoie vrai si la colonne passée en paramètre possède aucune case vide (toutes les cases de la colonne contiennent des pions)
  */
 bool Regle::colonneRempli(Plateau p, int colonne){
 	unsigned int i;
@@ -32,7 +35,7 @@ bool Regle::colonneRempli(Plateau p, int colonne){
 }
 
 /**
- * Renvoie vrai si la ligne passée en paramètre possède aucune case vide (toutes les cases contiennent des pions)
+ * Renvoie vrai si la ligne passée en paramètre possède aucune case vide (toutes les cases de la ligne contiennent des pions)
  */
 bool Regle::ligneRempli(Plateau p, int ligne){
 	unsigned int i;
@@ -45,7 +48,7 @@ bool Regle::ligneRempli(Plateau p, int ligne){
 }
 
 /**
- * Renvoie vrai si la partie est terminée (toutes les cases sont remplies d'un pion)
+ * Renvoie vrai si la partie est terminée (toutes les cases du plateau ont un pion)
  */
 bool Regle::finPartie(Plateau p){
 	unsigned int i;
@@ -58,7 +61,7 @@ bool Regle::finPartie(Plateau p){
 }
 
 /**
- * Renvoie vrai si Impala Jones peut être posé nbCases plus loin dans le plateau p selon sa position (x, y)
+ * Renvoie vrai si Impala Jones peut être posé nbCases plus loin dans le plateau p selon sa position initiale (x, y)
  */
 bool Regle::testDeplacementImpalaJones(Plateau p, int x, int y, int nbCases){
 	int new_x;
