@@ -17,6 +17,7 @@
 #include "../Pion/ImpalaJones.h"
 #include "../Plateau/Plateau.h"
 
+
 class Ordinateur: public Joueur {
 public:
 	Ordinateur(int nbPoints = 0, string nom="I-A", int nbGazelles = 6, int nbZebres = 5,
@@ -38,7 +39,5 @@ public:
 	int jouerTour(Plateau* p, Affichage* affichage, Partie partie);
 	int choixActionCrocodile(vector<Gazelle*> voisin, Plateau p, Affichage *affichage);
 };
-
-
 
 #endif /* ORDINATEUR_H_ */
