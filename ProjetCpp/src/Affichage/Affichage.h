@@ -51,8 +51,8 @@ public:
 	virtual void scoreFinal(Joueur *j1, Joueur *j2) = 0;
 	virtual bool retourMenuPrincipal() = 0;
 	virtual void finProgramme() = 0;
-	/* FIXME : mettre des "const" a chaque param ? sauf pour selectionnerPosition */
-	/* A COMPLETER */
+	virtual string saisieFileChargement() = 0;
+	virtual string saisieFileSauvegarde() = 0;
 };
 
 #endif /* AFFICHAGE_H_ */
